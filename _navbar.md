@@ -1,2 +1,0 @@
-* [Türkçe](/tr/)
-* [English](/en/)
