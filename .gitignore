@@ -216,3 +216,19 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+
+
+# Data
+data/raw/
+data/corrupted/
+*.csv
+*.parquet
+*.xlsx
+
