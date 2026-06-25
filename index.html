@@ -15,11 +15,19 @@
       repo: '',
       loadSidebar: true,
       loadNavbar: true,
+      subMaxLevel: 2,
       alias: {
+        // 1. Ana siteye ilk girişi doğrudan Türkçe ana sayfaya bağlar
+        '/': '/tr/README.md',
+        
+        // 2. Dil katmanlarının kendi kök isteklerini karşılar
+        '/tr/': '/tr/README.md',
+        '/en/': '/en/README.md',
+        
+        // 3. Alt kırılımlardaki menü isteklerini ilgili dilin sidebar'ına yönlendirir
         '/.*/_sidebar.md': '/tr/_sidebar.md',
         '/en/.*/_sidebar.md': '/en/_sidebar.md'
-      },
-      subMaxLevel: 2
+      }
     }
   </script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
