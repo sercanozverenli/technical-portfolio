@@ -32,14 +32,9 @@
       loadNavbar: true,
       subMaxLevel: 2,
       alias: {
-        // Doğrudan ana domaine gireni Türkçe alt klasörüne paslar
         '/': '/tr/README.md',
-        
-        // Klasörlerin altındaki tüm derinliklerde doğru sidebar'ın okunmasını garanti eder
-        '/tr/.+': '/tr/README.md',
-        '/en/.+': '/en/README.md',
-        '/tr/_sidebar.md': '/tr/_sidebar.md',
-        '/en/_sidebar.md': '/en/_sidebar.md',
+        '/_sidebar.md': '/tr/_sidebar.md',
+        '/en/.*/_sidebar.md': '/en/_sidebar.md',
         '/.*/_sidebar.md': '/tr/_sidebar.md'
       }
     }
