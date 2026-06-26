@@ -38,7 +38,7 @@
 <div class="sidebar-nav">
   <a class="home-link" href="#/en/">Home</a>
 
-  <details open>
+  <details>
     <summary>Experiments</summary>
     <ul>
       <li><a href="#/en/projects/experiments/exploratory-data-analysis">Exploratory Data Analysis</a></li>
