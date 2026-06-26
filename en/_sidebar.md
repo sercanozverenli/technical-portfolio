@@ -1,10 +1,9 @@
-* [Home](/en/README.md)
+# [Home](/en/)
 
-## Experiments
-* [Exploratory Data Analysis](/en/projects/experiments/exploratory-data-analysis.md)
-
-## Apps
-<!-- Links will be added when ready -->
-
-## Systems
-<!-- Entire systems section hidden until DRDRS is complete -->
+* **📁 Projects**
+  * **Experiments**
+    * [Exploratory Data Analysis](/en/projects/experiments/exploratory-data-analysis.md)
+  * **Apps**
+    * *(Coming soon...)*
+  * **Systems**
+    * *(Hidden)*
