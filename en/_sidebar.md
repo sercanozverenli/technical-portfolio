@@ -1,61 +1,46 @@
-<style>
-  
-  .sidebar-nav { padding: 0; }
-  .sidebar-nav > ul { list-style: none; padding: 0; margin: 0; }
-  .sidebar-nav details { margin: 4px 0; }
-  .sidebar-nav details summary {
-    cursor: pointer; padding: 6px 8px; font-weight: 600;
-    font-size: 14px; color: #2c3e50; list-style: none;
-    display: flex; align-items: center; gap: 6px; border-radius: 4px;
-  }
-  .sidebar-nav details summary::-webkit-details-marker { display: none; }
-  .sidebar-nav details summary::before {
-    content: '▶'; font-size: 9px;
-    transition: transform 0.2s; display: inline-block;
-  }
-  .sidebar-nav details[open] summary::before { transform: rotate(90deg); }
-  .sidebar-nav details summary:hover { background: #f0f4f8; }
-  .sidebar-nav details ul { list-style: none; padding: 0 0 0 20px; margin: 2px 0; }
-  .sidebar-nav details ul li a {
-    display: block; padding: 5px 8px; font-size: 13px;
-    color: #4a5568; text-decoration: none; border-radius: 4px;
-  }
-  .sidebar-nav details ul li a:hover { background: #f0f4f8; color: #2c3e50; }
-  .sidebar-nav .home-link {
-    display: block;
-    padding: 6px 8px;
-    font-weight: 700;
-    font-size: 16px;
-    color: #2c3e50;
-    text-decoration: none;
-    border-radius: 4px;
-    margin-bottom: 12px;
-    letter-spacing: 0.02em;
-  }
-  .sidebar-nav .home-link:hover { background: #f0f4f8; }
-</style>
-
 <div class="sidebar-nav">
+
   <a class="home-link" href="#/en/">Home</a>
 
   <details>
     <summary>Experiments</summary>
     <ul>
-      <li><a href="#/en/projects/experiments/exploratory-data-analysis">Exploratory Data Analysis</a></li>
+      <li><a href="#/en/projects/experiments/exploratory-data-analysis">Exploratory Data Analysis <span class="badge active">Active</span></a></li>
+      <!-- Opens when ready:
+      <li><a href="#/en/projects/experiments/data-acquisition-pipeline">Data Acquisition Pipeline <span class="badge planned">Planned</span></a></li>
+      <li><a href="#/en/projects/experiments/sql-data-modelling">SQL Data Modelling <span class="badge planned">Planned</span></a></li>
+      <li><a href="#/en/projects/experiments/data-quality-dashboard">Data Quality Dashboard <span class="badge planned">Planned</span></a></li>
+      <li><a href="#/en/projects/experiments/noise-injection-toolkit">Noise Injection Toolkit <span class="badge planned">Planned</span></a></li>
+      -->
     </ul>
   </details>
 
   <details>
     <summary>Apps</summary>
     <ul>
-      <!-- Opens when ready -->
+      <!-- Opens when ready:
+      <li><a href="#/en/projects/apps/invoice-ai-agent">Invoice AI Agent <span class="badge planned">Planned</span></a></li>
+      <li><a href="#/en/projects/apps/interactive-quiz-app">Interactive Quiz App</a></li>
+      <li><a href="#/en/projects/apps/multiplication-game">Multiplication Game</a></li>
+      -->
     </ul>
   </details>
 
   <details>
     <summary>Systems</summary>
     <ul>
-      <!-- All hidden until DRDRS is complete -->
+      <li>
+        <details>
+          <summary>Amplify Core <span class="badge active">Active</span></summary>
+          <ul>
+            <li><a href="#/en/projects/systems/amplify-core/01-research">01 Research <span class="badge active">Active</span></a></li>
+            <li><a href="#/en/projects/systems/amplify-core/02-architecture">02 Architecture <span class="badge active">Active</span></a></li>
+            <li><a href="#/en/projects/systems/amplify-core/03-implementation">03 Implementation <span class="badge planned">Planned</span></a></li>
+            <li><a href="#/en/projects/systems/amplify-core/04-operations">04 Operations <span class="badge planned">Planned</span></a></li>
+          </ul>
+        </details>
+      </li>
     </ul>
   </details>
+
 </div>
