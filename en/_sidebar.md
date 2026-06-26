@@ -22,9 +22,15 @@
   }
   .sidebar-nav details ul li a:hover { background: #f0f4f8; color: #2c3e50; }
   .sidebar-nav .home-link {
-    display: block; padding: 6px 8px; font-weight: 600;
-    font-size: 14px; color: #2c3e50; text-decoration: none;
-    border-radius: 4px; margin-bottom: 8px;
+    display: block;
+    padding: 6px 8px;
+    font-weight: 700;
+    font-size: 16px;
+    color: #2c3e50;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
   }
   .sidebar-nav .home-link:hover { background: #f0f4f8; }
 </style>
