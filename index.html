@@ -16,13 +16,12 @@
     .app-nav ul li { background-color: #f4f6f8; border-radius: 20px; padding: 4px 12px; margin-left: 10px; }
     .app-nav li a { font-weight: 600; color: #2c3e50 !important; text-decoration: none; }
     
-    /* Tıklanmış/Aktif Link Renk Değişimini İptal Et */
-    .sidebar ul li a.active, .sidebar ul li a.active:hover {
+    /* Tıklanmış/Aktif ve Hover durumlarında renk değişimini %100 iptal eder */
+    .sidebar ul li a, .sidebar ul li a.active, .sidebar ul li a.active:hover, .sidebar ul li a:hover {
       color: #2c3e50 !important;
       background: transparent !important;
-      font-weight: bold;
     }
-    .sidebar ul li a:hover { background: transparent !important; color: #42b983 !important; }
+    .sidebar ul li a.active { font-weight: 700 !important; }
   </style>
 </head>
 <body>
@@ -31,15 +30,12 @@
     window.$docsify = {
       loadSidebar: true,
       loadNavbar: true,
-      subMaxLevel: 2, // AÇILIR MENÜ İÇİN ŞART
+      subMaxLevel: 0, // KOPYA BAŞLIKLARI ÖNLER
       alias: {
-        '/': '/tr/',
-        '/_sidebar.md': '/tr/_sidebar.md',
-        '/_navbar.md': '/tr/_navbar.md',
-        '/tr/(.+)/_sidebar.md': '/tr/_sidebar.md',
-        '/tr/(.+)/_navbar.md': '/tr/_navbar.md',
-        '/en/(.+)/_sidebar.md': '/en/_sidebar.md',
-        '/en/(.+)/_navbar.md': '/en/_navbar.md'
+        '/.*/_sidebar.md': '/tr/_sidebar.md',
+        '/en/.*/_sidebar.md': '/en/_sidebar.md',
+        '/.*/_navbar.md': '/tr/_navbar.md',
+        '/en/.*/_navbar.md': '/en/_navbar.md'
       }
     }
   </script>
