@@ -36,7 +36,7 @@
 </style>
 
 <div class="sidebar-nav">
-  <a class="home-link" href="#/en/">🏠 Home</a>
+  <a class="home-link" href="#/en/">Home</a>
 
   <details open>
     <summary>Experiments</summary>
