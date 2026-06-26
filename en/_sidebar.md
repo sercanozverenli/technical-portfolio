@@ -33,17 +33,10 @@
         <details>
           <summary>Amplify Core <span class="badge active">Active</span></summary>
           <ul>
-            <li>
-  <details>
-    <summary>Amplify Core <span class="badge active">Active</span></summary>
-    <ul>
-      <li><a href="#/en/projects/systems/amplify-core/01-Research">01 Research <span class="badge active">Active</span></a></li>
-      <li><a href="#/en/projects/systems/amplify-core/02-Architecture">02 Architecture <span class="badge active">Active</span></a></li>
-      <li><a href="#/en/projects/systems/amplify-core/03-Implementation">03 Implementation <span class="badge planned">Planned</span></a></li>
-      <li><a href="#/en/projects/systems/amplify-core/04-Operations">04 Operations <span class="badge planned">Planned</span></a></li>
-    </ul>
-  </details>
-</li>
+            <li><a href="#/en/projects/systems/amplify-core/01-Research">01 Research <span class="badge active">Active</span></a></li>
+            <li><a href="#/en/projects/systems/amplify-core/02-Architecture">02 Architecture <span class="badge active">Active</span></a></li>
+            <li><a href="#/en/projects/systems/amplify-core/03-Implementation">03 Implementation <span class="badge planned">Planned</span></a></li>
+            <li><a href="#/en/projects/systems/amplify-core/04-Operations">04 Operations <span class="badge planned">Planned</span></a></li>
           </ul>
         </details>
       </li>
