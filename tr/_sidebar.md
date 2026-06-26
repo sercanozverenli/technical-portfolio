@@ -33,17 +33,10 @@
         <details>
           <summary>Amplify Core <span class="badge active">Aktif</span></summary>
           <ul>
-            <li>
-  <details>
-    <summary>Amplify Core <span class="badge active">Aktif</span></summary>
-    <ul>
-      <li><a href="#/tr/projeler/sistemler/amplify-core/01-Arastirma">01 Araştırma <span class="badge active">Aktif</span></a></li>
-      <li><a href="#/tr/projeler/sistemler/amplify-core/02-Mimari">02 Mimari <span class="badge active">Aktif</span></a></li>
-      <li><a href="#/tr/projeler/sistemler/amplify-core/03-Uygulama">03 Uygulama <span class="badge planned">Planlı</span></a></li>
-      <li><a href="#/tr/projeler/sistemler/amplify-core/04-Operasyon">04 Operasyon <span class="badge planned">Planlı</span></a></li>
-    </ul>
-  </details>
-</li>
+            <li><a href="#/tr/projeler/sistemler/amplify-core/01-Arastirma">01 Araştırma <span class="badge active">Aktif</span></a></li>
+            <li><a href="#/tr/projeler/sistemler/amplify-core/02-Mimari">02 Mimari <span class="badge active">Aktif</span></a></li>
+            <li><a href="#/tr/projeler/sistemler/amplify-core/03-Uygulama">03 Uygulama <span class="badge planned">Planlı</span></a></li>
+            <li><a href="#/tr/projeler/sistemler/amplify-core/04-Operasyon">04 Operasyon <span class="badge planned">Planlı</span></a></li>
           </ul>
         </details>
       </li>
