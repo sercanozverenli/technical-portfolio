@@ -7,15 +7,15 @@ Uygulama etkileşimli bir ödül mantığı üzerine kuruludur:
 
 * **Zorluk Seçimi:** Kullanıcı, pratik yapmak istediği seviyeye uygun çarpım tablosu zorluk derecesini belirler.
   
-  ![Zorluk Seçimi](../../../docs/assets/gamified-multiplication-tool/multiplication_1.png ':width=70%')
+  ![Zorluk Seçimi](../../../docs/assets/gamified-multiplication-tool/multiplication_1.png ':width=40%')
 
 * **Dinamik Soru Havuzu ve Hata Kontrolü:** Çarpım tablosu soruları rastgele karıştırılarak (randomized) ekrana getirilir. Test bitiminde "Kimim Ben?" butonuna tıklandığında, arka planda çalışan algoritma cevapları denetler. Eğer hata varsa, kullanıcı uyarılır ve doğruları bulmaya teşvik edilir.
   
-  ![Soru Ekranı ve Hata Kontrolü](../../../docs/assets/gamified-multiplication-tool/multiplication_2.png ':width=70%')
+  ![Soru Ekranı ve Hata Kontrolü](../../../docs/assets/gamified-multiplication-tool/multiplication_2.png ':width=40%')
 
 * **Ödül Sistemi:** Tüm sorular hatasız tamamlandığında; seçilen zorluk seviyesine özel olarak havuzdan çekilen gizli bir karakterin kimlik bilgilerini içeren özel bir ödül sayfasına yönlendirme yapılır.
   
-  ![Ödül Ekranı](../../../docs/assets/gamified-multiplication-tool/multiplication_3.png ':width=70%')
+  ![Ödül Ekranı](../../../docs/assets/gamified-multiplication-tool/multiplication_3.png ':width=30%')
 
 
 ### 🚀 Kullanılan Teknolojiler (Tech Stack)
