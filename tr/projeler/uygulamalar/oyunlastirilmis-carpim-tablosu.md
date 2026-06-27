@@ -28,8 +28,8 @@ Uygulama etkileşimli bir ödül mantığı üzerine kuruludur:
 ### Kaynak Kodları ve Kurulum
 Uygulamanın web tabanlı kaynak kodlarına ve derlenmiş Android sürümüne aşağıdaki bağlantılardan ulaşabilirsiniz:
 
-👉 **[GitHub Üzerinden HTML Kaynak Kodlarını İncele](https://github.com/sercanozverenli/web_and_mobile_apps/tree/main/Gamified_Multiplication_Tool/HTML_Source)** <br>
-👉 **[Kurulabilir Android APK Dosyasını İndir](https://github.com/sercanozverenli/web_and_mobile_apps/blob/main/Gamified_Multiplication_Tool/Android_Build/Gamified_Multiplication_Tool_1_1.0.apk)**
+**[GitHub Kaynak Kodları](https://github.com/sercanozverenli/web_and_mobile_apps/tree/main/Gamified_Multiplication_Tool/HTML_Source)** <br>
+**[Android APK Dosyası](https://github.com/sercanozverenli/web_and_mobile_apps/blob/main/Gamified_Multiplication_Tool/Android_Build/Gamified_Multiplication_Tool_1_1.0.apk)**
 
 ---
 
