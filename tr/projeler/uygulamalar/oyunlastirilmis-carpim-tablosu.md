@@ -11,9 +11,9 @@ Uygulama etkileşimli bir ödül mantığı üzerine kuruludur:
 
 ### Uygulama İçi Görseller
 <div style="display: flex; gap: 10px; margin-top: 15px;">
-  <img src="https://raw.githubusercontent.com/sercanozverenli/workspace/main/docs/assets/gamified-multiplication-tool/multiplication_1.png" alt="Zorluk Seçimi" width="30%">
-  <img src="https://raw.githubusercontent.com/sercanozverenli/workspace/main/docs/assets/gamified-multiplication-tool/multiplication_2.png" alt="Soru Ekranı" width="30%">
-  <img src="https://raw.githubusercontent.com/sercanozverenli/workspace/main/docs/assets/gamified-multiplication-tool/multiplication_3.png" alt="Ödül Ekranı" width="30%">
+  <img src="../../../docs/assets/gamified-multiplication-tool/multiplication_1.png" alt="Zorluk Seçimi" width="30%">
+  <img src="../../../docs/assets/gamified-multiplication-tool/multiplication_2.png" alt="Soru Ekranı" width="30%">
+  <img src="../../../docs/assets/gamified-multiplication-tool/multiplication_3.png" alt="Ödül Ekranı" width="30%">
 </div>
 
 ### Kullanılan Teknolojiler (Tech Stack)
