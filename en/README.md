@@ -4,4 +4,4 @@ This platform serves as a centralized personal research and development laborato
 
 The main objective is to document analytical workflows, transform theoretical models into production-ready structures, and maintain an independent, modular system portfolio.
 
-You can use the **navigation menu** to browse through the platform and examine planned or developed modules, system architectures, and experimental studies.
+You can use the **navigation menu** to examine planned or developed modules, system architectures, and experimental studies.
