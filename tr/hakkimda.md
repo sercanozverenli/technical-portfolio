@@ -72,7 +72,7 @@ APK Builder ile Android'e dönüştürülmüş iki çapraz platform uygulama:
 
 ## Bağlantılar
 
-[![LinkedIn](../docs/icons/linkedin-app-icon.png)](https://www.linkedin.com/in/sercanozverenli/) &nbsp;&nbsp;&nbsp;&nbsp; [![GitHub](../docs/icons/github-icon.png)](https://github.com/sercanozverenli)
+[![LinkedIn](../docs/icons/linkedin-app-icon.png ':size=32')](https://www.linkedin.com/in/sercanozverenli/) &nbsp;&nbsp;&nbsp;&nbsp; [![GitHub](../docs/icons/github-icon.png ':size=32')](https://github.com/sercanozverenli)
 
 ---
 
