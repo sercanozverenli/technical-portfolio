@@ -357,6 +357,23 @@ function fixMobileSidebar() {
   });
 }
 
+  // Hamburger butonunu her zaman aynı yerde tut
+function fixTogglePosition() {
+  const toggle = document.querySelector('.sidebar-toggle');
+  if (!toggle) return;
+  toggle.style.setProperty('top', '65px', 'important');
+  toggle.style.setProperty('left', '15px', 'important');
+  toggle.style.setProperty('bottom', 'auto', 'important');
+}
+
+document.addEventListener('click', function(e) {
+  if (e.target.closest('.sidebar-toggle')) {
+    setTimeout(fixTogglePosition, 50);
+  }
+});
+
+fixTogglePosition();
+
 
     
     // Docsify config
@@ -381,9 +398,10 @@ function fixMobileSidebar() {
       plugins: [
   function(hook) {
     hook.ready(function() {
-      setupSearchProxy();
-      fixMobileSidebar();
-    });
+  setupSearchProxy();
+  fixMobileSidebar();
+  fixTogglePosition();
+});
     hook.doneEach(function() {
       fixMobileSidebar();
     });
