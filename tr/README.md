@@ -4,4 +4,4 @@ Bu platform; **Veri Bilimi**, **Makine Öğrenmesi** ve **Yazılım Mimarisi** k
 
 Temel amaç; analitik iş akışlarını belgelemek, teorik modelleri üretime hazır yapılara dönüştürmek ve birbirinden bağımsız, modüler bir sistem portföyü sürdürmektir.
 
-Platform genelinde gezinmek; planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalışmaları incelemek için **gezinme menüsünü** kullanabilirsiniz.
+Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalışmaları incelemek için **gezinme menüsünü** kullanabilirsiniz.
