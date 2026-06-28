@@ -59,7 +59,7 @@ APK Builder ile Android'e dönüştürülmüş iki çapraz platform uygulama:
 
 | Eğitim | Kurum | Tarih |
 |---|---|---|
-| Veri Analizi Okulu | YÖK (ODTÜ, Boğaziçi, İTÜ, Marmara iş birliği) | Şub 2026 – May 2026 |
+| **Veri Analizi Okulu**<br> 1) Yapay Zekâ ve Makine Öğrenmesi <br> 2) Yapay Zekâ ve Kolaylaştırıcı Araçlar <br> <small>*- Odak: Makine Öğrenimi, Yapay Zeka Destek Araçları, Veri Analizi Araçları (SPSS, Python)*</small> | YÖK (ODTÜ, Boğaziçi, İTÜ, Marmara iş birliği) | Şub 2026 – May 2026 |
 | Intermediate Python | DataCamp | 2026 |
 | Analyzing Data in Tableau | DataCamp | 2026 |
 | Python Essentials 1 | Cisco | 2025 |
