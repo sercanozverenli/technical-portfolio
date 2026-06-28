@@ -271,6 +271,62 @@ body.dark .results-panel p { color: #94a3b8 !important; }
 body.dark .badge.active { background: #172554; color: #60a5fa; }
 body.dark .badge.planned { background: #1e293b; color: #64748b; }
 
+
+/* ── 4. SEVİYE ALT MENÜ TASARIM VE HİZALAMA DÜZENLEMESİ ────────────────────── */
+
+/* 1. Tarayıcının 4. seviye ve daha derin listelere eklediği siyah okları/üçgenleri tamamen yok eder */
+.sidebar-nav details,
+.sidebar-nav li::marker,
+.sidebar-nav ul li::before,
+.sidebar-nav summary::marker,
+.sidebar-nav details summary::-webkit-details-marker {
+  display: none !important;
+  list-style: none !important;
+  list-style-type: none !important;
+  content: none !important;
+}
+
+/* 2. 4. Seviye altındaki tüm listelerin çirkin dış boşluklarını ve liste işaretlerini sıfırlar */
+.sidebar-nav details ul li details,
+.sidebar-nav details ul li details ul,
+.sidebar-nav details ul li details ul li {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* 3. Açık Tema: 4. Seviye linklerinin (01-Araştırma vb.) hizasını (padding), yazı boyutunu ve rengini 3. seviyeyle eşitler */
+.sidebar-nav > details > ul > li > details > ul > li li a {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 5px 12px 5px 40px !important; /* 3. seviyedeki 40px iç girinti korunarak hiyerarşi bozulmaz */
+  font-size: 13px !important;
+  color: #64748b !important;
+  text-decoration: none !important;
+  border-radius: 6px !important;
+  border-left: 3px solid transparent !important;
+  transition: background 0.15s, border-color 0.15s, color 0.15s !important;
+}
+
+/* 4. Açık Tema Hover: 4. Seviye linklerinin üzerine gelindiğinde sol mavi çizgi ve arka plan efekti */
+.sidebar-nav > details > ul > li > details > ul > li li a:hover {
+  background: #f0f4f8 !important;
+  border-left-color: #3b82f6 !important;
+  color: #1e293b !important;
+}
+
+/* 5. Dark Mode (Karanlık Tema): 4. Seviye linklerinin karanlık mod renk uyumu */
+body.dark .sidebar-nav > details > ul > li > details > ul > li li a {
+  color: #64748b !important;
+}
+
+/* 6. Dark Mode Hover: Karanlık modda üzerlerine gelindiğinde alacakları renk ve arka plan */
+body.dark .sidebar-nav > details > ul > li > details > ul > li li a:hover {
+  background: #334155 !important;
+  color: #e2e8f0 !important;
+}
+  
 </style>
 </head>
 <body>
@@ -393,7 +449,7 @@ fixTogglePosition();
 window.$docsify = {
 loadSidebar: true,
 loadNavbar: false,
-subMaxLevel: 3,
+subMaxLevel: 0,
 search: {
 maxAge: 86400000,
 paths: 'auto',
