@@ -41,22 +41,22 @@
           <li>
             <details>
               <summary>02-Mimari <span class="badge active">Aktif</span></summary>
-              <ul>
-                </ul>
+              <ul> 
+              </ul>
             </details>
           </li>          
           <li>
             <details>
               <summary>03-Analiz ve Ara Çıktılar <span class="badge planned">Planlı</span></summary>
               <ul>
-                </ul>
+              </ul>
             </details>
           </li>          
           <li>
             <details>
               <summary>04-Sonuçlar ve Kavramsal Kanıt <span class="badge planned">Planlı</span></summary>
               <ul>
-                </ul>
+              </ul>
             </details>
           </li>          
         </ul>
