@@ -1,6 +1,6 @@
 <div class="sidebar-nav">
  
- <a href="#/tr/">Ana Sayfa</a>
+ <a href="#/tr/" class="home-link">Ana Sayfa</a>
  
  <details>
   <summary>Deneysel Çalışmalar</summary>
