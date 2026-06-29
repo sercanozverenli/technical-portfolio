@@ -30,8 +30,8 @@ Amplify Core'un verinin durumuna göre benimsediği karar rejimleri, dört aşam
 
 **Bilgi Çöküşü (Zifiri Karanlık ve Arızalı Farlar):** Mevcut veri, güvenilir herhangi bir karar üretmeye yetecek istatistiksel bilgiyi artık taşımamaktadır. Böyle bir durumda sistem tahmin üretmek yerine **Karar Kaçınması (Abstention)** stratejisini uygular; işlemi güvenli biçimde durdurur, insan operatöre devreder veya daha üst düzey bir kontrol mekanizmasından destek ister. Çünkü bu koşullarda yanlış bir karar üretmek, hiç karar üretmemekten daha yüksek risk taşımaktadır.
 
-*(Buraya otonom sürüş analojisini özetleyen Şekil-1 diyagramı eklenecektir.)* 
+Otonom sürüş analojisiyle somutlaştırılan bu dört aşamalı güvenlik yaklaşımı, Amplify Core'un teknik mimarisinin merkezini oluşturur. Aşağıdaki veri yönlendirme şemasında görüldüğü üzere sistem; kendisine ulaşan ham veriyi koşulsuz olarak ana karar modeline iletmek yerine, veriyi öncelikle DRS (Veri Güvenilirlik Skoru) katmanından geçirerek istatistiksel sağlığını ölçer ve elde edilen sonuca göre en güvenli karar rejimine yönlendirir.
 
-  ![Şekil 1](../../../../../docs/diagrams/amplify-core/sekil-1.png ':size=35%') 
+  ![Veri Yönlendirme Mimarisi](../../../../../docs/diagrams/amplify-core/sekil-1.png ':size=35%') 
 
 
