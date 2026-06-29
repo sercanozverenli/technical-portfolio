@@ -1,4 +1,4 @@
-<div class="sidebar-nav"> 
+<div class="sidebar-nav">
 
   <a class="home-link" href="#/en/">Home</a>
 
