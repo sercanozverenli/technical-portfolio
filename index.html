@@ -126,12 +126,20 @@ box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
 body.close .sidebar { overflow: visible !important; }
 body.close .results-panel { transform: translateX(300px) !important; }
 
-/* Docsify aktif link override */
-.sidebar ul li a, .sidebar ul li a.active,
-.sidebar ul li a.active:hover, .sidebar ul li a:hover {
-color: #2c3e50 !important; background: transparent !important;
+/* Yeni Aktif Link Görünümü */
+.sidebar-nav a.active {
+    color: #3b82f6 !important; /* Yazıyı mavi yapar */
+    font-weight: 700 !important; /* Kalın yapar */
+    background: #eff6ff !important; /* Çok hafif mavi bir arka plan verir */
+    border-left: 3px solid #3b82f6 !important; /* Sol tarafa belirgin mavi bir çizgi ekler */
 }
-.sidebar ul li a.active { font-weight: 700 !important; }
+
+/* Karanlık modda aktif linkin daha iyi görünmesi için */
+body.dark .sidebar-nav a.active {
+    color: #60a5fa !important;
+    background: #1e293b !important;
+    border-left-color: #60a5fa !important;
+}
 
 /* ── SIDEBAR NAV ─────────────────────────────────── */
 .sidebar-nav { padding: 4px 8px; }
@@ -424,6 +432,37 @@ function updateLang() {
 updateLang();
 window.addEventListener('hashchange', updateLang);
 
+// sidebar konum gösterme  
+function syncSidebar() {
+    const currentHash = window.location.hash;
+    if (!currentHash || currentHash === '#/') return;
+
+    // 1. Mevcut URL ile eşleşen linki sidebar içinde bul
+    // (href içindeki yolu tam eşleştirmek için selector'ı dikkatli seçiyoruz)
+    const activeLink = document.querySelector(`.sidebar-nav a[href="${currentHash}"]`);
+
+    if (activeLink) {
+        // 2. Önceki aktiflik sınıflarını temizle (opsiyonel)
+        document.querySelectorAll('.sidebar-nav a').forEach(el => el.classList.remove('active'));
+        
+        // 3. Bulunan linke aktif sınıfı ekle
+        activeLink.classList.add('active');
+
+        // 4. Linkin üstündeki tüm <details> elementlerini bul ve aç
+        let parent = activeLink.parentElement;
+        while (parent && !parent.classList.contains('sidebar-nav')) {
+            if (parent.tagName === 'DETAILS') {
+                parent.setAttribute('open', ''); // Menüyü açar
+            }
+            parent = parent.parentElement;
+        }
+
+        // 5. Aktif linkin görünür olduğundan emin ol (scroll)
+        activeLink.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+}
+
+  
 // Arama proxy — topbar input'u Docsify'ın gizli arama input'una bağlar
 function setupSearchProxy() {
     const sidebarInput = document.querySelector('.search input');
@@ -507,36 +546,41 @@ fixTogglePosition();
 
 // Docsify config
 window.$docsify = {
-loadSidebar: true,
-loadNavbar: false,
-subMaxLevel: 0,
-search: {
-maxAge: 86400000,
-paths: 'auto',
-placeholder: 'Ara...',
-noData: 'Sonuç bulunamadı.',
-depth: 3,
-hideOtherSidebarContent: false
-},
-alias: {
-'/': '/tr/README.md',
-'/_sidebar.md':        '/tr/_sidebar.md',
-'/tr/.*/_sidebar.md':  '/tr/_sidebar.md',
-'/en/.*/_sidebar.md':  '/en/_sidebar.md'
-},
-plugins: [
-function(hook) {
-hook.ready(function() {
-setupSearchProxy();
-fixMobileSidebar();
-fixTogglePosition();
-});
-hook.doneEach(function() {
-fixMobileSidebar();
-});
+  loadSidebar: true,
+  loadNavbar: false,
+  subMaxLevel: 0,
+  search: {
+    maxAge: 86400000,
+    paths: 'auto',
+    placeholder: 'Ara...',
+    noData: 'Sonuç bulunamadı.',
+    depth: 3,
+    hideOtherSidebarContent: false
+  },
+  alias: {
+    '/': '/tr/README.md',
+    '/_sidebar.md':        '/tr/_sidebar.md',
+    '/tr/.*/_sidebar.md':  '/tr/_sidebar.md',
+    '/en/.*/_sidebar.md':  '/en/_sidebar.md'
+  },
+  plugins: [
+    function(hook) {
+      hook.ready(function() {
+        // Sayfa ilk yüklendiğinde çalışacaklar
+        setupSearchProxy();
+        fixMobileSidebar();
+        fixTogglePosition();
+        syncSidebar(); // <--- YENİ: Sidebar'ı mevcut sayfaya göre açar
+      });
+      hook.doneEach(function() {
+        // Her sayfa değişiminde (linke tıklandığında) çalışacaklar
+        fixMobileSidebar();
+        syncSidebar(); // <--- YENİ: Sidebar'ı mevcut sayfaya göre açar
+      });
+    }
+  ]
 }
-]
-}
+  
 </script>
 
 <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
