@@ -274,26 +274,33 @@ body.dark .sidebar::-webkit-scrollbar-thumb { background: #334155; }
 <div id="app"></div>
 
 <script>
-// 1. TEMA YÖNETİMİ (Tek ve Merkezi)
+// 1. TEMA VE İKON YÖNETİMİ (Merkezi Sistem)
 (function() {
     const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
     const saved = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
+    // Başlangıç durumunu belirle
     let isDark = saved === 'dark' || (!saved && prefersDark);
 
     function applyTheme(dark) {
+        // Temayı uygula
         document.body.classList.toggle('dark', dark);
-        if (themeIcon) {
-            themeIcon.setAttribute('data-lucide', dark ? 'sun' : 'moon');
-            if (window.lucide) lucide.createIcons();
+        
+        // İkonu güncelle (Lucide SVG yapısını bozmamak için butonu temizleyip yeniden ekliyoruz)
+        // Karanlık moddaysak GÜNEŞ (sun), Aydınlık moddaysak AY (moon) gösterir
+        themeToggle.innerHTML = `<i data-lucide="${dark ? 'sun' : 'moon'}"></i>`;
+        
+        // İkonları çiz
+        if (window.lucide) {
+            lucide.createIcons();
         }
     }
 
-    // İlk yükleme
+    // Sayfa ilk açıldığında temayı ve ikonu ayarla
     applyTheme(isDark);
 
+    // Tıklama olayı
     themeToggle.addEventListener('click', () => {
         isDark = !isDark;
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
@@ -321,7 +328,7 @@ function updateLang() {
 window.addEventListener('hashchange', updateLang);
 updateLang();
 
-// 3. SIDEBAR SENKRONİZASYONU
+// 3. SIDEBAR SENKRONİZASYONU (Neredeyim özelliği)
 function syncSidebar() {
     const currentHash = decodeURIComponent(window.location.hash);
     if (!currentHash || currentHash === '#/') return;
@@ -352,12 +359,17 @@ function setupSearchProxy() {
     });
 }
 
-// 5. DOCSIFY CONFIG
+// 5. DOCSIFY YAPILANDIRMASI
 window.$docsify = {
     loadSidebar: true,
     loadNavbar: false,
     subMaxLevel: 0,
-    search: { paths: 'auto', placeholder: 'Ara...' },
+    search: { 
+        paths: 'auto', 
+        placeholder: 'Ara...',
+        noData: 'Sonuç bulunamadı.',
+        depth: 3
+    },
     alias: {
         '/': '/tr/README.md',
         '/_sidebar.md': '/tr/_sidebar.md',
@@ -369,6 +381,7 @@ window.$docsify = {
             hook.ready(() => {
                 setupSearchProxy();
                 syncSidebar();
+                // İkonları Docsify hazır olduğunda bir kez daha tara
                 if (window.lucide) lucide.createIcons();
             });
             hook.doneEach(() => {
