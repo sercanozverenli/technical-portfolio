@@ -411,8 +411,78 @@ body.dark .sidebar::-webkit-scrollbar-thumb { background: #334155; }
 #theme-toggle:hover, .lang-switcher a:hover {
     transform: translateY(-1px);
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}     
+}
+
+/* ── MODERN BUTON TASARIMLARI (Hamburger & Tema) ── */
+
+/* 1. Hamburger Butonu (Docsify Toggle) */
+.sidebar-toggle {
+    background: #f8fafc !important; /* Çok hafif gri arka plan */
+    border: 1px solid #e2e8f0 !important; /* İnce çerçeve */
+    border-radius: 8px !important;
+    padding: 10px !important;
+    width: 38px !important;
+    height: 38px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease-in-out !important;
+    /* Konumu koruyoruz (Ana Sayfa linkiyle çakışmaması için) */
+    top: 65px !important; 
+    left: 15px !important;
+}
+
+/* Hamburger içindeki yeşil çizgileri modern griye çevir */
+.sidebar-toggle span {
+    background-color: #475569 !important; 
+    height: 2px !important;
+    width: 18px !important;
+    margin-bottom: 3px !important;
+}
+.sidebar-toggle span:last-child { margin-bottom: 0 !important; }
+
+/* 2. Tema Değiştirme Butonu (Topbar'daki) */
+#theme-toggle {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    width: 34px !important;
+    height: 34px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer;
+    font-size: 16px !important;
+    transition: all 0.2s !important;
+}
+
+/* Hover (Üstüne gelince) Efektleri */
+.sidebar-toggle:hover, #theme-toggle:hover {
+    background: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* ── KARANLIK MOD UYUMU ── */
+body.dark .sidebar-toggle, 
+body.dark #theme-toggle {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f1f5f9 !important;
+}
+
+body.dark .sidebar-toggle span {
+    background-color: #94a3b8 !important; /* Çizgileri açık gri yapar */
+}
+
+body.dark .sidebar-toggle:hover, 
+body.dark #theme-toggle:hover {
+    background: #334155 !important;
+    border-color: #475569 !important;
+}    
 </style>
+<script src="https://unpkg.com/lucide@latest"></script>    
 </head>
 <body>
 
@@ -421,22 +491,37 @@ body.dark .sidebar::-webkit-scrollbar-thumb { background: #334155; }
 <input type="text" id="topbar-search-input" placeholder="Ara..." autocomplete="off" spellcheck="false">
 </div>
 <div class="topbar-right">
-<button id="theme-toggle">🌙</button>
+<button id="theme-toggle" title="Temayı Değiştir">
+  <i data-lucide="moon" id="theme-icon"></i>
+</button>
 <div class="lang-switcher">
 <a href="#/en/" id="lang-toggle">EN</a>
 </div>
 </div>
 </div>
-
+ 
 <script>
-(function() {
-const saved = localStorage.getItem('theme');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-if (saved === 'dark' || (!saved && prefersDark)) {
-document.body.classList.add('dark');
-document.getElementById('theme-toggle').textContent = '☀️';
+   
+// Tema toggle ve İkon değişimi
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+
+function updateThemeIcon(isDark) {
+    // İkonu değiştir
+    themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+    // Lucide'i tekrar çalıştır ki yeni ikonu çizsin
+    lucide.createIcons();
 }
-})();
+
+themeToggle.addEventListener('click', function() {
+    const isDark = document.body.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateThemeIcon(isDark);
+});
+
+// Sayfa ilk açıldığında ikonu ayarla
+const isInitialDark = document.body.classList.contains('dark');
+updateThemeIcon(isInitialDark);
 </script>
 
 <div id="app"></div>
