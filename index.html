@@ -442,6 +442,17 @@ sidebarInput.value = '';
 sidebarInput.dispatchEvent(new Event('input', { bubbles: true }));
 }
 });
+
+const sidebar = document.querySelector('.sidebar');
+if (sidebar) {
+    new MutationObserver(function() {
+        const panel = sidebar.querySelector('.results-panel');
+        if (panel) {
+            document.body.appendChild(panel);
+            repositionResultsPanel();
+        }
+    }).observe(sidebar, { childList: true, subtree: true });
+}
 }
 
 // Mobilden summary tıklanınca sidebar kapanmasın,
