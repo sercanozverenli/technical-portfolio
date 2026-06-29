@@ -397,18 +397,29 @@ this.textContent = isDark ? '☀️' : '🌙';
 
 // Dil seçici (Tek butonlu akıllı toggle)
 function updateLang() {
-const isEn = window.location.hash.startsWith('#/en/');
-const langToggle = document.getElementById('lang-toggle');
+    // Mevcut hash'i al, eğer boşsa varsayılan olarak #/tr/ kabul et
+    let currentHash = window.location.hash || '#/tr/';
+    const langToggle = document.getElementById('lang-toggle');
+    const searchInput = document.getElementById('topbar-search-input');
 
-if (isEn) {
-langToggle.textContent = 'TR';
-langToggle.href = '#/tr/';
-} else {
-langToggle.textContent = 'EN';
-langToggle.href = '#/en/';
-}
-
-document.getElementById('topbar-search-input').placeholder = isEn ? 'Search...' : 'Ara...';
+    // Eğer şu an İngilizce dizinindeysek
+    if (currentHash.startsWith('#/en/')) {
+        langToggle.textContent = 'TR';
+        // Mevcut URL'deki #/en/ kısmını #/tr/ ile değiştir, geri kalanı koru
+        langToggle.href = currentHash.replace('#/en/', '#/tr/');
+        searchInput.placeholder = 'Search...';
+    } 
+    // Eğer şu an Türkçe dizinindeysek (veya root'taysak)
+    else {
+        langToggle.textContent = 'EN';
+        // Mevcut URL'deki #/tr/ kısmını #/en/ ile değiştir
+        // Eğer linkte hiç /tr/ yoksa direkt #/en/ dizinine yönlendir
+        let target = currentHash.includes('#/tr/') 
+                     ? currentHash.replace('#/tr/', '#/en/') 
+                     : '#/en/';
+        langToggle.href = target;
+        searchInput.placeholder = 'Ara...';
+    }
 }
 updateLang();
 window.addEventListener('hashchange', updateLang);
