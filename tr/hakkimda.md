@@ -18,7 +18,7 @@
 
 ## Projeler
 
-**Amplify Core (DRDRS)** — <span class="badge ongoing">Devam Eden</span> 
+**Amplify Core (DRDRS)** — <span class="badge planned">Devam Eden</span> 
 Gürültülü ve eksik veri ortamlarında modelden bağımsız bir güvenilirlik değerlendirme ve karar yönlendirme sistemi. TÜBİTAK 2209-A kapsamında yürütülmektedir.
 
 **Mobil Uygulamalar** — 2023
