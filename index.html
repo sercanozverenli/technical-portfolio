@@ -17,19 +17,24 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans
 
 /* ── TOPBAR ──────────────────────────────────────── */
 #topbar {
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-height: 50px;
-background: #fff;
-border-bottom: 1px solid #e2e8f0;
-display: flex;
-align-items: center;
-padding: 0 24px 0 320px;
-gap: 16px;
-z-index: 300;
-box-sizing: border-box;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.8); /* Şeffaflık eklendi */
+    backdrop-filter: blur(10px); /* Bulanıklık eklendi */
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    padding: 0 24px 0 320px;
+    gap: 16px;
+    z-index: 300;
+    box-sizing: border-box;
+}
+
+body.dark #topbar { 
+    background: rgba(30, 41, 59, 0.8) !important; /* Karanlık mod şeffaflığı */
+    border-bottom-color: #334155; 
 }
 
 #topbar-search { flex: 1; max-width: 380px; }
@@ -95,8 +100,27 @@ z-index: 99;
 }
 
 /* ── İÇERİK ──────────────────────────────────────── */
-.markdown-section { padding-top: 70px !important; }
+.markdown-section { 
+    padding-top: 70px !important; 
+    line-height: 1.7; /* Satır aralığı eklendi */
+    font-size: 16px; 
+}
 
+/* Alıntı (Blockquote) kutularını güzelleştir */
+.markdown-section blockquote {
+    border-left: 4px solid #3b82f6 !important;
+    background: #f8fafc !important;
+    padding: 16px !important;
+    border-radius: 0 8px 8px 0 !important;
+    color: #475569 !important;
+    margin: 2em 0 !important;
+}
+
+body.dark .markdown-section blockquote {
+    background: #1e293b !important;
+    color: #94a3b8 !important;
+}    
+    
 @media screen and (max-width: 768px) {
 #topbar { padding-left: 60px; }
 .markdown-section { padding-top: 60px !important; }
@@ -126,20 +150,6 @@ box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
 body.close .sidebar { overflow: visible !important; }
 body.close .results-panel { transform: translateX(300px) !important; }
 
-/* Yeni Aktif Link Görünümü */
-.sidebar-nav a.active {
-    color: #3b82f6 !important; /* Yazıyı mavi yapar */
-    font-weight: 700 !important; /* Kalın yapar */
-    background: #eff6ff !important; /* Çok hafif mavi bir arka plan verir */
-    border-left: 3px solid #3b82f6 !important; /* Sol tarafa belirgin mavi bir çizgi ekler */
-}
-
-/* Karanlık modda aktif linkin daha iyi görünmesi için */
-body.dark .sidebar-nav a.active {
-    color: #60a5fa !important;
-    background: #1e293b !important;
-    border-left-color: #60a5fa !important;
-}
 
 /* ── SIDEBAR NAV ─────────────────────────────────── */
 .sidebar-nav { padding: 4px 8px; }
@@ -239,9 +249,12 @@ border-radius: 10px; margin-left: auto; flex-shrink: 0; white-space: nowrap;
 /* ── DARK MODE ───────────────────────────────────── */
 body.dark { background: #0f172a; color: #e2e8f0; }
 
-body.dark .sidebar { background: #1e293b !important; border-right-color: #334155 !important; border-left-color: #334155 !important;}
-body.dark #topbar { background: #1e293b; border-bottom-color: #334155; }
-
+/* sidebar'ın ana rengini ve çerçeve çizgileri*/
+body.dark .sidebar { 
+    background: #1e293b !important; 
+    border-right: 1px solid #334155 !important; /* Daha temiz bir sağ çizgi */
+    border-left: none !important; /* Sol tarafta çizgiye gerek yok, zaten ekranın en solunda */
+}
 
 body.dark #topbar-search-input { background: #0f172a; border-color: #334155; color: #e2e8f0; }
 body.dark #topbar-search-input::placeholder { color: #64748b; }
@@ -366,6 +379,39 @@ body.dark .sidebar-nav > details > ul > li > details > ul > li > details > ul > 
   color: #e2e8f0 !important;
 }
 
+
+
+
+/* Yeni Aktif Link Görünümü */
+.sidebar-nav a.active {
+    color: #3b82f6 !important; /* Yazıyı mavi yapar */
+    font-weight: 700 !important; /* Kalın yapar */
+    background: #eff6ff !important; /* Çok hafif mavi bir arka plan verir */
+    border-left: 3px solid #3b82f6 !important; /* Sol tarafa belirgin mavi bir çizgi ekler */
+}
+
+/* Karanlık modda aktif linkin daha iyi görünmesi için */
+body.dark .sidebar-nav a.active {
+    color: #60a5fa !important;
+    background: #1e293b !important;
+    border-left-color: #60a5fa !important;
+}
+
+/* Sidebar Scrollbar Tasarımı */
+.sidebar::-webkit-scrollbar { width: 5px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+body.dark .sidebar::-webkit-scrollbar-thumb { background: #334155; }
+
+/* Mikro Etkileşimler */
+.badge, #theme-toggle, .lang-switcher a, .sidebar-nav a {
+    transition: all 0.2s ease-in-out !important;
+}
+
+#theme-toggle:hover, .lang-switcher a:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}     
 </style>
 </head>
 <body>
@@ -434,7 +480,7 @@ window.addEventListener('hashchange', updateLang);
 
 // sidebar konum gösterme  
 function syncSidebar() {
-    const currentHash = window.location.hash;
+    const currentHash = decodeURIComponent(window.location.hash);
     if (!currentHash || currentHash === '#/') return;
 
     // 1. Mevcut URL ile eşleşen linki sidebar içinde bul
