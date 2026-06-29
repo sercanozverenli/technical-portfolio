@@ -20,8 +20,8 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans
     position: fixed;
     top: 0; left: 0; right: 0;
     height: 50px;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.8); /* Şeffaflık eklendi */
+    backdrop-filter: blur(10px); /* Bulanıklık eklendi */
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid #e2e8f0;
     display: flex;
@@ -33,7 +33,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans
 }
 
 body.dark #topbar { 
-    background: rgba(30, 41, 59, 0.8) !important;
+    background: rgba(30, 41, 59, 0.8) !important; /* Karanlık mod şeffaflığı */
     border-bottom-color: #334155; 
 }
 
@@ -55,6 +55,19 @@ box-sizing: border-box;
 
 .topbar-right { display: flex; align-items: center; gap: 10px; margin-left: auto; }
 
+#theme-toggle {
+background: #f1f5f9;
+border: 1px solid #e2e8f0;
+border-radius: 6px;
+padding: 5px 10px;
+cursor: pointer;
+font-size: 14px;
+line-height: 1;
+color: #475569;
+transition: background 0.15s;
+}
+#theme-toggle:hover { background: #e2e8f0; }
+
 .lang-switcher { display: flex; align-items: center; gap: 4px; }
 .lang-switcher a {
 font-size: 13px;
@@ -75,13 +88,25 @@ height: calc(100vh - 50px) !important;
 padding-top: 16px !important;
 }
 
+.sidebar-toggle,
+body.close .sidebar-toggle {
+top: 65px !important;
+bottom: auto !important;
+left: 15px !important;
+position: fixed !important;
+background: transparent !important;
+border: none !important;
+z-index: 99;
+}
+
 /* ── İÇERİK ──────────────────────────────────────── */
 .markdown-section { 
     padding-top: 70px !important; 
-    line-height: 1.7;
+    line-height: 1.7; /* Satır aralığı eklendi */
     font-size: 16px; 
 }
 
+/* Alıntı (Blockquote) kutularını güzelleştir */
 .markdown-section blockquote {
     border-left: 4px solid #3b82f6 !important;
     background: #f8fafc !important;
@@ -101,7 +126,7 @@ body.dark .markdown-section blockquote {
 .markdown-section { padding-top: 60px !important; }
 }
 
-/* ── DOCSIFY ARAMA ─────── */
+/* ── DOCSIFY ARAMA: gizle ama çalışır bırak ─────── */
 .search { border: none !important; padding: 0 !important; margin: 0 !important; }
 .search .input-wrap { display: none !important; }
 .search > p { display: none !important; }
@@ -121,8 +146,10 @@ border-radius: 0 0 8px 8px !important;
 box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
 }
 
+/* FIX: Sidebar kapalıyken arama sonuçlarını görünür yap */
 body.close .sidebar { overflow: visible !important; }
 body.close .results-panel { transform: translateX(300px) !important; }
+
 
 /* ── SIDEBAR NAV ─────────────────────────────────── */
 .sidebar-nav { padding: 4px 8px; }
@@ -141,6 +168,7 @@ letter-spacing: 0.02em;
 }
 .sidebar-nav .home-link:hover { background: #f0f4f8; }
 
+.sidebar-nav > details { margin: 2px 0; }
 .sidebar-nav > details > summary {
 cursor: pointer;
 padding: 6px 12px;
@@ -157,35 +185,97 @@ border-radius: 6px;
 user-select: none;
 }
 .sidebar-nav > details > summary::-webkit-details-marker { display: none; }
+.sidebar-nav > details > summary::before {
+content: '▶';
+font-size: 8px;
+transition: transform 0.2s;
+}
+.sidebar-nav > details[open] > summary::before { transform: rotate(90deg); }
+.sidebar-nav > details > summary:hover { background: #f0f4f8; color: #64748b; }
 
-.sidebar-nav a.active {
-    color: #1e293b !important;
-    font-weight: normal !important; 
-    background: transparent !important; 
-    border-left: 3px solid #3b82f6 !important;
+.sidebar-nav > details > ul { list-style: none; padding: 2px 0 6px 0; margin: 0; }
+.sidebar-nav > details > ul > li { list-style: none; }
+.sidebar-nav > details > ul > li > a {
+display: flex; align-items: center; gap: 6px;
+padding: 5px 12px 5px 24px;
+font-size: 13px; color: #475569; text-decoration: none;
+border-radius: 6px; border-left: 3px solid transparent;
+transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.sidebar-nav > details > ul > li > a:hover {
+background: #f0f4f8; border-left-color: #3b82f6; color: #1e293b;
 }
 
-body.dark .sidebar-nav a.active {
-    color: #f1f5f9 !important;
-    background: transparent !important;
-    border-left-color: #3b82f6 !important;
+.sidebar-nav > details > ul > li > details { margin: 2px 0; }
+.sidebar-nav > details > ul > li > details > summary {
+cursor: pointer; display: flex; align-items: center; gap: 8px;
+padding: 5px 12px 5px 24px;
+font-size: 13px; font-weight: 600; color: #475569;
+list-style: none; border-radius: 6px; border-left: 3px solid transparent;
+user-select: none;
+transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
+.sidebar-nav > details > ul > li > details > summary::-webkit-details-marker { display: none; }
+.sidebar-nav > details > ul > li > details > summary::before {
+content: '▶'; font-size: 8px; transition: transform 0.2s; flex-shrink: 0;
+}
+.sidebar-nav > details > ul > li > details[open] > summary::before { transform: rotate(90deg); }
+.sidebar-nav > details > ul > li > details > summary:hover {
+background: #f0f4f8; border-left-color: #3b82f6; color: #1e293b;
+}
+
+.sidebar-nav > details > ul > li > details > ul { list-style: none; padding: 2px 0 4px 0; margin: 0; }
+.sidebar-nav > details > ul > li > details > ul > li { list-style: none; }
+.sidebar-nav > details > ul > li > details > ul > li > a {
+display: flex; align-items: center; gap: 6px;
+padding: 5px 12px 5px 40px;
+font-size: 13px; color: #64748b; text-decoration: none;
+border-radius: 6px; border-left: 3px solid transparent;
+transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.sidebar-nav > details > ul > li > details > ul > li > a:hover {
+background: #f0f4f8; border-left-color: #3b82f6; color: #1e293b;
+}
+
+.badge {
+font-size: 10px; font-weight: 600; padding: 1px 7px;
+border-radius: 10px; margin-left: auto; flex-shrink: 0; white-space: nowrap;
+}
+.badge.active  { background: #dbeafe; color: #1d4ed8; }
+.badge.planned { background: #f1f5f9; color: #64748b; }
+.badge.done    { background: #dcfce7; color: #15803d; }
+.badge.ongoing { background: #fef08a; color: #a16207; } /* Sarı tonları */  
 
 /* ── DARK MODE ───────────────────────────────────── */
 body.dark { background: #0f172a; color: #e2e8f0; }
 
+/* sidebar'ın ana rengini ve çerçeve çizgileri*/
 body.dark .sidebar { 
     background: #1e293b !important; 
-    border-right: 1px solid #334155 !important;
-    border-left: none !important;
+    border-right: 1px solid #334155 !important; /* Daha temiz bir sağ çizgi */
+    border-left: none !important; /* Sol tarafta çizgiye gerek yok, zaten ekranın en solunda */
 }
 
 body.dark #topbar-search-input { background: #0f172a; border-color: #334155; color: #e2e8f0; }
 body.dark #topbar-search-input::placeholder { color: #64748b; }
 body.dark #topbar-search-input:focus { border-color: #3b82f6; background: #1e293b; }
 
+body.dark #theme-toggle { background: #334155; border-color: #475569; color: #e2e8f0; }
+body.dark #theme-toggle:hover { background: #475569; }
+
 body.dark .lang-switcher a { color: #94a3b8; }
 body.dark .lang-switcher a:hover { background: #334155; color: #e2e8f0; }
+
+body.dark .sidebar-nav .home-link { color: #e2e8f0; }
+body.dark .sidebar-nav .home-link:hover { background: #334155; }
+body.dark .sidebar-nav > details > summary { color: #64748b; }
+body.dark .sidebar-nav > details > summary:hover { background: #334155; color: #94a3b8; }
+body.dark .sidebar-nav > details > ul > li > a { color: #94a3b8; }
+body.dark .sidebar-nav > details > ul > li > a:hover { background: #334155; color: #e2e8f0; }
+body.dark .sidebar-nav > details > ul > li > details > summary { color: #94a3b8; }
+body.dark .sidebar-nav > details > ul > li > details > summary:hover { background: #334155; color: #e2e8f0; }
+body.dark .sidebar-nav > details > ul > li > details > ul > li > a { color: #64748b; }
+body.dark .sidebar-nav > details > ul > li > details > ul > li > a:hover { background: #334155; color: #e2e8f0; }
 
 body.dark .markdown-section { color: #e2e8f0; }
 body.dark .markdown-section h1,
@@ -195,11 +285,140 @@ body.dark .markdown-section h4 { color: #f1f5f9; border-color: #334155; }
 body.dark .markdown-section a { color: #60a5fa; }
 body.dark .markdown-section code { background: #334155; color: #e2e8f0; }
 body.dark .markdown-section pre { background: #1e293b; border: 1px solid #334155; }
+body.dark .markdown-section blockquote { border-left-color: #3b82f6; color: #94a3b8; }
+body.dark .markdown-section table th { background: #1e293b; color: #e2e8f0; }
+body.dark .markdown-section table td { border-color: #334155; color: #e2e8f0; }
+body.dark .markdown-section table tr:nth-child(even) { background: #1e293b; }
 
-/* ── MODERN BUTON TASARIMLARI ── */
+body.dark .results-panel { background: #1e293b !important; border-color: #334155 !important; }
+body.dark .results-panel .matching-post { border-bottom-color: #334155 !important; }
+body.dark .results-panel .matching-post a { color: #60a5fa !important; }
+body.dark .results-panel p { color: #94a3b8 !important; }
+
+body.dark .badge.active { background: #172554; color: #60a5fa; }
+body.dark .badge.planned { background: #1e293b; color: #64748b; }
+
+
+/* ── TOTAL MINIMALIST: TÜM OK İKONLARINI KALDIRMA VE ALAN GENİŞLETME ─────── */
+
+/* 1. Sistemdeki EN ÜST SEVİYE dahil tüm katmanlardaki ok işaretlerini tamamen siler */
+.sidebar-nav summary::before,
+.sidebar-nav details summary::before,
+.sidebar-nav details details summary::before,
+.sidebar-nav details details details summary::before,
+.sidebar-nav li::marker,
+.sidebar-nav ul li::before,
+.sidebar-nav summary::marker,
+.sidebar-nav details summary::-webkit-details-marker {
+  display: none !important;
+  content: none !important;
+  list-style: none !important;
+}
+
+/* 2. SİSTEMLER, UYGULAMALAR (1. Seviye Başlıklar) - Ok gidince sola çekildi ve alanı genişletildi */
+.sidebar-nav > details > summary {
+  padding: 6px 12px !important;
+  font-size: 11px !important;
+}
+
+/* 3. Amplify Core (2. Seviye) - Hizalaması optimize edildi */
+.sidebar-nav > details > ul > li > details > summary {
+  padding: 5px 12px 5px 14px !important; /* Ok kalktığı için girinti 14px'e çekilerek yer kazanıldı */
+}
+
+/* 4. 01-Araştırma, 02-Mimari (3. Seviye Klasörler) - Kademeli girinti korundu */
+.sidebar-nav > details > ul > li > details > ul > li > details > summary {
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 5px 12px 5px 26px !important; /* Net hiyerarşi için 26px iç girinti */
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #475569 !important;
+  border-radius: 6px !important;
+  border-left: 3px solid transparent !important;
+  transition: background 0.15s, border-color 0.15s, color 0.15s !important;
+}
+.sidebar-nav > details > ul > li > details > ul > li > details > summary:hover {
+  background: #f0f4f8 !important;
+  border-left-color: #3b82f6 !important;
+  color: #1e293b !important;
+}
+
+/* 5. 01-Kavramsal Çerçeve (4. Seviye Alt Linkler) - En iç katman */
+.sidebar-nav > details > ul > li > details > ul > li > details > ul > li > a {
+  display: flex !important;
+  align-items: center !important;
+  padding: 5px 12px 5px 38px !important; /* Klasörün altında olduğu belli olsun diye 38px girinti */
+  font-size: 13px !important;
+  color: #64748b !important;
+  text-decoration: none !important;
+  border-radius: 6px !important;
+  border-left: 3px solid transparent !important;
+  transition: background 0.15s, border-color 0.15s, color 0.15s !important;
+}
+.sidebar-nav > details > ul > li > details > ul > li > details > ul > li > a:hover {
+  background: #f0f4f8 !important;
+  border-left-color: #3b82f6 !important;
+  color: #1e293b !important;
+}
+
+/* ── DARK MODE (KARANLIK TEMA) UYUMLULUĞU ───────────────────────────────────── */
+body.dark .sidebar-nav > details > ul > li > details > ul > li > details > summary {
+  color: #94a3b8 !important;
+}
+body.dark .sidebar-nav > details > ul > li > details > ul > li > details > summary:hover {
+  background: #334155 !important;
+  color: #e2e8f0 !important;
+}
+body.dark .sidebar-nav > details > ul > li > details > ul > li > details > ul > li > a {
+  color: #64748b !important;
+}
+body.dark .sidebar-nav > details > ul > li > details > ul > li > details > ul > li > a:hover {
+  background: #334155 !important;
+  color: #e2e8f0 !important;
+}
+
+
+
+
+/* Yeni Aktif Link Görünümü (Minimalist ve Temiz) */
+.sidebar-nav a.active {
+    color: #1e293b !important; /*  belirgin bir koyu gri */
+    font-weight: normal !important; 
+    background: transparent !important; 
+    border-left: 3px solid #3b82f6 !important; /* Sadece soldaki ince mavi çizgi kalır */
+}
+
+/* Karanlık modda aktif link */
+body.dark .sidebar-nav a.active {
+    color: #f1f5f9 !important; /* Yazı rengi beyaza yakın  */
+    background: transparent !important;
+    border-left-color: #3b82f6 !important;
+}
+
+/* Sidebar Scrollbar Tasarımı */
+.sidebar::-webkit-scrollbar { width: 5px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+body.dark .sidebar::-webkit-scrollbar-thumb { background: #334155; }
+
+/* Mikro Etkileşimler */
+.badge, #theme-toggle, .lang-switcher a, .sidebar-nav a {
+    transition: all 0.2s ease-in-out !important;
+}
+
+#theme-toggle:hover, .lang-switcher a:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* ── MODERN BUTON TASARIMLARI (Hamburger & Tema) ── */
+
+/* 1. Hamburger Butonu (Docsify Toggle) */
 .sidebar-toggle {
-    background: #f8fafc !important;
-    border: 1px solid #e2e8f0 !important;
+    background: #f8fafc !important; /* Çok hafif gri arka plan */
+    border: 1px solid #e2e8f0 !important; /* İnce çerçeve */
     border-radius: 8px !important;
     padding: 10px !important;
     width: 38px !important;
@@ -208,19 +427,21 @@ body.dark .markdown-section pre { background: #1e293b; border: 1px solid #334155
     align-items: center !important;
     justify-content: center !important;
     transition: all 0.2s ease-in-out !important;
+    /* Konumu koruyoruz (Ana Sayfa linkiyle çakışmaması için) */
     top: 65px !important; 
     left: 15px !important;
-    position: fixed !important;
-    z-index: 99;
 }
 
+/* Hamburger içindeki yeşil çizgileri modern griye çevir */
 .sidebar-toggle span {
     background-color: #475569 !important; 
     height: 2px !important;
     width: 18px !important;
     margin-bottom: 3px !important;
 }
+.sidebar-toggle span:last-child { margin-bottom: 0 !important; }
 
+/* 2. Tema Değiştirme Butonu (Topbar'daki) */
 #theme-toggle {
     background: #f8fafc !important;
     border: 1px solid #e2e8f0 !important;
@@ -231,152 +452,266 @@ body.dark .markdown-section pre { background: #1e293b; border: 1px solid #334155
     align-items: center !important;
     justify-content: center !important;
     cursor: pointer;
+    font-size: 16px !important;
     transition: all 0.2s !important;
 }
 
+/* Hover (Üstüne gelince) Efektleri */
 .sidebar-toggle:hover, #theme-toggle:hover {
     background: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
     transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
-body.dark .sidebar-toggle, body.dark #theme-toggle {
+/* ── KARANLIK MOD UYUMU ── */
+body.dark .sidebar-toggle, 
+body.dark #theme-toggle {
     background: #1e293b !important;
     border-color: #334155 !important;
     color: #f1f5f9 !important;
 }
 
-body.dark .sidebar-toggle span { background-color: #94a3b8 !important; }
+body.dark .sidebar-toggle span {
+    background-color: #94a3b8 !important; /* Çizgileri açık gri yapar */
+}
 
-/* Scrollbar */
-.sidebar::-webkit-scrollbar { width: 5px; }
-.sidebar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
-body.dark .sidebar::-webkit-scrollbar-thumb { background: #334155; }
-
+body.dark .sidebar-toggle:hover, 
+body.dark #theme-toggle:hover {
+    background: #334155 !important;
+    border-color: #475569 !important;
+}    
 </style>
 <script src="https://unpkg.com/lucide@latest"></script>    
 </head>
 <body>
 
 <div id="topbar">
-    <div id="topbar-search">
-        <input type="text" id="topbar-search-input" placeholder="Ara..." autocomplete="off" spellcheck="false">
-    </div>
-    <div class="topbar-right">
-        <button id="theme-toggle" title="Temayı Değiştir">
-            <i data-lucide="moon" id="theme-icon"></i>
-        </button>
-        <div class="lang-switcher">
-            <a href="#/en/" id="lang-toggle">EN</a>
-        </div>
-    </div>
+<div id="topbar-search">
+<input type="text" id="topbar-search-input" placeholder="Ara..." autocomplete="off" spellcheck="false">
 </div>
+<div class="topbar-right">
+<button id="theme-toggle" title="Temayı Değiştir">
+  <i data-lucide="moon" id="theme-icon"></i>
+</button>
+<div class="lang-switcher">
+<a href="#/en/" id="lang-toggle">EN</a>
+</div>
+</div>
+</div>
+ 
+<script>
+   
+// Tema toggle ve İkon değişimi
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+
+function updateThemeIcon(isDark) {
+    // İkonu değiştir
+    themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+    // Lucide'i tekrar çalıştır ki yeni ikonu çizsin
+    lucide.createIcons();
+}
+
+themeToggle.addEventListener('click', function() {
+    const isDark = document.body.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateThemeIcon(isDark);
+});
+
+// Sayfa ilk açıldığında ikonu ayarla
+const isInitialDark = document.body.classList.contains('dark');
+updateThemeIcon(isInitialDark);
+</script>
 
 <div id="app"></div>
 
 <script>
-// 1. TEMA YÖNETİMİ (Tek ve Merkezi)
-(function() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const saved = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    let isDark = saved === 'dark' || (!saved && prefersDark);
+// Tema toggle
+document.getElementById('theme-toggle').addEventListener('click', function() {
+const isDark = document.body.classList.toggle('dark');
+localStorage.setItem('theme', isDark ? 'dark' : 'light');
+this.textContent = isDark ? '☀️' : '🌙';
+});
 
-    function applyTheme(dark) {
-        document.body.classList.toggle('dark', dark);
-        if (themeIcon) {
-            themeIcon.setAttribute('data-lucide', dark ? 'sun' : 'moon');
-            if (window.lucide) lucide.createIcons();
-        }
-    }
-
-    // İlk yükleme
-    applyTheme(isDark);
-
-    themeToggle.addEventListener('click', () => {
-        isDark = !isDark;
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        applyTheme(isDark);
-    });
-})();
-
-// 2. DİL YÖNETİMİ
+// Dil seçici (Tek butonlu akıllı toggle)
 function updateLang() {
+    // Mevcut hash'i al, eğer boşsa varsayılan olarak #/tr/ kabul et
     let currentHash = window.location.hash || '#/tr/';
     const langToggle = document.getElementById('lang-toggle');
     const searchInput = document.getElementById('topbar-search-input');
 
+    // Eğer şu an İngilizce dizinindeysek
     if (currentHash.startsWith('#/en/')) {
         langToggle.textContent = 'TR';
+        // Mevcut URL'deki #/en/ kısmını #/tr/ ile değiştir, geri kalanı koru
         langToggle.href = currentHash.replace('#/en/', '#/tr/');
         searchInput.placeholder = 'Search...';
-    } else {
+    } 
+    // Eğer şu an Türkçe dizinindeysek (veya root'taysak)
+    else {
         langToggle.textContent = 'EN';
-        let target = currentHash.includes('#/tr/') ? currentHash.replace('#/tr/', '#/en/') : '#/en/';
+        // Mevcut URL'deki #/tr/ kısmını #/en/ ile değiştir
+        // Eğer linkte hiç /tr/ yoksa direkt #/en/ dizinine yönlendir
+        let target = currentHash.includes('#/tr/') 
+                     ? currentHash.replace('#/tr/', '#/en/') 
+                     : '#/en/';
         langToggle.href = target;
         searchInput.placeholder = 'Ara...';
     }
 }
-window.addEventListener('hashchange', updateLang);
 updateLang();
+window.addEventListener('hashchange', updateLang);
 
-// 3. SIDEBAR SENKRONİZASYONU
+// sidebar konum gösterme  
 function syncSidebar() {
     const currentHash = decodeURIComponent(window.location.hash);
     if (!currentHash || currentHash === '#/') return;
 
+    // 1. Mevcut URL ile eşleşen linki sidebar içinde bul
+    // (href içindeki yolu tam eşleştirmek için selector'ı dikkatli seçiyoruz)
     const activeLink = document.querySelector(`.sidebar-nav a[href="${currentHash}"]`);
+
     if (activeLink) {
+        // 2. Önceki aktiflik sınıflarını temizle (opsiyonel)
         document.querySelectorAll('.sidebar-nav a').forEach(el => el.classList.remove('active'));
+        
+        // 3. Bulunan linke aktif sınıfı ekle
         activeLink.classList.add('active');
 
+        // 4. Linkin üstündeki tüm <details> elementlerini bul ve aç
         let parent = activeLink.parentElement;
         while (parent && !parent.classList.contains('sidebar-nav')) {
-            if (parent.tagName === 'DETAILS') parent.setAttribute('open', '');
+            if (parent.tagName === 'DETAILS') {
+                parent.setAttribute('open', ''); // Menüyü açar
+            }
             parent = parent.parentElement;
         }
+
+        // 5. Aktif linkin görünür olduğundan emin ol (scroll)
         activeLink.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
 }
 
-// 4. ARAMA PROXY
+  
+// Arama proxy — topbar input'u Docsify'ın gizli arama input'una bağlar
 function setupSearchProxy() {
     const sidebarInput = document.querySelector('.search input');
     if (!sidebarInput) { setTimeout(setupSearchProxy, 300); return; }
+
     const topbarInput = document.getElementById('topbar-search-input');
+
+    function repositionResultsPanel() {
+        const panel = document.querySelector('.results-panel');
+        const input = document.getElementById('topbar-search-input');
+        if (!panel || !input) return;
+
+        const rect = input.getBoundingClientRect();
+        
+        // Sidebar kapalı mı kontrol et
+        const isSidebarClosed = document.body.classList.contains('close');
+        const isMobile = window.innerWidth <= 768;
+
+        // Eğer sidebar kapalıysa, panel sidebar'ın içinde olduğu için koordinat sistemi kaymıştır.
+        // Bunu düzeltmek için 300px çıkarıyoruz (CSS'deki translateX(300px) ile dengelenir).
+        let finalLeft = rect.left;
+        if (isSidebarClosed && !isMobile) {
+            finalLeft = rect.left - 300; 
+        }
+
+        panel.style.setProperty('left', finalLeft + 'px', 'important');
+        panel.style.setProperty('width', Math.max(rect.width, 380) + 'px', 'important');
+    }
 
     topbarInput.addEventListener('input', function() {
         sidebarInput.value = this.value;
         sidebarInput.dispatchEvent(new Event('input', { bubbles: true }));
+        // Panelin oluşması için bir frame bekle
+        requestAnimationFrame(repositionResultsPanel);
+    });
+
+    // Sidebar açma/kapama butonuna basıldığında konumu güncelle
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.sidebar-toggle')) {
+            setTimeout(repositionResultsPanel, 300); // Animasyon bitişini bekle
+        }
+    });
+
+    window.addEventListener('resize', repositionResultsPanel);
+
+    topbarInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            this.value = '';
+            sidebarInput.value = '';
+            sidebarInput.dispatchEvent(new Event('input', { bubbles: true }));
+        }
     });
 }
 
-// 5. DOCSIFY CONFIG
-window.$docsify = {
-    loadSidebar: true,
-    loadNavbar: false,
-    subMaxLevel: 0,
-    search: { paths: 'auto', placeholder: 'Ara...' },
-    alias: {
-        '/': '/tr/README.md',
-        '/_sidebar.md': '/tr/_sidebar.md',
-        '/tr/.*/_sidebar.md': '/tr/_sidebar.md',
-        '/en/.*/_sidebar.md': '/en/_sidebar.md'
-    },
-    plugins: [
-        function(hook) {
-            hook.ready(() => {
-                setupSearchProxy();
-                syncSidebar();
-                if (window.lucide) lucide.createIcons();
-            });
-            hook.doneEach(() => {
-                syncSidebar();
-            });
-        }
-    ]
+// Mobilden summary tıklanınca sidebar kapanmasın,
+// sadece gerçek link tıklanınca kapansın
+function fixMobileSidebar() {
+document.querySelectorAll('.sidebar-nav summary').forEach(function(summary) {
+summary.addEventListener('click', function(e) {
+e.stopPropagation();
+});
+});
 }
+
+// Hamburger butonunu her zaman aynı yerde tut
+function fixTogglePosition() {
+const toggle = document.querySelector('.sidebar-toggle');
+if (!toggle) return;
+toggle.style.setProperty('top', '65px', 'important');
+toggle.style.setProperty('left', '15px', 'important');
+toggle.style.setProperty('bottom', 'auto', 'important');
+}
+
+document.addEventListener('click', function(e) {
+if (e.target.closest('.sidebar-toggle')) {
+setTimeout(fixTogglePosition, 50);
+}
+});
+
+fixTogglePosition();
+
+// Docsify config
+window.$docsify = {
+  loadSidebar: true,
+  loadNavbar: false,
+  subMaxLevel: 0,
+  search: {
+    maxAge: 86400000,
+    paths: 'auto',
+    placeholder: 'Ara...',
+    noData: 'Sonuç bulunamadı.',
+    depth: 3,
+    hideOtherSidebarContent: false
+  },
+  alias: {
+    '/': '/tr/README.md',
+    '/_sidebar.md':        '/tr/_sidebar.md',
+    '/tr/.*/_sidebar.md':  '/tr/_sidebar.md',
+    '/en/.*/_sidebar.md':  '/en/_sidebar.md'
+  },
+  plugins: [
+    function(hook) {
+      hook.ready(function() {
+        // Sayfa ilk yüklendiğinde çalışacaklar
+        setupSearchProxy();
+        fixMobileSidebar();
+        fixTogglePosition();
+        syncSidebar(); // <--- YENİ: Sidebar'ı mevcut sayfaya göre açar
+      });
+      hook.doneEach(function() {
+        // Her sayfa değişiminde (linke tıklandığında) çalışacaklar
+        fixMobileSidebar();
+        syncSidebar(); // <--- YENİ: Sidebar'ı mevcut sayfaya göre açar
+      });
+    }
+  ]
+}
+  
 </script>
 
 <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
