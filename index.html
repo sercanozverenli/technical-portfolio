@@ -115,7 +115,7 @@ body.dark .markdown-section blockquote { background: #1e293b !important; color: 
     .sidebar { left: 0 !important; }
 }
 
-/* ── ARAMA PANELİ (Independent Positioning) ── */
+/* ── ARAMA PANELİ ── */
 .search { border: none !important; padding: 0 !important; margin: 0 !important; overflow: visible !important; }
 .search .input-wrap { display: none !important; }
 .search > p { display: none !important; }
@@ -164,26 +164,25 @@ body.dark .sidebar-nav a.active { color: #f1f5f9 !important; border-left-color: 
 
 /* ── DURUM İKONLARI (SVG) STİLLERİ ── */
 .status-icon {
-    width: 14px;
-    height: 14px;
-    margin-right: 8px;
+    width: 18px; /* Boyut artırıldı */
+    height: 18px;
+    margin-right: 10px;
     vertical-align: middle;
     display: inline-block;
     stroke: currentColor;
-    stroke-width: 1.5;
+    stroke-width: 1.2; /* Daha ince ve modern çizgiler */
     fill: none;
 }
 
 /* Animasyonlar */
-@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@keyframes spin-reverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
-@keyframes pulse-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes gear-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes gear-spin-rev { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+@keyframes brain-pulse { 0%, 100% { opacity: 1; stroke-width: 1.5; } 50% { opacity: 0.4; stroke-width: 1.2; } }
 
-.status-icon.idea { animation: pulse-soft 3s ease-in-out infinite; }
-.status-icon.idea .gear-inner { transform-origin: center; animation: spin 8s linear infinite; }
-.status-icon.wip .g1 { transform-origin: center; animation: spin 4s linear infinite; }
-.status-icon.wip .g2 { transform-origin: center; animation: spin-reverse 4s linear infinite; }
-.status-icon.wip .g3 { transform-origin: center; animation: spin 6s linear infinite; }
+.status-icon.idea { animation: brain-pulse 3s ease-in-out infinite; }
+.status-icon.idea .inner-gear { transform-origin: 12px 9px; animation: gear-spin 10s linear infinite; }
+.status-icon.wip .gear-main { transform-origin: 9px 13px; animation: gear-spin 5s linear infinite; }
+.status-icon.wip .gear-sub { transform-origin: 17px 10px; animation: gear-spin-rev 5s linear infinite; }
 
 /* ── DARK MODE GENEL ── */
 body.dark { background: #0f172a; color: #e2e8f0; }
@@ -191,7 +190,7 @@ body.dark .sidebar { background: #1e293b !important; border-right: 1px solid #33
 body.dark #topbar-search-input { background: #0f172a; border-color: #334155; color: #e2e8f0; }
 body.dark #topbar-search-input:focus { border-color: #3b82f6; background: #1e293b; }
 
-/* ── TOTAL MINIMALIST: OKLARI KALDIRMA VE PADDING AYARLARI ── */
+/* ── TOTAL MINIMALIST ── */
 .sidebar-nav summary::before, .sidebar-nav details summary::before, .sidebar-nav details details summary::before, .sidebar-nav details details details summary::before, .sidebar-nav li::marker, .sidebar-nav ul li::before, .sidebar-nav summary::marker, .sidebar-nav details summary::-webkit-details-marker { display: none !important; content: none !important; list-style: none !important; }
 .sidebar-nav > details > summary { padding: 6px 12px !important; }
 .sidebar-nav > details > ul > li > details > summary { padding: 5px 12px 5px 14px !important; }
@@ -217,25 +216,10 @@ body.dark #topbar-search-input:focus { border-color: #3b82f6; background: #1e293
     transition: all 0.2s !important;
 }
 
-#back-to-top {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 300;
-    display: none; /* JS ile gösterilecek */
-}
+#back-to-top { position: fixed; bottom: 24px; right: 24px; z-index: 300; display: none; }
+.sidebar-toggle:hover, #theme-toggle:hover, #back-to-top:hover { background: #f1f5f9 !important; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
-.sidebar-toggle:hover, #theme-toggle:hover, #back-to-top:hover {
-    background: #f1f5f9 !important;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-body.dark .sidebar-toggle, body.dark #theme-toggle, body.dark #back-to-top {
-    background: rgba(30, 41, 59, 0.8) !important;
-    border-color: #334155 !important;
-    color: #f1f5f9 !important;
-}
+body.dark .sidebar-toggle, body.dark #theme-toggle, body.dark #back-to-top { background: rgba(30, 41, 59, 0.8) !important; border-color: #334155 !important; color: #f1f5f9 !important; }
 body.dark .sidebar-toggle span { background-color: #94a3b8 !important; }
 
 /* Scrollbar */
@@ -312,9 +296,12 @@ updateLang();
 
 // 3. SIDEBAR SENKRONİZASYONU VE İKON ENJEKSİYONU
 const STATUS_ICONS = {
-    idea: `<svg class="status-icon idea" viewBox="0 0 24 24"><path d="M9.5 2a.5.5 0 0 1 .5.5v.5h4v-.5a.5.5 0 0 1 1 0V3a2 2 0 0 1 2 2v1a5 5 0 0 1-1 3.14V14a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9.14A5 5 0 0 1 7 6V5a2 2 0 0 1 2-2v-.5a.5.5 0 0 1 .5-.5Z"/><path class="gear-inner" d="M12 10.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"/><path class="gear-inner" d="M12 7v1m0 3v1m-2.5-2.5h1m3 0h1"/></svg>`,
-    wip: `<svg class="status-icon wip" viewBox="0 0 24 24"><circle class="g1" cx="8" cy="15" r="3"/><circle class="g2" cx="16" cy="15" r="2.5"/><circle class="g3" cx="12" cy="8" r="2"/></svg>`,
-    done: `<svg class="status-icon done" viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"/><path d="m9 12 2 2 4-4"/></svg>`
+    // Fikir: Kafa silüeti ve içinde dönen küçük çark
+    idea: `<svg class="status-icon idea" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5 10 10 0 0 1-1-8 10 10 0 1 1 12 8 10 10 0 0 1-1 3.5v4"/><path class="inner-gear" d="M12 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0-6V4m0 8v1m-3.5-3.5h-1m8 0h1"/></svg>`,
+    // Devam Eden: Birbirine geçmiş iki dişli çark
+    wip: `<svg class="status-icon wip" viewBox="0 0 24 24"><path class="gear-main" d="M9 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0-11V5m0 12v1m-6-6h1m10 0h1m-2.5-6.5-1 1m-7 7-1 1m0-9 1 1m7 7 1-1"/><path class="gear-sub" d="M17 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm0-8V4m0 10v1m-4-5h-1m9 0h1"/></svg>`,
+    // Tamamlanan: Dişli çark ve içinde onay işareti
+    done: `<svg class="status-icon done" viewBox="0 0 24 24"><path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Zm0-15V2m0 18v1m-8-9H2m18 0h1m-2.5-7.5-1 1m-11 11-1 1m0-13 1 1m11 11 1-1"/><path d="m9 12 2 2 4-4" stroke-width="2" stroke-linecap="round"/></svg>`
 };
 
 function injectStatusIcons() {
