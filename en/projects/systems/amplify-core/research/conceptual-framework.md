@@ -32,4 +32,4 @@ The decision regimes adopted by Amplify Core based on the state of the data can 
 
 This four-stage safety approach, concretized through the autonomous driving analogy, forms the core of Amplify Core's technical architecture. As seen in the data routing diagram below, instead of unconditionally transmitting the incoming raw data to the main decision model, the system first passes the data through the DRS (Data Reliability Score) layer to measure its statistical health and routes it to the safest decision regime based on the obtained result.
 
-![Data Routing Architecture](../../../../../docs/diagrams/amplify-core/sekil-1.png)
+![Data Routing Architecture](../../../../../docs/diagrams/amplify-core/figure-1.png)
