@@ -141,18 +141,25 @@ body.dark .results-panel { background: #1e293b !important; border-color: #334155
     overflow-x: hidden !important;
 }
 
-/* Tüm menü elemanlarının ortak rengi */
-.sidebar-nav summary, .sidebar-nav a { color: #94a3b8 !important; text-decoration: none !important; transition: all 0.15s ease !important; }
+/* Tüm menü elemanlarının ortak rengi ve DİKEY ORTALAMA (Terazi Etkisi) */
+.sidebar-nav summary, .sidebar-nav a { 
+    color: #94a3b8 !important; 
+    text-decoration: none !important; 
+    transition: all 0.15s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px; /* İkon ve metin arası boşluk */
+}
 
 /* ── SIDEBAR TYPOGRAPHY (YENİ PUNTOLAR) ── */
-.sidebar-nav .home-link { font-size: 18px !important; font-weight: 700 !important; display: block; padding: 8px 12px; color: #2c3e50 !important; margin-bottom: 16px; margin-top: 40px; }
+.sidebar-nav .home-link { font-size: 18px !important; font-weight: 700 !important; display: flex; padding: 8px 12px; color: #2c3e50 !important; margin-bottom: 16px; margin-top: 40px; }
 .sidebar-nav > details > summary { font-size: 16px !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 0.08em !important; }
 .sidebar-nav details details summary, .sidebar-nav a:not(.home-link) { font-size: 14px !important; }
 .sidebar-nav summary { font-weight: 700 !important; }
 .sidebar-nav a:not(.home-link) { font-weight: 400 !important; }
 
 /* ── HOVER & AKTİF DURUMLAR ── */
-.sidebar-nav summary:hover, .sidebar-nav a:hover { background: #f1f5f9 !important; color: #1e293b !important; border-radius: 6px !important; }
+.sidebar-nav summary:hover, .sidebar-nav a:hover { background: #f0f4f8 !important; color: #1e293b !important; border-radius: 6px !important; }
 body.dark .sidebar-nav summary:hover, body.dark .sidebar-nav a:hover { background: #334155 !important; color: #f1f5f9 !important; }
 .sidebar-nav a.active { color: #1e293b !important; border-left: 3px solid #3b82f6 !important; background: transparent !important; }
 body.dark .sidebar-nav a.active { color: #f1f5f9 !important; border-left-color: #3b82f6 !important; }
@@ -161,13 +168,10 @@ body.dark .sidebar-nav a.active { color: #f1f5f9 !important; border-left-color: 
 .status-icon-img {
     width: 20px;
     height: 20px;
-    margin-right: 10px;
-    vertical-align: middle;
-    display: inline-block;
+    flex-shrink: 0; /* İkonun daralmasını engeller */
     object-fit: contain;
 }
 
-/* Karanlık modda siyah ikonları beyaza çevirir (Eğer ikonların siyahsa) */
 body.dark .status-icon-img {
     filter: invert(0.8) brightness(1.5);
 }
@@ -178,12 +182,17 @@ body.dark .sidebar { background: #1e293b !important; border-right: 1px solid #33
 body.dark #topbar-search-input { background: #0f172a; border-color: #334155; color: #e2e8f0; }
 body.dark #topbar-search-input:focus { border-color: #3b82f6; background: #1e293b; }
 
-/* ── TOTAL MINIMALIST ── */
+/* ── TOTAL MINIMALIST (GİRİNTİLER DARALTILDI) ── */
 .sidebar-nav summary::before, .sidebar-nav details summary::before, .sidebar-nav details details summary::before, .sidebar-nav details details details summary::before, .sidebar-nav li::marker, .sidebar-nav ul li::before, .sidebar-nav summary::marker, .sidebar-nav details summary::-webkit-details-marker { display: none !important; content: none !important; list-style: none !important; }
+
+/* Seviye 1 */
 .sidebar-nav > details > summary { padding: 6px 12px !important; }
+/* Seviye 2 (Amplify Core) */
 .sidebar-nav > details > ul > li > details > summary { padding: 5px 12px 5px 14px !important; }
-.sidebar-nav > details > ul > li > details > ul > li > details > summary { cursor: pointer !important; display: flex !important; align-items: center !important; padding: 5px 12px 5px 26px !important; border-radius: 6px !important; border-left: 3px solid transparent !important; }
-.sidebar-nav > details > ul > li > details > ul > li > details > ul > li > a { display: flex !important; align-items: center !important; padding: 5px 12px 5px 38px !important; border-radius: 6px !important; border-left: 3px solid transparent !important; }
+/* Seviye 3 (Araştırma vb.) */
+.sidebar-nav > details > ul > li > details > ul > li > details > summary { cursor: pointer !important; padding: 5px 12px 5px 22px !important; border-radius: 6px !important; border-left: 3px solid transparent !important; }
+/* Seviye 4 (Linkler) */
+.sidebar-nav > details > ul > li > details > ul > li > details > ul > li > a { padding: 5px 12px 5px 30px !important; border-radius: 6px !important; border-left: 3px solid transparent !important; }
 
 /* ── MODERN BUTONLAR ── */
 .sidebar-toggle { background: #f8fafc !important; border: 1px solid #e2e8f0 !important; border-radius: 8px !important; padding: 10px !important; width: 38px !important; height: 38px !important; display: flex !important; align-items: center !important; justify-content: center !important; transition: all 0.2s ease-in-out !important; top: 65px !important; left: 15px !important; position: fixed !important; z-index: 99; }
@@ -214,6 +223,9 @@ body.dark .sidebar-toggle span { background-color: #94a3b8 !important; }
 .sidebar-nav::-webkit-scrollbar { width: 5px; }
 .sidebar-nav::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
 body.dark .sidebar-nav::-webkit-scrollbar-thumb { background: #334155; }
+
+/* Mikro Etkileşimler */
+.badge, #theme-toggle, .lang-switcher a, .sidebar-nav a { transition: all 0.2s ease-in-out !important; }
 
 </style>
 <script src="https://unpkg.com/lucide@latest"></script>    
@@ -285,8 +297,7 @@ updateLang();
 // 3. SIDEBAR SENKRONİZASYONU VE İKON ENJEKSİYONU
 function injectStatusIcons() {
     document.querySelectorAll('.sidebar-nav i[class^="status-"]').forEach(el => {
-        const type = el.className.split('-')[1]; // idea, wip veya done
-        // docs/icons/ klasöründen ilgili PNG'yi çeker
+        const type = el.className.split('-')[1];
         el.innerHTML = `<img src="docs/icons/status-${type}.png" class="status-icon-img" alt="${type}">`;
     });
 }
