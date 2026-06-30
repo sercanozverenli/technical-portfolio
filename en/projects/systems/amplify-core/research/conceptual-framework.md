@@ -1,4 +1,6 @@
-# Conceptual Framework and the Fundamental Problem in the Literature
+# Amplify Core (Data Reliability & Decision Routing System)
+
+## Conceptual Framework and the Fundamental Problem in the Literature
 
 Today, whether in artificial intelligence (AI) and machine learning (ML) algorithms, or end-to-end industrial automation systems working with sensors; a significant portion of data-driven decision mechanisms share a common structural limitation. Most of these systems lack a mechanism that independently evaluates the reliability of the data prior to the decision process. Instead, they focus on generating an output from the provided input as much as possible. In other words, in most cases, systems lack an upper decision layer capable of abstaining from generating a decision by stating, "I cannot make a reliable decision with this data."
 
@@ -18,7 +20,7 @@ The fundamental approach of the system is to abandon the notion that assumes alg
 
 ---
 
-# Operational Analogy: Decision Making Regimes
+## Operational Analogy: Decision Making Regimes
 
 The decision regimes adopted by Amplify Core based on the state of the data can be summarized with a four-stage autonomous driving scenario:
 
