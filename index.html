@@ -110,15 +110,15 @@ body.dark .markdown-section blockquote { background: #1e293b !important; color: 
 .search > p { display: none !important; }
 
 .results-panel {
-    position: fixed !important; /* Sidebar'dan bağımsız hale getirildi */
-    z-index: 1000 !important; /* Her şeyin üstünde */
+    position: fixed !important; /* Sidebar'dan tamamen koparıldı */
+    z-index: 9999 !important; /* Her şeyin, ama her şeyin üstünde */
     background: #fff !important;
     border: 1px solid #e2e8f0 !important;
     border-radius: 8px !important;
-    box-shadow: 0 12px 32px rgba(0,0,0,0.12) !important;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.15) !important;
     max-height: 450px !important;
     overflow-y: auto !important;
-    display: none; /* JavaScript ile kontrol edilecek */
+    display: none;
 }
 body.dark .results-panel { background: #1e293b !important; border-color: #334155 !important; }
 
@@ -265,9 +265,14 @@ function setupSearchProxy() {
         const panel = document.querySelector('.results-panel');
         if (!panel) return;
 
+        // KRİTİK DÜZELTME: Paneli sidebar'dan söküp body'ye taşıyoruz
+        if (panel.parentElement !== document.body) {
+            document.body.appendChild(panel);
+        }
+
         const rect = topbarInput.getBoundingClientRect();
         
-        // Paneli tam olarak input'un altına yapıştır
+        // Paneli tam olarak input'un altına yapıştır (Ekran koordinatlarına göre)
         panel.style.display = topbarInput.value.trim() ? 'block' : 'none';
         panel.style.top = (rect.bottom + 8) + 'px';
         panel.style.left = rect.left + 'px';
