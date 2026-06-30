@@ -67,12 +67,23 @@ transition: background 0.15s, color 0.15s;
 }
 .lang-switcher a:hover { background: #f0f4f8; color: #1e293b; }
 
-/* ── SIDEBAR ─────────────────────────────────────── */
+/* ── SIDEBAR (TRANSFORM TUZAĞI FIX) ──────────────── */
 .sidebar {
-border-right: 1px solid #e2e8f0;
-top: 50px !important;
-height: calc(100vh - 50px) !important;
-padding-top: 16px !important;
+    border-right: 1px solid #e2e8f0;
+    top: 50px !important;
+    height: calc(100vh - 50px) !important;
+    padding-top: 16px !important;
+    /* Transform yerine left kullanarak arama panelini özgür bırakıyoruz */
+    left: 0 !important;
+    transform: none !important;
+    transition: left 0.25s ease-out !important;
+    overflow: visible !important;
+}
+
+/* Sidebar kapalıyken konumu */
+body.close .sidebar {
+    left: -300px !important;
+    transform: none !important;
 }
 
 /* ── İÇERİK ──────────────────────────────────────── */
@@ -100,18 +111,22 @@ body.dark .markdown-section table th { background-color: #1e293b !important; fon
 body.dark .markdown-section blockquote { background: #1e293b !important; color: #94a3b8 !important; }    
     
 @media screen and (max-width: 768px) {
-#topbar { padding-left: 60px; }
-.markdown-section { padding-top: 60px !important; }
+    #topbar { padding-left: 60px; }
+    .markdown-section { padding-top: 60px !important; }
+    /* Mobilde sidebar kapalıyken */
+    body.close .sidebar { left: -300px !important; }
+    /* Mobilde sidebar açıkken */
+    .sidebar { left: 0 !important; }
 }
 
-/* ── BAĞIMSIZ ARAMA PANELİ (Independent Layer) ── */
-.search { border: none !important; padding: 0 !important; margin: 0 !important; }
+/* ── ARAMA PANELİ (Independent Positioning) ── */
+.search { border: none !important; padding: 0 !important; margin: 0 !important; overflow: visible !important; }
 .search .input-wrap { display: none !important; }
 .search > p { display: none !important; }
 
 .results-panel {
-    position: fixed !important; /* Sidebar'dan tamamen koparıldı */
-    z-index: 9999 !important; /* Her şeyin, ama her şeyin üstünde */
+    position: fixed !important; /* Sidebar'dan bağımsız, ekrana çivili */
+    z-index: 9999 !important; /* Her şeyin üstünde */
     background: #fff !important;
     border: 1px solid #e2e8f0 !important;
     border-radius: 8px !important;
@@ -174,6 +189,9 @@ body.dark .sidebar-toggle span { background-color: #94a3b8 !important; }
 .sidebar::-webkit-scrollbar { width: 5px; }
 .sidebar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
 body.dark .sidebar::-webkit-scrollbar-thumb { background: #334155; }
+
+/* Mikro Etkileşimler */
+.badge, #theme-toggle, .lang-switcher a, .sidebar-nav a { transition: all 0.2s ease-in-out !important; }
 
 </style>
 <script src="https://unpkg.com/lucide@latest"></script>    
@@ -255,7 +273,7 @@ function syncSidebar() {
     }
 }
 
-// 4. AKILLI ARAMA YÖNETİMİ (Independent Layer Logic)
+// 4. AKILLI ARAMA YÖNETİMİ (Independent Positioning)
 function setupSearchProxy() {
     const sidebarInput = document.querySelector('.search input');
     if (!sidebarInput) { setTimeout(setupSearchProxy, 300); return; }
@@ -264,11 +282,6 @@ function setupSearchProxy() {
     function repositionResultsPanel() {
         const panel = document.querySelector('.results-panel');
         if (!panel) return;
-
-        // KRİTİK DÜZELTME: Paneli sidebar'dan söküp body'ye taşıyoruz
-        if (panel.parentElement !== document.body) {
-            document.body.appendChild(panel);
-        }
 
         const rect = topbarInput.getBoundingClientRect();
         
