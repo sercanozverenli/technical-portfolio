@@ -1,123 +1,123 @@
-Time Travel, Branching Architecture, and Basic Merge
+Zaman Tüneli, Branching (Dallanma) Mimarisi ve Temel Merge
 
-This document covers exploring your project history, opening secure parallel work environments (branches) independent of the main line, using modern navigation tools, and executing a clean, conflict-free merge process.
+Bu doküman, projenizin geçmişini incelemeyi, ana gövdeden bağımsız güvenli çalışma alanları (dallar) açmayı, modern navigasyon araçlarını kullanmayı ve sorunsuz çakışmasız bir birleştirme sürecini eksiksiz kapsar.
 
 ---
 
-## Part 1: Project Timeline (git log)
+## Bölüm 1: Proje Zaman Tüneli (git log)
 
-All commits made in a project from past to present are stored chronologically in the Git history. The `git log` command allows you to read this project timeline.
+Projede geçmişten bugüne kadar atılan tüm commit'ler kronolojik olarak Git tarihçesinde saklanır. `git log` komutu, projenin zaman tünelini okumanızı sağlar.
 
 ### git log
-*   **Description**: Lists the entire commit history of the project, including the unique commit ID (SHA-1), date, and author information.
+*   **Açıklama**: Projedeki tüm commit geçmişini yazar, benzersiz commit ID'si (SHA-1), tarih ve yazar bilgileriyle birlikte detaylı olarak listeler.
 ```bash
-# Scenario 1: Viewing the detailed commit history
+# 1. Senaryo: Tüm commit geçmişini detaylı listeleme
 git log
 
-# Scenario 2: Listing commits compressed into a single line for quick reading
+# 2. Senaryo: Her commit'i tek bir satıra sığdırarak sıkışık ve hızlı okunabilir listeleme
 git log --oneline
 
-# Scenario 3: Limiting the number of listed recent actions (e.g., last 3 commits)
+# 3. Senaryo: Son yapılan işlem sayısını kısıtlayarak listeleme (Örn: son 3 commit)
 git log -n 3
 
-# Scenario 4: Viewing the commit history as a visual graph showing branching structures
+# 4. Senaryo: Commit geçmişini dallanma haritasıyla birlikte görsel bir grafik olarak görme
 git log --oneline --graph --all
 ```
 
 ---
 
-## Part 2: The Heart of Git Mechanics: The HEAD Concept
+## Bölüm 2: Git Mekaniğinin Kalbi: HEAD Kavramı
 
-### 1. What is HEAD?
-In Git architecture, HEAD is a pointer that **shows the active commit or the active branch you are currently working on in your local repository**. Git knows exactly which code version is open on your screen thanks to this pointer.
+### 1. HEAD Nedir?
+Git altyapısında HEAD, yerel deponuzda **o an üzerinde çalıştığınız aktif commit'i veya aktif dalı (branch) gösteren bir işaretçidir (pointer)**. Bilgisayarınızın ekranında açık olan güncel kod versiyonunun neresi olduğunu Git bu işaretçi sayesinde bilir.
 
-### 2. Architectural Structure and Movement of HEAD
-Under normal conditions, HEAD points to the latest commit of the active branch (for example, `main`). As you make new commits, your branch moves forward, and HEAD automatically moves to the latest commit along with that branch.
+### 2. HEAD'in Mimari Yapısı ve Yer Değiştirmesi
+Normal şartlarda HEAD, aktif olan dalın (örneğin `main`) en son commit'ini işaret eder. Siz yeni bir commit attıkça, dalınız ileri gider, HEAD de otomatik olarak o dal ile birlikte en son commit'e taşınır.
 
-*   **Detached HEAD State**: If you jump back to a specific past commit using the command `git checkout <old-commit-id>`, HEAD stops pointing to a branch and attaches directly to that specific past commit. This is called a "Detached HEAD" state. Changes made in this state are not linked to any branch, so they will not be permanent unless saved to a new branch.
+*   **Detached HEAD (Kopuk HEAD) Durumu**: Eğer `git checkout <eski-commit-id>` komutuyla geçmişteki spesifik bir commit anına dönerseniz, HEAD bir dalı işaret etmeyi bırakır ve doğrudan o eski commit'e tutunur. Bu duruma "Detached HEAD" denir. Bu durumdayken yapılan değişiklikler herhangi bir dala bağlı olmadığı için kalıcı olmaz.
 
 ---
 
-## Part 3: Modern Branch Management (git branch & git switch)
+## Bölüm 3: Modern Dal Yönetimi (git branch & git switch)
 
-Branches are independent parallel universes where you can develop new features or fix bugs without breaking the working code of the main project.
+Dallar (Branches), ana projenizin çalışan kodunu bozmadan yeni özellikler geliştirebileceğiniz, hataları çözebileceğiniz bağımsız paralel evrenlerdir.
 
-### 1. Critical Difference: Why git switch instead of git checkout?
-In older Git versions, the `git checkout` command performed two completely different tasks by itself: it switched between branches and it restored deleted or changed files. Because this caused confusion, modern Git architecture separated these duties:
-*   `git switch`: A modern command designed **strictly for branch switching and branch management**.
-*   `git restore`: Separated strictly for bringing files back to a previous state or restoring them.
-In interviews and modern projects, it is highly recommended to always use **git switch** for branch switching operations.
+### 1. Kritik Fark: Neden git checkout yerine git switch?
+Eski Git versiyonlarında `git checkout` komutu iki çok farklı işi tek başına yapıyordu: Hem dallar arasında geçiş sağlıyor hem de silinen/değişen dosyaları geri getiriyordu. Bu durum kafa karışıklığı yarattığı için modern Git mimarisinde bu görevler ayrılmıştır:
+*   `git switch`: Sadece **dallar arası geçiş ve dal yönetimi** için tasarlanmış modern komuttur.
+*   `git restore`: Dosyaları eski haline getirmek veya geri yüklemek için ayrılmıştır.
+Mülakatlarda ve modern projelerde dal değiştirme işlemleri için her zaman **git switch** kullanılması önerilir.
 
-### 2. Commands and Variations
+### 2. Komutlar ve Varyasyonlar
 
 #### git branch
-*   **Description**: Lists existing branches in the project or creates a brand new side branch from scratch.
+*   **Açıklama**: Projedeki mevcut dalları listeler veya sıfırdan yeni bir yan dal oluşturur.
 ```bash
-# Scenario 1: Listing all local branches (the active branch has an * symbol next to it)
+# 1. Senaryo: Mevcut tüm yerel dalları listeleme (Aktif dalın başında * işareti bulunur)
 git branch
 
-# Scenario 2: Creating a new side branch named "login-screen" (does not switch to it yet)
-git branch login-screen
+# 2. Senaryo: Projede "giriş-ekrani" adında yeni bir yan dal oluşturma (Henüz o dala geçiş yapmaz)
+git branch giriş-ekrani
 
-# Scenario 3: Deleting a finished side branch safely (warns you if there are unmerged codes)
-git branch -d login-screen
+# 3. Senaryo: İşlevi biten bir yan dalı güvenli bir şekilde silme (Birleştirilmemiş kod varsa uyarır)
+git branch -d giriş-ekrani
 
-# Scenario 4: Force-deleting a branch even if it contains unmerged codes
-git branch -D branch-to-delete
+# 4. Senaryo: Bir dalı, içinde birleşmemiş kodlar olsa dahi zorla tamamen silme
+git branch -D silinecek-dal
 ```
 
 #### git switch
-*   **Description**: Moves the HEAD pointer to switch between existing branches or creates a new branch and switches to it in a single command.
+*   **Açıklama**: HEAD işaretçisini hareket ettirerek mevcut dallar arasında geçiş yapmanızı veya tek komutla yeni dal açıp oraya bağlanmanızı sağlar.
 ```bash
-# Scenario 1: Switching to another existing branch
-git switch login-screen
+# 1. Senaryo: Mevcut olan başka bir dala geçiş yapma
+git switch giriş-ekrani
 
-# Scenario 2: Creating a new branch and switching to it immediately (-c for create)
-git switch -c payment-system
+# 2. Senaryo: Tek komutla hem yeni bir dal oluşturma hem de o dala direkt geçiş yapma (-c / create)
+git switch -c ödeme-sistemi
 
-# Scenario 3: Quickly switching back to the previous branch you were working on
+# 3. Senaryo: Bir önceki üzerinde çalıştığınız dala hızlıca geri dönme
 git switch -
 ```
 
 ---
 
-## Part 4: Code Comparison (git diff)
+## Bölüm 4: Kod Karşılaştırma (git diff)
 
-The `git diff` command allows you to view detailed line-by-line code changes (added lines in green, deleted lines in red) between two different stages or two different branches in your project.
+`git diff` komutu, projenizdeki iki farklı aşama veya iki farklı dal arasındaki kod satırı değişikliklerini (eklenenleri yeşil, silinenleri kırmızı olarak) detaylıca görmenizi sağlar.
 
 ### git diff
-*   **Description**: Lists line-by-line differences between your Working Directory, Staging Area, or existing branches.
+*   **Açıklama**: Çalışma alanınız (Working Directory), hazırlık alanınız (Staging Area) veya mevcut dallarınız arasındaki farkları satır satır listeler.
 ```bash
-# Scenario 1: Viewing changes made in the working directory that are not yet added with "git add"
+# 1. Senaryo: Çalışma alanında yaptığınız ama henüz "git add" ile sahneye almadığınız farkları görme
 git diff
 
-# Scenario 2: Viewing differences between the staged codes and the last commit
+# 2. Senaryo: Sahneye aldığınız (Staging Area) kodlar ile son yapılan commit arasındaki farkları görme
 git diff --staged
 
-# Scenario 3: Comparing all code differences between two different branches
-git diff main..payment-system
+# 3. Senaryo: İki farklı dal arasındaki tüm kod farklarını karşılaştırma
+git diff main..ödeme-sistemi
 
-# Scenario 4: Viewing the difference of a specific file between two branches
-git diff main..payment-system index.html
+# 4. Senaryo: Sadece belirli bir dosyanın iki dal arasındaki farkını görme
+git diff main..ödeme-sistemi index.html
 ```
 
 ---
 
-## Part 5: Basic Merge (git merge)
+## Bölüm 5: En Temel Birleştirme (git merge)
 
-When code written in a side branch is finished and tested, you need to add these changes to the main project (the `main` or `master` branch). This process is called merging.
+Yan dalda yazdığınız kodlar tamamlandığında ve test edildiğinde, bu kodları ana projeye (`main` veya `master` dalına) katmanız gerekir. Bu işleme birleştirme (merge) denir.
 
 ### git merge
-*   **Description**: Pulls the commit history and code changes from a specified branch into the active branch you are currently on.
+*   **Açıklama**: Belirtilen daldaki commit geçmişini ve kod değişikliklerini, o an üzerinde bulunduğunuz aktif dalın içerisine çeker.
 ```bash
-# Clean (Conflict-Free) Basic Merge Scenario:
+# Sorunsuz (Çakışmasız) Temel Birleştirme Senaryosu:
 
-# Step 1: Switch to the target main branch where codes will be merged
+# Adım 1: Kodların birleştirileceği hedef ana dala geçiş yapılır
 git switch main
 
-# Step 2: Call the updated codes from the side branch into the main branch
-git merge payment-system
+# Adım 2: Yan daldaki güncel kodlar main dalının içine çağrılır
+git merge ödeme-sistemi
 ```
 
-### How Does the Mechanism Work?
-In this basic scenario, if no new commits were made on the `main` branch after the `payment-system` branch was created, Git performs a linear merge. In this clean process, files merge automatically without conflicts, and the terminal completes the process without waiting for user action.
+### Mekanizma Nasıl İşler?
+Bu temel senaryoda, eğer `ödeme-sistemi` dalı açıldıktan sonra `main` dalı üzerinde başka hiçbir yeni commit atılmadıysa, Git birleştirmeyi doğrusal olarak yapar. Bu sorunsuz süreçte dosyalar çakışmadan otomatik olarak birleşir ve terminal sizden bir işlem beklemeden süreci tamamlar.
