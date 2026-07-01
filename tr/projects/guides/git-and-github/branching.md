@@ -1,4 +1,4 @@
-Zaman Tüneli, Branching (Dallanma) Mimarisi ve Temel Merge
+Zaman Tüneli, Branching (Dallanma) Mimarisi ve Temel Merge 
 
 Bu doküman, projenizin geçmişini incelemeyi, ana gövdeden bağımsız güvenli çalışma alanları (dallar) açmayı, modern navigasyon araçlarını kullanmayı ve sorunsuz çakışmasız bir birleştirme sürecini eksiksiz kapsar.
 
