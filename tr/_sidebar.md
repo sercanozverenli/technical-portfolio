@@ -68,7 +68,7 @@
       <details>
         <summary><i class="status-idea"></i>Git ve GitHub</summary>
         <ul>
-          <li><a href="#/tr/guides/git-and-github/rebase"><i class="status-done"></i>Rebase</a></li>
+          <li><a href="#/tr/projects/guides/git-and-github/rebase"><i class="status-done"></i>Rebase</a></li>
         </ul>
       </details>
     </li>
