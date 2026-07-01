@@ -1,6 +1,7 @@
-# Amplify Core (Data Reliability & Decision Routing System — Veri Güvenilirliği ve Karar Yönlendirme Sistemi)
+# Amplify Core:
+# Veri Güvenilirliği ve Karar Yönlendirme Sistemi 
+(Data Reliability & Decision Routing Systemi)
 
-## Literatür ve Gap Analizi: Mevcut Yaklaşımların Sınırlılıkları
 
 Veri güvenilirliği ve makine öğrenmesi (ML) model sağlığı konuları, günümüzde literatürde ve endüstride çoğunlukla birbirinden bağımsız disiplinler altında ele alınmaktadır. Ehrlinger ve Zhou gibi araştırmacıların veri kalitesi (Data Quality) üzerine yaptıkları çalışmalar da göstermektedir ki; verinin teknik doğruluğunu değerlendirmek ile o verinin karar mekanizması üzerindeki etkisini öngörmek farklı problemler olarak ele alınmaktadır. Başka bir ifadeyle, veri kalitesinin yüksek olması her zaman güvenilir bir karar üretileceği anlamına gelmemektedir.
 
