@@ -55,9 +55,16 @@
   </details>
 
   <details>
-    <summary>Experiments</summary>
+    <summary>Analytics Modules</summary>
     <ul>
-      <li><a href="#/en/projects/experiments/exploratory-data-analysis"><i class="status-idea"></i>Exploratory Data Analysis</a></li>
+      <li>
+        <details>
+          <summary><i class="status-idea"></i>Exploratory Data Analysis</summary>
+          <ul>
+            <li><a href="#/en/projects/analytics-modules/yahoo-finance-eda"><i class="status-idea"></i>Financial Time Series</a></li>
+          </ul>
+        </details>
+      </li>
     </ul>
   </details>
 
