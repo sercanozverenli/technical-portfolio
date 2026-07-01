@@ -2,7 +2,7 @@
 # Veri Güvenilirliği ve Karar Yönlendirme Sistemi 
 (Data Reliability & Decision Routing Systemi)
 
-
+## Literatür ve Gap Analizi: Mevcut Yaklaşımların Sınırlılıkları
 Veri güvenilirliği ve makine öğrenmesi (ML) model sağlığı konuları, günümüzde literatürde ve endüstride çoğunlukla birbirinden bağımsız disiplinler altında ele alınmaktadır. Ehrlinger ve Zhou gibi araştırmacıların veri kalitesi (Data Quality) üzerine yaptıkları çalışmalar da göstermektedir ki; verinin teknik doğruluğunu değerlendirmek ile o verinin karar mekanizması üzerindeki etkisini öngörmek farklı problemler olarak ele alınmaktadır. Başka bir ifadeyle, veri kalitesinin yüksek olması her zaman güvenilir bir karar üretileceği anlamına gelmemektedir.
 
 Üretim ortamlarında (production) karar sistemlerini güvence altına almak amacıyla geliştirilen mevcut çözümler genel olarak üç ana yaklaşım altında toplanabilir. Ancak bu yaklaşımların her biri, aşağıda açıklanan yapısal sınırlılıklar (Gap) nedeniyle Amplify Core'un hedeflediği karar yönlendirme yaklaşımını tam olarak karşılayamamaktadır.
