@@ -3,21 +3,6 @@
  <a href="#/tr/" class="home-link">Ana Sayfa</a>
  
  <details>
-  <summary>Deneysel Çalışmalar</summary>
-  <ul>
-    <li><a href="#/tr/projects/experiments/exploratory-data-analysis"><i class="status-idea"></i>Keşifsel Veri Analizi</a></li>
-  </ul>
- </details>
-
- <details>
-  <summary>Uygulamalar</summary>
-  <ul>
-    <li><a href="#/tr/projects/apps/gamified-multiplication-tool"><i class="status-done"></i>Oyunlaştırılmış Çarpım Tablosu</a></li>
-    <li><a href="#/tr/projects/apps/interactive-quiz-app"><i class="status-done"></i>İnteraktif Test Uygulaması</a></li>
-  </ul>
- </details>
-
- <details>
   <summary>Sistemler</summary>
   <ul>
     <li>
@@ -55,6 +40,35 @@
               </ul>
             </details>
           </li>          
+        </ul>
+      </details>
+    </li>
+  </ul>
+ </details>
+
+ <details>
+  <summary>Uygulamalar</summary>
+  <ul>
+    <li><a href="#/tr/projects/apps/gamified-multiplication-tool"><i class="status-done"></i>Oyunlaştırılmış Çarpım Tablosu</a></li>
+    <li><a href="#/tr/projects/apps/interactive-quiz-app"><i class="status-done"></i>İnteraktif Test Uygulaması</a></li>
+  </ul>
+ </details>
+
+ <details>
+  <summary>Deneysel Çalışmalar</summary>
+  <ul>
+    <li><a href="#/tr/projects/experiments/exploratory-data-analysis"><i class="status-idea"></i>Keşifsel Veri Analizi</a></li>
+  </ul>
+ </details>
+
+ <details>
+  <summary>Rehberler</summary>
+  <ul>
+    <li>
+      <details>
+        <summary><i class="status-idea"></i>Git ve GitHub</summary>
+        <ul>
+          <li><a href="#/tr/guides/git-and-github/rebase"><i class="status-idea"></i>Rebase</a></li>
         </ul>
       </details>
     </li>
