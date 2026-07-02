@@ -116,6 +116,7 @@ body.dark #search-modal-container { background: #1e293b; border: 1px solid #3341
 
 @keyframes modalSlide { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
+/* Modal içindeki sonuç paneli ayarları */
 #search-modal-container .results-panel {
     position: static !important;
     display: block !important;
@@ -124,7 +125,8 @@ body.dark #search-modal-container { background: #1e293b; border: 1px solid #3341
     border: none !important;
     box-shadow: none !important;
     background: transparent !important;
-    overflow-y: auto;
+    overflow-y: auto !important;
+    visibility: visible !important;
 }
 
 #modal-search-input {
@@ -211,8 +213,13 @@ body.dark .sidebar-nav::-webkit-scrollbar-thumb { background: #334155; }
 .markdown-section a:hover { background-color: rgba(220, 220, 220, 0.3) !important; color: #2563eb !important; }
 body.dark .markdown-section a:hover { background-color: rgba(255, 255, 255, 0.1) !important; color: #60a5fa !important; }    
 
-/* Docsify'ın orijinal arama kutusunu gizle */
-.search .input-wrap { display: none !important; }
+/* Docsify'ın orijinal arama kutusunu "canlı ama görünmez" yap */
+.search .input-wrap { 
+    position: absolute !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    z-index: -1 !important;
+}
 
 </style>
 <script src="https://unpkg.com/lucide@latest"></script>    
@@ -351,7 +358,6 @@ function syncSidebar() {
         }
     });
 
-    // Docsify'ın sonuç panelini yakala ve modal içine taşı
     const observer = new MutationObserver(() => {
         const results = document.querySelector('.results-panel');
         if (results && results.parentElement !== placeholder) {
@@ -367,14 +373,18 @@ function fixTogglePosition() {
     if (!toggle) return;
     toggle.style.setProperty('top', '65px', 'important');
     toggle.style.setProperty('left', '15px', 'important');
-    
-    // MOBİLDE ANA METNE TIKLAYINCA SIDEBAR AÇILMASINI ENGELLER
-    document.body.onclick = function(e) {
-        if (window.innerWidth <= 768 && !e.target.closest('.sidebar-toggle') && !e.target.closest('.sidebar')) {
-            e.stopPropagation();
-        }
-    };
 }
+
+// MOBİLDE ANA METNE TIKLAYINCA SIDEBAR AÇILMASINI ENGELLER (KESİN ÇÖZÜM)
+window.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+        // Eğer tıklanan yer sidebar-toggle değilse ve sidebar'ın kendisi değilse
+        if (!e.target.closest('.sidebar-toggle') && !e.target.closest('.sidebar')) {
+            // Docsify'ın bu tıklamayı görmesini engelle
+            e.stopImmediatePropagation();
+        }
+    }
+}, true); // 'true' parametresi olayı en tepede yakalar
 
 // 6. DOCSIFY CONFIG
 window.$docsify = {
