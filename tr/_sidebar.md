@@ -9,7 +9,6 @@
 <div class="sidebar-nav">
  <a href="#/tr/" class="home-link"><i data-lucide="home"></i> Ana Sayfa</a>
  
- <!-- Buradan sonrası eski menülerin (Sistemler, Uygulamalar vb.) aynen devam edecek -->
  
  <details>
   <summary>Sistemler</summary>
