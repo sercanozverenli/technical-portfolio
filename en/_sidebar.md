@@ -1,7 +1,15 @@
+<div class="sidebar-header">
+  <div class="logo-box"><i data-lucide="hexagon"></i></div>
+  <div class="header-text">
+    <span class="brand-name">R&D Center</span>
+    <span class="brand-sub">Tech Portfolio</span>
+  </div>
+</div>
+
 <div class="sidebar-nav">
+ <a href="#/en/" class="home-link"><i data-lucide="home"></i> Home</a>
+ 
   
-   <a href="#/en/" class="home-link">Home</a>
-   
   <details>
     <summary>Systems</summary>
     <ul>
