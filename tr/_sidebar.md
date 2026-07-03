@@ -1,6 +1,15 @@
+<div class="sidebar-header">
+  <div class="logo-box"><i data-lucide="hexagon"></i></div>
+  <div class="header-text">
+    <span class="brand-name">Ar-Ge Merkezi</span>
+    <span class="brand-sub">Teknik Portföy</span>
+  </div>
+</div>
+
 <div class="sidebar-nav">
+ <a href="#/tr/" class="home-link"><i data-lucide="home"></i> Ana Sayfa</a>
  
- <a href="#/tr/" class="home-link">Ana Sayfa</a>
+ <!-- Buradan sonrası eski menülerin (Sistemler, Uygulamalar vb.) aynen devam edecek -->
  
  <details>
   <summary>Sistemler</summary>
