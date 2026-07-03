@@ -62,33 +62,29 @@ body.dark .sidebar { background: #0f172a !important; border-right-color: #334155
     body.close .sidebar { left: -300px !important; }
 }
 
-/* ── YENİ: SIDEBAR HEADER (KİMLİK ALANI) ── */
+
+/* ── YENİ: SIDEBAR HEADER (GÖRSEL LOGO) ── */
 .sidebar-header {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 14px 16px 14px 64px; /* Hamburger butonu için solda 64px boşluk! */
+    padding: 12px 16px 12px 64px; /* Hamburger butonu için solda 64px boşluk */
     border-bottom: 1px solid #e2e8f0;
-    min-height: 60px;
+    height: 60px; /* Hamburger butonu (36px) + üst/alt boşluk (12px) = 60px tam denge */
     box-sizing: border-box;
 }
 body.dark .sidebar-header { border-bottom-color: #334155; }
 
-.logo-box {
-    width: 32px; height: 32px;
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
-    color: white; border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3); flex-shrink: 0;
+.header-logo-img {
+    max-height: 36px; /* Hamburger butonuyla birebir aynı yükseklik (Kusursuz hizalama) */
+    width: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
 }
-.logo-box i { width: 18px; height: 18px; }
 
-.header-text { display: flex; flex-direction: column; justify-content: center; }
-.brand-name { font-size: 14px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; line-height: 1.2; }
-.brand-sub { font-size: 9px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
-
-body.dark .brand-name { color: #f8fafc; }
-body.dark .brand-sub { color: #94a3b8; }
+/* Karanlık modda siyah yazıları beyaza çevirip, mavi dalgayı koruyan sihirli filtre */
+body.dark .header-logo-img {
+    filter: invert(1) hue-rotate(180deg) brightness(1.5);
+}    
 
 /* ── İÇERİK ──────────────────────────────────────── */
 body.dark main { background-color: #0f172a !important; color: #e2e8f0 !important; }
@@ -342,29 +338,22 @@ function injectStatusIcons() {
     });
 }
 
-// YENİ: OTOMATİK HEADER ENJEKSİYONU
+// YENİ: OTOMATİK HEADER ENJEKSİYONU (Görsel Logo İle)
 function injectSidebarHeader() {
     const sidebar = document.querySelector('.sidebar');
+    const isEn = window.location.hash.startsWith('#/en/');
+    const logoSrc = isEn ? 'docs/icons/header-en.png' : 'docs/icons/header-tr.png';
+
     if (sidebar && !document.querySelector('.sidebar-header')) {
-        const isEn = window.location.hash.startsWith('#/en/');
-        const title = isEn ? 'R&D Center' : 'Ar-Ge Merkezi';
-        const subtitle = isEn ? 'Tech Portfolio' : 'Teknik Portföy';
-        
         const headerHTML = `
             <div class="sidebar-header">
-                <div class="logo-box"><i data-lucide="hexagon"></i></div>
-                <div class="header-text">
-                    <span class="brand-name">${title}</span>
-                    <span class="brand-sub">${subtitle}</span>
-                </div>
+                <img src="${logoSrc}" class="header-logo-img" alt="R&D Center Logo">
             </div>
         `;
         sidebar.insertAdjacentHTML('afterbegin', headerHTML);
-        if (window.lucide) lucide.createIcons();
     } else if (document.querySelector('.sidebar-header')) {
-         const isEn = window.location.hash.startsWith('#/en/');
-         document.querySelector('.brand-name').textContent = isEn ? 'R&D Center' : 'Ar-Ge Merkezi';
-         document.querySelector('.brand-sub').textContent = isEn ? 'Tech Portfolio' : 'Teknik Portföy';
+         const logoImg = document.querySelector('.header-logo-img');
+         if (logoImg) logoImg.src = logoSrc;
     }
 }
 
