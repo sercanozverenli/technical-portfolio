@@ -63,28 +63,30 @@ body.dark .sidebar { background: #0f172a !important; border-right-color: #334155
 }
 
 
-/* ── YENİ: SIDEBAR HEADER (GÖRSEL LOGO) ── */
+/* ── YENİ: SIDEBAR HEADER (GÖRSEL LOGO VE KUSURSUZ HİZALAMA) ── */
 .sidebar-header {
     display: flex;
     align-items: center;
-    padding: 12px 16px 12px 64px; /* Hamburger butonu için solda 64px boşluk */
+    padding: 0 16px 0 60px; /* Hamburger butonu (48px alan kaplar) için solda 60px boşluk */
     border-bottom: 1px solid #e2e8f0;
-    height: 60px; /* Hamburger butonu (36px) + üst/alt boşluk (12px) = 60px tam denge */
+    height: 60px; /* KESİN YÜKSEKLİK: Hamburger butonu ile matematiksel ortalama için */
     box-sizing: border-box;
 }
 body.dark .sidebar-header { border-bottom-color: #334155; }
 
 .header-logo-img {
-    max-height: 36px; /* Hamburger butonuyla birebir aynı yükseklik (Kusursuz hizalama) */
-    width: auto;
+    width: 100%;
+    max-width: 160px; /* Topbardaki 3 ikonun genişliği kadar */
+    height: auto;
+    max-height: 40px; /* 60px'lik header içinde rahatça nefes alır */
     object-fit: contain;
     transition: all 0.3s ease;
 }
 
 /* Karanlık modda siyah yazıları beyaza çevirip, mavi dalgayı koruyan sihirli filtre */
 body.dark .header-logo-img {
-    filter: invert(1) hue-rotate(180deg) brightness(1.5);
-}    
+    filter: invert(1) hue-rotate(180deg) brightness(1.8) contrast(1.2);
+}
 
 /* ── İÇERİK ──────────────────────────────────────── */
 body.dark main { background-color: #0f172a !important; color: #e2e8f0 !important; }
