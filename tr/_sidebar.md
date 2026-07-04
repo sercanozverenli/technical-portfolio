@@ -23,6 +23,11 @@
             <details>
               <summary><i class="status-wip"></i>Mimari</summary>
               <ul> 
+                <li><a href="#/tr/projects/systems/amplify-core/architecture/general-architecture.md"><i class="status-done"></i>Genel Mimari</a></li>
+                <li><a href="#/tr/projects/systems/amplify-core/architecture/drs-layer.md"><i class="status-done"></i>DRS Katmanı</a></li>
+                <li><a href="#/tr/projects/systems/amplify-core/architecture/routing-engine.md"><i class="status-done"></i>Yönlendirme Motoru</a></li>
+                <li><a href="#/tr/projects/systems/amplify-core/architecture/stabilization-layer.md"><i class="status-done"></i>Stabilizasyon Katmanı</a></li>
+                <li><a href="#/tr/projects/systems/amplify-core/architecture/abstention-mechanism.md"><i class="status-done"></i>Çekimserlik Mekanizması</a></li>
               </ul>
             </details>
           </li>          
