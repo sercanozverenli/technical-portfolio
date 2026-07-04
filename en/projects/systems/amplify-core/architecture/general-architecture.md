@@ -30,7 +30,7 @@ The critical point: the last row is not a failure — it's a design decision. Th
 
 ## For engineers: the technical role of each component
 
-1. **DRS Layer** — produces a single score through seven statistical indicators (missingness, signal-to-noise ratio, autocorrelation, outlier density, variance stability, Shannon entropy, drift), combined via weighted summation and a multiplicative veto mechanism. It is model-agnostic; it only looks at the statistical properties of the raw data. *(Full formulation: [DRS Layer](drs-layer.md))*
+1. **DRS Layer** — produces a single score through seven statistical indicators (missingness, signal-to-noise ratio, autocorrelation, outlier density, variance stability, Shannon entropy, drift), combined via weighted summation and a multiplicative veto mechanism. It is model-agnostic; it only looks at the statistical properties of the raw data. *(Full formulation: [DRS Layer](en/projects/systems/amplify-core/architecture/drs-layer.md))*
 2. **Routing Engine** — compares the DRS score against thresholds and makes a deterministic (no training required) routing decision. Implemented via the Strategy pattern.
 3. **Stabilization Layer** — active only in the Noisy regime. Uses data-type-specific techniques (rolling median + CUSUM, interpolation + winsorizing, EWMA + bootstrap, edit-distance denoising). After stabilization, the DRS score is capped at 0.75 (imputation penalty) — meaning stabilized data can never re-enter the Clean regime.
 4. **Fallback Model** — a low-complexity, wide-confidence-interval, conservative predictor that runs in the Corrupted regime.
@@ -40,4 +40,4 @@ The critical point: the last row is not a failure — it's a design decision. Th
 
 The diagram on this page shows the system's **macro flow** — "where does the data go." To see the DRS Layer's **internal mathematics** (Z-score normalization, weighting, multiplicative veto, final score calculation), go to the next page:
 
-→ [DRS Layer — Data Reliability Scoring](drs-layer.md)
+→ [DRS Layer — Data Reliability Scoring](en/projects/systems/amplify-core/architecture/drs-layer.md)
