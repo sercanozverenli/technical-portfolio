@@ -1,5 +1,5 @@
 # Genel Sistem Mimarisi
-
+![Veri Yönlendirme Mimarisi](../../../../../docs/diagrams/amplify-core/sekil-1.png) 
 ## Bu sistem ne yapıyor?
 
 Amplify Core, bir tahmin modeli değil — tahmin modelinin **önünde duran bir güvenlik katmanı**dır. Amacı şu soruyu, herhangi bir makine öğrenmesi modeli devreye girmeden önce sormaktır:
@@ -29,7 +29,7 @@ Kritik nokta: son satır bir hata değil, tasarım kararı. Sistem "bilmiyorum" 
 
 ## Mühendisler için: bileşenlerin teknik rolü
 
-1. **DRS Katmanı** — yedi istatistiksel gösterge (eksiklik oranı, sinyal-gürültü oranı, otokorelasyon, aykırı değer yoğunluğu, varyans istikrarı, Shannon entropisi, drift) üzerinden ağırlıklı ve çarpımsal-veto mekanizmalı tek bir skor üretir. Modelden bağımsızdır; sadece ham verinin istatistiksel özelliklerine bakar. *(Detaylı formülasyon: [DRS Katmanı](drs-katmani.md))*
+1. **DRS Katmanı** — yedi istatistiksel gösterge (eksiklik oranı, sinyal-gürültü oranı, otokorelasyon, aykırı değer yoğunluğu, varyans istikrarı, Shannon entropisi, drift) üzerinden ağırlıklı ve çarpımsal-veto mekanizmalı tek bir skor üretir. Modelden bağımsızdır; sadece ham verinin istatistiksel özelliklerine bakar. *(Detaylı formülasyon: [DRS Katmanı](drs-layer.md))*
 2. **Yönlendirme Motoru** — DRS skorunu eşiklerle karşılaştırıp deterministik (eğitim gerektirmeyen) bir yönlendirme kararı verir. Strategy pattern ile implemente edilir.
 3. **Stabilizasyon Katmanı** — sadece Gürültülü rejimde aktif olur. Veri tipine özgü teknikler kullanır (rolling median + CUSUM, interpolation + winsorizing, EWMA + bootstrap, edit-distance denoising). Stabilizasyon sonrası DRS skoru en fazla 0.75'e çıkabilir (imputation penalty) — yani stabilize edilmiş veri hiçbir zaman "Temiz" rejimine giremez.
 4. **Yedek Model (Fallback)** — Bozuk rejimde çalışan, düşük karmaşıklıklı, geniş güven aralıklı, temkinli bir tahminci.
@@ -39,8 +39,4 @@ Kritik nokta: son satır bir hata değil, tasarım kararı. Sistem "bilmiyorum" 
 
 Bu sayfadaki diyagram sistemin **makro akışını** gösteriyor — "veri nereden nereye gidiyor". DRS Katmanı'nın **iç matematiğini** (Z-skoru normalizasyonu, ağırlıklandırma, çarpımsal veto, nihai skor hesaplama) görmek için bir sonraki sayfaya geçin:
 
-→ [DRS Katmanı — Veri Güvenilirliği Skorlama](drs-katmani.md)
-
----
-
-*Durum: Mimari tasarım tamamlandı. Kodlama THL 2'de (DRS Katmanı, Adım 9) başlayacak.*
+→ [DRS Katmanı — Veri Güvenilirliği Skorlama](drs-layer.md)
