@@ -3,7 +3,7 @@
  
  
  <details>
-  <summary>Sistemler</summary>
+  <summary><i data-lucide="layers" class="cat-icon"></i> Sistemler</summary>
   <ul>
     <li>
       <details>
@@ -52,7 +52,7 @@
  </details>
 
  <details>
-  <summary>Uygulamalar</summary>
+  <summary><i data-lucide="layout-grid" class="cat-icon"></i> Uygulamalar</summary>
   <ul>
     <li><a href="#/tr/projects/apps/gamified-multiplication-tool"><i class="status-done"></i>Oyunlaştırılmış Çarpım Tablosu</a></li>
     <li><a href="#/tr/projects/apps/interactive-quiz-app"><i class="status-done"></i>İnteraktif Test Uygulaması</a></li>
@@ -60,7 +60,7 @@
  </details>
 
  <details>
-  <summary>Analitik Modüller</summary>
+  <summary><i data-lucide="line-chart" class="cat-icon"></i> Analitik Modüller</summary>
    <ul>
     <li>
        <details>
@@ -74,7 +74,7 @@
  </details>
    
  <details>
-  <summary>Rehberler</summary>
+  <summary><i data-lucide="book-open" class="cat-icon"></i> Rehberler</summary>
   <ul>
     <li>
       <details>
@@ -93,5 +93,5 @@
   </ul>
  </details>
 
- <a class="sidebar-item" href="#/tr/about" style="display:flex;align-items:center;padding:6px 12px;font-size:13px;color:#475569;text-decoration:none;border-radius:6px;border-left:3px solid transparent;margin-top:8px;" onmouseover="this.style.background='#f0f4f8';this.style.borderLeftColor='#3b82f6';this.style.color='#1e293b'" onmouseout="this.style.background='';this.style.borderLeftColor='transparent';this.style.color='#475569'">Hakkımda</a>
+ <a href="#/tr/about" class="about-link"><i data-lucide="user" class="cat-icon"></i> Hakkımda</a>
 </div>
