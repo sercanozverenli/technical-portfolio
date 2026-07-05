@@ -483,6 +483,7 @@ backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+
 // 6. DOCSIFY CONFIG
 window.$docsify = {
     loadSidebar: true,
@@ -503,18 +504,33 @@ window.$docsify = {
                 injectSidebarHeader();
                 syncSidebar();
                 injectStatusIcons();
+                setupStrictSidebarToggle();
                 if (window.lucide) lucide.createIcons();
+
+                // YENİ: Sidebar Gözlemcisi (Sayfa/Dil değiştiğinde ikonların kaybolmasını KÖKTEN çözer)
+                const sidebarEl = document.querySelector('.sidebar');
+                if (sidebarEl) {
+                    const sidebarObserver = new MutationObserver(() => {
+                        sidebarObserver.disconnect(); // Sonsuz döngüyü önlemek için geçici durdur
+                        injectSidebarHeader();
+                        injectStatusIcons();
+                        if (window.lucide) lucide.createIcons();
+                        sidebarObserver.observe(sidebarEl, { childList: true, subtree: true }); // Tekrar izle
+                    });
+                    sidebarObserver.observe(sidebarEl, { childList: true, subtree: true });
+                }
             });
             hook.doneEach(() => {
                 injectSidebarHeader();
                 syncSidebar();
                 injectStatusIcons();
                 setupStrictSidebarToggle();
-                if (window.lucide) lucide.createIcons(); /* <--- EKLENEN SİHİRLİ SATIR */
+                if (window.lucide) lucide.createIcons();
             });
         }
     ]
 }
+    
 </script>
 
 <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
