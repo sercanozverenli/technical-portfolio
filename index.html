@@ -509,6 +509,8 @@ window.$docsify = {
                 injectSidebarHeader();
                 syncSidebar();
                 injectStatusIcons();
+                setupStrictSidebarToggle();
+                if (window.lucide) lucide.createIcons(); /* <--- EKLENEN SİHİRLİ SATIR */
             });
         }
     ]
