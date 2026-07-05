@@ -181,14 +181,44 @@ body.dark .sidebar-nav a.active:not(.home-link) { color: #f1f5f9 !important; bor
 .status-icon-img { width: 20px; height: 20px; flex-shrink: 0; object-fit: contain; margin-top: 2px; }
 body.dark .status-icon-img { filter: invert(0.8) brightness(1.5); }
 
-/* ── TOTAL MINIMALIST (GİRİNTİLER) ── */
-.sidebar-nav summary::before, .sidebar-nav details summary::before, .sidebar-nav details details summary::before, .sidebar-nav details details details summary::before, .sidebar-nav li::marker, .sidebar-nav ul li::before, .sidebar-nav summary::marker, .sidebar-nav details summary::-webkit-details-marker { display: none !important; content: none !important; list-style: none !important; }
-.sidebar-nav ul, .sidebar-nav li { margin: 0 !important; padding: 0 !important; list-style: none !important; }
-.sidebar-nav > details > summary { padding: 5px 2px !important; }
-.sidebar-nav > details > ul > li > a, .sidebar-nav > details > ul > li > details > summary { padding: 5px 2px 5px 8px !important; }
-.sidebar-nav > details > ul > li > details > ul > li > a, .sidebar-nav > details > ul > li > details > ul > li > details > summary { cursor: pointer !important; padding: 5px 2px 5px 18px !important; border-radius: 6px !important; border-left: 3px solid transparent !important; }
-.sidebar-nav > details > ul > li > details > ul > li > details > ul > li > a { padding: 5px 2px 5px 30px !important; border-radius: 6px !important; border-left: 3px solid transparent !important; }
 
+/* ── YENİ NESİL HİYERARŞİ VE KILAVUZ ÇİZGİLERİ ── */
+.sidebar-nav summary::before, .sidebar-nav details summary::-webkit-details-marker, .sidebar-nav li::marker { display: none !important; content: none !important; }
+.sidebar-nav ul { margin: 0 !important; padding: 0 0 0 14px !important; list-style: none !important; }
+.sidebar-nav li { margin: 2px 0 !important; padding: 0 !important; position: relative; }
+
+/* Kılavuz Çizgileri (Guide Lines) - Sadece 2. seviye ve sonrasında görünür */
+.sidebar-nav > details > ul { border-left: 1px solid #e2e8f0; margin-left: 8px !important; padding-left: 12px !important; }
+body.dark .sidebar-nav > details > ul { border-left-color: #334155; }
+
+/* Ana Kategori İkonları (Layers, Line-Chart vb.) */
+.cat-icon { width: 18px; height: 18px; margin-right: 8px; color: #64748b; transition: all 0.3s ease; vertical-align: middle; display: inline-block; flex-shrink: 0; }
+body.dark .cat-icon { color: #94a3b8; }
+
+/* Ana Kategoriler (Sistemler vb.) */
+.sidebar-nav > details > summary { 
+    padding: 8px 12px !important; 
+    margin-bottom: 4px;
+    border-radius: 8px !important;
+}
+
+/* Alt Klasörler ve Dosyalar */
+.sidebar-nav details details summary, .sidebar-nav a:not(.home-link):not(.about-link) { 
+    padding: 6px 12px !important; 
+    border-radius: 6px !important;
+    border-left: 2px solid transparent !important;
+}
+
+/* Hakkımda Linki (Özel Stil) */
+.about-link { 
+    display: flex !important; align-items: center !important;
+    margin-top: 24px !important; border-top: 1px solid #e2e8f0; padding-top: 16px !important; border-radius: 0 !important; 
+}
+body.dark .about-link { border-top-color: #334155; }
+
+/* Hover Efektleri (İkonlar da canlanır) */
+.sidebar-nav summary:hover .cat-icon, .sidebar-nav a:hover .cat-icon { color: #3b82f6; transform: scale(1.1); }
+    
 /* ── BİZİM ÖZGÜR HAMBURGER BUTONUMUZ (ÇARPI ANİMASYONLU) ── */
 .sidebar-toggle { display: none !important; } /* Docsify'ın butonunu tamamen yok et */
 
