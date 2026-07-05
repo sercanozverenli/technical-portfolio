@@ -88,5 +88,5 @@
     </ul>
   </details>
 
-  <a href="#/tr/about" class="about-link"><i data-lucide="user" class="cat-icon"></i>About Me</a>
+  <a href="#/en/about" class="about-link"><i data-lucide="user" class="cat-icon"></i>About Me</a>
 </div>
