@@ -3,7 +3,7 @@
  
   
   <details>
-    <summary>Systems</summary>
+    <summary><i data-lucide="layers" class="cat-icon"></i>Systems</summary>
     <ul>
       <li>
         <details>
@@ -47,7 +47,7 @@
   </details>
 
   <details>
-    <summary>Apps</summary>
+    <summary><i data-lucide="layout-grid" class="cat-icon"></i>Apps</summary>
     <ul>
       <li><a href="#/en/projects/apps/gamified-multiplication-tool"><i class="status-done"></i>Gamified Multiplication Tool</a></li>
       <li><a href="#/en/projects/apps/interactive-quiz-app"><i class="status-done"></i>Interactive Quiz App</a></li>
@@ -55,7 +55,7 @@
   </details>
 
   <details>
-    <summary>Analytics Modules</summary>
+    <summary><i data-lucide="line-chart" class="cat-icon"></i>Analytics Modules</summary>
     <ul>
       <li>
         <details>
@@ -69,7 +69,7 @@
   </details>
 
   <details>
-    <summary>Guides</summary>
+    <summary><i data-lucide="book-open" class="cat-icon"></i>Guides</summary>
     <ul>
       <li>
         <details>
@@ -88,5 +88,5 @@
     </ul>
   </details>
 
-  <a class="sidebar-item" href="#/en/about" style="display:flex;align-items:center;padding:6px 12px;font-size:13px;color:#475569;text-decoration:none;border-radius:6px;border-left:3px solid transparent;margin-top:8px;" onmouseover="this.style.background='#f0f4f8';this.style.borderLeftColor='#3b82f6';this.style.color='#1e293b'" onmouseout="this.style.background='';this.style.borderLeftColor='transparent';this.style.color='#475569'">About Me</a>
+  <a href="#/tr/about" class="about-link"><i data-lucide="user" class="cat-icon"></i>About Me</a>
 </div>
