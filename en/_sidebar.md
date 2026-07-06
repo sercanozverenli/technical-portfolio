@@ -22,8 +22,13 @@
             <li>
               <details>
                 <summary><i class="status-wip"></i>Architecture</summary>
-                <ul>
-                </ul>
+                <ul> 
+                <li><a href="#/en/projects/systems/amplify-core/architecture/general-architecture.md"><i class="status-done"></i>General Architecture</a></li>
+                <li><a href="#/en/projects/systems/amplify-core/architecture/drs-layer.md"><i class="status-done"></i>DRS Layer</a></li>
+                <li><a href="#/en/projects/systems/amplify-core/architecture/routing-engine.md"><i class="status-done"></i>Routing Engine</a></li>
+                <li><a href="#/en/projects/systems/amplify-core/architecture/stabilization-layer.md"><i class="status-done"></i>Stabilization Layer</a></li>
+                <li><a href="#/en/projects/systems/amplify-core/architecture/abstention-mechanism.md"><i class="status-done"></i>Abstention-Mechanism</a></li>
+              </ul>
               </details>
             </li>
             <li>
@@ -62,6 +67,8 @@
           <summary><i class="status-idea"></i>Exploratory Data Analysis</summary>
           <ul>
             <li><a href="#/en/projects/analytics-modules/yahoo-finance-eda"><i class="status-idea"></i>Financial Time Series</a></li>
+            <li><a href="#/en/projects/analytics-modules/yahoo-finance-eda"><i class="status-idea"></i>High-Dimensional Sensor Data</a></li>
+            <li><a href="#/en/projects/analytics-modules/yahoo-finance-eda"><i class="status-idea"></i>Relational E-Commerce Data</a></li>
           </ul>
         </details>
       </li>
