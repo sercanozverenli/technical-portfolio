@@ -153,7 +153,14 @@ body.dark #custom-sidebar-toggle:hover { background: #334155; }
 }
 
 #theme-toggle, #back-to-top, #search-trigger, .lang-switcher a { background: rgba(248, 250, 252, 0.8) !important; backdrop-filter: blur(8px); border: 1px solid #e2e8f0 !important; border-radius: 8px !important; width: 34px !important; height: 34px !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer; transition: all 0.2s !important; text-decoration: none !important; font-size: 13px !important; font-weight: 600 !important; color: #475569 !important; }
-#back-to-top { position: fixed; bottom: 24px; right: 24px; z-index: 300; display: none; }
+#back-to-top { 
+    position: fixed; bottom: 24px; right: 24px; z-index: 300; 
+    opacity: 0; pointer-events: none; /* Başlangıçta görünmez ve tıklanamaz */
+    transition: all 0.3s ease !important; /* Yumuşakça belirip kaybolması için */
+}
+#back-to-top.visible { 
+    opacity: 1; pointer-events: auto; /* Aşağı kaydırınca görünür ve tıklanır olur */
+}
 .sidebar-toggle:hover, #theme-toggle:hover, #back-to-top:hover, #search-trigger:hover, .lang-switcher a:hover { background: #f1f5f9 !important; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 body.dark #theme-toggle, body.dark #back-to-top, body.dark #search-trigger, body.dark .lang-switcher a { background: rgba(30, 41, 59, 0.8) !important; border-color: #334155 !important; color: #f1f5f9 !important; }
 
