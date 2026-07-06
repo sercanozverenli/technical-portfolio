@@ -44,7 +44,12 @@ body.dark .sidebar { background: #0f172a !important; border-right-color: #334155
 @media screen and (min-width: 769px) { body.close .sidebar { left: -300px !important; } }
 
 /* ── İÇERİK & TABLOLAR (GITHUB STYLE) ── */
-body.dark main { background-color: #0f172a !important; color: #e2e8f0 !important; }
+html.dark, body.dark, body.dark main, body.dark section.content, body.dark .markdown-section { 
+    background-color: #0f172a !important; 
+    color: #e2e8f0 !important; 
+    min-height: 100vh !important; 
+}
+    
 .markdown-section { padding-top: 80px !important; line-height: 1.7; font-size: 16px; }
 .markdown-section blockquote { border-left: 4px solid #3b82f6 !important; background: #f8fafc !important; padding: 16px !important; border-radius: 0 8px 8px 0 !important; color: #475569 !important; margin: 2em 0 !important; }
 body.dark .markdown-section table { background-color: #1e293b !important; color: #e2e8f0 !important; }
