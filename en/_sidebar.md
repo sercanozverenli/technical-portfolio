@@ -66,9 +66,9 @@
         <details>
           <summary><i class="status-idea"></i>Exploratory Data Analysis</summary>
           <ul>
-            <li><a href="#/en/projects/analytics-modules/yahoo-finance-eda"><i class="status-idea"></i>Financial Time Series</a></li>
-            <li><a href="#/en/projects/analytics-modules/yahoo-finance-eda"><i class="status-idea"></i>High-Dimensional Sensor Data</a></li>
-            <li><a href="#/en/projects/analytics-modules/yahoo-finance-eda"><i class="status-idea"></i>Relational E-Commerce Data</a></li>
+            <li><a href="#/en/projects/analytics-modules/exploratory-data-analysis/yahoo-finance-eda"><i class="status-idea"></i>Financial Time Series</a></li>
+            <li><a href="#/en/projects/analytics-modules/exploratory-data-analysis/yahoo-finance-eda"><i class="status-idea"></i>High-Dimensional Sensor Data</a></li>
+            <li><a href="#/en/projects/analytics-modules/exploratory-data-analysis/yahoo-finance-eda"><i class="status-idea"></i>Relational E-Commerce Data</a></li>
           </ul>
         </details>
       </li>
