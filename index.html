@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -17,7 +17,7 @@ body, .sidebar { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Rob
     position: fixed; top: 0; left: 0; right: 0; width: 100% !important; height: 60px;
     background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between;
-    padding: 0 24px; z-index: 600 !important; box-sizing: border-box;
+    padding: 0 24px 0 16px; z-index: 600 !important; box-sizing: border-box;
 }
 body.dark #topbar { background: rgba(30, 41, 59, 0.8) !important; border-bottom-color: #334155; }
 
@@ -25,8 +25,7 @@ body.dark #topbar { background: rgba(30, 41, 59, 0.8) !important; border-bottom-
 .topbar-right { display: flex; align-items: center; gap: 12px; }
 
 /* ── LOGO ALANI (TOPBAR İÇİNDE) ── */
-.sidebar-header a { display: flex; align-items: center; text-decoration: none !important; }
-    
+.header-logo-link { display: flex; align-items: center; text-decoration: none !important; }
 .header-logo-img {
     height: auto !important; max-height: 32px !important; width: auto !important; max-width: 180px !important;
     object-fit: contain; display: block; transition: all 0.3s ease;
@@ -98,7 +97,7 @@ body.dark #search-modal-container .search input { color: #f1f5f9 !important; }
 .sidebar-nav summary, .sidebar-nav a { color: #94a3b8 !important; text-decoration: none !important; transition: all 0.15s ease !important; display: flex !important; align-items: center !important; gap: 10px; }
 
 /* ── SIDEBAR TYPOGRAPHY (18-16-14px HİYERARŞİSİ) ── */
-.sidebar-nav .home-link { font-size: 18px !important; font-weight: 700 !important; display: flex !important; padding: 10px 14px !important; color: #1e293b !important; margin: 8px 0 24px 0 !important; background: #fff !important; border: 1px solid #e2e8f0 !important; border-radius: 8px !important; box-shadow: 0 2px 4px rgba(0,0,0,0.02) !important; }
+.sidebar-nav .home-link { font-size: 18px !important; font-weight: 700 !important; display: flex !important; padding: 10px 14px !important; color: #1e293b !important; margin: 0 0 24px 0 !important; background: #fff !important; border: 1px solid #e2e8f0 !important; border-radius: 8px !important; box-shadow: 0 2px 4px rgba(0,0,0,0.02) !important; }
 .sidebar-nav .home-link:hover { background: #f1f5f9 !important; border-color: #cbd5e1 !important; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important; }
 .sidebar-nav .home-link.active { border: 1px solid #3b82f6 !important; background: #eff6ff !important; }
 body.dark .sidebar-nav .home-link { background: #1e293b !important; border-color: #334155 !important; color: #f1f5f9 !important; }
@@ -134,10 +133,11 @@ body.dark .cat-icon { filter: invert(0.8) brightness(1.5); }
 
 /* ── MODERN BUTONLAR ── */
 .sidebar-toggle { display: none !important; }
-#custom-sidebar-toggle { background: transparent; border: none; border-radius: 8px; width: 36px; height: 36px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s ease; flex-shrink: 0; }
+#custom-sidebar-toggle { position: static !important; z-index: 9999; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; width: 36px; height: 36px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s ease; flex-shrink: 0; }
 #custom-sidebar-toggle span { background-color: #475569; width: 18px; height: 2px; margin-bottom: 4px; border-radius: 2px; transition: all 0.3s ease-in-out; transform-origin: center; }
 #custom-sidebar-toggle span:last-child { margin-bottom: 0; }
 #custom-sidebar-toggle:hover { background: #f1f5f9; }
+body.dark #custom-sidebar-toggle { background: #1e293b; border-color: #334155; }
 body.dark #custom-sidebar-toggle span { background-color: #94a3b8; }
 body.dark #custom-sidebar-toggle:hover { background: #334155; }
 
@@ -257,29 +257,26 @@ function injectCategoryIcons() {
 
 // YENİ: LOGOYU DOĞRUDAN TOPBAR'A ENJEKTE EDER ve logo-ana sayfa bağlantısı
 function injectSidebarHeader() {
-    const sidebar = document.querySelector('.sidebar');
+    const container = document.getElementById('brand-logo-container');
+    if (!container) return;
     const isEn = window.location.hash.startsWith('#/en/');
     const logoSrc = isEn ? 'docs/icons/header-en.png' : 'docs/icons/header-tr.png';
-    const homeUrl = isEn ? '#/en/' : '#/tr/'; // <--- DİLE GÖRE ANA SAYFA LİNKİ
+    const homeUrl = isEn ? '#/en/' : '#/tr/';
 
-    if (sidebar && !document.querySelector('.sidebar-header')) {
-        const headerHTML = `
-            <div class="sidebar-header">
-                <a href="${homeUrl}" class="header-logo-link">
-                    <img src="${logoSrc}" class="header-logo-img" alt="R&D Center Logo">
-                </a>
-            </div>
+    let logoLink = container.querySelector('.header-logo-link');
+    if (!logoLink) {
+        container.innerHTML = `
+            <a href="${homeUrl}" class="header-logo-link">
+                <img src="${logoSrc}" class="header-logo-img" alt="R&D Center Logo">
+            </a>
         `;
-        sidebar.insertAdjacentHTML('afterbegin', headerHTML);
-    } else if (document.querySelector('.sidebar-header')) {
-         const logoImg = document.querySelector('.header-logo-img');
-         const logoLink = document.querySelector('.header-logo-link');
-         if (logoImg) logoImg.src = logoSrc;
-         if (logoLink) logoLink.href = homeUrl; // <--- DİL DEĞİŞİNCE LİNK DE GÜNCELLENİR
+    } else {
+        const logoImg = container.querySelector('.header-logo-img');
+        if (logoImg) logoImg.src = logoSrc;
+        logoLink.href = homeUrl;
     }
 }
 
-// Akıllı Navigasyon  
 function syncSidebar() {
     const currentHash = decodeURIComponent(window.location.hash);
     if (!currentHash || currentHash === '#/') return;
@@ -372,7 +369,7 @@ backToTop.addEventListener('click', () => {
 
 // 6. DOCSIFY CONFIG
 window.$docsify = {
-    auto2top: true, // SİHİRLİ AYAR: Sayfa değiştiğinde ekranı otomatik en üste kaydırır
+    auto2top: true,
     loadSidebar: true,
     loadNavbar: false,
     subMaxLevel: 0,
