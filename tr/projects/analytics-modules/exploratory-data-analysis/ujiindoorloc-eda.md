@@ -1,0 +1,1 @@
+# Yüksek Boyutlu Sensör Verisi
