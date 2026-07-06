@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -12,44 +12,39 @@
 body, .sidebar { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif; }
 .app-nav { display: none !important; }
 
-/* ── TOPBAR (Sidebar'ın sağından başlar) ── */
+/* ── YENİ NESİL KALICI TOPBAR (BRAND BAR) ── */
 #topbar {
-    position: fixed; top: 0; left: 300px; width: calc(100% - 300px); height: 60px;
+    position: fixed; top: 0; left: 0; right: 0; width: 100% !important; height: 60px;
     background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; padding: 0 24px; gap: 16px;
-    z-index: 300; box-sizing: border-box; transition: left 0.25s ease-out, width 0.25s ease-out;
+    border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px; z-index: 600 !important; box-sizing: border-box;
 }
 body.dark #topbar { background: rgba(30, 41, 59, 0.8) !important; border-bottom-color: #334155; }
-.topbar-right { display: flex; align-items: center; gap: 12px; margin-left: auto; }
-body.close #topbar { left: 0; width: 100%; padding-left: 64px; }
 
-/* ── TAM BOY SIDEBAR (FULL-HEIGHT & TRANSFORM FIX) ── */
-.sidebar {
-    width: 300px !important; border-right: 1px solid #e2e8f0; top: 0 !important; height: 100vh !important;
-    padding: 0 !important; left: 0 !important; transform: none !important; transition: left 0.25s ease-out !important;
-    z-index: 500 !important; background: #f8fafc; overflow: hidden !important;
-}
-body.dark .sidebar { background: #0f172a !important; border-right-color: #334155 !important; }
-@media screen and (min-width: 769px) { body.close .sidebar { left: -300px !important; } }
+.topbar-left { display: flex; align-items: center; gap: 16px; }
+.topbar-right { display: flex; align-items: center; gap: 12px; }
 
-/* ── SIDEBAR HEADER (GÖRSEL LOGO ALANI) ── */
-.sidebar-header {
-    display: flex; align-items: center; padding: 0 16px 0 60px; border-bottom: 1px solid #e2e8f0;
-    height: 60px; box-sizing: border-box; overflow: hidden;
-}
-body.dark .sidebar-header { border-bottom-color: #334155; }
+/* ── LOGO ALANI (TOPBAR İÇİNDE) ── */
 .header-logo-img {
     height: auto !important; max-height: 32px !important; width: auto !important; max-width: 180px !important;
     object-fit: contain; display: block; transition: all 0.3s ease;
 }
 body.dark .header-logo-img { filter: invert(1) hue-rotate(180deg) brightness(1.8) contrast(1.2); }
 
-/* ── İÇERİK (Karanlık Mod Kaydırma Hatası Kesin Çözümü) ── */
-html.dark, body.dark, body.dark main, body.dark section.content, body.dark .markdown-section { 
-    background-color: #0f172a !important; 
-    color: #e2e8f0 !important; 
-    min-height: 100vh !important; 
+/* ── SIDEBAR (TOPBAR'IN ALTINDAN BAŞLAR) ── */
+.sidebar {
+    width: 300px !important; border-right: 1px solid #e2e8f0;
+    top: 60px !important; /* Topbar'ın (60px) hemen altından başlar */
+    height: calc(100vh - 60px) !important; /* Kalan ekran boyunu kaplar */
+    padding: 0 !important; left: 0 !important; transform: none !important;
+    transition: left 0.25s ease-out !important; z-index: 500 !important;
+    background: #f8fafc; overflow: hidden !important;
 }
+body.dark .sidebar { background: #0f172a !important; border-right-color: #334155 !important; }
+@media screen and (min-width: 769px) { body.close .sidebar { left: -300px !important; } }
+
+/* ── İÇERİK & TABLOLAR (GITHUB STYLE) ── */
+body.dark main { background-color: #0f172a !important; color: #e2e8f0 !important; }
 .markdown-section { padding-top: 80px !important; line-height: 1.7; font-size: 16px; }
 .markdown-section blockquote { border-left: 4px solid #3b82f6 !important; background: #f8fafc !important; padding: 16px !important; border-radius: 0 8px 8px 0 !important; color: #475569 !important; margin: 2em 0 !important; }
 body.dark .markdown-section table { background-color: #1e293b !important; color: #e2e8f0 !important; }
@@ -61,7 +56,7 @@ body.dark .markdown-section blockquote { background: #1e293b !important; color: 
     
 /* ── MOBİL UYUM ── */
 @media screen and (max-width: 768px) {
-    #topbar { left: 0 !important; width: 100% !important; padding-left: 64px !important; }
+    #topbar { padding: 0 16px !important; }
     .markdown-section { padding-top: 80px !important; }
     section.content { transform: none !important; margin-left: 0 !important; transition: none !important; width: 100% !important; }
     .sidebar { left: -300px !important; }
@@ -92,11 +87,11 @@ body.dark #search-modal-container .search input { color: #f1f5f9 !important; }
 #search-modal-container .search .results-panel { position: static !important; display: block !important; width: 100% !important; max-height: 60vh !important; border: none !important; box-shadow: none !important; background: transparent !important; overflow-y: auto !important; padding: 16px !important; }
 
 /* ── SIDEBAR NAV & SCROLL ── */
-.sidebar-nav { padding: 16px 12px 60px 12px !important; height: calc(100% - 60px) !important; overflow-y: auto !important; overflow-x: hidden !important; }
+.sidebar-nav { padding: 16px 12px 60px 12px !important; height: 100% !important; overflow-y: auto !important; overflow-x: hidden !important; }
 .sidebar-nav summary, .sidebar-nav a { color: #94a3b8 !important; text-decoration: none !important; transition: all 0.15s ease !important; display: flex !important; align-items: center !important; gap: 10px; }
 
 /* ── SIDEBAR TYPOGRAPHY (18-16-14px HİYERARŞİSİ) ── */
-.sidebar-nav .home-link { font-size: 18px !important; font-weight: 700 !important; display: flex !important; padding: 10px 14px !important; color: #1e293b !important; margin: 0 0 24px 0 !important; background: #fff !important; border: 1px solid #e2e8f0 !important; border-radius: 8px !important; box-shadow: 0 2px 4px rgba(0,0,0,0.02) !important; }
+.sidebar-nav .home-link { font-size: 18px !important; font-weight: 700 !important; display: flex !important; padding: 10px 14px !important; color: #1e293b !important; margin: 8px 0 24px 0 !important; background: #fff !important; border: 1px solid #e2e8f0 !important; border-radius: 8px !important; box-shadow: 0 2px 4px rgba(0,0,0,0.02) !important; }
 .sidebar-nav .home-link:hover { background: #f1f5f9 !important; border-color: #cbd5e1 !important; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important; }
 .sidebar-nav .home-link.active { border: 1px solid #3b82f6 !important; background: #eff6ff !important; }
 body.dark .sidebar-nav .home-link { background: #1e293b !important; border-color: #334155 !important; color: #f1f5f9 !important; }
@@ -132,11 +127,10 @@ body.dark .cat-icon { filter: invert(0.8) brightness(1.5); }
 
 /* ── MODERN BUTONLAR ── */
 .sidebar-toggle { display: none !important; }
-#custom-sidebar-toggle { position: fixed; top: 12px; left: 12px; z-index: 9999; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; width: 36px; height: 36px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s ease; }
+#custom-sidebar-toggle { background: transparent; border: none; border-radius: 8px; width: 36px; height: 36px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s ease; flex-shrink: 0; }
 #custom-sidebar-toggle span { background-color: #475569; width: 18px; height: 2px; margin-bottom: 4px; border-radius: 2px; transition: all 0.3s ease-in-out; transform-origin: center; }
 #custom-sidebar-toggle span:last-child { margin-bottom: 0; }
-#custom-sidebar-toggle:hover { background: #e2e8f0; }
-body.dark #custom-sidebar-toggle { background: #1e293b; border-color: #334155; }
+#custom-sidebar-toggle:hover { background: #f1f5f9; }
 body.dark #custom-sidebar-toggle span { background-color: #94a3b8; }
 body.dark #custom-sidebar-toggle:hover { background: #334155; }
 
@@ -171,12 +165,15 @@ body.dark .markdown-section a:hover { background-color: rgba(255, 255, 255, 0.1)
 </head>
 <body>
 
-<!-- BİZİM ÖZGÜR HAMBURGER BUTONUMUZ -->
-<button id="custom-sidebar-toggle" title="Menüyü Aç/Kapat">
-    <span></span><span></span><span></span>
-</button>
-
 <div id="topbar">
+    <div class="topbar-left">
+        <!-- BİZİM ÖZGÜR HAMBURGER BUTONUMUZ TOPBAR'A TAŞINDI -->
+        <button id="custom-sidebar-toggle" title="Menüyü Aç/Kapat">
+            <span></span><span></span><span></span>
+        </button>
+        <!-- LOGO ALANI TOPBAR'A TAŞINDI -->
+        <div id="brand-logo-container"></div>
+    </div>
     <div class="topbar-right">
         <button id="search-trigger" title="Ara (Ctrl+K)">
             <i data-lucide="search"></i>
@@ -251,21 +248,20 @@ function injectCategoryIcons() {
     });
 }
 
+// YENİ: LOGOYU DOĞRUDAN TOPBAR'A ENJEKTE EDER
 function injectSidebarHeader() {
-    const sidebar = document.querySelector('.sidebar');
+    const container = document.getElementById('brand-logo-container');
+    if (!container) return;
     const isEn = window.location.hash.startsWith('#/en/');
     const logoSrc = isEn ? 'docs/icons/header-en.png' : 'docs/icons/header-tr.png';
 
-    if (sidebar && !document.querySelector('.sidebar-header')) {
-        const headerHTML = `
-            <div class="sidebar-header">
-                <img src="${logoSrc}" class="header-logo-img" alt="R&D Center Logo">
-            </div>
-        `;
-        sidebar.insertAdjacentHTML('afterbegin', headerHTML);
-    } else if (document.querySelector('.sidebar-header')) {
-         const logoImg = document.querySelector('.header-logo-img');
-         if (logoImg) logoImg.src = logoSrc;
+    let logoImg = container.querySelector('.header-logo-img');
+    if (!logoImg) {
+        container.innerHTML = `<img src="${logoSrc}" class="header-logo-img" alt="R&D Center Logo">`;
+    } else {
+        if (logoImg.getAttribute('src') !== logoSrc) {
+            logoImg.src = logoSrc;
+        }
     }
 }
 
@@ -329,7 +325,7 @@ function initSmartSearch() {
     });
 }
 
-// 5. BİZİM ÖZGÜR HAMBURGER BUTONUMUZUN MANTIĞI (DÜZELTİLDİ)
+// 5. BİZİM ÖZGÜR HAMBURGER BUTONUMUZUN MANTIĞI
 const customToggleBtn = document.getElementById('custom-sidebar-toggle');
 if (customToggleBtn) {
     customToggleBtn.addEventListener('click', function(e) {
