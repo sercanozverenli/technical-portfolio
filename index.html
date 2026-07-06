@@ -99,7 +99,6 @@ body.dark .sidebar-nav .home-link { background: #1e293b !important; border-color
 body.dark .sidebar-nav .home-link:hover { background: #0f172a !important; border-color: #475569 !important; }
 body.dark .sidebar-nav .home-link.active { border-color: #3b82f6 !important; background: #0f172a !important; }
 
-/* i/İ hatasını önlemek için uppercase kaldırıldı */
 .sidebar-nav > details > summary { font-size: 16px !important; font-weight: 700 !important; letter-spacing: 0.05em !important; }
 .sidebar-nav details details summary, .sidebar-nav a:not(.home-link) { font-size: 14px !important; }
 .sidebar-nav summary { font-weight: 700 !important; }
@@ -168,6 +167,7 @@ body.dark .markdown-section a:hover { background-color: rgba(255, 255, 255, 0.1)
 </head>
 <body>
 
+<!-- BİZİM ÖZGÜR HAMBURGER BUTONUMUZ -->
 <button id="custom-sidebar-toggle" title="Menüyü Aç/Kapat">
     <span></span><span></span><span></span>
 </button>
@@ -238,7 +238,6 @@ function injectStatusIcons() {
     });
 }
 
-// Kategori İkonlarını Kalıcı Statik Resme Çevirir (Sayfa değişince asla kaybolmaz!)
 function injectCategoryIcons() {
     document.querySelectorAll('.sidebar-nav i[data-lucide]').forEach(el => {
         const iconName = el.getAttribute('data-lucide');
@@ -326,20 +325,10 @@ function initSmartSearch() {
     });
 }
 
-// 5. ÖZGÜR HAMBURGER BUTONU VE MOBİL KONTROL
-function setupStrictSidebarToggle() {
-    const oldToggle = document.querySelector('.sidebar-toggle');
-    if (!oldToggle) return;
-    if (oldToggle.classList.contains('cloned-toggle')) return;
-
-    const newToggle = oldToggle.cloneNode(true);
-    newToggle.classList.add('cloned-toggle');
-    oldToggle.parentNode.replaceChild(newToggle, oldToggle);
-
-    newToggle.style.setProperty('top', '12px', 'important');
-    newToggle.style.setProperty('left', '12px', 'important');
-
-    newToggle.addEventListener('click', function(e) {
+// 5. BİZİM ÖZGÜR HAMBURGER BUTONUMUZUN MANTIĞI (DÜZELTİLDİ)
+const customToggleBtn = document.getElementById('custom-sidebar-toggle');
+if (customToggleBtn) {
+    customToggleBtn.addEventListener('click', function(e) {
         e.stopPropagation(); 
         if (window.innerWidth <= 768) {
             document.body.classList.toggle('mobile-sidebar-open');
@@ -387,7 +376,6 @@ window.$docsify = {
                 syncSidebar();
                 injectStatusIcons();
                 injectCategoryIcons();
-                setupStrictSidebarToggle();
                 if (window.lucide) lucide.createIcons();
             });
             hook.doneEach(() => {
@@ -395,7 +383,6 @@ window.$docsify = {
                 syncSidebar();
                 injectStatusIcons();
                 injectCategoryIcons();
-                setupStrictSidebarToggle();
             });
         }
     ]
