@@ -1,4 +1,4 @@
-<div class="sidebar-nav">
+<div class="sidebar-nav"> 
  <a href="#/en/" class="home-link"><i data-lucide="home"></i> Home</a>
  
   
