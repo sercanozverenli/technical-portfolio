@@ -25,6 +25,8 @@ body.dark #topbar { background: rgba(30, 41, 59, 0.8) !important; border-bottom-
 .topbar-right { display: flex; align-items: center; gap: 12px; }
 
 /* ── LOGO ALANI (TOPBAR İÇİNDE) ── */
+.sidebar-header a { display: flex; align-items: center; text-decoration: none !important; }
+    
 .header-logo-img {
     height: auto !important; max-height: 32px !important; width: auto !important; max-width: 180px !important;
     object-fit: contain; display: block; transition: all 0.3s ease;
@@ -253,23 +255,31 @@ function injectCategoryIcons() {
     });
 }
 
-// YENİ: LOGOYU DOĞRUDAN TOPBAR'A ENJEKTE EDER
+// YENİ: LOGOYU DOĞRUDAN TOPBAR'A ENJEKTE EDER ve logo-ana sayfa bağlantısı
 function injectSidebarHeader() {
-    const container = document.getElementById('brand-logo-container');
-    if (!container) return;
+    const sidebar = document.querySelector('.sidebar');
     const isEn = window.location.hash.startsWith('#/en/');
     const logoSrc = isEn ? 'docs/icons/header-en.png' : 'docs/icons/header-tr.png';
+    const homeUrl = isEn ? '#/en/' : '#/tr/'; // <--- DİLE GÖRE ANA SAYFA LİNKİ
 
-    let logoImg = container.querySelector('.header-logo-img');
-    if (!logoImg) {
-        container.innerHTML = `<img src="${logoSrc}" class="header-logo-img" alt="R&D Center Logo">`;
-    } else {
-        if (logoImg.getAttribute('src') !== logoSrc) {
-            logoImg.src = logoSrc;
-        }
+    if (sidebar && !document.querySelector('.sidebar-header')) {
+        const headerHTML = `
+            <div class="sidebar-header">
+                <a href="${homeUrl}" class="header-logo-link">
+                    <img src="${logoSrc}" class="header-logo-img" alt="R&D Center Logo">
+                </a>
+            </div>
+        `;
+        sidebar.insertAdjacentHTML('afterbegin', headerHTML);
+    } else if (document.querySelector('.sidebar-header')) {
+         const logoImg = document.querySelector('.header-logo-img');
+         const logoLink = document.querySelector('.header-logo-link');
+         if (logoImg) logoImg.src = logoSrc;
+         if (logoLink) logoLink.href = homeUrl; // <--- DİL DEĞİŞİNCE LİNK DE GÜNCELLENİR
     }
 }
 
+// Akıllı Navigasyon  
 function syncSidebar() {
     const currentHash = decodeURIComponent(window.location.hash);
     if (!currentHash || currentHash === '#/') return;
