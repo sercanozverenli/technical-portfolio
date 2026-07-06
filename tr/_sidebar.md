@@ -67,6 +67,8 @@
         <summary><i class="status-idea"></i>Keşifsel Veri Analizi</summary> 
         <ul>
           <li><a href="#/tr/projects/analitik-moduller/yahoo-finance-eda"><i class="status-idea"></i>Finansal Zaman Serisi</a></li>
+          <li><a href="#/tr/projects/analitik-moduller/ujiindoorloc-eda"><i class="status-idea"></i>Yüksek Boyutlu Sensör Verisi</a></li>
+          <li><a href="#/tr/projects/analitik-moduller/olist-ecommerce-eda"><i class="status-idea"></i>İlişkisel E-Ticaret Verisi</a></li>
         </ul>
        </details>
      </li>
