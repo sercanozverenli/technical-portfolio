@@ -1,4 +1,4 @@
-<div class="sidebar-nav">
+<div class="sidebar-nav"> 
  <a href="#/tr/" class="home-link"><i data-lucide="home"></i> Ana Sayfa</a>
  
  
