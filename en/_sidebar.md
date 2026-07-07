@@ -28,6 +28,7 @@
                 <li><a href="#/en/projects/systems/amplify-core/architecture/routing-engine.md"><i class="status-done"></i>Routing Engine</a></li>
                 <li><a href="#/en/projects/systems/amplify-core/architecture/stabilization-layer.md"><i class="status-done"></i>Stabilization Layer</a></li>
                 <li><a href="#/en/projects/systems/amplify-core/architecture/abstention-mechanism.md"><i class="status-done"></i>Abstention-Mechanism</a></li>
+                <li><a href="#/en/projects/systems/amplify-core/architecture/self-confidence-score.md"><i class="status-done"></i>Self Confidence Score</a></li>
               </ul>
               </details>
             </li>
