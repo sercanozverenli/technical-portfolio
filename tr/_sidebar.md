@@ -28,6 +28,7 @@
                 <li><a href="#/tr/projects/systems/amplify-core/architecture/routing-engine.md"><i class="status-done"></i>Yönlendirme Motoru</a></li>
                 <li><a href="#/tr/projects/systems/amplify-core/architecture/stabilization-layer.md"><i class="status-done"></i>Stabilizasyon Katmanı</a></li>
                 <li><a href="#/tr/projects/systems/amplify-core/architecture/abstention-mechanism.md"><i class="status-done"></i>Çekimserlik Mekanizması</a></li>
+                <li><a href="#/tr/projects/systems/amplify-core/architecture/self-confidence-score.md"><i class="status-done"></i>Karar Güven Skoru</a></li>
               </ul>
             </details>
           </li>          
