@@ -1,6 +1,6 @@
 # Karar Kaçınması Mekanizması
 
-![Karar Kaçınması Mekanizması Akışı](../../../../../docs/diagrams/amplify-core/sekil-8.png)
+![Karar Kaçınması Mekanizması Akışı](../../../../../docs/diagrams/amplify-core/karar-kacinmasi.png)
 
 ## Bu mekanizma ne işe yarar?
 
