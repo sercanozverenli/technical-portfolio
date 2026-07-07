@@ -1,6 +1,6 @@
 # Stabilization Layer
 
-![Stabilization Layer Flow](../../../../../docs/diagrams/amplify-core/figure-7.png)
+![Stabilization Layer Flow](../../../../../docs/diagrams/amplify-core/stabilization.png)
 
 ## What does this layer do?
 
