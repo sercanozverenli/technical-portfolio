@@ -47,7 +47,7 @@ git rebase main feature-branch
 | Özellik | Git Merge | Git Rebase |
 | :--- | :--- | :--- |
 | **Geçmiş Yapısı** | Dallı budaklı, gerçek zamanlı kronolojik tarihçe. | Lineer (düz bir çizgi), temiz ve sıralı tarihçe. |
-| **Commit Yapısı** | Yeni bir "Merge Commit" oluşturur. | Mevcut commit'leri yeniden yazar, yeni commit oluşturmaz. |
+| **Commit Yapısı** | İki dalı birleştiren yeni tek bir "Merge Commit" oluşturur. | Mevcut commit'lerin içeriğini yeni temel üzerine yeniden uygulayarak (replay ederek) yepyeni commit'ler oluşturur. |
 | **İzlenebilirlik** | Branch'in nereden ayrılıp nereye birleştiği net görünür. | Branch'ler sanki hiç ayrılmamış, hep ana kolda yazılmış gibi görünür. |
 | **Çakışma Çözümü** | Tüm çakışmalar (conflict) tek seferde çözülür. | Çakışmalar commit commit çözülür (interaktif süreç). |
 
