@@ -28,22 +28,24 @@ workspace/
 │
 ├── tr/                                 # Presentation Layer (Turkish)
 │   ├── _sidebar.md
-│   └── projeler/
-│       ├── deneysel-calismalar/
-│       ├── uygulamalar/
-│       └── sistemler/
-│           └── amplify-core/
+│   └── projects/
+│      ├── analytics-modules/
+│      ├── apps/
+│      ├──sistemler/
+│      │   └── amplify-core/
+│      └── about/
 │
 ├── en/                                 # Presentation Layer (English)
 │   ├── _sidebar.md
 │   └── projects/
-│       ├── experiments/
-│       ├── apps/
-│       └── systems/
-│           └── amplify-core/
+│      ├── analytics-modules/
+│      ├── apps/
+│      ├──sistemler/
+│      │   └── amplify-core/
+│      └── about/
 │
 ├── modules/                            # Technical Layer (Git Submodules)
-│   ├── experiments/
+│   ├── analytics-modules/
 │   ├── apps/
 │   └── systems/
 │       └── amplify-core/
@@ -51,7 +53,7 @@ workspace/
 ├── docs/                               # Visual Assets
 │   ├── assets/
 │   ├── diagrams/
-│   └── figures/
+│   └── icons/
 │
 └── archive/                            # Deprecated & Historical Content
 ```
