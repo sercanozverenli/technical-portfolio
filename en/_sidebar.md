@@ -83,13 +83,22 @@
         <details>
           <summary><i class="status-wip"></i>Git and GitHub</summary>
           <ul>
-            <li><a href="#/en/projects/guides/git-and-github/git-basics"><i class="status-done"></i>Git Basics</a></li>
-            <li><a href="#/en/projects/guides/git-and-github/branching"><i class="status-done"></i>Branching & History</a></li>
-            <li><a href="#/en/projects/guides/git-and-github/merge-conflicts"><i class="status-done"></i>Crisis Management</a></li>
-            <li><a href="#/en/projects/guides/git-and-github/remote-repositories"><i class="status-done"></i>Remote Repos & Teamwork</a></li>
-            <li><a href="#/en/projects/guides/git-and-github/stash"><i class="status-done"></i>Temporary Memory Management</a></li>
-            <li><a href="#/en/projects/guides/git-and-github/undoing-changes"><i class="status-done"></i>Undoing Errors</a></li>
-            <li><a href="#/en/projects/guides/git-and-github/rebase"><i class="status-done"></i>Rebase Architecture</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/github-basics"><i class="status-done"></i>GitHub Basics</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/git-basics"><i class="status-done"></i>Git Basics and Terminal</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/branching"><i class="status-done"></i>Branching and History</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/merge-conflicts"><i class="status-done"></i>Conflict Management</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/undoing-changes"><i class="status-done"></i>Undoing Changes</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/stash"><i class="status-done"></i>Stash Management</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/git-clone-and-remotes"><i class="status-done"></i>Remote Repository Connections</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/git-push"><i class="status-done"></i>Push Strategies</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/git-fetch-and-pull"><i class="status-done"></i>Synchronization (Fetch/Pull)</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/fork-and-pull-requests"><i class="status-done"></i>Fork and Pull Requests</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/github-issues-and-projects"><i class="status-done"></i>Project Management</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/rebase"><i class="status-done"></i>Rebase Architecture</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/git-hooks"><i class="status-done"></i>Automation (Hooks)</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/git-lfs-and-submodules"><i class="status-done"></i>Large Data Management</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/tags-and-releases"><i class="status-done"></i>Versioning</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/github-actions"><i class="status-done"></i>CI/CD (Actions)</a></li>
           </ul>
         </details>
       </li>
