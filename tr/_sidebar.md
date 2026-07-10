@@ -85,7 +85,7 @@
          <ul>
             <li><a href="#/tr/projects/guides/git-and-github/github-basics"><i class="status-done"></i>GitHub Temelleri</a></li>
             <li><a href="#/tr/projects/guides/git-and-github/git-basics"><i class="status-done"></i>Git Temelleri ve Terminal</a></li>
-            <li><a href="#/tr/projects/guides/git-and-github/branching"><i class="status-done"></i>Dallanma ve Geçmiş</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/branching"><i class="status-done"></i>Branch ve History</a></li>
             <li><a href="#/tr/projects/guides/git-and-github/merge-conflicts"><i class="status-done"></i>Kriz Yönetimi</a></li>
             <li><a href="#/tr/projects/guides/git-and-github/undoing-changes"><i class="status-done"></i>Hata Geri Alma</a></li>
             <li><a href="#/tr/projects/guides/git-and-github/stash"><i class="status-done"></i>Geçici Hafıza Yönetimi</a></li>
