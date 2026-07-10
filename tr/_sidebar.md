@@ -82,15 +82,24 @@
     <li>
       <details>
         <summary><i class="status-wip"></i>Git ve GitHub</summary>
-        <ul>
-          <li><a href="#/tr/projects/guides/git-and-github/git-basics"><i class="status-done"></i>Git Temelleri</a></li>
-          <li><a href="#/tr/projects/guides/git-and-github/branching"><i class="status-done"></i>Dallanma ve Geçmiş</a></li>
-          <li><a href="#/tr/projects/guides/git-and-github/merge-conflicts"><i class="status-done"></i>Kriz Yönetimi</a></li>
-          <li><a href="#/tr/projects/guides/git-and-github/remote-repositories"><i class="status-done"></i>Uzak Depo ve Ekip Çalışması</a></li>
-          <li><a href="#/tr/projects/guides/git-and-github/stash"><i class="status-done"></i>Geçici Hafıza Yönetimi</a></li>
-          <li><a href="#/tr/projects/guides/git-and-github/undoing-changes"><i class="status-done"></i>Hata Geri Alma</a></li>
-          <li><a href="#/tr/projects/guides/git-and-github/rebase"><i class="status-done"></i>Rebase Mimarisi</a></li>
-        </ul>
+         <ul>
+            <li><a href="#/tr/projects/guides/git-and-github/github-basics"><i class="status-done"></i>GitHub Temelleri</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/git-basics"><i class="status-done"></i>Git Temelleri ve Terminal</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/branching"><i class="status-done"></i>Dallanma ve Geçmiş</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/merge-conflicts"><i class="status-done"></i>Kriz Yönetimi</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/undoing-changes"><i class="status-done"></i>Hata Geri Alma</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/stash"><i class="status-done"></i>Geçici Hafıza Yönetimi</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/git-clone-and-remotes"><i class="status-done"></i>Uzak Depo Bağlantıları</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/git-push"><i class="status-done"></i>Push Stratejileri</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/git-fetch-and-pull"><i class="status-done"></i>Senkronizasyon (Fetch/Pull)</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/fork-and-pull-requests"><i class="status-done"></i>Fork ve PR Süreçleri</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/github-issues-and-projects"><i class="status-done"></i>Proje Yönetimi</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/rebase"><i class="status-done"></i>Rebase Mimarisi</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/git-hooks"><i class="status-done"></i>Otomasyon (Hooks)</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/git-lfs-and-submodules"><i class="status-done"></i>Büyük Veri Yönetimi</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/tags-and-releases"><i class="status-done"></i>Sürümlendirme</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/github-actions"><i class="status-done"></i>CI/CD (Actions)</a></li>
+         </ul>      
       </details>
     </li>
   </ul>
