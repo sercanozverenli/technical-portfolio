@@ -92,7 +92,7 @@
             <li><a href="#/tr/projects/guides/git-and-github/git-clone-and-remotes"><i class="status-done"></i>Uzak Depo Bağlantıları</a></li>
             <li><a href="#/tr/projects/guides/git-and-github/git-push"><i class="status-done"></i>Push Stratejileri</a></li>
             <li><a href="#/tr/projects/guides/git-and-github/git-fetch-and-pull"><i class="status-done"></i>Senkronizasyon (Fetch/Pull)</a></li>
-            <li><a href="#/tr/projects/guides/git-and-github/fork-and-pull-requests"><i class="status-done"></i>Fork ve PR Süreçleri</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/fork-and-pull-requests"><i class="status-done"></i>Fork ve Pull Requests</a></li>
             <li><a href="#/tr/projects/guides/git-and-github/github-issues-and-projects"><i class="status-done"></i>Proje Yönetimi</a></li>
             <li><a href="#/tr/projects/guides/git-and-github/rebase"><i class="status-done"></i>Rebase Mimarisi</a></li>
             <li><a href="#/tr/projects/guides/git-and-github/git-hooks"><i class="status-done"></i>Otomasyon (Hooks)</a></li>
