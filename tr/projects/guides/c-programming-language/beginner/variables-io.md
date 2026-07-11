@@ -1,4 +1,4 @@
-# Değişkenler ve Temel Giriş/Çıkış
+# Değişkenler ve Temel Girdi/Çıktı
 
 Seviye: Başlangıç  
 Amaç: C'de değişkenleri tanımak, kullanıcıdan veri okumayı (scanf), ekrana yazdırmayı (printf), temel veri tiplerini ve basit aritmetiği öğrenmek.
