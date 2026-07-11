@@ -101,6 +101,24 @@
             <li><a href="#/tr/projects/guides/git-and-github/github-actions"><i class="status-done"></i>CI/CD (Actions)</a></li>
          </ul>      
       </details>
+      <details>
+           <summary><i class="status-wip"></i> C Programlama Dili</summary>
+          <ul>
+            <li>
+              <details>
+                <summary><i class="status-wip"></i>Temel Seviye</summary>
+                 <ul>
+                    <li><a href="#/tr/projects/guides/c-programming-language/beginner/variables-io.md"><i class="status-done"></i>Değişkenler ve Girdi/Çıktı</a></li>
+                    <li><a href="#/tr/projects/guides/c-programming-language/beginner/control-flow.md"><i class="status-done"></i>Kontrol Akışı</a></li>
+                    <li><a href="#/tr/projects/guides/c-programming-language/beginner/loops-iteration.md"><i class="status-done"></i>Döngüler ve Yineleme</a></li>
+                    <li><a href="#/tr/projects/guides/c-programming-language/beginner/functions-and-modularity.md"><i class="status-done"></i>Fonksiyonlar ve Modülerlik</a></li>
+                    <li><a href="#/tr/projects/guides/c-programming-language/beginner/arrays-data-processing.md"><i class="status-done"></i>Diziler ve Veri İşleme</a></li>
+                    <li><a href="#/tr/projects/guides/c-programming-language/beginner/matrices-data-structures.md"><i class="status-done"></i>Matrisler ve Veri Yapıları</a></li>
+                 </ul>      
+              </details>
+           </li>
+          </ul>
+      </details>
     </li>
   </ul>
  </details>
