@@ -2,7 +2,7 @@
 
 Bu bölümde Python ile problem çözerken en çok ihtiyaç duyacağımız şu temel konuları ele alacağız:
 - Hazır fonksiyonlar kullanmadan metinleri (string) manipüle etme yöntemleri.
-- Palindrome, anagram ve metin içinde kelime arama gibi klasik mülakat problemlerinin çözümü.
+- Palindrome, anagram ve metin içinde kelime arama gibi klasik problemlerin çözümü.
 - Programın çökmesini engelleyen "Savunmacı Programlama" (Defensive Programming) teknikleri.
 - İki boyutlu listeler (matrisler) ve benzersizlik kontrolü için `set` (küme) kullanımı.
 
