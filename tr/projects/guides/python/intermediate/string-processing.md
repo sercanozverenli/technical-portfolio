@@ -1,4 +1,4 @@
-# Python'da Algoritma Mantığı, Veri Doğrulama ve String İşleme
+# String İşleme ve Güvenli Kodlama
 
 Bu bölümde Python ile problem çözerken en çok ihtiyaç duyacağımız şu temel konuları ele alacağız:
 - Hazır fonksiyonlar kullanmadan metinleri (string) manipüle etme yöntemleri.
