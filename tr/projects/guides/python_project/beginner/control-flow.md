@@ -187,9 +187,3 @@ else:
 ```
 
 Bu örnekte `parse_time` fonksiyonu ile giriş doğrulaması yapmak, kodu okunur ve tekrar kullanılabilir kılar. `//` tam bölme ve `%` mod operatörü saat/dakika dönüşümlerinde kullanıldı.
-
----
-
-## Sonraki adım
-
-Bu dosya, koşullar ve karar yapıları hakkında kapsamlı bir temel sundu. Onay verirseniz aynı formatta diğer kategori dosyalarını (loops, data-structures, algorithms, projects) tek tek hazırlayıp commit edeceğim.
