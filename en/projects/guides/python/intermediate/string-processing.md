@@ -1,4 +1,4 @@
-# Algorithm Logic, Data Validation, and String Processing in Python
+# String Processing & Defensive Coding
 
 In this section, we will cover the following fundamental topics that we will need most when solving problems with Python:
 - Methods of manipulating texts (strings) without using built-in functions.
