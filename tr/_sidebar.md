@@ -143,7 +143,7 @@
               <details>
                 <summary><i class="status-wip"></i>Veri Analizi</summary>
                  <ul>
-                    <li><a href="#/tr/projects/guides/python/beginner/monte-carlo-simulation.md"><i class="status-done"></i>Monte Carlo Simülasyonu</a></li>
+                    <li><a href="#/tr/projects/guides/python/data-analysis-projects/monte-carlo-simulation.md"><i class="status-done"></i>Monte Carlo Simülasyonu</a></li>
                  </ul>      
               </details>             
            </li>
