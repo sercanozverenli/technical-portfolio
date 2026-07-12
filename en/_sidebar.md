@@ -128,7 +128,7 @@
                 <summary><i class="status-wip"></i>Beginner</summary>
                  <ul>
                     <li><a href="#/en/projects/guides/python/beginner/fundamentals.md"><i class="status-done"></i>Python Fundamentals</a></li>
-                    <li><a href="#/en/projects/guides/python/beginner/control-flow.md"><i class="status-done"></i>Conditions & Decision Structures</a></li>
+                    <li><a href="#/en/projects/guides/python/beginner/control-flow.md"><i class="status-done"></i>Conditionals & Control Flow</a></li>
                     <li><a href="#/en/projects/guides/python/beginner/loops-and-patterns.md"><i class="status-done"></i>Loops and Iteration</a></li>
                     <li><a href="#/en/projects/guides/python/beginner/data-structures.md"><i class="status-done"></i>Data Structures</a></li>
                     <li><a href="#/en/projects/guides/python/beginner/algorithms.md"><i class="status-done"></i>Algorithms & Complexity</a></li>   
