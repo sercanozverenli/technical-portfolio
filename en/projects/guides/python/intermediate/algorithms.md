@@ -2,7 +2,7 @@
 
 In this section, we will cover the following fundamental topics that we will need most when solving problems with Python:
 - Methods of manipulating texts (strings) without using built-in functions.
-- Solutions to classic interview problems such as palindrome, anagram, and searching for a word within a text.
+- Solutions to classic problems such as palindrome, anagram, and word search within text.
 - "Defensive Programming" techniques that prevent the program from crashing.
 - The use of two-dimensional lists (matrices) and `set` for uniqueness checking.
 
