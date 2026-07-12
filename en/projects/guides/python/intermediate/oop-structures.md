@@ -1,4 +1,4 @@
-# Object-Oriented Programming (OOP) and Basic Data Structures in Python
+# Object-Oriented Programming (OOP) and Basic Data Structures
 
 In this section, we will examine the Object-Oriented Programming (OOP) principles we use to embody abstract concepts in the software world and data structures, which are the cornerstones of computer science.
 
