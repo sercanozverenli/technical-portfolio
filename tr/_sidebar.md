@@ -136,7 +136,7 @@
               <details>
                 <summary><i class="status-wip"></i>Orta Seviye</summary>
                  <ul>
-                    <li><a href="#/tr/projects/guides/python/intermediate/string-processing.md"><i class="status-done"></i>String İşleme ve Güvenli Kodlama</a></li>
+                    <li><a href="#/tr/projects/guides/python/intermediate/string-processing.md"><i class="status-done"></i>String İşleme ve Try-Except</a></li>
                     <li><a href="#/tr/projects/guides/python/intermediate/oop-structures.md"><i class="status-done"></i>Nesne Yönelimli Programlama</a></li>
                   </ul>      
               </details>
