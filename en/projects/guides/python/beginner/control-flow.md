@@ -1,4 +1,4 @@
-# Conditions and Decision Structures
+# Conditionals and Decision Structures
 
 This page explains how to write conditions in Python, comparison and logical operators, `if/elif/else` structures, and practical examples. Each section first explains the concept and then shows clear code examples.
 
