@@ -137,7 +137,7 @@
               <details>
                 <summary><i class="status-wip"></i>Intermediate</summary>
                  <ul>
-                    <li><a href="#/en/projects/guides/python/intermediate/string-processing.md"><i class="status-done"></i>String Processing & Defensive Coding</a></li>
+                    <li><a href="#/en/projects/guides/python/intermediate/string-processing.md"><i class="status-done"></i>String Processing & Try/Except</a></li>
                     <li><a href="#/en/projects/guides/python/intermediate/oop-structures.md"><i class="status-done"></i>Object-Oriented Programming</a></li>
                   </ul>      
               </details>
