@@ -1,4 +1,4 @@
-# String Processing & Defensive Coding
+# String Processing & Try/Except
 
 In this section, we will cover the following fundamental topics that we will need most when solving problems with Python:
 - Methods of manipulating texts (strings) without using built-in functions.
@@ -58,8 +58,6 @@ print(mysplit(""))      # Output: []
 ---
 
 ## 2. Character and Text-Based Problems
-
-Let's gather the 4 popular text problems that we encounter most in software interviews and algorithm competitions under a single roof. 
 
 ### 1. Palindrome (Reading Backwards)
 It is the case where a word or sentence reads the same forwards and backwards. We need to check it by ignoring uppercase/lowercase letters and spaces.
