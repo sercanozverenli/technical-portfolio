@@ -46,7 +46,7 @@ Branches are independent parallel universes where you can develop new features o
 In older Git versions, the `git checkout` command performed two completely different tasks by itself: it switched between branches and it restored deleted or changed files. Because this caused confusion, modern Git architecture separated these duties:
 *   `git switch`: A modern command designed **strictly for branch switching and branch management**.
 *   `git restore`: Separated strictly for bringing files back to a previous state or restoring them.
-In interviews and modern projects, it is highly recommended to always use **git switch** for branch switching operations.
+Note: It is generally recommended to use a **git switch** for branch switching operations.
 
 ### 2. Commands and Variations
 

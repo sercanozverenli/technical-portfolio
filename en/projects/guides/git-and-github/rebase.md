@@ -1,15 +1,15 @@
 # Git Rebase Guide
 
-This documentation explains the `git rebase` mechanism, one of the most powerful and debated commands in the Git version control system. It covers its architecture, best practices, and interactive rebase processes in detail.
+This documentation explains the `git rebase` mechanism, its architecture, best practices, and interactive rebase workflows. It is one of the most powerful and most discussed commands in the Git version control system.
 
 ---
 
-## 1. Basic Command Structure and Execution
+## 1. Basic Command Structure
 
-When working on a `feature` branch, to put the latest changes from the `main` branch behind your branch, the basic rebase command sequence is:
+When you are working on a `feature` branch and want to update it with the latest changes from the `main` branch, use the following commands:
 
 ```bash
-# 1. Pull the latest changes from the main branch to your local computer
+# 1. Get the latest changes from the main branch
 git checkout main
 git pull origin main
 
@@ -20,25 +20,26 @@ git checkout feature-branch
 git rebase main
 ```
 
-**Alternative (Single Line):**
+**Alternative (One-Line Command):**
 ```bash
 git rebase main feature-branch
 ```
-*This command tells Git to rebase the `feature-branch` directly based on the `main` branch.*
+*This command tells Git to rebase `feature-branch` directly onto the `main` branch.*
 
 ---
 
-## 2. What is Git Rebase? Architectural Analysis
+## 2. What is Git Rebase?
 
-`git rebase` is the process of **relocating** the starting point (base) of a working branch to the most recent tip of another commit or branch.
+`git rebase` moves the starting point (base) of a branch to the latest commit of another branch or commit.
 
-### Working Mechanism:
-1. Git finds the last common commit (ancestor commit) between the target branch (`main`) and your current branch (`feature`).
-2. It saves all the commits you made after that common commit in your current branch to a temporary area (`.git/rebase-merge/`).
-3. It resets your current branch to the latest commit of the target branch.
-4. It **applies** the saved commits from the temporary area one by one onto the new starting point.
+### How It Works
 
-> **Critical Information:** The rebase process does not physically move existing commits. It copies their content and creates **brand new commits with new hash values (SHA-1)**. The old commits stay in the background until Git's Garbage Collection mechanism deletes them.
+1. Git finds the last common commit (common ancestor) between the target branch (`main`) and your current branch (`feature`).
+2. Git saves all commits made after that common commit into a temporary area (`.git/rebase-merge/`).
+3. Git resets your current branch to the latest commit of the target branch.
+4. Git reapplies the saved commits one by one on top of the new base.
+
+> **Important:** Rebase does not physically move existing commits. Instead, it copies their content and creates **completely new commits with new hash values (SHA-1)**. The old commits remain in the background until Git removes them during Garbage Collection.
 
 ---
 
@@ -46,111 +47,130 @@ git rebase main feature-branch
 
 | Feature | Git Merge | Git Rebase |
 | :--- | :--- | :--- |
-| **History Structure** | Branching, real-time chronological history. | Linear (a straight line), clean, and ordered history. |
-| **Commit Structure** | Creates a new "Merge Commit". | Rewrites existing commits, does not create a new merge commit. |
-| **Traceability** | It is clear where the branch separated and merged. | Branches look as if they never separated and were always written on the main line. |
-| **Conflict Resolution**| All conflicts are resolved at once. | Conflicts are resolved commit by commit (interactive process). |
+| **History Structure** | Branched, real chronological history. | Linear, clean, and organized history. |
+| **Commit Structure** | Creates a new merge commit that combines two branches. | Reapplies the content of existing commits onto a new base and creates completely new commits. |
+| **Traceability** | Clearly shows where branches split and merged. | Makes it look like the branch was always developed on the main branch. |
+| **Conflict Resolution** | All conflicts are resolved at once. | Conflicts are resolved commit by commit during the rebase process. |
 
 ---
 
-## 4. Is it Mandatory to Use?
+## 4. Is Rebase Required?
 
-**No, it is not mandatory.** How a project's history is managed depends entirely on the team's or project's architectural standards.
+**No, it is not required.** How a project manages its Git history depends entirely on the team's or project's workflow.
 
-* **Those who choose Rebase flow:** Teams that do not want to see thousands of meaningless *"Merge branch 'main' into..."* commits in the project history and aim for a clean, linearly traceable history.
-* **Those who choose Merge flow:** Teams that do not want the project history manipulated and want to keep the exact original hash values and timestamps of when things merged.
+* **Teams That Prefer Rebase:** Teams that want a clean, linear history without many unnecessary *"Merge branch 'main' into..."* commits.
+* **Teams That Prefer Merge:** Teams that want to keep the original project history exactly as it happened, including the original commit hashes and merge points.
 
 ---
 
 ## 5. Best Use Cases (Do's)
 
-### A. Updating Local Branch
-It is the safest approach to use rebase when updating a feature that you have only developed on your own computer and have not yet pushed to the remote server, with the changes in the main project branch.
+### A. Updating a Local Branch
 
-### B. Cleaning History Before Pull Request (PR)
-Used to organize your local commit history before completing a feature and requesting it to be merged into the main project. It allows you to present a perfectly clean commit sequence to the project manager.
+Rebase is the safest choice when updating a feature branch that exists only on your local computer and has **not** been pushed to the remote repository.
+
+### B. Cleaning Commit History Before a Pull Request (PR)
+
+Before opening a Pull Request, you can use interactive rebase to clean up your local commit history and present a clear, organized commit sequence to reviewers.
 
 ---
 
-## 6. Scenarios Where It Should NEVER Be Used (Don'ts)
+## 6. When You Should NOT Use Rebase (Don'ts)
 
 ### 🚨 The Golden Rule of Rebasing
-> **"NEVER rebase on a public branch that has been sent to a remote server and is being used by others."**
 
-* **Scenario:** You pushed `main`, `develop`, or a shared `feature-xyz` branch to the remote server. Then, you rebased this branch locally, changed the history, and pushed it to the server using `git push --force`.
-* **Result:** When your teammates run `git pull` on their local computers, Git will see that the history on the server and the local history are completely broken. You will cause identical commits to duplicate with different hashes, massive conflicts, and data loss.
+> **"Never rebase a public branch that has already been pushed and is being used by other people."**
+
+* **Scenario:** You push a shared branch such as `main`, `develop`, or `feature-xyz` to the remote repository. Later, you rebase that branch locally and force-push (`git push --force`) the rewritten history.
+* **Result:** When your teammates run `git pull`, Git will detect that the local and remote histories no longer match. This can create duplicate commits with different hashes, large merge conflicts, and even data loss.
 
 ---
 
-## 7. History Manipulation with Interactive Rebase (`git rebase -i`)
+## 7. Interactive Rebase (`git rebase -i`)
 
-Interactive rebase is a powerful management tool that allows you to edit your unpublished local commit history from top to bottom with an editor before publishing it.
+Interactive rebase is a powerful tool that lets you edit, clean, and organize your local commit history before sharing it with others.
 
-### Triggering the Command:
-To edit the last 3 commits:
+### Starting Interactive Rebase
+
+To edit the last three commits:
+
 ```bash
 git rebase -i HEAD~3
 ```
 
-When this command is run, Git opens a file in your default text editor (e.g., Vim, VS Code) listing the relevant commits from oldest to newest:
+Git opens your default text editor (such as Vim or VS Code) and displays the selected commits from oldest to newest.
 
 ```text
 pick a1b2c3d Initial draft created
-pick e5f6g7h Typos fixed
-pick j9k0l1m Test scenarios added
+pick e5f6g7h Fixed spelling mistakes
+pick j9k0l1m Added test cases
 
 # Commands:
-# p, pick <commit> = use commit as it is
-# r, reword <commit> = use commit, but edit the commit message
-# e, edit <commit> = use commit, but stop for amending
-# s, squash <commit> = use commit, but meld into previous commit
-# f, fixup <commit> = like "squash", but discard this commit's log message
-# d, drop <commit> = remove commit entirely
+# p, pick <commit> = use the commit as it is
+# r, reword <commit> = use the commit but change its message
+# e, edit <commit> = use the commit but stop to edit it
+# s, squash <commit> = combine it with the previous commit
+# f, fixup <commit> = like squash, but discard this commit message
+# d, drop <commit> = remove the commit completely
 ```
 
-### Practical Interactive Rebase Scenarios:
+### Interactive Rebase Examples
 
-#### 1. Fixing a Commit Message (`reword`)
-If you made a typo in a commit message or want to write it more clearly:
-* Change the word `pick` at the beginning of the relevant commit in the editor to `reword` (or just `r`).
-* Save and close the file.
-* Git will open a new editor window where you can rewrite only the message of that commit. Fix the message and save.
+#### 1. Changing a Commit Message (`reword`)
 
-#### 2. Combining Multiple Commits into a Single Commit (`squash` / `fixup`)
-If you made many small and meaningless commits like *"small fix"*, *"test"* during development and want to gather them under one meaningful commit:
+If a commit message contains a typo or needs a better description:
+
+* Change `pick` to `reword` (or `r`) for that commit.
+* Save and close the editor.
+* Git will open another editor where you can edit the commit message. Save the new message to continue.
+
+#### 2. Combining Multiple Commits (`squash` / `fixup`)
+
+If you created several small commits such as *"small fix"* or *"test"* and want to combine them into one meaningful commit:
+
 ```text
-pick a1b2c3d Main feature developed
-squash e5f6g7h Minor bug fix applied
-fixup j9k0l1m Code style formatted
+pick a1b2c3d Main feature completed
+squash e5f6g7h Small bug fix
+fixup j9k0l1m Code style improvements
 ```
-* **`squash`:** Combines the changes of the `e5f6g7h` commit with the `a1b2c3d` commit above it and allows you to combine both commit messages to write a new one.
-* **`fixup`:** Also combines the changes of the `j9k0l1m` commit but throws away this commit's message, keeping the main title clean.
 
-#### 3. Changing the Commit Order
-If you want to change the logical order of the commits:
-* You just need to change the order of the lines in the text editor (cut and paste).
-* Git will reapply the commits in order from top to bottom according to the new sequence.
+* **`squash`:** Combines the changes into the previous commit and lets you edit the final commit message.
+* **`fixup`:** Combines the changes into the previous commit but discards this commit's message.
 
-#### 4. Completely Deleting a Commit (`drop`)
-* Change the `pick` phrase at the beginning of the relevant line to `drop` (or `d`), or completely delete that line from the file. When you save the file, that commit is completely cleared from the history.
+#### 3. Reordering Commits
+
+If you want to change the logical order of commits:
+
+* Simply move the commit lines up or down in the editor.
+* Git will replay the commits in the new order.
+
+#### 4. Removing a Commit (`drop`)
+
+* Change `pick` to `drop` (or `d`), or delete the entire line.
+* After saving the file, Git removes that commit from the history.
 
 ---
 
-## 8. Conflict Management During Rebase
+## 8. Handling Conflicts During Rebase
 
-Because the rebase process applies commits one by one, conflicts also appear at the commit step. When a conflict occurs, the rebase process pauses.
+Because rebase reapplies commits one by one, conflicts are also handled one commit at a time. If a conflict occurs, the rebase process stops.
 
-1. Identify the conflicting files using the `git status` command.
-2. Resolve the conflicts manually in your code editor.
-3. Add the resolved files to the staging area:
+1. Use `git status` to find the conflicting files.
+2. Open the files and resolve the conflicts manually.
+3. Stage the resolved files:
+
    ```bash
    git add <file-name>
    ```
-4. **WARNING:** You never make a new commit (`git commit`) during a rebase. To continue the process:
+
+4. **Important:** Never create a new commit (`git commit`) during a rebase. Continue the process with:
+
    ```bash
    git rebase --continue
    ```
-5. If things get too complicated and you want to completely cancel the rebase process and return to the previous state as if nothing happened:
+
+5. If the rebase becomes too complicated and you want to cancel it completely, use:
+
    ```bash
    git rebase --abort
    ```

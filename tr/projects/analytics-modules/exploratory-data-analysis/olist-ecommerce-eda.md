@@ -1,0 +1,1 @@
+# İlişkisel E-Ticaret Verisi

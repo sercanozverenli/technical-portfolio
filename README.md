@@ -1,4 +1,4 @@
-# Personal R&D Hub | Engineering Workspace 
+# Personal R&D Hub | Technical Portfolio
 
 This repository serves as a centralized personal research and development laboratory focusing on Data Science, Machine Learning Engineering, and Software Architecture. The core objective is to document evolutionary engineering workflows, transition theoretical models into production-ready artifacts, and maintain a modular portfolio of decoupled systems.
 
@@ -6,7 +6,7 @@ This repository serves as a centralized personal research and development labora
 
 ### 1. Amplify Core (DRDRS)
 An end-to-end forecasting engine designed to extract maximum statistical signals from low-quality, heavily noisy, or temporally decayed data streams. It is planned to implement a pre-inference reliability assessment layer to minimize false confidence rates in automated decision-making pipelines.
-* **Production State:** Proposed / Ideation Phase (THL 1 Verification Initial Stage)
+* **Production State:** Planned / Ideation Phase 
 * **Target Stack:** Python, PostgreSQL, Statsmodels, Scipy, Streamlit, Langflow, ChromaDB
 
 ### 2. Autonomous AI Orchestration
@@ -28,30 +28,35 @@ workspace/
 │
 ├── tr/                                 # Presentation Layer (Turkish)
 │   ├── _sidebar.md
-│   └── projeler/
-│       ├── deneysel-calismalar/
-│       ├── uygulamalar/
-│       └── sistemler/
-│           └── amplify-core/
+│   └── projects/
+│      ├── analytics-modules/
+│      ├── apps/
+│      ├── guides/
+│      ├──sistemler/
+│      │   └── amplify-core/
+│      └── about/
 │
 ├── en/                                 # Presentation Layer (English)
 │   ├── _sidebar.md
 │   └── projects/
-│       ├── experiments/
-│       ├── apps/
-│       └── systems/
-│           └── amplify-core/
+│      ├── analytics-modules/
+│      ├── apps/
+│      ├── guides/
+│      ├──sistemler/
+│      │   └── amplify-core/
+│      └── about/
 │
 ├── modules/                            # Technical Layer (Git Submodules)
-│   ├── experiments/
+│   ├── analytics-modules/
 │   ├── apps/
+│   ├── guides/
 │   └── systems/
 │       └── amplify-core/
 │
 ├── docs/                               # Visual Assets
 │   ├── assets/
 │   ├── diagrams/
-│   └── figures/
+│   └── icons/
 │
 └── archive/                            # Deprecated & Historical Content
 ```

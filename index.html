@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -8,53 +8,51 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
 <style>
 
-body, .sidebar {
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
-}
-
+/* ── TEMEL AYARLAR ── */
+body, .sidebar { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif; }
 .app-nav { display: none !important; }
 
-/* ── TOPBAR ──────────────────────────────────────── */
+/* ── YENİ NESİL KALICI TOPBAR (BRAND BAR) ── */
 #topbar {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid #e2e8f0;
-    display: flex;
-    align-items: center;
-    padding: 0 24px 0 320px;
-    gap: 16px;
-    z-index: 300;
-    box-sizing: border-box;
+    position: fixed; top: 0; left: 0; right: 0; width: 100% !important; height: 60px;
+    background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px 0 16px; z-index: 600 !important; box-sizing: border-box;
 }
-
 body.dark #topbar { background: rgba(30, 41, 59, 0.8) !important; border-bottom-color: #334155; }
-.topbar-right { display: flex; align-items: center; gap: 12px; margin-left: auto; }
 
-/* ── SIDEBAR (MANUEL VE ÖZGÜR YAPI) ──────────────── */
+.topbar-left { display: flex; align-items: center; gap: 16px; }
+.topbar-right { display: flex; align-items: center; gap: 12px; }
+
+/* ── LOGO ALANI (TOPBAR İÇİNDE) ── */
+.header-logo-link { display: flex; align-items: center; text-decoration: none !important; }
+.header-logo-img {
+    height: auto !important; max-height: 32px !important; width: auto !important; max-width: 180px !important;
+    object-fit: contain; display: block; transition: all 0.3s ease;
+}
+body.dark .header-logo-img { filter: invert(1) hue-rotate(180deg) brightness(1.8) contrast(1.2); }
+
+/* ── SIDEBAR (TOPBAR'IN ALTINDAN BAŞLAR) ── */
 .sidebar {
-    border-right: 1px solid #e2e8f0;
-    top: 50px !important;
-    height: calc(100vh - 50px) !important;
-    padding: 0 !important;
-    left: 0 !important;
-    transform: none !important;
-    transition: left 0.25s ease-out !important;
-    z-index: 500 !important;
+    width: 300px !important; border-right: 1px solid #e2e8f0;
+    top: 60px !important; /* Topbar'ın (60px) hemen altından başlar */
+    height: calc(100vh - 60px) !important; /* Kalan ekran boyunu kaplar */
+    padding: 0 !important; left: 0 !important; transform: none !important;
+    transition: left 0.25s ease-out !important; z-index: 500 !important;
+    background: #f8fafc; overflow: hidden !important;
 }
+body.dark .sidebar { background: #0f172a !important; border-right-color: #334155 !important; }
+@media screen and (min-width: 769px) { body.close .sidebar { left: -300px !important; } }
 
-@media screen and (min-width: 769px) {
-    body.close .sidebar { left: -300px !important; }
+/* ── İÇERİK & TABLOLAR (GITHUB STYLE) ── */
+html.dark, body.dark, body.dark main, body.dark section.content, body.dark .markdown-section { 
+    background-color: #0f172a !important; 
+    color: #e2e8f0 !important; 
+    min-height: 100vh !important; 
 }
-
-/* ── İÇERİK ──────────────────────────────────────── */
-.markdown-section { padding-top: 70px !important; line-height: 1.7; font-size: 16px; }
+    
+.markdown-section { padding-top: 80px !important; line-height: 1.7; font-size: 16px; }
 .markdown-section blockquote { border-left: 4px solid #3b82f6 !important; background: #f8fafc !important; padding: 16px !important; border-radius: 0 8px 8px 0 !important; color: #475569 !important; margin: 2em 0 !important; }
-
-/* ── TABLO DÜZELTMELERİ ── */
 body.dark .markdown-section table { background-color: #1e293b !important; color: #e2e8f0 !important; }
 body.dark .markdown-section table tr { background-color: #0f172a !important; border-top: 1px solid #334155 !important; }
 body.dark .markdown-section table tr:nth-child(2n) { background-color: #1e293b !important; }
@@ -62,83 +60,68 @@ body.dark .markdown-section table td, body.dark .markdown-section table th { bor
 body.dark .markdown-section table th { background-color: #1e293b !important; font-weight: bold !important; }
 body.dark .markdown-section blockquote { background: #1e293b !important; color: #94a3b8 !important; }    
     
-/* ── MOBİL UYUM VE MOBİL SIDEBAR KONTROLÜ ── */
+/* ── MOBİL UYUM ── */
 @media screen and (max-width: 768px) {
-    #topbar { padding-left: 60px !important; }
-    .markdown-section { padding-top: 60px !important; }
+    #topbar { padding: 0 16px !important; }
+    .markdown-section { padding-top: 80px !important; }
     section.content { transform: none !important; margin-left: 0 !important; transition: none !important; width: 100% !important; }
-    
-    /* Mobilde Sidebar her zaman kapalı başlar, sadece 'mobile-sidebar-open' class'ı ile açılır */
     .sidebar { left: -300px !important; }
     body.mobile-sidebar-open .sidebar { left: 0 !important; }
 }
 
-/* ── GLOBAL ARAMA MODALI (KÖKTEN ÇÖZÜM) ── */
+/* ── GLOBAL ARAMA MODALI ── */
 #search-modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-    z-index: 10000; display: none; justify-content: center; align-items: flex-start; padding-top: 10vh;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 10000; display: none;
+    justify-content: center; align-items: flex-start; padding-top: 10vh;
 }
 #search-modal-container {
-    width: 90%; max-width: 650px; background: #fff; border-radius: 16px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.2); overflow: hidden; animation: modalSlide 0.3s ease-out;
+    width: 90%; max-width: 650px; background: #fff; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    overflow: hidden; animation: modalSlide 0.3s ease-out;
 }
 body.dark #search-modal-container { background: #1e293b; border: 1px solid #334155; }
 @keyframes modalSlide { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-/* Docsify'ın orijinal arama kutusunu sidebar'da gizle */
 .sidebar > .search { display: none !important; }
-
-/* Modal içine taşınan arama kutusunun stilleri */
 #search-modal-container .search { display: block !important; padding: 0 !important; margin: 0 !important; border: none !important; }
 #search-modal-container .search .input-wrap { display: flex !important; align-items: center; border-bottom: 1px solid #e2e8f0 !important; border-radius: 0 !important; margin: 0 !important; padding: 0 !important; }
 body.dark #search-modal-container .search .input-wrap { border-bottom-color: #334155 !important; }
-
-#search-modal-container .search input {
-    width: 100% !important; padding: 20px 24px !important; font-size: 16px !important;
-    border: none !important; outline: none !important; background: transparent !important; color: #1e293b !important;
-}
-    
+#search-modal-container .search input { width: 100% !important; padding: 20px 24px !important; font-size: 16px !important; border: none !important; outline: none !important; background: transparent !important; color: #1e293b !important; }
 body.dark #search-modal-container .search input { color: #f1f5f9 !important; }
-
-/* Docsify'ın varsayılan yeşil odaklanma (focus) gölgesini iptal eder */
-#search-modal-container .search input:focus {
-    box-shadow: none !important;
-    border: none !important;
-}
-
+#search-modal-container .search input:focus { box-shadow: none !important; border: none !important; }
 #search-modal-container .search .clear-button { margin-right: 16px !important; cursor: pointer; }
-
-#search-modal-container .search .results-panel {
-    position: static !important; display: block !important; width: 100% !important;
-    max-height: 60vh !important; border: none !important; box-shadow: none !important;
-    background: transparent !important; overflow-y: auto !important; padding: 16px !important;
-}
+#search-modal-container .search .results-panel { position: static !important; display: block !important; width: 100% !important; max-height: 60vh !important; border: none !important; box-shadow: none !important; background: transparent !important; overflow-y: auto !important; padding: 16px !important; }
 
 /* ── SIDEBAR NAV & SCROLL ── */
-.sidebar-nav { padding: 4px 8px 60px 8px !important; height: 100% !important; overflow-y: auto !important; overflow-x: hidden !important; }
+.sidebar-nav { padding: 16px 12px 60px 12px !important; height: 100% !important; overflow-y: auto !important; overflow-x: hidden !important; }
 .sidebar-nav summary, .sidebar-nav a { color: #94a3b8 !important; text-decoration: none !important; transition: all 0.15s ease !important; display: flex !important; align-items: center !important; gap: 10px; }
 
-/* ── SIDEBAR TYPOGRAPHY ── */
-.sidebar-nav .home-link { font-size: 18px !important; font-weight: 700 !important; display: flex; padding: 8px 12px; color: #2c3e50 !important; margin-bottom: 16px; margin-top: 50px; }
-.sidebar-nav > details > summary { font-size: 16px !important; font-weight: 700 !important; letter-spacing: 0.08em !important; }
+/* ── SIDEBAR TYPOGRAPHY (18-16-14px HİYERARŞİSİ) ── */
+.sidebar-nav .home-link { font-size: 18px !important; font-weight: 700 !important; display: flex !important; padding: 10px 14px !important; color: #1e293b !important; margin: 0 0 24px 0 !important; background: #fff !important; border: 1px solid #e2e8f0 !important; border-radius: 8px !important; box-shadow: 0 2px 4px rgba(0,0,0,0.02) !important; }
+.sidebar-nav .home-link:hover { background: #f1f5f9 !important; border-color: #cbd5e1 !important; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important; }
+.sidebar-nav .home-link.active { border: 1px solid #3b82f6 !important; background: #eff6ff !important; }
+body.dark .sidebar-nav .home-link { background: #1e293b !important; border-color: #334155 !important; color: #f1f5f9 !important; }
+body.dark .sidebar-nav .home-link:hover { background: #0f172a !important; border-color: #475569 !important; }
+body.dark .sidebar-nav .home-link.active { border-color: #3b82f6 !important; background: #0f172a !important; }
+
+.sidebar-nav > details > summary { font-size: 16px !important; font-weight: 700 !important; letter-spacing: 0.05em !important; }
 .sidebar-nav details details summary, .sidebar-nav a:not(.home-link) { font-size: 14px !important; }
 .sidebar-nav summary { font-weight: 700 !important; }
 .sidebar-nav a:not(.home-link) { font-weight: 400 !important; }
 
 /* ── HOVER & AKTİF DURUMLAR ── */
-.sidebar-nav summary:hover, .sidebar-nav a:hover { background: #f0f4f8 !important; color: #1e293b !important; border-radius: 6px !important; }
-body.dark .sidebar-nav summary:hover, body.dark .sidebar-nav a:hover { background: #334155 !important; color: #f1f5f9 !important; }
-.sidebar-nav a.active { color: #1e293b !important; border-left: 3px solid #3b82f6 !important; background: transparent !important; }
-body.dark .sidebar-nav a.active { color: #f1f5f9 !important; border-left-color: #3b82f6 !important; }
+.sidebar-nav summary:hover, .sidebar-nav a:not(.home-link):hover { background: #f0f4f8 !important; color: #1e293b !important; border-radius: 6px !important; }
+body.dark .sidebar-nav summary:hover, body.dark .sidebar-nav a:not(.home-link):hover { background: #334155 !important; color: #f1f5f9 !important; }
+.sidebar-nav a.active:not(.home-link) { color: #1e293b !important; border-left: 3px solid #3b82f6 !important; background: transparent !important; }
+body.dark .sidebar-nav a.active:not(.home-link) { color: #f1f5f9 !important; border-left-color: #3b82f6 !important; }
 
-/* ── DURUM İKONLARI ── */
-.status-icon-img { width: 20px; height: 20px; flex-shrink: 0; object-fit: contain; margin-top: 2px; }
+/* ── İKONLAR (DURUM & KATEGORİ) ── */
+.status-icon-img { width: 16px !important; height: 16px !important; flex-shrink: 0; object-fit: contain; margin-top: 1px; }
 body.dark .status-icon-img { filter: invert(0.8) brightness(1.5); }
 
-/* ── DARK MODE GENEL ── */
-body.dark { background: #0f172a; color: #e2e8f0; }
-body.dark .sidebar { background: #1e293b !important; border-right: 1px solid #334155 !important; border-left: none !important; }
+.cat-icon { width: 18px !important; height: 18px !important; margin-right: 8px !important; vertical-align: middle; display: inline-block; flex-shrink: 0; transition: all 0.2s ease; }
+body.dark .cat-icon { filter: invert(0.8) brightness(1.5); }
+.sidebar-nav summary:hover .cat-icon, .sidebar-nav a:hover .cat-icon { transform: scale(1.1); }
 
 /* ── TOTAL MINIMALIST (GİRİNTİLER) ── */
 .sidebar-nav summary::before, .sidebar-nav details summary::before, .sidebar-nav details details summary::before, .sidebar-nav details details details summary::before, .sidebar-nav li::marker, .sidebar-nav ul li::before, .sidebar-nav summary::marker, .sidebar-nav details summary::-webkit-details-marker { display: none !important; content: none !important; list-style: none !important; }
@@ -149,37 +132,42 @@ body.dark .sidebar { background: #1e293b !important; border-right: 1px solid #33
 .sidebar-nav > details > ul > li > details > ul > li > details > ul > li > a { padding: 5px 2px 5px 30px !important; border-radius: 6px !important; border-left: 3px solid transparent !important; }
 
 /* ── MODERN BUTONLAR ── */
-.sidebar-toggle { background: #f8fafc !important; border: 1px solid #e2e8f0 !important; border-radius: 8px !important; padding: 10px !important; width: 38px !important; height: 38px !important; display: flex !important; align-items: center !important; justify-content: center !important; transition: all 0.2s ease-in-out !important; top: 65px !important; left: 15px !important; position: fixed !important; z-index: 999 !important; }
-.sidebar-toggle span { background-color: #475569 !important; height: 2px !important; width: 18px !important; margin-bottom: 3px !important; }
-.sidebar-toggle span:last-child { margin-bottom: 0 !important; }
+.sidebar-toggle { display: none !important; }
+#custom-sidebar-toggle { position: static !important; z-index: 9999; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; width: 36px; height: 36px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s ease; flex-shrink: 0; }
+#custom-sidebar-toggle span { background-color: #475569; width: 18px; height: 2px; margin-bottom: 4px; border-radius: 2px; transition: all 0.3s ease-in-out; transform-origin: center; }
+#custom-sidebar-toggle span:last-child { margin-bottom: 0; }
+#custom-sidebar-toggle:hover { background: #f1f5f9; }
+body.dark #custom-sidebar-toggle { background: #1e293b; border-color: #334155; }
+body.dark #custom-sidebar-toggle span { background-color: #94a3b8; }
+body.dark #custom-sidebar-toggle:hover { background: #334155; }
 
-#theme-toggle, #back-to-top, #search-trigger, .lang-switcher a {
-    background: rgba(248, 250, 252, 0.8) !important;
-    backdrop-filter: blur(8px);
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 8px !important;
-    width: 34px !important;
-    height: 34px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    cursor: pointer;
-    transition: all 0.2s !important;
-    text-decoration: none !important;
-    font-size: 13px !important;
-    font-weight: 600 !important;
-    color: #475569 !important;
+@media screen and (min-width: 769px) {
+    body:not(.close) #custom-sidebar-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    body:not(.close) #custom-sidebar-toggle span:nth-child(2) { opacity: 0; }
+    body:not(.close) #custom-sidebar-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+}
+@media screen and (max-width: 768px) {
+    body.mobile-sidebar-open #custom-sidebar-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    body.mobile-sidebar-open #custom-sidebar-toggle span:nth-child(2) { opacity: 0; }
+    body.mobile-sidebar-open #custom-sidebar-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 }
 
-#back-to-top { position: fixed; bottom: 24px; right: 24px; z-index: 300; display: none; }
+#theme-toggle, #back-to-top, #search-trigger, .lang-switcher a { background: rgba(248, 250, 252, 0.8) !important; backdrop-filter: blur(8px); border: 1px solid #e2e8f0 !important; border-radius: 8px !important; width: 34px !important; height: 34px !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer; transition: all 0.2s !important; text-decoration: none !important; font-size: 13px !important; font-weight: 600 !important; color: #475569 !important; }
+#back-to-top { 
+    position: fixed; bottom: 24px; right: 24px; z-index: 300; 
+    opacity: 0; pointer-events: none; /* Başlangıçta görünmez ve tıklanamaz */
+    transition: all 0.3s ease !important; /* Yumuşakça belirip kaybolması için */
+}
+#back-to-top.visible { 
+    opacity: 1; pointer-events: auto; /* Aşağı kaydırınca görünür ve tıklanır olur */
+}
 .sidebar-toggle:hover, #theme-toggle:hover, #back-to-top:hover, #search-trigger:hover, .lang-switcher a:hover { background: #f1f5f9 !important; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-
-body.dark .sidebar-toggle, body.dark #theme-toggle, body.dark #back-to-top, body.dark #search-trigger, body.dark .lang-switcher a { background: rgba(30, 41, 59, 0.8) !important; border-color: #334155 !important; color: #f1f5f9 !important; }
-body.dark .sidebar-toggle span { background-color: #94a3b8 !important; }
+body.dark #theme-toggle, body.dark #back-to-top, body.dark #search-trigger, body.dark .lang-switcher a { background: rgba(30, 41, 59, 0.8) !important; border-color: #334155 !important; color: #f1f5f9 !important; }
 
 .sidebar-nav::-webkit-scrollbar { width: 5px; }
-.sidebar-nav::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
-body.dark .sidebar-nav::-webkit-scrollbar-thumb { background: #334155; }
+.sidebar-nav::-webkit-scrollbar-track { background: transparent; }
+.sidebar-nav::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+body.dark .sidebar-nav::-webkit-scrollbar-thumb { background: #475569; }
 
 /* ── İÇERİK LİNKLERİ ── */
 .markdown-section a { text-decoration: none !important; padding: 1px 4px; margin: 0 -2px; border-radius: 4px; transition: all 0.2s ease-in-out !important; font-weight: 500; }
@@ -192,6 +180,14 @@ body.dark .markdown-section a:hover { background-color: rgba(255, 255, 255, 0.1)
 <body>
 
 <div id="topbar">
+    <div class="topbar-left">
+        <!-- BİZİM ÖZGÜR HAMBURGER BUTONUMUZ TOPBAR'A TAŞINDI -->
+        <button id="custom-sidebar-toggle" title="Menüyü Aç/Kapat">
+            <span></span><span></span><span></span>
+        </button>
+        <!-- LOGO ALANI TOPBAR'A TAŞINDI -->
+        <div id="brand-logo-container"></div>
+    </div>
     <div class="topbar-right">
         <button id="search-trigger" title="Ara (Ctrl+K)">
             <i data-lucide="search"></i>
@@ -205,11 +201,8 @@ body.dark .markdown-section a:hover { background-color: rgba(255, 255, 255, 0.1)
     </div>
 </div>
 
-<!-- YENİ: Arama Modalı Yapısı -->
 <div id="search-modal-overlay">
-    <div id="search-modal-container">
-        <!-- Docsify'ın arama kutusu buraya taşınacak -->
-    </div>
+    <div id="search-modal-container"></div>
 </div>
 
 <button id="back-to-top" title="Yukarı Çık">
@@ -246,7 +239,6 @@ function updateLang() {
     let currentHash = window.location.hash || '#/tr/';
     const langToggle = document.getElementById('lang-toggle');
     const isEn = currentHash.startsWith('#/en/');
-    
     langToggle.textContent = isEn ? 'TR' : 'EN';
     langToggle.href = isEn ? currentHash.replace('#/en/', '#/tr/') : (currentHash.includes('#/tr/') ? currentHash.replace('#/tr/', '#/en/') : '#/en/');
 }
@@ -259,6 +251,37 @@ function injectStatusIcons() {
         const type = el.className.split('-')[1];
         el.innerHTML = `<img src="docs/icons/status-${type}.png" class="status-icon-img" alt="${type}">`;
     });
+}
+
+function injectCategoryIcons() {
+    document.querySelectorAll('.sidebar-nav i[data-lucide]').forEach(el => {
+        const iconName = el.getAttribute('data-lucide');
+        if (iconName) {
+            el.outerHTML = `<img src="https://unpkg.com/lucide-static@latest/icons/${iconName}.svg" class="cat-icon" alt="${iconName}">`;
+        }
+    });
+}
+
+// YENİ: LOGOYU DOĞRUDAN TOPBAR'A ENJEKTE EDER ve logo-ana sayfa bağlantısı
+function injectSidebarHeader() {
+    const container = document.getElementById('brand-logo-container');
+    if (!container) return;
+    const isEn = window.location.hash.startsWith('#/en/');
+    const logoSrc = isEn ? 'docs/icons/header-en.png' : 'docs/icons/header-tr.png';
+    const homeUrl = isEn ? '#/en/' : '#/tr/';
+
+    let logoLink = container.querySelector('.header-logo-link');
+    if (!logoLink) {
+        container.innerHTML = `
+            <a href="${homeUrl}" class="header-logo-link">
+                <img src="${logoSrc}" class="header-logo-img" alt="R&D Center Logo">
+            </a>
+        `;
+    } else {
+        const logoImg = container.querySelector('.header-logo-img');
+        if (logoImg) logoImg.src = logoSrc;
+        logoLink.href = homeUrl;
+    }
 }
 
 function syncSidebar() {
@@ -277,18 +300,17 @@ function syncSidebar() {
     }
 }
 
-// 4. ARAMA MODALI (KÖKTEN ÇÖZÜM)
+// 4. ARAMA MODALI
 function initSmartSearch() {
     const trigger = document.getElementById('search-trigger');
     const overlay = document.getElementById('search-modal-overlay');
     const container = document.getElementById('search-modal-container');
 
-    // Docsify'ın arama widget'ını KÖKTEN modal içine taşı
     const observer = new MutationObserver(() => {
         const docsifySearch = document.querySelector('.sidebar .search');
         if (docsifySearch && docsifySearch.parentElement !== container) {
             container.appendChild(docsifySearch);
-            observer.disconnect(); // Taşıma bitti, dinlemeyi bırak
+            observer.disconnect(); 
         }
     });
     observer.observe(document.body, { childList: true, subtree: true });
@@ -306,15 +328,13 @@ function initSmartSearch() {
         const input = container.querySelector('input');
         if (input) {
             input.value = '';
-            input.dispatchEvent(new Event('input')); // Sonuçları temizle
+            input.dispatchEvent(new Event('input')); 
             input.blur();
         }
     }
 
     trigger.addEventListener('click', openSearch);
-    overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) closeSearch();
-    });
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeSearch(); });
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && overlay.style.display === 'flex') closeSearch();
         if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
@@ -324,23 +344,10 @@ function initSmartSearch() {
     });
 }
 
-// 5. KUSURSUZ SIDEBAR TOGGLE KONTROLÜ (Docsify'ı bypass eder)
-function setupStrictSidebarToggle() {
-    const oldToggle = document.querySelector('.sidebar-toggle');
-    if (!oldToggle) return;
-    
-    if (oldToggle.classList.contains('cloned-toggle')) return;
-
-    // Kopyalama işlemi: Docsify'ın bu butona atadığı tüm dinleyicileri siler!
-    const newToggle = oldToggle.cloneNode(true);
-    newToggle.classList.add('cloned-toggle');
-    oldToggle.parentNode.replaceChild(newToggle, oldToggle);
-
-    newToggle.style.setProperty('top', '65px', 'important');
-    newToggle.style.setProperty('left', '15px', 'important');
-
-    // Kendi tertemiz tıklama mantığımız
-    newToggle.addEventListener('click', function(e) {
+// 5. BİZİM ÖZGÜR HAMBURGER BUTONUMUZUN MANTIĞI
+const customToggleBtn = document.getElementById('custom-sidebar-toggle');
+if (customToggleBtn) {
+    customToggleBtn.addEventListener('click', function(e) {
         e.stopPropagation(); 
         if (window.innerWidth <= 768) {
             document.body.classList.toggle('mobile-sidebar-open');
@@ -350,22 +357,23 @@ function setupStrictSidebarToggle() {
     });
 }
 
-// MOBİLDE LİNKE TIKLAYINCA SIDEBARI OTOMATİK KAPAT
 document.addEventListener('click', function(e) {
     if (window.innerWidth <= 768) {
-        // Eğer tıklanan şey sidebar içindeki bir link (a etiketi) ise
         const clickedLink = e.target.closest('.sidebar-nav a');
         if (clickedLink) {
-            // Sidebar'ı kapat
             document.body.classList.remove('mobile-sidebar-open');
         }
     }
 });
-    
-// YUKARI ÇIK BUTONU
+
+// YUKARI ÇIK BUTONU (Akıllı Görünürlük)
 const backToTop = document.getElementById('back-to-top');
 window.addEventListener('scroll', () => {
-    backToTop.style.display = window.scrollY > 400 ? 'flex' : 'none';
+    if (window.scrollY > 400) {
+        backToTop.classList.add('visible');
+    } else {
+        backToTop.classList.remove('visible');
+    }
 });
 backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -373,6 +381,7 @@ backToTop.addEventListener('click', () => {
 
 // 6. DOCSIFY CONFIG
 window.$docsify = {
+    auto2top: true,
     loadSidebar: true,
     loadNavbar: false,
     subMaxLevel: 0,
@@ -388,15 +397,17 @@ window.$docsify = {
         function(hook) {
             hook.ready(() => {
                 initSmartSearch();
+                injectSidebarHeader();
                 syncSidebar();
                 injectStatusIcons();
-                setupStrictSidebarToggle();
+                injectCategoryIcons();
                 if (window.lucide) lucide.createIcons();
             });
             hook.doneEach(() => {
+                injectSidebarHeader();
                 syncSidebar();
                 injectStatusIcons();
-                setupStrictSidebarToggle();
+                injectCategoryIcons();
             });
         }
     ]
