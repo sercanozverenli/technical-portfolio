@@ -1,4 +1,4 @@
-# String İşleme ve Güvenli Kodlama
+# String İşleme ve Try/Except
 
 Bu bölümde Python ile problem çözerken en çok ihtiyaç duyacağımız şu temel konuları ele alacağız:
 - Hazır fonksiyonlar kullanmadan metinleri (string) manipüle etme yöntemleri.
@@ -58,8 +58,6 @@ print(mysplit(""))      # Çıktı: []
 ---
 
 ## 2. Karakter ve Metin Tabanlı Problemler
-
-Yazılım mülakatlarında ve algoritma yarışmalarında karşımıza en çok çıkan 4 popüler metin problemini tek bir çatı altında toplayalım. 
 
 ### 1. Palindrome (Tersten Okunuş)
 Bir kelimenin veya cümlenin düzden ve tersten okunuşunun aynı olması durumudur. Büyük/küçük harfleri ve boşlukları yok sayarak kontrol etmemiz gerekir.
