@@ -1,4 +1,4 @@
-# Python'da Nesne Yönelimli Programlama (OOP) ve Temel Veri Yapıları
+# Nesne Yönelimli Programlama (OOP) ve Temel Veri Yapıları
 
 Bu bölümde yazılım dünyasında soyut kavramları somutlaştırmak için kullandığımız Nesne Yönelimli Programlama (OOP) ilkelerini ve bilgisayar bilimlerinin temel taşları olan veri yapılarını inceleyeceğiz. 
 
