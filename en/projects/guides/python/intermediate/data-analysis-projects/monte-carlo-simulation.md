@@ -98,4 +98,4 @@ print("Probability of reaching the 60th step: " + str(probability * 100) + "%")
 
 ### Summary Conclusion
 As a result of this Monte Carlo simulation, we have proven with the help of a computer that we have a high chance of **around 78.4%** to reach the 60th step, despite the risk of falling down the stairs and the luck factor of the dice.
-```
+
