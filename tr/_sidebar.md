@@ -119,6 +119,24 @@
            </li>
           </ul>
       </details>
+           <details>
+           <summary><i class="status-wip"></i> Python</summary>
+          <ul>
+            <li>
+              <details>
+                <summary><i class="status-wip"></i>Temel Seviye</summary>
+                 <ul>
+                    <li><a href="#/tr/projects/guides/python/beginner/algorithms.md"><i class="status-done"></i>Algoritmalar ve Karmaşıklık</a></li>
+                    <li><a href="#/tr/projects/guides/python/beginner/algorithms.md"><i class="status-done"></i>Kontrol Akışı</a></li>
+                    <li><a href="#/tr/projects/guides/python/beginner/algorithms.md"><i class="status-done"></i>Döngüler ve Yineleme</a></li>
+                    <li><a href="#/tr/projects/guides/python/beginner/algorithms.md"><i class="status-done"></i>Fonksiyonlar ve Modülerlik</a></li>
+                    <li><a href="#/tr/projects/guides/python/beginner/algorithms.md"><i class="status-done"></i>Diziler ve Veri İşleme</a></li>
+                    <li><a href="#/tr/projects/guides/c-programming-language/beginner/matrices-data-structures.md"><i class="status-done"></i>Matrisler ve Veri Yapıları</a></li>
+                 </ul>      
+              </details>
+           </li>
+          </ul>
+      </details>
     </li>
   </ul>
  </details>
