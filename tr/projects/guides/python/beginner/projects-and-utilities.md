@@ -110,11 +110,6 @@ if __name__ == '__main__':
     play()
 ```
 
-Geliştirme fikirleri
-- Basit bir bilgisayar oynatıcı (random hamle veya min-max ile gelişmiş) ekleyin.
-- Hamleleri kaydetme/geri alma özelliği ekleyin.
-- Birim testleri ile oyun mantığını doğrulayın.
-
 ---
 
 ## Proje 2 — Basit Komut Satırı Not Defteri
@@ -174,10 +169,6 @@ if __name__ == '__main__':
             print('Bilinmeyen komut')
 ```
 
-Geliştirme fikirleri
-- Notlara etiket ekleme, JSON veya CSV formatında saklama.
-- Basit arama (kelime içeriyor mu) özelliği ekleme.
-
 ---
 
 ## Proje 3 — Birim Dönüşümü Aracı
@@ -197,9 +188,6 @@ print(celsius_to_fahrenheit(0))  # 32.0
 print(km_to_miles(5))            # ~3.106855
 ```
 
-Öneriler
-- Kullanıcıdan birim ve değer alıp uygun dönüşümü seçen bir CLI yazın.
-- Birimlerin doğrulanması için sözlük (`dict`) kullanın: `{'km': km_to_miles, ...}` ve dinamik çağrı yapın.
 
 ---
 
