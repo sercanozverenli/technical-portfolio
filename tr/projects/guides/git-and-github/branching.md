@@ -46,7 +46,7 @@ Dallar (Branches), ana projenizin çalışan kodunu bozmadan yeni özellikler ge
 Eski Git versiyonlarında `git checkout` komutu iki çok farklı işi tek başına yapıyordu: Hem dallar arasında geçiş sağlıyor hem de silinen/değişen dosyaları geri getiriyordu. Bu durum kafa karışıklığı yarattığı için modern Git mimarisinde bu görevler ayrılmıştır:
 *   `git switch`: Sadece **dallar arası geçiş ve dal yönetimi** için tasarlanmış modern komuttur.
 *   `git restore`: Dosyaları eski haline getirmek veya geri yüklemek için ayrılmıştır.
-Mülakatlarda ve modern projelerde dal değiştirme işlemleri için her zaman **git switch** kullanılması önerilir.
+Not: Dal değiştirme işlemleri için genelde **git switch** kullanılması önerilir.
 
 ### 2. Komutlar ve Varyasyonlar
 
