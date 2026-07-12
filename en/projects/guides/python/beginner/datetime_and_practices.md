@@ -1,4 +1,4 @@
-# Projects and Utilities
+# Datetime & Practices
 
 This page contains small beginner projects and common utility topics in simple English. Each section explains the idea and then shows code examples.
 
