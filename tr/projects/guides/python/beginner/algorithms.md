@@ -130,9 +130,3 @@ Ne zaman hangi aramayı seçmeli?
 - Küçük listeler için basit algoritmalar (`bubble_sort`) kabul edilebilir; gerçek uygulamalarda Python'ın gömülü `sorted()` işlevini kullanın — tipik olarak O(n log n) karmaşıklığa sahip iyi optimize edilmiş algoritmalar kullanır.
 - Karmaşıklık analizini yaparken hem zaman hem de bellek (space complexity) göz önünde bulundurun.
 - Bir problemin gereksinimine göre algoritma seçin: eğer sıralama gerekmiyorsa arama için uygun veri yapısını (set, dict) kullanmak çok daha hızlı olabilir (örneğin membership test için `in` set yapısı O(1) ortalama zaman sağlar).
-
----
-
-## Sonraki adım
-
-İsterseniz aynı formatta "projects-and-utilities.md" dosyası hazırlayıp küçük projeler ile tarih/zaman gibi yardımcı konuları birleştireyim; yoksa sıradaki dosyayı (ör. projects) hazırlamaya geçebilirim.
