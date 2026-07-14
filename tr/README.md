@@ -8,10 +8,10 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
 
 
 <div id="dashboard-root">
-  <div class="dashboard-container">        
+  <div class="dashboard-container">    
+    
     <!-- ÜST BÖLÜM: 2x2 Kategori Grid -->
     <div class="stats-grid">      
-      <!-- Kartlar (Sistemler, Uygulamalar, Analitik, Rehberler) -->
       <div class="stat-card purple">
         <div class="card-header">
           <div class="card-icon"><i data-lucide="layers"></i></div>
@@ -39,6 +39,7 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
       </div>
+
       <div class="stat-card green">
         <div class="card-header">
           <div class="card-icon"><i data-lucide="layout-grid"></i></div>
@@ -66,6 +67,7 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
       </div>
+
       <div class="stat-card blue">
         <div class="card-header">
           <div class="card-icon"><i data-lucide="line-chart"></i></div>
@@ -93,6 +95,7 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
       </div>
+
       <div class="stat-card orange">
         <div class="card-header">
           <div class="card-icon"><i data-lucide="book-open"></i></div>
@@ -121,8 +124,10 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
         </a>
       </div>
     </div>
+
     <!-- ALT BÖLÜM: Yatay Öne Çıkan Proje + Tech Stack -->
-    <div class="featured-horizontal-layout">      
+    <div class="featured-horizontal-layout">
+      
       <!-- Öne Çıkan Proje (Geniş Kart) -->
       <div class="featured-card horizontal">
         <div class="featured-info">
@@ -130,8 +135,8 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           <h2>Amplify Core</h2>
           <p>Veri Güvenilirliği ve Karar Yönlendirme Sistemi</p>
           <div class="global-stats-mini">
-            <div class="mini-stat"><span id="global-total-projects">0</span> <span>Proje</span></div>
-            <div class="mini-stat"><span id="global-total-docs">0</span> <span>Doküman</span></div>
+            <div class="mini-stat"><span id="global-total-projects">0</span> <span>PROJE</span></div>
+            <div class="mini-stat"><span id="global-total-docs">0</span> <span>DOKÜMAN</span></div>
           </div>
         </div>
         <div class="featured-diagram-large">
@@ -139,17 +144,23 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           <img src="docs/diagrams/amplify-core/sekil-1.png" alt="Sistem Diyagramı">
         </div>
       </div>
-      <!-- Tech Stack (İnce Kart) -->
+
+      <!-- Araçlar (Dar Kart) -->
       <div class="tech-stack-card">
-        <div class="stack-header">Araçlar</div>
+        <div class="stack-header">ARAÇLAR</div>
         <ul class="stack-list">
-          <li><i data-lucide="code"></i> Python</li>
-          <li><i data-lucide="cpu"></i> C / C++</li>
-          <li><i data-lucide="git-branch"></i> Git / GitHub</li>
-          <li><i data-lucide="database"></i> SQL</li>
-          <li><i data-lucide="bar-chart-3"></i> Pandas / NumPy</li>
+          <li><img src="docs/icons/python-icon.png"> Python</li>
+          <li><img src="docs/icons/sql-icon.png"> SQL</li>
+          <li><img src="docs/icons/r-icon.png"> R</li>
+          <li><img src="docs/icons/power-bi-icon.png"> Power BI</li>
+          <li><img src="docs/icons/tableau-icon.png"> Tableau</li>
+          <li><img src="docs/icons/github-icon.png"> Github</li>
+          <li><img src="docs/icons/html-icon.png"> HTML</li>
+          <li><img src="docs/icons/c-icon.png"> C</li>
         </ul>
       </div>
+
     </div>
+
   </div>
 </div>
