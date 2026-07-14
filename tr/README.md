@@ -10,7 +10,6 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
 <!-- Dashboard Ana Konteynırı -->
 <div id="dashboard-root">
   <div class="dashboard-container">    
-    <!-- SOL TARAF: 4 Kategori Kartı -->
     <div class="stats-grid">      
       <!-- Kart: Sistemler -->
       <div class="stat-card purple">
@@ -18,21 +17,21 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           <div class="card-icon"><i data-lucide="layers"></i></div>
           <div class="card-title-group">
             <h3>Sistemler</h3>
-            <p><span id="count-systems-total">0</span> Proje</p>
+            <p><span id="count-systems-total-projects">0</span> Proje</p>
           </div>
         </div>
         <div class="card-body">
           <div class="status-row">
             <img src="docs/icons/status-idea.png" class="status-mini-icon"> <span>Planlanan</span>
-            <span class="status-count" id="count-systems-idea">0</span>
+            <span class="status-count"><span id="count-systems-idea">0</span> Doküman</span>
           </div>
           <div class="status-row">
             <img src="docs/icons/status-wip.png" class="status-mini-icon"> <span>Devam Eden</span>
-            <span class="status-count" id="count-systems-wip">0</span>
+            <span class="status-count"><span id="count-systems-wip">0</span> Doküman</span>
           </div>
           <div class="status-row">
             <img src="docs/icons/status-done.png" class="status-mini-icon"> <span>Tamamlanan</span>
-            <span class="status-count" id="count-systems-done">0</span>
+            <span class="status-count"><span id="count-systems-done">0</span> Doküman</span>
           </div>
         </div>
         <a href="#" target="_blank" class="card-footer">
@@ -48,21 +47,21 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           <div class="card-icon"><i data-lucide="layout-grid"></i></div>
           <div class="card-title-group">
             <h3>Uygulamalar</h3>
-            <p><span id="count-apps-total">0</span> Proje</p>
+            <p><span id="count-apps-total-projects">0</span> Proje</p>
           </div>
         </div>
         <div class="card-body">
           <div class="status-row">
             <img src="docs/icons/status-idea.png" class="status-mini-icon"> <span>Planlanan</span>
-            <span class="status-count" id="count-apps-idea">0</span>
+            <span class="status-count"><span id="count-apps-idea">0</span> Doküman</span>
           </div>
           <div class="status-row">
             <img src="docs/icons/status-wip.png" class="status-mini-icon"> <span>Devam Eden</span>
-            <span class="status-count" id="count-apps-wip">0</span>
+            <span class="status-count"><span id="count-apps-wip">0</span> Doküman</span>
           </div>
           <div class="status-row">
             <img src="docs/icons/status-done.png" class="status-mini-icon"> <span>Tamamlanan</span>
-            <span class="status-count" id="count-apps-done">0</span>
+            <span class="status-count"><span id="count-apps-done">0</span> Doküman</span>
           </div>
         </div>
         <a href="#" target="_blank" class="card-footer">
@@ -78,21 +77,21 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           <div class="card-icon"><i data-lucide="line-chart"></i></div>
           <div class="card-title-group">
             <h3>Analitik Modüller</h3>
-            <p><span id="count-analytics-total">0</span> Proje</p>
+            <p><span id="count-analytics-total-projects">0</span> Proje</p>
           </div>
         </div>
         <div class="card-body">
           <div class="status-row">
             <img src="docs/icons/status-idea.png" class="status-mini-icon"> <span>Planlanan</span>
-            <span class="status-count" id="count-analytics-idea">0</span>
+            <span class="status-count"><span id="count-analytics-idea">0</span> Doküman</span>
           </div>
           <div class="status-row">
             <img src="docs/icons/status-wip.png" class="status-mini-icon"> <span>Devam Eden</span>
-            <span class="status-count" id="count-analytics-wip">0</span>
+            <span class="status-count"><span id="count-analytics-wip">0</span> Doküman</span>
           </div>
           <div class="status-row">
             <img src="docs/icons/status-done.png" class="status-mini-icon"> <span>Tamamlanan</span>
-            <span class="status-count" id="count-analytics-done">0</span>
+            <span class="status-count"><span id="count-analytics-done">0</span> Doküman</span>
           </div>
         </div>
         <a href="#" target="_blank" class="card-footer">
@@ -108,21 +107,21 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           <div class="card-icon"><i data-lucide="book-open"></i></div>
           <div class="card-title-group">
             <h3>Rehberler</h3>
-            <p><span id="count-guides-total">0</span> Proje</p>
+            <p><span id="count-guides-total-projects">0</span> Proje</p>
           </div>
         </div>
         <div class="card-body">
           <div class="status-row">
             <img src="docs/icons/status-idea.png" class="status-mini-icon"> <span>Planlanan</span>
-            <span class="status-count" id="count-guides-idea">0</span>
+            <span class="status-count"><span id="count-guides-idea">0</span> Doküman</span>
           </div>
           <div class="status-row">
             <img src="docs/icons/status-wip.png" class="status-mini-icon"> <span>Devam Eden</span>
-            <span class="status-count" id="count-guides-wip">0</span>
+            <span class="status-count"><span id="count-guides-wip">0</span> Doküman</span>
           </div>
           <div class="status-row">
             <img src="docs/icons/status-done.png" class="status-mini-icon"> <span>Tamamlanan</span>
-            <span class="status-count" id="count-guides-done">0</span>
+            <span class="status-count"><span id="count-guides-done">0</span> Doküman</span>
           </div>
         </div>
         <a href="#" target="_blank" class="card-footer">
@@ -133,12 +132,10 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
         </a>
       </div>
     </div>
-    <!-- SAĞ TARAF: Öne Çıkan Proje ve Sistem Diyagramı -->
+    <!-- SAĞ TARAF: Öne Çıkan Proje -->
     <div class="featured-section">
       <div class="featured-card">
-        <div class="featured-badge">
-          <i data-lucide="star"></i> Öne Çıkan Proje
-        </div>
+        <div class="featured-badge"><i data-lucide="star"></i> Öne Çıkan Proje</div>
         <h2>Amplify Core</h2>
         <p>Veri Güvenilirliği ve Karar Yönlendirme Sistemi</p>        
         <hr class="divider">        
@@ -161,12 +158,10 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
         <div class="diagram-area">
           <span class="diagram-title">Sistem Diyagramı</span>
           <div class="diagram-image-container">
-            <!-- sekil-1.png buraya eklendi -->
             <img src="docs/diagrams/amplify-core/sekil-1.png" alt="Sistem Diyagramı" class="featured-diagram-img">
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
