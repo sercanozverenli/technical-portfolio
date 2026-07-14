@@ -162,7 +162,7 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           <span class="diagram-title">Sistem Diyagramı</span>
           <div class="diagram-image-container">
             <!-- sekil-1.png buraya eklendi -->
-            <img src="docs/icons/sekil-1.png" alt="Sistem Diyagramı" class="featured-diagram-img">
+            <img src="../../docs/icons/sekil-1.png" alt="Sistem Diyagramı" class="featured-diagram-img">
           </div>
         </div>
       </div>
