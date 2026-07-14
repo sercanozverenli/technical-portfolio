@@ -176,7 +176,11 @@ body.dark .card-icon { background: #0f172a; }
 .card-title-group h3 { margin: 0 !important; font-size: 20px !important; font-weight: 800 !important; color: #1e293b; }
 body.dark .card-title-group h3 { color: #f8fafc; }
 
-.card-body { padding: 0 24px 24px 24px; }
+.card-body { 
+    padding: 0 24px 24px 24px; 
+    margin-top: auto; /* Boşluğu yukarıya iter, böylece tüm içerikler aşağıda hizalanır */
+    /* flex-grow: 1;  <-- Bu satırı siliyoruz */
+}
 .status-row { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.08); font-weight: 600; color: #475569; }
 body.dark .status-row { border-bottom-color: rgba(255,255,255,0.1); color: #94a3b8; }
 
