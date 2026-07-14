@@ -61,7 +61,7 @@ workspace/
 └── archive/                            # Deprecated & Historical Content
 ```
 Architectural Rules
-Decoupling: The Presentation Layer contains purely semantic analysis and markdown files served via Docsify. Zero production code is allowed here.
+Decoupling: The Presentation Layer contains purely semantic analysis and markdown files served via Docsify. 
 
 Submodule Isolation: Every directory under modules/ is an independent Git repository linked as a submodule. Updates to technical logic must be committed directly within their respective isolated micro-repos.
 
@@ -70,8 +70,8 @@ Data Integrity: Raw datasets are strictly bound to local environments via .gitig
 📊 Deployment & Automation
 Documentation Engine: Docsify SPA running dynamically on the browser.
 
-CI/CD Pipeline: GitHub Actions automates deployment directly to GitHub Pages upon every push to the main branch.
+Continuous Integration/Continuous Deployment (CI/CD) Pipeline: GitHub Actions automates deployment directly to GitHub Pages upon every push to the main branch.
 
-GA Policy: Sub-systems under active R&D remain private inside submodules to prevent training-serving skew and regression errors. They are structurally graduated to public visibility upon meeting alpha/beta acceptance criteria.
+General Availability (GA) Policy: Sub-systems under active R&D remain private inside submodules to prevent training-serving skew and regression errors. They are structurally graduated to public visibility upon meeting alpha/beta acceptance criteria.
 
 Maintained under MIT License. Designed for scalability and systematic reproducibility.
