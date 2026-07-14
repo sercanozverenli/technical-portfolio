@@ -8,7 +8,7 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
 
 
 <div id="dashboard-root">
-  <div class="dashboard-container">        
+  <div class="dashboard-container">       
     <!-- ÜST BÖLÜM: 2x2 Kategori Grid -->
     <div class="stats-grid">      
       <div class="stat-card purple">
@@ -122,23 +122,25 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
     </div>
     <!-- ALT BÖLÜM: Yatay Öne Çıkan Proje + Tech Stack -->
     <div class="featured-horizontal-layout">      
-      <!-- Öne Çıkan Proje (Geniş Kart) -->
+      <!-- Öne Çıkan Proje -->
       <div class="featured-card horizontal">
         <div class="featured-info">
           <div class="featured-badge"><i data-lucide="star"></i> Öne Çıkan Proje</div>
           <h2>Amplify Core</h2>
           <p>Veri Güvenilirliği ve Karar Yönlendirme Sistemi</p>
           <div class="global-stats-mini">
-            <div class="mini-stat"><span id="global-total-projects">0</span> <span>PROJE</span></div>
-            <div class="mini-stat"><span id="global-total-docs">0</span> <span>DOKÜMAN</span></div>
+            <div class="mini-stat">
+                <span id="featured-doc-count">0</span> 
+                <span>DOKÜMAN</span>
+            </div>
           </div>
         </div>
         <div class="featured-diagram-large">
-          <span class="diagram-label">Sistem Mimarisi</span>
+          <span class="diagram-label">Sistem Tasarımı</span>
           <img src="docs/diagrams/amplify-core/sekil-1.png" alt="Sistem Diyagramı">
         </div>
       </div>
-      <!-- Araçlar (Dar Kart) -->
+      <!-- Araçlar -->
       <div class="tech-stack-card">
         <div class="stack-header">ARAÇLAR</div>
         <ul class="stack-list">
