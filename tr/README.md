@@ -8,8 +8,7 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
 
 
 <div id="dashboard-root">
-  <div class="dashboard-container">    
-    
+  <div class="dashboard-container">        
     <!-- ÜST BÖLÜM: 2x2 Kategori Grid -->
     <div class="stats-grid">      
       <div class="stat-card purple">
@@ -39,7 +38,6 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
       </div>
-
       <div class="stat-card green">
         <div class="card-header">
           <div class="card-icon"><i data-lucide="layout-grid"></i></div>
@@ -67,7 +65,6 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
       </div>
-
       <div class="stat-card blue">
         <div class="card-header">
           <div class="card-icon"><i data-lucide="line-chart"></i></div>
@@ -95,7 +92,6 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
       </div>
-
       <div class="stat-card orange">
         <div class="card-header">
           <div class="card-icon"><i data-lucide="book-open"></i></div>
@@ -124,10 +120,8 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
         </a>
       </div>
     </div>
-
     <!-- ALT BÖLÜM: Yatay Öne Çıkan Proje + Tech Stack -->
-    <div class="featured-horizontal-layout">
-      
+    <div class="featured-horizontal-layout">      
       <!-- Öne Çıkan Proje (Geniş Kart) -->
       <div class="featured-card horizontal">
         <div class="featured-info">
@@ -144,7 +138,6 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           <img src="docs/diagrams/amplify-core/sekil-1.png" alt="Sistem Diyagramı">
         </div>
       </div>
-
       <!-- Araçlar (Dar Kart) -->
       <div class="tech-stack-card">
         <div class="stack-header">ARAÇLAR</div>
@@ -159,8 +152,6 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           <li><img src="docs/icons/c-icon.png"> C</li>
         </ul>
       </div>
-
     </div>
-
   </div>
 </div>
