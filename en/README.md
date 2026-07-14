@@ -153,6 +153,7 @@ You can use the **navigation menu** to examine planned or developed modules, sys
           <li><img src="docs/icons/r-icon.png"> R</li>
           <li><img src="docs/icons/power-bi-icon.png"> Power BI</li>
           <li><img src="docs/icons/tableau-icon.png"> Tableau</li>
+          <li><img src="docs/icons/spss-icon.png"> SPSS</li>          
           <li><img src="docs/icons/github-icon.png"> Github</li>
           <li><img src="docs/icons/html-icon.png"> HTML</li>
           <li><img src="docs/icons/c-icon.png"> C</li>
