@@ -143,41 +143,87 @@ body.dark #custom-sidebar-toggle span { background-color: #94a3b8; }
 body.dark #theme-toggle, body.dark #back-to-top, body.dark #search-trigger, body.dark .lang-switcher a { background: rgba(30, 41, 59, 0.8) !important; border-color: #334155 !important; color: #f1f5f9 !important; }
 
 /* ── DASHBOARD GÜNCEL TASARIM ── */
-#dashboard-root { 
-    margin: 40px auto; 
-    width: 100%; 
-    max-width: 1000px; /* Docsify içerik genişliğiyle uyumlu */
+/* ── 1. TEMEL VE GLOBAL AYARLAR ── */
+body, .sidebar { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif; }
+.app-nav { display: none !important; }
+
+/* ── 2. TOPBAR (BRAND BAR) ── */
+#topbar {
+    position: fixed; top: 0; left: 0; right: 0; width: 100% !important; height: 60px;
+    background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px 0 16px; z-index: 600 !important; box-sizing: border-box;
 }
+body.dark #topbar { background: rgba(30, 41, 59, 0.8) !important; border-bottom-color: #334155; }
+
+.topbar-left { display: flex; align-items: center; gap: 16px; }
+.topbar-right { display: flex; align-items: center; gap: 12px; }
+
+.header-logo-link { display: flex; align-items: center; text-decoration: none !important; }
+.header-logo-img {
+    height: auto !important; max-height: 32px !important; width: auto !important; max-width: 180px !important;
+    object-fit: contain; display: block; transition: all 0.3s ease;
+}
+body.dark .header-logo-img { filter: invert(1) hue-rotate(180deg) brightness(1.8) contrast(1.2); }
+
+/* ── 3. SIDEBAR (NAVİGASYON) ── */
+.sidebar {
+    width: 300px !important; border-right: 1px solid #e2e8f0;
+    top: 60px !important; height: calc(100vh - 60px) !important;
+    padding: 0 !important; left: 0 !important; transform: none !important;
+    transition: left 0.25s ease-out !important; z-index: 500 !important;
+    background: #f8fafc; overflow: hidden !important;
+}
+body.dark .sidebar { background: #0f172a !important; border-right-color: #334155 !important; }
+
+.sidebar-nav { padding: 16px 12px 60px 12px !important; height: 100% !important; overflow-y: auto !important; }
+.sidebar-nav summary, .sidebar-nav a { color: #94a3b8 !important; text-decoration: none !important; transition: all 0.15s ease !important; display: flex !important; align-items: center !important; gap: 10px; }
+
+/* Sidebar Hiyerarşisi (18-16-14px) */
+.sidebar-nav .home-link { font-size: 18px !important; font-weight: 700 !important; padding: 10px 14px !important; color: #1e293b !important; margin: 0 0 24px 0 !important; background: #fff !important; border: 1px solid #e2e8f0 !important; border-radius: 8px !important; box-shadow: 0 2px 4px rgba(0,0,0,0.02) !important; }
+body.dark .sidebar-nav .home-link { background: #1e293b !important; border-color: #334155 !important; color: #f1f5f9 !important; }
+
+.sidebar-nav > details > summary { font-size: 16px !important; font-weight: 700 !important; letter-spacing: 0.05em !important; }
+.sidebar-nav details details summary, .sidebar-nav a:not(.home-link) { font-size: 14px !important; }
+
+.sidebar-nav summary:hover, .sidebar-nav a:not(.home-link):hover { background: #f0f4f8 !important; color: #1e293b !important; border-radius: 6px !important; }
+body.dark .sidebar-nav summary:hover, body.dark .sidebar-nav a:not(.home-link):hover { background: #334155 !important; color: #f1f5f9 !important; }
+.sidebar-nav a.active:not(.home-link) { color: #1e293b !important; border-left: 3px solid #3b82f6 !important; background: transparent !important; }
+body.dark .sidebar-nav a.active:not(.home-link) { color: #f1f5f9 !important; border-left-color: #3b82f6 !important; }
+
+/* Sidebar Girintileri */
+.sidebar-nav summary::before, .sidebar-nav details summary::before, .sidebar-nav li::marker { display: none !important; }
+.sidebar-nav ul, .sidebar-nav li { margin: 0 !important; padding: 0 !important; list-style: none !important; }
+.sidebar-nav > details > ul > li > a, .sidebar-nav > details > ul > li > details > summary { padding: 5px 2px 5px 8px !important; }
+.sidebar-nav > details > ul > li > details > ul > li > a, .sidebar-nav > details > ul > li > details > ul > li > details > summary { padding: 5px 2px 5px 18px !important; }
+
+/* ── 4. İÇERİK ALANI ── */
+html.dark, body.dark, body.dark main, body.dark section.content, body.dark .markdown-section { background-color: #0f172a !important; color: #e2e8f0 !important; min-height: 100vh !important; }
+.markdown-section { padding-top: 80px !important; line-height: 1.7; font-size: 16px; }
+
+/* ── 5. DASHBOARD (ANA YAPI) ── */
+#dashboard-root { margin: 40px auto; width: 100%; max-width: 1000px; }
 .dashboard-container { display: flex; flex-direction: column; gap: 25px; }
 
 /* 2x2 Grid */
-.stats-grid { 
-    display: grid; 
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 20px; 
-}
+.stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
 .stat-card {
-    border-radius: 20px;
-    border: 1.5px solid rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    background: #fff;
+    border-radius: 20px; border: 1.5px solid rgba(0,0,0,0.1);
+    display: flex; flex-direction: column; overflow: hidden;
+    transition: all 0.3s ease; background: #fff;
 }
 
-/* Renkli Gradyanlar */
-.purple { background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%); border-color: #ddd6fe; }
-.green  { background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%); border-color: #bbf7d0; }
-.blue   { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border-color: #bfdbfe; }
-.orange { background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%); border-color: #fed7aa; }
-
-body.dark .stat-card { background: #1e293b !important; border-color: #334155; }
+/* Dark Mode Kartlar */
+body.dark .stat-card { background: linear-gradient(145deg, #1e293b, #0f172a) !important; border-color: rgba(255,255,255,0.05); }
+body.dark .purple { border-left: 4px solid #7c3aed; }
+body.dark .green  { border-left: 4px solid #16a34a; }
+body.dark .blue   { border-left: 4px solid #2563eb; }
+body.dark .orange { border-left: 4px solid #ea580c; }
 
 .card-header { padding: 20px; display: flex; align-items: center; gap: 15px; }
 .card-icon { width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-body.dark .card-icon { background: #0f172a; }
+body.dark .card-icon { background: #1e293b; color: #fff; }
 
 .card-title-group h3 { margin: 0 !important; font-size: 18px !important; font-weight: 800 !important; color: #1e293b; }
 body.dark .card-title-group h3 { color: #f8fafc; }
@@ -195,58 +241,61 @@ body.dark .status-count span { color: #f1f5f9; }
 body.dark .card-footer { background: rgba(0,0,0,0.2); color: #94a3b8; }
 .github-mini-img { width: 18px; height: 18px; margin-right: 8px; }
 
-/* ── ALT BÖLÜM: YATAY TASARIM ── */
+/* ── 6. ÖNE ÇIKAN PROJE (YATAY) ── */
 .featured-horizontal-layout { display: flex; gap: 20px; align-items: stretch; }
-
-.featured-card.horizontal { 
-    flex: 1; /* Esnek alan */
-    display: flex; 
-    background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%); 
-    border-radius: 24px; border: 2px solid #fed7aa; padding: 25px; 
-    box-shadow: 0 10px 30px rgba(234, 88, 12, 0.1);
-}
-body.dark .featured-card.horizontal { background: #1e293b; border-color: #431407; }
+.featured-card.horizontal { flex: 1; display: flex; background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%); border-radius: 24px; border: 2px solid #fed7aa; padding: 25px; }
+body.dark .featured-card.horizontal { background: linear-gradient(145deg, #2d1a10, #1e293b) !important; border-color: rgba(234, 88, 12, 0.3); }
 
 .featured-info { flex: 0 0 220px; display: flex; flex-direction: column; justify-content: center; }
 .featured-info h2 { font-size: 28px !important; font-weight: 900 !important; margin: 10px 0 !important; color: #1e293b; }
 body.dark .featured-info h2 { color: #f8fafc; }
 
-.global-stats-mini { display: flex; gap: 15px; margin-top: 15px; }
-.mini-stat { display: flex; flex-direction: column; }
-/* Sayıların kalınlığı düşürüldü */
-.mini-stat span:first-child { font-size: 22px; font-weight: 600; color: #ea580c; }
-.mini-stat span:last-child { font-size: 10px; color: #94a3b8; text-transform: uppercase; font-weight: 700; }
+.mini-stat span:first-child { font-size: 26px; font-weight: 500; color: #ea580c; }
+.mini-stat span:last-child { font-size: 11px; color: #94a3b8; font-weight: 700; }
 
-.featured-diagram-large { flex: 1; background: #fff; border-radius: 16px; padding: 10px; border: 1px solid #fed7aa; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-body.dark .featured-diagram-large { background: #0f172a; border-color: #431407; }
-.diagram-label { font-size: 10px; font-weight: 800; color: #ea580c; text-transform: uppercase; margin-bottom: 8px; }
+.featured-diagram-large { flex: 1; background: #fff; border-radius: 16px; padding: 15px; border: 1px solid #fed7aa; display: flex; flex-direction: column; align-items: center; }
+body.dark .featured-diagram-large { background: #0f172a; border-color: rgba(234, 88, 12, 0.2); }
+.diagram-label { font-size: 16px !important; font-weight: 400 !important; color: #ea580c; text-transform: none !important; margin-bottom: 12px; display: block; }
 .featured-diagram-large img { max-width: 100%; height: auto; border-radius: 8px; }
 
-/* Araçlar Kartı (Daraltıldı) */
-.tech-stack-card { 
-    flex: 0 0 180px; /* Sabit dar genişlik */
-    background: #fff; 
-    border-radius: 24px; 
-    border: 1.5px solid #e2e8f0; 
-    padding: 20px; 
-    display: flex; 
-    flex-direction: column; 
-}
-body.dark .tech-stack-card { background: #1e293b; border-color: #334155; }
-.stack-header { font-size: 12px; font-weight: 800; text-transform: uppercase; color: #64748b; margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+/* ── 7. ARAÇLAR KARTI ── */
+.tech-stack-card { flex: 0 0 180px; background: #fff; border-radius: 24px; border: 1.5px solid #e2e8f0; padding: 20px; }
+body.dark .tech-stack-card { background: #0f172a; border-color: rgba(255,255,255,0.05); }
+.stack-header { font-size: 12px; font-weight: 800; color: #64748b; margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
 .stack-list { list-style: none !important; padding: 0 !important; margin: 0 !important; }
-.stack-list li { display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 12px; font-weight: 600; color: #475569; border-bottom: 1px solid #f8fafc; }
-body.dark .stack-list li { color: #cbd5e1; border-bottom-color: #334155; }
-.stack-list li img { width: 18px; height: 18px; object-fit: contain; }
+.stack-list li { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 12px; color: #475569; border-bottom: 1px solid #f8fafc; }
+body.dark .stack-list li { color: #cbd5e1; border-bottom-color: #1e293b; }
+.stack-list li img { width: 18px; height: 18px; }
 
-/* Mobil Uyumluluk */
-@media (max-width: 768px) {
+/* ── 8. BUTONLAR VE MODAL ── */
+#custom-sidebar-toggle { position: static !important; z-index: 9999; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; width: 36px; height: 36px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+#custom-sidebar-toggle span { background-color: #475569; width: 18px; height: 2px; margin-bottom: 4px; border-radius: 2px; transition: all 0.3s; }
+#search-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px); z-index: 10000; display: none; justify-content: center; align-items: flex-start; padding-top: 10vh; }
+#search-modal-container { width: 90%; max-width: 650px; background: #fff; border-radius: 16px; overflow: hidden; }
+body.dark #search-modal-container { background: #1e293b; border: 1px solid #334155; }
+
+/* ── 9. MOBİL UYUMLULUK (RESPONSIVE) ── */
+@media screen and (max-width: 768px) {
+    #topbar { padding: 0 16px !important; }
+    .sidebar { left: -300px !important; }
+    body.mobile-sidebar-open .sidebar { left: 0 !important; }
+    .markdown-section { padding-top: 80px !important; }
+    
+    /* Dashboard Mobil */
     .stats-grid { grid-template-columns: 1fr; }
     .featured-horizontal-layout { flex-direction: column; }
     .featured-card.horizontal { flex-direction: column; }
-    .featured-info { flex: none; margin-bottom: 20px; }
-    .tech-stack-card { flex: none; }
+    .featured-info { flex: none; margin-bottom: 20px; padding: 0; }
+    .tech-stack-card { flex: none; width: 100%; box-sizing: border-box; }
 }
+
+@media screen and (min-width: 769px) {
+    body.close .sidebar { left: -300px !important; }
+    body:not(.close) #custom-sidebar-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    body:not(.close) #custom-sidebar-toggle span:nth-child(2) { opacity: 0; }
+    body:not(.close) #custom-sidebar-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+}
+    
 </style>
 <script src="https://unpkg.com/lucide@latest"></script>    
 </head>
@@ -437,9 +486,6 @@ function runDashboardEngine() {
         'Rehberler': 'guides'
     };
 
-    let globalTotalProjects = 0;
-    let globalTotalDocs = 0;
-
     Object.keys(categories).forEach(catName => {
         const idPrefix = categories[catName];
         const allSummaries = Array.from(sidebar.querySelectorAll('summary'));
@@ -447,21 +493,25 @@ function runDashboardEngine() {
 
         if (catSummary) {
             const parentDetails = catSummary.parentElement;
-            const firstLevelList = parentDetails.querySelector('ul');
-            let projectCount = 0;
             
-            if (firstLevelList) {
-                projectCount = Array.from(firstLevelList.children).filter(li => li.querySelector('details')).length;
-                if (projectCount === 0) {
-                    projectCount = firstLevelList.querySelectorAll('li > a').length;
-                }
+            // PROJE SAYISI HESABI (Düzeltildi: Rehberler gibi iç içe yapıları doğru sayar)
+            const firstLevelUl = parentDetails.querySelector('ul');
+            let projectCount = 0;
+            if (firstLevelUl) {
+                // Sadece doğrudan çocuk olan li'lerin içindeki details veya a'ları say
+                const items = Array.from(firstLevelUl.children);
+                projectCount = items.length;
             }
 
+            // DOKÜMAN SAYISI HESABI
             const docCount = parentDetails.querySelectorAll('li > a').length;
+            
+            // DURUM SAYILARI
             const done = parentDetails.querySelectorAll('.status-done').length;
             const wip = parentDetails.querySelectorAll('.status-wip').length;
             const idea = parentDetails.querySelectorAll('.status-idea').length;
 
+            // Dashboard'a Yaz
             if(document.getElementById(`count-${idPrefix}-total-projects`)) 
                 document.getElementById(`count-${idPrefix}-total-projects`).textContent = projectCount;
             
@@ -469,13 +519,14 @@ function runDashboardEngine() {
             if(document.getElementById(`count-${idPrefix}-wip`)) document.getElementById(`count-${idPrefix}-wip`).textContent = wip;
             if(document.getElementById(`count-${idPrefix}-idea`)) document.getElementById(`count-${idPrefix}-idea`).textContent = idea;
 
-            globalTotalProjects += projectCount;
-            globalTotalDocs += docCount;
+            // Öne Çıkan Proje (Amplify Core) Özel Hesabı
+            // "Sistemler" kategorisindeki toplam doküman sayısını oraya yazar
+            if (idPrefix === 'systems') {
+                const featuredDocEl = document.getElementById('featured-doc-count');
+                if (featuredDocEl) featuredDocEl.textContent = docCount;
+            }
         }
     });
-
-    if(document.getElementById('global-total-projects')) document.getElementById('global-total-projects').textContent = globalTotalProjects;
-    if(document.getElementById('global-total-docs')) document.getElementById('global-total-docs').textContent = globalTotalDocs;
 }
 
 // 7. DOCSIFY CONFIG
