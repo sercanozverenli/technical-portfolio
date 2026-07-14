@@ -144,7 +144,6 @@ body.dark #theme-toggle, body.dark #back-to-top, body.dark #search-trigger, body
 
 /* ── DASHBOARD GÜNCEL TASARIM ── */
 /* ── 1. TEMEL VE GLOBAL AYARLAR ── */
-/* ── 1. GLOBAL & TEMEL AYARLAR ── */
 body, .sidebar { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif; }
 .app-nav { display: none !important; }
 
@@ -477,17 +476,14 @@ window.addEventListener('scroll', () => {
 backToTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
 // 6. GÜNCELLENMİŞ DASHBOARD MOTORU (LİSTE UYUMLU)
+// 6. GÜNCELLENMİŞ DASHBOARD MOTORU
 function runDashboardEngine() {
-    // 1. Lucide ikonlarını tetikle
     if (window.lucide) { window.lucide.createIcons(); }
-
     const dashboard = document.getElementById('dashboard-root');
     if (!dashboard) return;
-
     const sidebar = document.querySelector('.sidebar-nav');
     if (!sidebar) return;
 
-    // Kategori Eşleştirme (Hem TR hem EN destekli)
     const categories = {
         'Sistemler': 'systems', 'Systems': 'systems',
         'Uygulamalar': 'apps', 'Apps': 'apps',
@@ -501,34 +497,18 @@ function runDashboardEngine() {
     Object.keys(categories).forEach(catName => {
         const idPrefix = categories[catName];
         const allSummaries = Array.from(sidebar.querySelectorAll('summary'));
-        
-        // Kategori başlığını ikonlardan arındırıp temiz metinle eşleştir
         const catSummary = allSummaries.find(s => s.textContent.trim().includes(catName));
 
         if (catSummary) {
             const parentDetails = catSummary.parentElement;
             const firstLevelUl = parentDetails.querySelector('ul');
-            
-            // PROJE SAYISI: Sadece doğrudan altındaki <li> öğelerini say (1 li = 1 Proje)
-            let projectCount = 0;
-            if (firstLevelUl) {
-                projectCount = firstLevelUl.querySelectorAll(':scope > li').length;
-            }
-
-            // DOKÜMAN SAYISI: Kategorinin altındaki tüm gerçek linkler (<a>)
+            let projectCount = firstLevelUl ? firstLevelUl.querySelectorAll(':scope > li').length : 0;
             const docCount = parentDetails.querySelectorAll('li a').length;
-            
-            // DURUM SAYILARI (İkon class'ları üzerinden)
             const done = parentDetails.querySelectorAll('.status-done').length;
             const wip = parentDetails.querySelectorAll('.status-wip').length;
             const idea = parentDetails.querySelectorAll('.status-idea').length;
 
-            // Dashboard Arayüzünü Güncelle
-            const setVal = (id, val) => {
-                const el = document.getElementById(id);
-                if (el) el.textContent = val;
-            };
-
+            const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
             setVal(`count-${idPrefix}-total-projects`, projectCount);
             setVal(`count-${idPrefix}-done`, done);
             setVal(`count-${idPrefix}-wip`, wip);
@@ -536,29 +516,14 @@ function runDashboardEngine() {
 
             globalP += projectCount;
             globalD += docCount;
-
-            // Öne Çıkan Proje (Amplify Core) Doküman Sayısı
-            // Sistemler kategorisindeki toplam dokümanı oraya yazar
-            if (idPrefix === 'systems') {
-                setVal('featured-doc-count', docCount);
-            }
+            if (idPrefix === 'systems') { setVal('featured-doc-count', docCount); }
         }
     });
 
-    // Global İstatistikler (Eğer HTML'de varsa)
     const totalProjEl = document.getElementById('global-total-projects');
     const totalDocsEl = document.getElementById('global-total-docs');
     if (totalProjEl) totalProjEl.textContent = globalP;
     if (totalDocsEl) totalDocsEl.textContent = globalD;
-}
-    // Toplam Proje ve Doküman Sayılarını Güncelle (Tüm Dashboard üzerinden)
-    let totalP = 0;
-    document.querySelectorAll('[id$="-total-projects"]').forEach(el => totalP += parseInt(el.textContent) || 0);
-    if(document.getElementById('global-total-projects')) document.getElementById('global-total-projects').textContent = totalP;
-    
-    let totalD = 0;
-    document.querySelectorAll('[id$="-done"], [id$="-wip"], [id$="-idea"]').forEach(el => totalD += parseInt(el.textContent) || 0);
-    if(document.getElementById('global-total-docs')) document.getElementById('global-total-docs').textContent = totalD;
 }
 
 // 7. DOCSIFY CONFIG
