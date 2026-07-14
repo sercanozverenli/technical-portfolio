@@ -443,4 +443,30 @@ window.$docsify = {
         noData: { '/en/': 'No results found!', '/': 'Sonuç bulunamadı.' },
         depth: 3 
     },
-    alias: { '/': '/tr/README.md', '/_sidebar.md': '/tr/_sidebar.md', '/tr/.*/_sidebar.md': '/tr/_sidebar.md', '/en/.*/_sidebar.md': '/en/_sidebar.
+    alias: { '/': '/tr/README.md', '/_sidebar.md': '/tr/_sidebar.md', '/tr/.*/_sidebar.md': '/tr/_sidebar.md', '/en/.*/_sidebar.md': '/en/_sidebar.md' },
+    plugins: [
+        function(hook) {
+            hook.ready(() => {
+                initSmartSearch();
+                injectSidebarHeader();
+                syncSidebar();
+                injectStatusIcons();
+                injectCategoryIcons();
+            });
+            hook.doneEach(() => {
+                injectSidebarHeader();
+                syncSidebar();
+                injectStatusIcons();
+                injectCategoryIcons();
+                runDashboardEngine();
+            });
+        }
+    ]
+}
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+
+</body>
+</html>
