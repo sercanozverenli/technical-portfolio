@@ -500,17 +500,16 @@ function runDashboardEngine() {
         if (catSummary) {
             const parentDetails = catSummary.parentElement;
             
-            // PROJE SAYISI HESABI (GÜNCELLENDİ)
-            // Artık li'leri değil, li'lerin içindeki doğrudan details etiketlerini sayıyoruz
-            const projectElements = parentDetails.querySelectorAll('ul > li > details');
-            let projectCount = projectElements.length;
-
-            // Eğer details yoksa (Sistemler veya Uygulamalar gibi direkt link olabilir), linkleri say
-            if (projectCount === 0) {
-                projectCount = parentDetails.querySelectorAll('ul > li > a').length;
+            // PROJE SAYISI HESABI (Düzeltildi: Rehberler gibi iç içe yapıları doğru sayar)
+            const firstLevelUl = parentDetails.querySelector('ul');
+            let projectCount = 0;
+            if (firstLevelUl) {
+                // Sadece doğrudan çocuk olan li'lerin içindeki details veya a'ları say
+                const items = Array.from(firstLevelUl.children);
+                projectCount = items.length;
             }
 
-            // DOKÜMAN SAYISI HESABI (Tüm linkler)
+            // DOKÜMAN SAYISI HESABI
             const docCount = parentDetails.querySelectorAll('li > a').length;
             
             // DURUM SAYILARI
@@ -527,12 +526,14 @@ function runDashboardEngine() {
             if(document.getElementById(`count-${idPrefix}-idea`)) document.getElementById(`count-${idPrefix}-idea`).textContent = idea;
 
             // Öne Çıkan Proje (Amplify Core) Özel Hesabı
+            // "Sistemler" kategorisindeki toplam doküman sayısını oraya yazar
             if (idPrefix === 'systems') {
                 const featuredDocEl = document.getElementById('featured-doc-count');
                 if (featuredDocEl) featuredDocEl.textContent = docCount;
             }
         }
     });
+}
 
     // Toplam Proje ve Doküman Sayılarını Güncelle (Tüm Dashboard üzerinden)
     let totalP = 0;
