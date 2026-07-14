@@ -131,12 +131,12 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           <div class="global-stats-mini">
             <div class="mini-stat">
                 <span id="featured-doc-count">0</span> 
-                <span>DOKÜMAN</span>
+                <span>Doküman</span>
             </div>
           </div>
         </div>
         <div class="featured-diagram-large">
-          <span class="diagram-label">Sistem Tasarımı</span>
+          <span class="diagram-label">Sistem Mimarisi</span>
           <img src="docs/diagrams/amplify-core/sekil-1.png" alt="Sistem Diyagramı">
         </div>
       </div>
