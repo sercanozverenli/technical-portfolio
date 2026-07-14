@@ -1,8 +1,8 @@
 <div class="sidebar-nav"> 
  <a href="#/en/" class="home-link"><i data-lucide="home"></i> Home</a>
  
-  
-  <details>
+ <!-- CATEGORY: SYSTEMS -->
+ <details>
     <summary><i data-lucide="layers" class="cat-icon"></i>Systems</summary>
     <ul>
       <li>
@@ -35,15 +35,13 @@
             <li>
               <details>
                 <summary><i class="status-idea"></i>Analysis and Interim Outputs</summary>
-                <ul>
-                </ul>
+                <ul></ul>
               </details>
             </li>
             <li>
               <details>
                 <summary><i class="status-idea"></i>Results and Proof of Concept</summary>
-                <ul>
-                </ul>
+                <ul></ul>
               </details>
             </li>
           </ul>
@@ -52,6 +50,7 @@
     </ul>
   </details>
 
+  <!-- CATEGORY: APPS -->
   <details>
     <summary><i data-lucide="layout-grid" class="cat-icon"></i>Apps</summary>
     <ul>
@@ -60,6 +59,7 @@
     </ul>
   </details>
 
+  <!-- CATEGORY: ANALYTICS MODULES -->
   <details>
     <summary><i data-lucide="line-chart" class="cat-icon"></i>Analytics Modules</summary>
     <ul>
@@ -76,10 +76,11 @@
     </ul>
   </details>
 
+  <!-- CATEGORY: GUIDES (FIXED STRUCTURE) -->
   <details>
     <summary><i data-lucide="book-open" class="cat-icon"></i>Guides</summary>
     <ul>
-      <li>
+      <li> <!-- 1. PROJECT: Git -->
         <details>
           <summary><i class="status-wip"></i>Git and GitHub</summary>
           <ul>
@@ -101,8 +102,9 @@
            <li><a href="#/en/projects/guides/git-and-github/github-actions"><i class="status-done"></i>CI/CD (Actions)</a></li>
           </ul>
         </details>
-       
-<details>
+      </li>
+      <li> <!-- 2. PROJECT: C -->
+        <details>
            <summary><i class="status-wip"></i>C Programming Language</summary>
           <ul>
             <li>
@@ -119,8 +121,10 @@
               </details>
            </li>
           </ul>
-      </details>
-           <details>
+        </details>
+      </li>
+      <li> <!-- 3. PROJECT: Python -->
+        <details>
            <summary><i class="status-wip"></i>Python</summary>
           <ul>
             <li>
@@ -149,10 +153,10 @@
               </details>             
            </li>
           </ul>
-      </details>
-    </li>
-  </ul>
- </details>
+        </details>
+      </li>
+    </ul>
+  </details>
 
   <a href="#/en/about" class="about-link"><i data-lucide="user" class="cat-icon"></i>About Me</a>
 </div>
