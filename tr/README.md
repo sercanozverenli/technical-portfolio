@@ -7,11 +7,11 @@ Temel amaç; analitik iş akışlarını belgelemek, teorik modelleri üretime h
 Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalışmaları incelemek için **gezinme menüsünü** kullanabilirsiniz.
 
 
-<!-- Dashboard Ana Konteynırı -->
 <div id="dashboard-root">
-  <div class="dashboard-container">    
+  <div class="dashboard-container">        
+    <!-- ÜST BÖLÜM: 2x2 Kategori Grid -->
     <div class="stats-grid">      
-      <!-- Kart: Sistemler -->
+      <!-- Kartlar (Sistemler, Uygulamalar, Analitik, Rehberler) -->
       <div class="stat-card purple">
         <div class="card-header">
           <div class="card-icon"><i data-lucide="layers"></i></div>
@@ -35,13 +35,10 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           </div>
         </div>
         <a href="#" target="_blank" class="card-footer">
-          <div class="github-link">
-            <img src="docs/icons/github-icon.png" class="github-mini-img"> GitHub Kaynak Kodları
-          </div>
+          <div class="github-link"><img src="docs/icons/github-icon.png" class="github-mini-img"> GitHub</div>
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
       </div>
-      <!-- Kart: Uygulamalar -->
       <div class="stat-card green">
         <div class="card-header">
           <div class="card-icon"><i data-lucide="layout-grid"></i></div>
@@ -65,13 +62,10 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           </div>
         </div>
         <a href="#" target="_blank" class="card-footer">
-          <div class="github-link">
-            <img src="docs/icons/github-icon.png" class="github-mini-img"> GitHub Kaynak Kodları
-          </div>
+          <div class="github-link"><img src="docs/icons/github-icon.png" class="github-mini-img"> GitHub</div>
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
       </div>
-      <!-- Kart: Analitik Modüller -->
       <div class="stat-card blue">
         <div class="card-header">
           <div class="card-icon"><i data-lucide="line-chart"></i></div>
@@ -95,13 +89,10 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           </div>
         </div>
         <a href="#" target="_blank" class="card-footer">
-          <div class="github-link">
-            <img src="docs/icons/github-icon.png" class="github-mini-img"> GitHub Kaynak Kodları
-          </div>
+          <div class="github-link"><img src="docs/icons/github-icon.png" class="github-mini-img"> GitHub</div>
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
       </div>
-      <!-- Kart: Rehberler -->
       <div class="stat-card orange">
         <div class="card-header">
           <div class="card-icon"><i data-lucide="book-open"></i></div>
@@ -125,42 +116,39 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
           </div>
         </div>
         <a href="#" target="_blank" class="card-footer">
-          <div class="github-link">
-            <img src="docs/icons/github-icon.png" class="github-mini-img"> GitHub Kaynak Kodları
-          </div>
+          <div class="github-link"><img src="docs/icons/github-icon.png" class="github-mini-img"> GitHub</div>
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
       </div>
     </div>
-    <!-- SAĞ TARAF: Öne Çıkan Proje -->
-    <div class="featured-section">
-      <div class="featured-card">
-        <div class="featured-badge"><i data-lucide="star"></i> Öne Çıkan Proje</div>
-        <h2>Amplify Core</h2>
-        <p>Veri Güvenilirliği ve Karar Yönlendirme Sistemi</p>        
-        <hr class="divider">        
-        <div class="global-stats">
-          <div class="stat-item">
-            <div class="stat-icon-bg"><i data-lucide="file-text"></i></div>
-            <div class="stat-info">
-              <span class="stat-value" id="global-total-projects">0</span>
-              <span class="stat-label">Toplam Proje</span>
-            </div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-icon-bg"><i data-lucide="code-2"></i></div>
-            <div class="stat-info">
-              <span class="stat-value" id="global-total-docs">0</span>
-              <span class="stat-label">Toplam Doküman</span>
-            </div>
-          </div>
-        </div>        
-        <div class="diagram-area">
-          <span class="diagram-title">Sistem Diyagramı</span>
-          <div class="diagram-image-container">
-            <img src="docs/diagrams/amplify-core/sekil-1.png" alt="Sistem Diyagramı" class="featured-diagram-img">
+    <!-- ALT BÖLÜM: Yatay Öne Çıkan Proje + Tech Stack -->
+    <div class="featured-horizontal-layout">      
+      <!-- Öne Çıkan Proje (Geniş Kart) -->
+      <div class="featured-card horizontal">
+        <div class="featured-info">
+          <div class="featured-badge"><i data-lucide="star"></i> Öne Çıkan Proje</div>
+          <h2>Amplify Core</h2>
+          <p>Veri Güvenilirliği ve Karar Yönlendirme Sistemi</p>
+          <div class="global-stats-mini">
+            <div class="mini-stat"><span id="global-total-projects">0</span> <span>Proje</span></div>
+            <div class="mini-stat"><span id="global-total-docs">0</span> <span>Doküman</span></div>
           </div>
         </div>
+        <div class="featured-diagram-large">
+          <span class="diagram-label">Sistem Mimarisi</span>
+          <img src="docs/diagrams/amplify-core/sekil-1.png" alt="Sistem Diyagramı">
+        </div>
+      </div>
+      <!-- Tech Stack (İnce Kart) -->
+      <div class="tech-stack-card">
+        <div class="stack-header">Araçlar</div>
+        <ul class="stack-list">
+          <li><i data-lucide="code"></i> Python</li>
+          <li><i data-lucide="cpu"></i> C / C++</li>
+          <li><i data-lucide="git-branch"></i> Git / GitHub</li>
+          <li><i data-lucide="database"></i> SQL</li>
+          <li><i data-lucide="bar-chart-3"></i> Pandas / NumPy</li>
+        </ul>
       </div>
     </div>
   </div>
