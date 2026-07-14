@@ -492,9 +492,6 @@ function runDashboardEngine() {
         'Rehberler': 'guides'
     };
 
-    let globalTotalProjects = 0;
-    let globalTotalDocs = 0;
-
     Object.keys(categories).forEach(catName => {
         const idPrefix = categories[catName];
         const allSummaries = Array.from(sidebar.querySelectorAll('summary'));
@@ -502,18 +499,26 @@ function runDashboardEngine() {
 
         if (catSummary) {
             const parentDetails = catSummary.parentElement;
-            const firstLevelUl = parentDetails.querySelector('ul');
             
-            // STANDART YAPI SAYESİNDE ÇOK BASİT SAYIM:
-            // Sadece doğrudan altındaki <li> öğelerini sayar. 
-            // 1 li = 1 Proje. İçinde ne olduğu önemli değil.
-            const projectCount = firstLevelUl ? firstLevelUl.children.length : 0;
+            // PROJE SAYISI HESABI (GÜNCELLENDİ)
+            // Artık li'leri değil, li'lerin içindeki doğrudan details etiketlerini sayıyoruz
+            const projectElements = parentDetails.querySelectorAll('ul > li > details');
+            let projectCount = projectElements.length;
 
+            // Eğer details yoksa (Sistemler veya Uygulamalar gibi direkt link olabilir), linkleri say
+            if (projectCount === 0) {
+                projectCount = parentDetails.querySelectorAll('ul > li > a').length;
+            }
+
+            // DOKÜMAN SAYISI HESABI (Tüm linkler)
             const docCount = parentDetails.querySelectorAll('li > a').length;
+            
+            // DURUM SAYILARI
             const done = parentDetails.querySelectorAll('.status-done').length;
             const wip = parentDetails.querySelectorAll('.status-wip').length;
             const idea = parentDetails.querySelectorAll('.status-idea').length;
 
+            // Dashboard'a Yaz
             if(document.getElementById(`count-${idPrefix}-total-projects`)) 
                 document.getElementById(`count-${idPrefix}-total-projects`).textContent = projectCount;
             
@@ -521,19 +526,13 @@ function runDashboardEngine() {
             if(document.getElementById(`count-${idPrefix}-wip`)) document.getElementById(`count-${idPrefix}-wip`).textContent = wip;
             if(document.getElementById(`count-${idPrefix}-idea`)) document.getElementById(`count-${idPrefix}-idea`).textContent = idea;
 
-            globalTotalProjects += projectCount;
-            globalTotalDocs += docCount;
-
+            // Öne Çıkan Proje (Amplify Core) Özel Hesabı
             if (idPrefix === 'systems') {
                 const featuredDocEl = document.getElementById('featured-doc-count');
                 if (featuredDocEl) featuredDocEl.textContent = docCount;
             }
         }
     });
-
-    if(document.getElementById('global-total-projects')) document.getElementById('global-total-projects').textContent = globalTotalProjects;
-    if(document.getElementById('global-total-docs')) document.getElementById('global-total-docs').textContent = globalTotalDocs;
-}
 
     // Toplam Proje ve Doküman Sayılarını Güncelle (Tüm Dashboard üzerinden)
     let totalP = 0;
