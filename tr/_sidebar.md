@@ -1,7 +1,7 @@
 <div class="sidebar-nav"> 
  <a href="#/tr/" class="home-link"><i data-lucide="home"></i> Ana Sayfa</a>
  
- <!-- KATEGORİ: SİSTEMLER -->
+ 
  <details>
   <summary><i data-lucide="layers" class="cat-icon"></i> Sistemler</summary>
   <ul>
@@ -35,13 +35,15 @@
           <li>
             <details>
               <summary><i class="status-idea"></i>Analiz ve Ara Çıktılar</summary>
-              <ul></ul>
+              <ul>
+              </ul>
             </details>
           </li>          
           <li>
             <details>
               <summary><i class="status-idea"></i>Sonuçlar ve Kavramsal Kanıt</summary>
-              <ul></ul>
+              <ul>
+              </ul>
             </details>
           </li>          
         </ul>
@@ -50,7 +52,6 @@
   </ul>
  </details>
 
- <!-- KATEGORİ: UYGULAMALAR -->
  <details>
   <summary><i data-lucide="layout-grid" class="cat-icon"></i> Uygulamalar</summary>
   <ul>
@@ -59,7 +60,6 @@
   </ul>
  </details>
 
- <!-- KATEGORİ: ANALİTİK MODÜLLER -->
  <details>
   <summary><i data-lucide="line-chart" class="cat-icon"></i> Analitik Modüller</summary>
    <ul>
@@ -76,11 +76,10 @@
   </ul>
  </details>
    
- <!-- KATEGORİ: REHBERLER (DÜZELTİLDİ) -->
  <details>
   <summary><i data-lucide="book-open" class="cat-icon"></i> Rehberler</summary>
   <ul>
-    <li> <!-- 1. PROJE: Git -->
+    <li>
       <details>
         <summary><i class="status-wip"></i>Git ve GitHub</summary>
          <ul>
@@ -102,8 +101,6 @@
             <li><a href="#/tr/projects/guides/git-and-github/github-actions"><i class="status-done"></i>CI/CD (Actions)</a></li>
          </ul>      
       </details>
-    </li>
-    <li> <!-- 2. PROJE: C -->
       <details>
            <summary><i class="status-wip"></i> C Programlama Dili</summary>
           <ul>
@@ -122,9 +119,7 @@
            </li>
           </ul>
       </details>
-    </li>
-    <li> <!-- 3. PROJE: Python -->
-      <details>
+           <details>
            <summary><i class="status-wip"></i> Python</summary>
           <ul>
             <li>
