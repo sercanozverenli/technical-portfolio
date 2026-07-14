@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -35,8 +35,8 @@ body.dark .header-logo-img { filter: invert(1) hue-rotate(180deg) brightness(1.8
 /* ── SIDEBAR (TOPBAR'IN ALTINDAN BAŞLAR) ── */
 .sidebar {
     width: 300px !important; border-right: 1px solid #e2e8f0;
-    top: 60px !important; /* Topbar'ın (60px) hemen altından başlar */
-    height: calc(100vh - 60px) !important; /* Kalan ekran boyunu kaplar */
+    top: 60px !important; 
+    height: calc(100vh - 60px) !important; 
     padding: 0 !important; left: 0 !important; transform: none !important;
     transition: left 0.25s ease-out !important; z-index: 500 !important;
     background: #f8fafc; overflow: hidden !important;
@@ -96,165 +96,102 @@ body.dark #search-modal-container .search input { color: #f1f5f9 !important; }
 .sidebar-nav { padding: 16px 12px 60px 12px !important; height: 100% !important; overflow-y: auto !important; overflow-x: hidden !important; }
 .sidebar-nav summary, .sidebar-nav a { color: #94a3b8 !important; text-decoration: none !important; transition: all 0.15s ease !important; display: flex !important; align-items: center !important; gap: 10px; }
 
-/* ── SIDEBAR TYPOGRAPHY (18-16-14px HİYERARŞİSİ) ── */
+/* ── SIDEBAR TYPOGRAPHY ── */
 .sidebar-nav .home-link { font-size: 18px !important; font-weight: 700 !important; display: flex !important; padding: 10px 14px !important; color: #1e293b !important; margin: 0 0 24px 0 !important; background: #fff !important; border: 1px solid #e2e8f0 !important; border-radius: 8px !important; box-shadow: 0 2px 4px rgba(0,0,0,0.02) !important; }
-.sidebar-nav .home-link:hover { background: #f1f5f9 !important; border-color: #cbd5e1 !important; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important; }
-.sidebar-nav .home-link.active { border: 1px solid #3b82f6 !important; background: #eff6ff !important; }
 body.dark .sidebar-nav .home-link { background: #1e293b !important; border-color: #334155 !important; color: #f1f5f9 !important; }
-body.dark .sidebar-nav .home-link:hover { background: #0f172a !important; border-color: #475569 !important; }
-body.dark .sidebar-nav .home-link.active { border-color: #3b82f6 !important; background: #0f172a !important; }
 
 .sidebar-nav > details > summary { font-size: 16px !important; font-weight: 700 !important; letter-spacing: 0.05em !important; }
 .sidebar-nav details details summary, .sidebar-nav a:not(.home-link) { font-size: 14px !important; }
-.sidebar-nav summary { font-weight: 700 !important; }
-.sidebar-nav a:not(.home-link) { font-weight: 400 !important; }
-
-/* ── HOVER & AKTİF DURUMLAR ── */
-.sidebar-nav summary:hover, .sidebar-nav a:not(.home-link):hover { background: #f0f4f8 !important; color: #1e293b !important; border-radius: 6px !important; }
-body.dark .sidebar-nav summary:hover, body.dark .sidebar-nav a:not(.home-link):hover { background: #334155 !important; color: #f1f5f9 !important; }
-.sidebar-nav a.active:not(.home-link) { color: #1e293b !important; border-left: 3px solid #3b82f6 !important; background: transparent !important; }
-body.dark .sidebar-nav a.active:not(.home-link) { color: #f1f5f9 !important; border-left-color: #3b82f6 !important; }
 
 /* ── İKONLAR (DURUM & KATEGORİ) ── */
 .status-icon-img { width: 16px !important; height: 16px !important; flex-shrink: 0; object-fit: contain; margin-top: 1px; }
 body.dark .status-icon-img { filter: invert(0.8) brightness(1.5); }
-
 .cat-icon { width: 18px !important; height: 18px !important; margin-right: 8px !important; vertical-align: middle; display: inline-block; flex-shrink: 0; transition: all 0.2s ease; }
 body.dark .cat-icon { filter: invert(0.8) brightness(1.5); }
-.sidebar-nav summary:hover .cat-icon, .sidebar-nav a:hover .cat-icon { transform: scale(1.1); }
-
-/* ── TOTAL MINIMALIST (GİRİNTİLER) ── */
-.sidebar-nav summary::before, .sidebar-nav details summary::before, .sidebar-nav details details summary::before, .sidebar-nav details details details summary::before, .sidebar-nav li::marker, .sidebar-nav ul li::before, .sidebar-nav summary::marker, .sidebar-nav details summary::-webkit-details-marker { display: none !important; content: none !important; list-style: none !important; }
-.sidebar-nav ul, .sidebar-nav li { margin: 0 !important; padding: 0 !important; list-style: none !important; }
-.sidebar-nav > details > summary { padding: 5px 2px !important; }
-.sidebar-nav > details > ul > li > a, .sidebar-nav > details > ul > li > details > summary { padding: 5px 2px 5px 8px !important; }
-.sidebar-nav > details > ul > li > details > ul > li > a, .sidebar-nav > details > ul > li > details > ul > li > details > summary { cursor: pointer !important; padding: 5px 2px 5px 18px !important; border-radius: 6px !important; border-left: 3px solid transparent !important; }
-.sidebar-nav > details > ul > li > details > ul > li > details > ul > li > a { padding: 5px 2px 5px 30px !important; border-radius: 6px !important; border-left: 3px solid transparent !important; }
 
 /* ── MODERN BUTONLAR ── */
 .sidebar-toggle { display: none !important; }
 #custom-sidebar-toggle { position: static !important; z-index: 9999; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; width: 36px; height: 36px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s ease; flex-shrink: 0; }
 #custom-sidebar-toggle span { background-color: #475569; width: 18px; height: 2px; margin-bottom: 4px; border-radius: 2px; transition: all 0.3s ease-in-out; transform-origin: center; }
 #custom-sidebar-toggle span:last-child { margin-bottom: 0; }
-#custom-sidebar-toggle:hover { background: #f1f5f9; }
 body.dark #custom-sidebar-toggle { background: #1e293b; border-color: #334155; }
 body.dark #custom-sidebar-toggle span { background-color: #94a3b8; }
-body.dark #custom-sidebar-toggle:hover { background: #334155; }
-
-@media screen and (min-width: 769px) {
-    body:not(.close) #custom-sidebar-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-    body:not(.close) #custom-sidebar-toggle span:nth-child(2) { opacity: 0; }
-    body:not(.close) #custom-sidebar-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-}
-@media screen and (max-width: 768px) {
-    body.mobile-sidebar-open #custom-sidebar-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-    body.mobile-sidebar-open #custom-sidebar-toggle span:nth-child(2) { opacity: 0; }
-    body.mobile-sidebar-open #custom-sidebar-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-}
 
 #theme-toggle, #back-to-top, #search-trigger, .lang-switcher a { background: rgba(248, 250, 252, 0.8) !important; backdrop-filter: blur(8px); border: 1px solid #e2e8f0 !important; border-radius: 8px !important; width: 34px !important; height: 34px !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer; transition: all 0.2s !important; text-decoration: none !important; font-size: 13px !important; font-weight: 600 !important; color: #475569 !important; }
-#back-to-top { 
-    position: fixed; bottom: 24px; right: 24px; z-index: 300; 
-    opacity: 0; pointer-events: none; /* Başlangıçta görünmez ve tıklanamaz */
-    transition: all 0.3s ease !important; /* Yumuşakça belirip kaybolması için */
-}
-#back-to-top.visible { 
-    opacity: 1; pointer-events: auto; /* Aşağı kaydırınca görünür ve tıklanır olur */
-}
-.sidebar-toggle:hover, #theme-toggle:hover, #back-to-top:hover, #search-trigger:hover, .lang-switcher a:hover { background: #f1f5f9 !important; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+#back-to-top { position: fixed; bottom: 24px; right: 24px; z-index: 300; opacity: 0; pointer-events: none; transition: all 0.3s ease !important; }
+#back-to-top.visible { opacity: 1; pointer-events: auto; }
 body.dark #theme-toggle, body.dark #back-to-top, body.dark #search-trigger, body.dark .lang-switcher a { background: rgba(30, 41, 59, 0.8) !important; border-color: #334155 !important; color: #f1f5f9 !important; }
 
-.sidebar-nav::-webkit-scrollbar { width: 5px; }
-.sidebar-nav::-webkit-scrollbar-track { background: transparent; }
-.sidebar-nav::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-body.dark .sidebar-nav::-webkit-scrollbar-thumb { background: #475569; }
-
-/* ── İÇERİK LİNKLERİ ── */
-.markdown-section a { text-decoration: none !important; padding: 1px 4px; margin: 0 -2px; border-radius: 4px; transition: all 0.2s ease-in-out !important; font-weight: 500; }
-.markdown-section a:hover { background-color: rgba(220, 220, 220, 0.3) !important; color: #2563eb !important; }
-body.dark .markdown-section a:hover { background-color: rgba(255, 255, 255, 0.1) !important; color: #60a5fa !important; }    
-
-
-/* ── DASHBOARD MODERN REDESIGN ── */
+/* ── DASHBOARD GÜNCEL TASARIM ── */
 #dashboard-root { margin-top: 40px; width: 100%; }
 .dashboard-container { display: flex; gap: 24px; flex-wrap: wrap; }
-
 .stats-grid { flex: 2; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
 
-/* Kartların Yeni Modern Hali */
 .stat-card {
     border-radius: 20px;
-    border: 1.5px solid rgba(0,0,0,0.08);
+    border: 1.5px solid rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* Renkli Soft Arka Planlar (Light Mode) */
-.purple { background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%); border-color: #ddd6fe; }
-.green  { background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%); border-color: #bbf7d0; }
-.blue   { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border-color: #bfdbfe; }
-.orange { background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%); border-color: #fed7aa; }
+/* Daha Belirgin Gradyanlar (Light Mode) */
+.purple { background: linear-gradient(135deg, #ede9fe 0%, #ffffff 100%); border-color: #ddd6fe; }
+.green  { background: linear-gradient(135deg, #dcfce7 0%, #ffffff 100%); border-color: #bbf7d0; }
+.blue   { background: linear-gradient(135deg, #dbeafe 0%, #ffffff 100%); border-color: #bfdbfe; }
+.orange { background: linear-gradient(135deg, #ffedd5 0%, #ffffff 100%); border-color: #fed7aa; }
 
-/* Karanlık Mod Ayarları */
-body.dark .stat-card { background: #1e293b; border-color: #334155; }
+body.dark .stat-card { background: #1e293b !important; border-color: #334155; }
 body.dark .purple { background: linear-gradient(135deg, #2e1065 0%, #1e293b 100%); }
 body.dark .green  { background: linear-gradient(135deg, #052e16 0%, #1e293b 100%); }
 body.dark .blue   { background: linear-gradient(135deg, #172554 0%, #1e293b 100%); }
 body.dark .orange { background: linear-gradient(135deg, #431407 0%, #1e293b 100%); }
 
-.stat-card:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(0,0,0,0.08); }
-
-/* Header & İkonlar */
 .card-header { padding: 24px; display: flex; align-items: center; gap: 16px; }
-.card-icon { width: 50px; height: 50px; border-radius: 14px; display: flex; align-items: center; justify-content: center; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.card-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
 body.dark .card-icon { background: #0f172a; }
 
-.purple .card-icon i { color: #7c3aed; }
-.green .card-icon i { color: #16a34a; }
-.blue .card-icon i { color: #2563eb; }
-.orange .card-icon i { color: #ea580c; }
-
-.card-title-group h3 { margin: 0 !important; font-size: 19px !important; font-weight: 800 !important; color: #1e293b; }
+.card-title-group h3 { margin: 0 !important; font-size: 20px !important; font-weight: 800 !important; color: #1e293b; }
 body.dark .card-title-group h3 { color: #f8fafc; }
 
-/* Body & Durumlar */
 .card-body { padding: 0 24px 24px 24px; }
-.status-row { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-weight: 500; color: #475569; }
-body.dark .status-row { border-bottom-color: rgba(255,255,255,0.05); color: #94a3b8; }
+.status-row { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.08); font-weight: 600; color: #475569; }
+body.dark .status-row { border-bottom-color: rgba(255,255,255,0.1); color: #94a3b8; }
 
-.status-mini-icon { width: 24px; height: 24px; margin-right: 12px; }
-.status-count { margin-left: auto; font-weight: 800; color: #1e293b; font-size: 16px; }
+.status-mini-icon { width: 26px; height: 26px; margin-right: 12px; }
+.status-count { margin-left: auto; font-weight: 800; color: #1e293b; font-size: 17px; }
 body.dark .status-count { color: #f1f5f9; }
 
-/* Footer */
-.card-footer { padding: 16px 24px; background: rgba(255,255,255,0.5); border-top: 1px solid rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: space-between; text-decoration: none !important; }
+/* Büyütülmüş GitHub Footer */
+.card-footer { padding: 18px 24px; background: rgba(255,255,255,0.4); border-top: 1px solid rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between; text-decoration: none !important; }
 body.dark .card-footer { background: rgba(0,0,0,0.2); }
-
-.github-link { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; }
-.github-mini-img { width: 20px; height: 20px; }
+.github-link { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 700; }
+.github-mini-img { width: 22px; height: 22px; }
 body.dark .github-mini-img { filter: invert(1) brightness(2); }
+.card-footer .arrow { width: 20px; height: 20px; }
 
-/* Sağ Taraf: Öne Çıkan */
+/* Sağ Taraf: Öne Çıkan (Gradyanlı) */
 .featured-section { flex: 1; min-width: 340px; }
-.featured-card { background: #fff; border-radius: 24px; border: 1.5px solid #fed7aa; padding: 32px; height: 100%; box-shadow: 0 10px 30px rgba(234, 88, 12, 0.1); }
-body.dark .featured-card { background: #1e293b; border-color: #431407; }
+.featured-card { 
+    background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%); 
+    border-radius: 24px; border: 2px solid #fed7aa; padding: 32px; height: 100%; 
+    box-shadow: 0 10px 30px rgba(234, 88, 12, 0.15); 
+}
+body.dark .featured-card { background: linear-gradient(135deg, #431407 0%, #1e293b 100%); border-color: #7c2d12; }
 
-.featured-badge { background: #fff7ed; color: #ea580c; padding: 8px 16px; border-radius: 30px; font-size: 12px; font-weight: 800; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; }
-.featured-card h2 { font-size: 32px !important; font-weight: 900 !important; margin: 0 0 10px 0 !important; color: #1e293b; }
+.featured-badge { background: #ea580c; color: #fff; padding: 8px 16px; border-radius: 30px; font-size: 12px; font-weight: 800; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+.featured-card h2 { font-size: 34px !important; font-weight: 900 !important; color: #1e293b; margin: 0 0 10px 0 !important; }
 body.dark .featured-card h2 { color: #f8fafc; }
 
-.global-stats { display: flex; gap: 15px; margin: 25px 0; }
-.stat-item { flex: 1; background: #f8fafc; padding: 15px; border-radius: 16px; display: flex; align-items: center; gap: 12px; }
-body.dark .stat-item { background: #0f172a; }
+.stat-item { background: #fff; border: 1px solid #fed7aa; box-shadow: 0 4px 6px rgba(0,0,0,0.02); padding: 15px; border-radius: 16px; display: flex; align-items: center; gap: 12px; flex: 1; }
+body.dark .stat-item { background: #0f172a; border-color: #431407; }
 .stat-value { font-size: 22px; font-weight: 900; color: #1e293b; display: block; }
 body.dark .stat-value { color: #f1f5f9; }
 
-/* Diyagram Görseli */
-.diagram-area { margin-top: 20px; text-align: center; }
-.featured-diagram-img { width: 100%; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.featured-diagram-img { width: 100%; border-radius: 12px; border: 1px solid #fed7aa; background: #fff; padding: 5px; margin-top: 20px; }
+
 </style>
 <script src="https://unpkg.com/lucide@latest"></script>    
 </head>
@@ -262,11 +199,9 @@ body.dark .stat-value { color: #f1f5f9; }
 
 <div id="topbar">
     <div class="topbar-left">
-        <!-- BİZİM ÖZGÜR HAMBURGER BUTONUMUZ TOPBAR'A TAŞINDI -->
         <button id="custom-sidebar-toggle" title="Menüyü Aç/Kapat">
             <span></span><span></span><span></span>
         </button>
-        <!-- LOGO ALANI TOPBAR'A TAŞINDI -->
         <div id="brand-logo-container"></div>
     </div>
     <div class="topbar-right">
@@ -343,7 +278,6 @@ function injectCategoryIcons() {
     });
 }
 
-// YENİ: LOGOYU DOĞRUDAN TOPBAR'A ENJEKTE EDER ve logo-ana sayfa bağlantısı
 function injectSidebarHeader() {
     const container = document.getElementById('brand-logo-container');
     if (!container) return;
@@ -353,11 +287,7 @@ function injectSidebarHeader() {
 
     let logoLink = container.querySelector('.header-logo-link');
     if (!logoLink) {
-        container.innerHTML = `
-            <a href="${homeUrl}" class="header-logo-link">
-                <img src="${logoSrc}" class="header-logo-img" alt="R&D Center Logo">
-            </a>
-        `;
+        container.innerHTML = `<a href="${homeUrl}" class="header-logo-link"><img src="${logoSrc}" class="header-logo-img" alt="Logo"></a>`;
     } else {
         const logoImg = container.querySelector('.header-logo-img');
         if (logoImg) logoImg.src = logoSrc;
@@ -377,7 +307,6 @@ function syncSidebar() {
             if (parent.tagName === 'DETAILS') parent.setAttribute('open', '');
             parent = parent.parentElement;
         }
-        activeLink.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
 }
 
@@ -398,69 +327,89 @@ function initSmartSearch() {
 
     function openSearch() {
         overlay.style.display = 'flex';
-        setTimeout(() => {
-            const input = container.querySelector('input');
-            if (input) input.focus();
-        }, 50);
+        setTimeout(() => { const input = container.querySelector('input'); if (input) input.focus(); }, 50);
     }
-
     function closeSearch() {
         overlay.style.display = 'none';
         const input = container.querySelector('input');
-        if (input) {
-            input.value = '';
-            input.dispatchEvent(new Event('input')); 
-            input.blur();
-        }
+        if (input) { input.value = ''; input.dispatchEvent(new Event('input')); input.blur(); }
     }
-
     trigger.addEventListener('click', openSearch);
     overlay.addEventListener('click', (e) => { if (e.target === overlay) closeSearch(); });
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && overlay.style.display === 'flex') closeSearch();
-        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-            e.preventDefault();
-            overlay.style.display === 'flex' ? closeSearch() : openSearch();
-        }
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); overlay.style.display === 'flex' ? closeSearch() : openSearch(); }
     });
 }
 
-// 5. BİZİM ÖZGÜR HAMBURGER BUTONUMUZUN MANTIĞI
+// 5. HAMBURGER BUTON MANTIĞI
 const customToggleBtn = document.getElementById('custom-sidebar-toggle');
 if (customToggleBtn) {
     customToggleBtn.addEventListener('click', function(e) {
         e.stopPropagation(); 
-        if (window.innerWidth <= 768) {
-            document.body.classList.toggle('mobile-sidebar-open');
-        } else {
-            document.body.classList.toggle('close');
-        }
+        if (window.innerWidth <= 768) { document.body.classList.toggle('mobile-sidebar-open'); }
+        else { document.body.classList.toggle('close'); }
     });
 }
-
 document.addEventListener('click', function(e) {
     if (window.innerWidth <= 768) {
         const clickedLink = e.target.closest('.sidebar-nav a');
-        if (clickedLink) {
-            document.body.classList.remove('mobile-sidebar-open');
-        }
+        if (clickedLink) { document.body.classList.remove('mobile-sidebar-open'); }
     }
 });
 
-// YUKARI ÇIK BUTONU (Akıllı Görünürlük)
 const backToTop = document.getElementById('back-to-top');
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) {
-        backToTop.classList.add('visible');
-    } else {
-        backToTop.classList.remove('visible');
-    }
+    if (window.scrollY > 400) { backToTop.classList.add('visible'); }
+    else { backToTop.classList.remove('visible'); }
 });
-backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+backToTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-// 6. DOCSIFY CONFIG
+// 6. DASHBOARD DİNAMİK MOTORU
+function runDashboardEngine() {
+    if (window.lucide) { window.lucide.createIcons(); }
+    const dashboard = document.getElementById('dashboard-root');
+    if (!dashboard) return;
+
+    const sidebar = document.querySelector('.sidebar-nav');
+    if (!sidebar) return;
+
+    const categories = {
+        'Sistemler': 'systems',
+        'Uygulamalar': 'apps',
+        'Analitik Modüller': 'analytics',
+        'Rehberler': 'guides'
+    };
+
+    let globalTotalProjects = 0;
+    let globalTotalDocs = sidebar.querySelectorAll('a').length;
+
+    Object.keys(categories).forEach(catName => {
+        const idPrefix = categories[catName];
+        const allSummaries = Array.from(sidebar.querySelectorAll('summary'));
+        const catSummary = allSummaries.find(s => s.textContent.includes(catName));
+
+        if (catSummary) {
+            const parentDetails = catSummary.parentElement;
+            const done = parentDetails.querySelectorAll('.status-done').length;
+            const wip = parentDetails.querySelectorAll('.status-wip').length;
+            const idea = parentDetails.querySelectorAll('.status-idea').length;
+            const total = parentDetails.querySelectorAll('li > a').length;
+
+            if(document.getElementById(`count-${idPrefix}-done`)) document.getElementById(`count-${idPrefix}-done`).textContent = done;
+            if(document.getElementById(`count-${idPrefix}-wip`)) document.getElementById(`count-${idPrefix}-wip`).textContent = wip;
+            if(document.getElementById(`count-${idPrefix}-idea`)) document.getElementById(`count-${idPrefix}-idea`).textContent = idea;
+            if(document.getElementById(`count-${idPrefix}-total`)) document.getElementById(`count-${idPrefix}-total`).textContent = total;
+
+            globalTotalProjects += total;
+        }
+    });
+
+    if(document.getElementById('global-total-projects')) document.getElementById('global-total-projects').textContent = globalTotalProjects;
+    if(document.getElementById('global-total-docs')) document.getElementById('global-total-docs').textContent = globalTotalDocs;
+}
+
+// 7. DOCSIFY CONFIG
 window.$docsify = {
     auto2top: true,
     loadSidebar: true,
@@ -482,13 +431,13 @@ window.$docsify = {
                 syncSidebar();
                 injectStatusIcons();
                 injectCategoryIcons();
-                if (window.lucide) lucide.createIcons();
             });
             hook.doneEach(() => {
                 injectSidebarHeader();
                 syncSidebar();
                 injectStatusIcons();
                 injectCategoryIcons();
+                runDashboardEngine(); // Dashboard'u canlandır
             });
         }
     ]
