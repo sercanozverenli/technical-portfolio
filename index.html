@@ -176,11 +176,15 @@ body.dark .card-icon { background: #0f172a; }
 .card-title-group h3 { margin: 0 !important; font-size: 20px !important; font-weight: 800 !important; color: #1e293b; }
 body.dark .card-title-group h3 { color: #f8fafc; }
 
+/* DÜZELTİLMİŞ CARD BODY (Hizalama İçin) */
 .card-body { 
     padding: 0 24px 24px 24px; 
-    margin-top: auto; /* Boşluğu yukarıya iter, böylece tüm içerikler aşağıda hizalanır */
-    /* flex-grow: 1;  <-- Bu satırı siliyoruz */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    flex-grow: 1;
 }
+
 .status-row { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.08); font-weight: 600; color: #475569; }
 body.dark .status-row { border-bottom-color: rgba(255,255,255,0.1); color: #94a3b8; }
 
@@ -390,7 +394,7 @@ window.addEventListener('scroll', () => {
 });
 backToTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-// 6. DASHBOARD DİNAMİK MOTORU
+// 6. YENİ DASHBOARD DİNAMİK MOTORU (AKILLI SAYIM)
 function runDashboardEngine() {
     if (window.lucide) { window.lucide.createIcons(); }
     const dashboard = document.getElementById('dashboard-root');
@@ -407,7 +411,7 @@ function runDashboardEngine() {
     };
 
     let globalTotalProjects = 0;
-    let globalTotalDocs = sidebar.querySelectorAll('a').length;
+    let globalTotalDocs = 0;
 
     Object.keys(categories).forEach(catName => {
         const idPrefix = categories[catName];
@@ -416,17 +420,30 @@ function runDashboardEngine() {
 
         if (catSummary) {
             const parentDetails = catSummary.parentElement;
+            const firstLevelList = parentDetails.querySelector('ul');
+            let projectCount = 0;
+            
+            if (firstLevelList) {
+                projectCount = Array.from(firstLevelList.children).filter(li => li.querySelector('details')).length;
+                if (projectCount === 0 && firstLevelList.querySelectorAll('li > a').length > 0) {
+                    projectCount = firstLevelList.querySelectorAll('li > a').length;
+                }
+            }
+
+            const docCount = parentDetails.querySelectorAll('li > a').length;
             const done = parentDetails.querySelectorAll('.status-done').length;
             const wip = parentDetails.querySelectorAll('.status-wip').length;
             const idea = parentDetails.querySelectorAll('.status-idea').length;
-            const total = parentDetails.querySelectorAll('li > a').length;
 
+            if(document.getElementById(`count-${idPrefix}-total-projects`)) 
+                document.getElementById(`count-${idPrefix}-total-projects`).textContent = projectCount;
+            
             if(document.getElementById(`count-${idPrefix}-done`)) document.getElementById(`count-${idPrefix}-done`).textContent = done;
             if(document.getElementById(`count-${idPrefix}-wip`)) document.getElementById(`count-${idPrefix}-wip`).textContent = wip;
             if(document.getElementById(`count-${idPrefix}-idea`)) document.getElementById(`count-${idPrefix}-idea`).textContent = idea;
-            if(document.getElementById(`count-${idPrefix}-total`)) document.getElementById(`count-${idPrefix}-total`).textContent = total;
 
-            globalTotalProjects += total;
+            globalTotalProjects += projectCount;
+            globalTotalDocs += docCount;
         }
     });
 
