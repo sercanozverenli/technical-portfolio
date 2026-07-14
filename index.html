@@ -476,65 +476,81 @@ window.addEventListener('scroll', () => {
 });
 backToTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-// 6. YENİ DASHBOARD DİNAMİK MOTORU (AKILLI SAYIM)
+// 6. GÜNCELLENMİŞ DASHBOARD MOTORU (LİSTE UYUMLU)
 function runDashboardEngine() {
+    // 1. Lucide ikonlarını tetikle
     if (window.lucide) { window.lucide.createIcons(); }
+
     const dashboard = document.getElementById('dashboard-root');
     if (!dashboard) return;
 
     const sidebar = document.querySelector('.sidebar-nav');
     if (!sidebar) return;
 
+    // Kategori Eşleştirme (Hem TR hem EN destekli)
     const categories = {
-        'Sistemler': 'systems',
-        'Uygulamalar': 'apps',
-        'Analitik Modüller': 'analytics',
-        'Rehberler': 'guides'
+        'Sistemler': 'systems', 'Systems': 'systems',
+        'Uygulamalar': 'apps', 'Apps': 'apps',
+        'Analitik Modüller': 'analytics', 'Analytics Modules': 'analytics',
+        'Rehberler': 'guides', 'Guides': 'guides'
     };
+
+    let globalP = 0;
+    let globalD = 0;
 
     Object.keys(categories).forEach(catName => {
         const idPrefix = categories[catName];
         const allSummaries = Array.from(sidebar.querySelectorAll('summary'));
-        const catSummary = allSummaries.find(s => s.textContent.includes(catName));
+        
+        // Kategori başlığını ikonlardan arındırıp temiz metinle eşleştir
+        const catSummary = allSummaries.find(s => s.textContent.trim().includes(catName));
 
         if (catSummary) {
             const parentDetails = catSummary.parentElement;
-            
-            // PROJE SAYISI HESABI (Düzeltildi: Rehberler gibi iç içe yapıları doğru sayar)
             const firstLevelUl = parentDetails.querySelector('ul');
+            
+            // PROJE SAYISI: Sadece doğrudan altındaki <li> öğelerini say (1 li = 1 Proje)
             let projectCount = 0;
             if (firstLevelUl) {
-                // Sadece doğrudan çocuk olan li'lerin içindeki details veya a'ları say
-                const items = Array.from(firstLevelUl.children);
-                projectCount = items.length;
+                projectCount = firstLevelUl.querySelectorAll(':scope > li').length;
             }
 
-            // DOKÜMAN SAYISI HESABI
-            const docCount = parentDetails.querySelectorAll('li > a').length;
+            // DOKÜMAN SAYISI: Kategorinin altındaki tüm gerçek linkler (<a>)
+            const docCount = parentDetails.querySelectorAll('li a').length;
             
-            // DURUM SAYILARI
+            // DURUM SAYILARI (İkon class'ları üzerinden)
             const done = parentDetails.querySelectorAll('.status-done').length;
             const wip = parentDetails.querySelectorAll('.status-wip').length;
             const idea = parentDetails.querySelectorAll('.status-idea').length;
 
-            // Dashboard'a Yaz
-            if(document.getElementById(`count-${idPrefix}-total-projects`)) 
-                document.getElementById(`count-${idPrefix}-total-projects`).textContent = projectCount;
-            
-            if(document.getElementById(`count-${idPrefix}-done`)) document.getElementById(`count-${idPrefix}-done`).textContent = done;
-            if(document.getElementById(`count-${idPrefix}-wip`)) document.getElementById(`count-${idPrefix}-wip`).textContent = wip;
-            if(document.getElementById(`count-${idPrefix}-idea`)) document.getElementById(`count-${idPrefix}-idea`).textContent = idea;
+            // Dashboard Arayüzünü Güncelle
+            const setVal = (id, val) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = val;
+            };
 
-            // Öne Çıkan Proje (Amplify Core) Özel Hesabı
-            // "Sistemler" kategorisindeki toplam doküman sayısını oraya yazar
+            setVal(`count-${idPrefix}-total-projects`, projectCount);
+            setVal(`count-${idPrefix}-done`, done);
+            setVal(`count-${idPrefix}-wip`, wip);
+            setVal(`count-${idPrefix}-idea`, idea);
+
+            globalP += projectCount;
+            globalD += docCount;
+
+            // Öne Çıkan Proje (Amplify Core) Doküman Sayısı
+            // Sistemler kategorisindeki toplam dokümanı oraya yazar
             if (idPrefix === 'systems') {
-                const featuredDocEl = document.getElementById('featured-doc-count');
-                if (featuredDocEl) featuredDocEl.textContent = docCount;
+                setVal('featured-doc-count', docCount);
             }
         }
     });
-}
 
+    // Global İstatistikler (Eğer HTML'de varsa)
+    const totalProjEl = document.getElementById('global-total-projects');
+    const totalDocsEl = document.getElementById('global-total-docs');
+    if (totalProjEl) totalProjEl.textContent = globalP;
+    if (totalDocsEl) totalDocsEl.textContent = globalD;
+}
     // Toplam Proje ve Doküman Sayılarını Güncelle (Tüm Dashboard üzerinden)
     let totalP = 0;
     document.querySelectorAll('[id$="-total-projects"]').forEach(el => totalP += parseInt(el.textContent) || 0);
