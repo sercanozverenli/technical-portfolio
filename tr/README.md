@@ -35,8 +35,10 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
             <span class="status-count" id="count-systems-done">0</span>
           </div>
         </div>
-        <a href="https://github.com/kullaniciadi/repo" target="_blank" class="card-footer">
-          <div class="github-link"><i data-lucide="github"></i> GitHub Kaynak Kodları</div>
+        <a href="#" target="_blank" class="card-footer">
+          <div class="github-link">
+            <img src="docs/icons/github-icon.png" class="github-mini-img"> GitHub Kaynak Kodları
+          </div>
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
       </div>
@@ -63,8 +65,10 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
             <span class="status-count" id="count-apps-done">0</span>
           </div>
         </div>
-        <a href="https://github.com/kullaniciadi/repo" target="_blank" class="card-footer">
-          <div class="github-link"><i data-lucide="github"></i> GitHub Kaynak Kodları</div>
+        <a href="#" target="_blank" class="card-footer">
+          <div class="github-link">
+            <img src="docs/icons/github-icon.png" class="github-mini-img"> GitHub Kaynak Kodları
+          </div>
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
       </div>
@@ -91,8 +95,10 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
             <span class="status-count" id="count-analytics-done">0</span>
           </div>
         </div>
-        <a href="https://github.com/kullaniciadi/repo" target="_blank" class="card-footer">
-          <div class="github-link"><i data-lucide="github"></i> GitHub Kaynak Kodları</div>
+        <a href="#" target="_blank" class="card-footer">
+          <div class="github-link">
+            <img src="docs/icons/github-icon.png" class="github-mini-img"> GitHub Kaynak Kodları
+          </div>
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
       </div>
@@ -119,13 +125,15 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
             <span class="status-count" id="count-guides-done">0</span>
           </div>
         </div>
-        <a href="https://github.com/kullaniciadi/repo" target="_blank" class="card-footer">
-          <div class="github-link"><i data-lucide="github"></i> GitHub Kaynak Kodları</div>
+        <a href="#" target="_blank" class="card-footer">
+          <div class="github-link">
+            <img src="docs/icons/github-icon.png" class="github-mini-img"> GitHub Kaynak Kodları
+          </div>
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
       </div>
     </div>
-    <!-- SAĞ TARAF: Öne Çıkan Proje ve Genel İstatistik -->
+    <!-- SAĞ TARAF: Öne Çıkan Proje ve Sistem Diyagramı -->
     <div class="featured-section">
       <div class="featured-card">
         <div class="featured-badge">
@@ -152,9 +160,9 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
         </div>        
         <div class="diagram-area">
           <span class="diagram-title">Sistem Diyagramı</span>
-          <div class="diagram-placeholder">
-            <i data-lucide="network"></i>
-            <p>Diyagram alanı</p>
+          <div class="diagram-image-container">
+            <!-- sekil-1.png buraya eklendi -->
+            <img src="docs/icons/sekil-1.png" alt="Sistem Diyagramı" class="featured-diagram-img">
           </div>
         </div>
       </div>
