@@ -32,7 +32,7 @@ workspace/
 │      ├── analytics-modules/
 │      ├── apps/
 │      ├── guides/
-│      ├──sistemler/
+│      ├── systems/
 │      │   └── amplify-core/
 │      └── about/
 │
@@ -42,7 +42,7 @@ workspace/
 │      ├── analytics-modules/
 │      ├── apps/
 │      ├── guides/
-│      ├──sistemler/
+│      ├── systems/
 │      │   └── amplify-core/
 │      └── about/
 │
