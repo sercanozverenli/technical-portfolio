@@ -1,4 +1,4 @@
-# Kişisel Ar-Ge Merkezi | Teknik Proje Portföyü
+# Kişisel Ar-Ge Merkezi | Teknik Proje Portföyü 
 
 Bu platform; **Veri Bilimi**, **Makine Öğrenmesi** ve **Yazılım Mimarisi** konularına odaklanan merkezi bir kişisel araştırma ve geliştirme laboratuvarı işlevi görmektedir. 
 
