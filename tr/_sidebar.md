@@ -136,7 +136,7 @@
                     <li><a href="#/tr/projects/guides/python/beginner/loops-and-patterns.md"><i class="status-done"></i>Döngüler ve Yinelemeler</a></li>
                     <li><a href="#/tr/projects/guides/python/beginner/data-structures.md"><i class="status-done"></i>Veri Yapıları</a></li>
                     <li><a href="#/tr/projects/guides/python/beginner/algorithms.md"><i class="status-done"></i>Algoritmalar ve Karmaşıklık</a></li>   
-                   <li><a href="#/tr/projects/guides/python/beginner/datetime_and_practices.md"><i class="status-done"></i>Datetime ve Kod Pratikleri</a></li>                                                 </ul>      
+                   <li><a href="#/tr/projects/guides/python/beginner/mini-projects.md"><i class="status-done"></i>Kod Pratikleri</a></li>                           </ul>      
               </details>
               <details>
                 <summary><i class="status-wip"></i>Orta Seviye</summary>
