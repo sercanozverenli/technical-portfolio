@@ -1,4 +1,4 @@
-# Datetime ve Kod Pratikleri
+# Kod Pratikleri
 
 Bu sayfada başlangıç seviyesindeki bazı küçük projeleri ve günlük geliştirici ihtiyaçları için faydalı olan yardımcı konuları bir arada bulacaksınız. Anlatım doğal Türkçe ile yapılmıştır: önce konunun ne olduğunu, hangi problemleri çözdüğünü anlatıyorum, sonra gerekli kod örneklerini veriyorum. Bu dosya hem öğrenme hem de uygulama amaçlı tek bir kaynak olarak kullanılabilir.
 
