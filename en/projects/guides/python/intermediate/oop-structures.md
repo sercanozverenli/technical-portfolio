@@ -1,16 +1,114 @@
 # Object-Oriented Programming (OOP) and Basic Data Structures
 
-In this section, we will examine the Object-Oriented Programming (OOP) principles we use to embody abstract concepts in the software world and data structures, which are the cornerstones of computer science.
+In software development, the **Object-Oriented Programming (OOP)** approach is used to model real-world objects and their behaviors in a computer program. OOP helps make code more organized, reusable, and easier to manage.
 
-Topics we will cover:
-- Encapsulation and hidden (private) variables.
-- Inheritance and expanding by overriding existing methods (Method Overriding).
-- Designing LIFO (Stack) and FIFO (Queue) data structures with Python lists.
+Python fully supports OOP. This allows us to create our own classes, create objects from these classes, and define their attributes and methods.
+
+In this section, you will learn:
+
+- The basic idea of OOP.
+- The concepts of Class, Object, Attribute, and Method.
+- Encapsulation and private variables.
+- Inheritance and Method Overriding.
+- Implementing LIFO (Stack) and FIFO (Queue) data structures using Python lists.
 - Magic Methods and object state management.
 
 ---
 
-## 1. Basic OOP, Encapsulation, and Stack Structure
+## 1. What is Object-Oriented Programming (OOP)?
+
+Object-Oriented Programming (OOP) is a programming approach that models real-world objects in software.
+
+In real life, many objects such as a car, a student, or a bank account have their own attributes and behaviors. OOP uses the same idea. First, we create a **class**, which defines how an object should be. Then, we create real **objects** from that class.
+
+For example, we can create a **Student** class and then create different students from it.
+
+```python
+class Student:
+    pass
+
+
+student1 = Student()
+student2 = Student()
+
+print(type(student1))
+print(type(student2))
+```
+
+Output
+
+```text
+<class '__main__.Student'>
+<class '__main__.Student'>
+```
+
+In this example, the class does not have any attributes or methods yet. However, two different objects have been created from the `Student` class. Although both objects belong to the same class, they are stored separately in memory.
+
+---
+
+## 2. Class, Object, Attribute, and Method
+
+A **Class** is a blueprint for creating objects. The attributes and methods of an object are defined inside the class.
+
+In Python, the special method that runs automatically when an object is created is called `__init__()`. This method is known as the **Constructor**. It is usually used to assign the initial values of an object.
+
+The `self` parameter represents the current object. It allows each object to store and access its own data.
+
+The following example creates a simple `Car` class.
+
+```python
+class Car:
+    """
+    A simple car class.
+    """
+
+    def __init__(self, brand, model, year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+
+    def show_info(self):
+        """
+        Prints the car information.
+        """
+        print(f"Brand : {self.brand}")
+        print(f"Model : {self.model}")
+        print(f"Year  : {self.year}")
+
+
+# Create an object
+car1 = Car("Toyota", "Corolla", 2023)
+
+print(car1.brand)
+print(car1.model)
+
+car1.show_info()
+```
+
+Output
+
+```text
+Toyota
+Corolla
+Brand : Toyota
+Model : Corolla
+Year  : 2023
+```
+
+In this example:
+
+- `Car` is a **Class**.
+- `car1` is an **Object** created from the `Car` class.
+- `brand`, `model`, and `year` are the object's **Attributes**.
+- `show_info()` is a **Method** of the object.
+- The `__init__()` method runs automatically when the object is created.
+- The `self` keyword is used to access the current object's own attributes.
+
+After learning these basic concepts, you can more easily understand other OOP principles such as Encapsulation, Inheritance, and more.
+
+---
+
+## 3. Basic OOP, Encapsulation, and Stack Structure
 
 In computer science, a Stack is a structure where data is stacked on top of each other like clothes. This structure works on the **LIFO (Last In, First Out)** principle. So, the last element you add to the stack is the first element you will take from the stack. You can think of this like books in a box; you cannot reach the ones at the bottom without taking the book on top.
 
@@ -43,7 +141,7 @@ class Stack:
 
 ---
 
-## 2. Class Inheritance and Method Overriding
+## 4. Class Inheritance and Method Overriding
 
 Sometimes we want to add new capabilities to a base class we wrote while preserving its properties. Instead of writing code from scratch, we proceed by inheriting from the existing class. This is called **Inheritance**.
 
@@ -109,7 +207,7 @@ if __name__ == "__main__":
 
 ---
 
-## 3. Queue Structure and FIFO Principle
+## 5. Queue Structure and FIFO Principle
 
 A Queue works with the exact opposite logic of a stack. Just like a real-life bakery or bank queue, it is based on the **FIFO (First In, First Out)** principle. The first person to enter the queue completes their transaction first and leaves.
 
@@ -153,7 +251,7 @@ for i in range(4):     # Let's try to pull an element 4 times
 
 ---
 
-## 4. Magic Methods and State Management
+## 6. Magic Methods and State Management
 
 In Python, methods inside classes that start and end with double underscores, like `__str__` and `__init__`, are called **Magic Methods**. These methods determine how objects will respond to the language's own built-in functions.
 
