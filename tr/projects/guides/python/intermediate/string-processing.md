@@ -134,6 +134,30 @@ def find_word():
         print("Maalesef kelime bulunamadı.")
 ```
 
+### `finally` Bloğu
+
+`try` ve `except` bloklarına ek olarak kullanılan `finally` bloğu, hata oluşsa da oluşmasa da **her zaman çalışan** kodları yazmak için kullanılır. Genellikle dosya kapatma, veritabanı bağlantısını sonlandırma veya temizlik işlemleri gibi işlemler burada gerçekleştirilir.
+
+Basit örnek
+
+```python
+try:
+    print("İşlem başlatıldı.")
+    number = int(input("Bir sayı girin: "))
+    print("Girdiğiniz sayı:", number)
+except ValueError:
+    print("Hata: Geçerli bir sayı girmediniz.")
+finally:
+    print("Program sonlandırılıyor.")
+```
+
+Çalışma mantığı
+
+- Eğer kullanıcı geçerli bir sayı girerse `try` bloğu çalışır ve ardından `finally` bloğu çalışır.
+- Eğer kullanıcı hatalı bir giriş yaparsa `except` bloğu çalışır ve ardından yine `finally` bloğu çalışır.
+- Yani `finally` bloğu, programın hangi yoldan devam ettiğine bakılmaksızın her zaman yürütülür.
+
+> **Not:** Bu bölümde kullandığımız `read_int` fonksiyonunda `finally` bloğuna ihtiyaç yoktur. Çünkü fonksiyon içinde dosya, ağ bağlantısı veya benzeri bir kaynağın kapatılmasını gerektiren bir işlem bulunmamaktadır. Bu nedenle `try` ve `except` kullanımı bu örnek için yeterlidir.
 ---
 
 ## 3. İstisna Yönetimi ve Savunmacı Programlama (Defensive Programming)
