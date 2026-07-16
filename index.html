@@ -365,8 +365,10 @@ function updateLang() {
     langToggle.textContent = isEn ? 'TR' : 'EN';
     langToggle.href = isEn ? currentHash.replace('#/en/', '#/tr/') : (currentHash.includes('#/tr/') ? currentHash.replace('#/tr/', '#/en/') : '#/en/');
 }
-window.addEventListener('hashchange', updateLang);
-updateLang();
+window.addEventListener('hashchange', () => { 
+    updateLang(); 
+    syncSidebar(); 
+});
 
 // 3. SIDEBAR SENKRONİZASYONU VE İKON ENJEKSİYONU
 function injectStatusIcons() {
@@ -405,7 +407,9 @@ function injectSidebarHeader() {
 function syncSidebar() {
     const currentHash = decodeURIComponent(window.location.hash);
     if (!currentHash || currentHash === '#/') return;
-    const activeLink = document.querySelector(`.sidebar-nav a[href="${currentHash}"]`);
+    const baseHash = currentHash.split('?')[0];
+    const activeLink = document.querySelector(`.sidebar-nav a[href="${baseHash}"]`) || document.querySelector(`.sidebar-nav a[href="${currentHash}"]`);
+    
     if (activeLink) {
         document.querySelectorAll('.sidebar-nav a').forEach(el => el.classList.remove('active'));
         activeLink.classList.add('active');
@@ -444,6 +448,7 @@ function initSmartSearch() {
     }
     trigger.addEventListener('click', openSearch);
     overlay.addEventListener('click', (e) => { if (e.target === overlay) closeSearch(); });
+    container.addEventListener('click', (e) => { if (e.target.closest('a')) closeSearch(); });
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && overlay.style.display === 'flex') closeSearch();
         if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); overlay.style.display === 'flex' ? closeSearch() : openSearch(); }
