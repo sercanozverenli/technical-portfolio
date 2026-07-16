@@ -298,8 +298,48 @@ body.dark #search-modal-container { background: #1e293b; border: 1px solid #3341
     body:not(.close) #custom-sidebar-toggle span:nth-child(2) { opacity: 0; }
     body:not(.close) #custom-sidebar-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 }
-    
+
+
+/* ── BREADCRUMB (EKMEK KIRINTILARI) TASARIMI ── */
+#breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    padding: 0 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #94a3b8; /* Muted gri */
+    flex-wrap: wrap;
+}
+
+.breadcrumb-item {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.breadcrumb-item:hover {
+    color: #3b82f6; /* Hoverda marka mavisi */
+}
+
+.breadcrumb-item.current {
+    color: #64748b;
+    cursor: default;
+    pointer-events: none;
+}
+
+.breadcrumb-separator {
+    color: #cbd5e1;
+    font-size: 11px;
+    user-select: none;
+}
+
+body.dark .breadcrumb-item:hover { color: #60a5fa; }
+body.dark .breadcrumb-separator { color: #334155; }
+
 </style>
+    
 <script src="https://unpkg.com/lucide@latest"></script>    
 </head>
 <body>
@@ -529,6 +569,83 @@ function runDashboardEngine() {
     if (totalDocsEl) totalDocsEl.textContent = globalD;
 }
 
+// ── BREADCRUMB OLUŞTURUCU VE SİDEBAR TETİKLEYİCİ ──
+function renderBreadcrumbs() {
+    const contentArea = document.querySelector('.markdown-section');
+    if (!contentArea) return;
+
+    // Varsa eski breadcrumb'ı temizle
+    const oldBc = document.getElementById('breadcrumb-container');
+    if (oldBc) oldBc.remove();
+
+    const activeLink = document.querySelector('.sidebar-nav a.active');
+    if (!activeLink) return;
+
+    const bcContainer = document.createElement('div');
+    bcContainer.id = 'breadcrumb-container';
+
+    let crumbs = [];
+    let current = activeLink.parentElement;
+
+    // Sidebar hiyerarşisini yukarı doğru tara
+    while (current && !current.classList.contains('sidebar-nav')) {
+        if (current.tagName === 'DETAILS') {
+            const summary = current.querySelector('summary');
+            if (summary) {
+                crumbs.unshift({
+                    text: summary.textContent.trim(),
+                    target: summary
+                });
+            }
+        }
+        current = current.parentElement;
+    }
+
+    // Ana Sayfa / Home ekle
+    const isEn = window.location.hash.startsWith('#/en/');
+    crumbs.unshift({
+        text: isEn ? 'Home' : 'Ana Sayfa',
+        url: isEn ? '#/en/' : '#/tr/'
+    });
+
+    // HTML oluştur
+    crumbs.forEach((crumb, index) => {
+        const span = document.createElement('span');
+        span.className = 'breadcrumb-item';
+        span.textContent = crumb.text;
+
+        if (index === crumbs.length - 1 && !crumb.url) {
+            span.classList.add('current');
+        }
+
+        span.onclick = () => {
+            if (crumb.url) {
+                window.location.hash = crumb.url;
+            } else if (crumb.target) {
+                // Klasörü aç
+                crumb.target.parentElement.setAttribute('open', '');
+                // Sidebar'da o öğeye odaklan
+                crumb.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Mobildeyse sidebar'ı aç
+                if (window.innerWidth <= 768) {
+                    document.body.classList.add('mobile-sidebar-open');
+                }
+            }
+        };
+
+        bcContainer.appendChild(span);
+
+        if (index < crumbs.length - 1) {
+            const sep = document.createElement('span');
+            sep.className = 'breadcrumb-separator';
+            sep.innerHTML = '<i data-lucide="chevron-right" style="width:12px;height:12px;"></i>';
+            bcContainer.appendChild(sep);
+        }
+    });
+
+    contentArea.prepend(bcContainer);
+    if (window.lucide) lucide.createIcons();
+}    
 // 7. DOCSIFY CONFIG
 window.$docsify = {
     auto2top: true,
@@ -558,10 +675,13 @@ window.$docsify = {
                 injectStatusIcons();
                 injectCategoryIcons();
                 runDashboardEngine();
+                renderBreadcrumbs();
             });
         }
     ]
 }
+
+    
 </script>
 
 <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
