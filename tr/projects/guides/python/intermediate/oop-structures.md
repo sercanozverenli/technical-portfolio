@@ -1,8 +1,13 @@
 # Nesne Yönelimli Programlama (OOP) ve Temel Veri Yapıları
 
-Bu bölümde yazılım dünyasında soyut kavramları somutlaştırmak için kullandığımız Nesne Yönelimli Programlama (OOP) ilkelerini ve bilgisayar bilimlerinin temel taşları olan veri yapılarını inceleyeceğiz. 
+Yazılım geliştirme sürecinde gerçek dünyadaki nesneleri ve davranışlarını bilgisayar ortamında modellemek için **Nesne Yönelimli Programlama (Object-Oriented Programming - OOP)** yaklaşımı kullanılır. OOP, kodun daha düzenli, tekrar kullanılabilir ve kolay yönetilebilir olmasını sağlar.
 
-Ele alacağımız konular:
+Python, OOP'yi tamamen destekleyen bir programlama dilidir. Bu sayede kendi sınıflarımızı (class) oluşturabilir, bu sınıflardan nesneler (object) üretebilir ve bu nesnelerin özelliklerini ile davranışlarını tanımlayabiliriz.
+
+Bu bölümde öğrenecekleriniz:
+
+- OOP'nin temel mantığı.
+- Sınıf (Class), Nesne (Object), Özellik (Attribute) ve Metot (Method) kavramları.
 - Kapsülleme (Encapsulation) ve gizli (private) değişkenler.
 - Kalıtım (Inheritance) ve mevcut metotları ezerek genişletme (Method Overriding).
 - LIFO (Yığın) ve FIFO (Kuyruk) veri yapılarının Python listeleri ile tasarlanması.
@@ -10,7 +15,100 @@ Ele alacağımız konular:
 
 ---
 
-## 1. Temel OOP, Kapsülleme ve Yığın (Stack) Yapısı
+## 1. Nesne Yönelimli Programlama (OOP) Nedir?
+
+Nesne Yönelimli Programlama (Object-Oriented Programming - OOP), gerçek dünyadaki nesneleri yazılım ortamında modellemeyi amaçlayan bir programlama yaklaşımıdır.
+
+Gerçek hayatta bir araba, öğrenci veya banka hesabı gibi birçok nesnenin kendine ait özellikleri ve davranışları vardır. OOP'de de aynı mantık kullanılır. Önce bir nesnenin nasıl olacağını tanımlayan bir **sınıf (class)** oluşturulur. Daha sonra bu sınıftan gerçek nesneler (**object**) üretilir.
+
+Örneğin bir **Student** sınıfı oluşturabilir ve daha sonra bu sınıftan farklı öğrenciler üretebiliriz.
+
+```python
+class Student:
+    pass
+
+
+student1 = Student()
+student2 = Student()
+
+print(type(student1))
+print(type(student2))
+```
+
+Çıktı
+
+```text
+<class '__main__.Student'>
+<class '__main__.Student'>
+```
+
+Bu örnekte henüz sınıfın içinde herhangi bir özellik veya fonksiyon bulunmamaktadır. Ancak `Student` sınıfından iki farklı nesne oluşturulmuştur. Her iki nesne de aynı sınıfa ait olsa da bellekte birbirinden bağımsız olarak tutulur.
+
+---
+
+## 2. Sınıf (Class), Nesne (Object), Attribute ve Method
+
+Bir sınıf (Class), oluşturacağımız nesnelerin şablonudur. Nesnelerin sahip olacağı özellikler (**Attribute**) ve gerçekleştireceği işlemler (**Method**) bu sınıf içinde tanımlanır.
+
+Python'da bir nesne oluşturulurken otomatik olarak çalışan özel metoda `__init__()` denir. Bu metoda **Constructor (Yapıcı Metot)** adı verilir. Nesnenin ilk değerleri genellikle burada atanır.
+
+Sınıf içerisindeki `self` parametresi ise oluşturulan nesnenin kendisini temsil eder. Böylece her nesne kendi verilerini ayrı ayrı saklayabilir.
+
+Aşağıdaki örnekte bir otomobil sınıfı oluşturulmuştur.
+
+```python
+class Car:
+    """
+    Basit bir otomobil sınıfı.
+    """
+
+    def __init__(self, brand, model, year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+
+    def show_info(self):
+        """
+        Otomobil bilgilerini ekrana yazdırır.
+        """
+        print(f"Marka : {self.brand}")
+        print(f"Model : {self.model}")
+        print(f"Yıl   : {self.year}")
+
+
+# Nesne oluşturma
+car1 = Car("Toyota", "Corolla", 2023)
+
+print(car1.brand)
+print(car1.model)
+
+car1.show_info()
+```
+
+Çıktı
+
+```text
+Toyota
+Corolla
+Marka : Toyota
+Model : Corolla
+Yıl   : 2023
+```
+
+Bu örnekte;
+
+- `Car`, bir **Class (Sınıf)**tır.
+- `car1`, `Car` sınıfından oluşturulmuş bir **Object (Nesne)**dir.
+- `brand`, `model` ve `year`, nesnenin **Attribute (Özellik)**leridir.
+- `show_info()`, nesnenin gerçekleştirebildiği bir **Method (Metot)**tur.
+- `__init__()` metodu, nesne oluşturulduğu anda otomatik olarak çalışır.
+- `self` anahtar kelimesi ise oluşturulan nesnenin kendi özelliklerine erişmek için kullanılır.
+
+Bu temel kavramları öğrendikten sonra artık kendi sınıflarımızı geliştirerek kapsülleme (Encapsulation), kalıtım (Inheritance) ve diğer OOP prensiplerini daha rahat anlayabiliriz.
+
+---
+
+## 3. Temel OOP, Kapsülleme ve Yığın (Stack) Yapısı
 
 Bilgisayar bilimlerinde Yığın (Stack), verilerin üst üste elbiseler gibi dizildiği bir yapıdır. Bu yapı **LIFO (Last In, First Out - Son Giren İlk Çıkar)** prensibiyle çalışır. Yani yığına en son eklediğiniz eleman, yığından alacağınız ilk elemandır. Bunu bir kutu içindeki kitaplar gibi düşünebilirsiniz; en üstteki kitabı almadan alttakilere ulaşamazsınız.
 
@@ -43,7 +141,7 @@ class Stack:
 
 ---
 
-## 2. Sınıf Kalıtımı (Inheritance) ve Metot Ezme (Overriding)
+## 4. Sınıf Kalıtımı (Inheritance) ve Metot Ezme (Overriding)
 
 Bazen yazdığımız temel bir sınıfın özelliklerini koruyarak ona yeni yetenekler kazandırmak isteriz. Sıfırdan kod yazmak yerine, mevcut sınıftan miras alarak ilerleriz. Buna **Kalıtım (Inheritance)** denir.
 
@@ -109,7 +207,7 @@ if __name__ == "__main__":
 
 ---
 
-## 3. Kuyruk (Queue) Yapısı ve FIFO Prensibi
+## 5. Kuyruk (Queue) Yapısı ve FIFO Prensibi
 
 Kuyruk (Queue), yığının tam tersi bir mantıkla çalışır. Gerçek hayattaki bir fırın veya banka kuyruğu gibi, **FIFO (First In, First Out - İlk Giren İlk Çıkar)** prensibine dayanır. Kuyruğa ilk giren kişi işlemini ilk tamamlar ve ayrılır.
 
@@ -153,7 +251,7 @@ for i in range(4):   # 4 defa eleman çekmeyi deneyelim
 
 ---
 
-## 4. Özel Metotlar (Magic Methods) ve Durum Yönetimi
+## 6. Özel Metotlar (Magic Methods) ve Durum Yönetimi
 
 Python'da sınıfların içinde çift alt çizgi ile başlayan ve biten `__str__`, `__init__` gibi metotlara **Sihirli Metotlar (Magic Methods)** denir. Bu metotlar, nesnelerin dilin kendi yerleşik fonksiyonlarına nasıl yanıt vereceğini belirler.
 
