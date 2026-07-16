@@ -174,6 +174,30 @@ v = read_int("Please enter a number between -10 and 10: ", -10, 10)
 print("The safe number you selected:", v)
 ```
 
+### `finally` Block
+
+In addition to the `try` and `except` blocks, the `finally` block is used for code that **always runs**, whether an error happens or not. It is usually used for tasks such as closing files, closing database connections, or cleaning up resources.
+
+Simple example
+
+```python
+try:
+    print("Process started.")
+    number = int(input("Enter a number: "))
+    print("You entered:", number)
+except ValueError:
+    print("Error: You did not enter a valid number.")
+finally:
+    print("Program is closing.")
+```
+
+How it works
+
+- If the user enters a valid number, the `try` block runs, and then the `finally` block runs.
+- If the user enters an invalid value, the `except` block runs, and then the `finally` block also runs.
+- In other words, the `finally` block always runs, no matter how the program continues.
+
+> **Note:** The `read_int` function used in this section does not need a `finally` block. This is because the function does not open a file, use a network connection, or work with any other resource that needs to be closed. Therefore, using `try` and `except` is enough for this example.
 ---
 
 ## 4. Two-Dimensional Lists (Matrices) and Set Theory — Sudoku Validator
