@@ -60,7 +60,7 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
             <span class="status-count"><span id="count-apps-done">0</span> Doküman</span>
           </div>
         </div>
-        <a href="#" target="_blank" class="card-footer">
+        <a href="https://github.com/sercanozverenli/technical-portfolio/tree/tasar%C4%B1m-v2/tr/projects/apps" target="_blank" class="card-footer">
           <div class="github-link"><img src="docs/icons/github-icon.png" class="github-mini-img"> GitHub</div>
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
@@ -87,7 +87,7 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
             <span class="status-count"><span id="count-analytics-done">0</span> Doküman</span>
           </div>
         </div>
-        <a href="#" target="_blank" class="card-footer">
+        <a href="https://github.com/sercanozverenli/technical-portfolio/tree/tasar%C4%B1m-v2/tr/projects/analytics-modules" target="_blank" class="card-footer">
           <div class="github-link"><img src="docs/icons/github-icon.png" class="github-mini-img"> GitHub</div>
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
@@ -114,7 +114,7 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
             <span class="status-count"><span id="count-guides-done">0</span> Doküman</span>
           </div>
         </div>
-        <a href="#" target="_blank" class="card-footer">
+        <a href="https://github.com/sercanozverenli/technical-portfolio/tree/tasar%C4%B1m-v2/tr/projects/guides" target="_blank" class="card-footer">
           <div class="github-link"><img src="docs/icons/github-icon.png" class="github-mini-img"> GitHub</div>
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
