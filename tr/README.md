@@ -33,7 +33,7 @@ Planlanan ve geliştirilen modülleri, sistem mimarilerini veya deneysel çalı�
             <span class="status-count"><span id="count-systems-done">0</span> Doküman</span>
           </div>
         </div>
-        <a href="#" target="_blank" class="card-footer">
+        <a href="https://github.com/sercanozverenli/technical-portfolio/tree/tasar%C4%B1m-v2/tr/projects/systems" target="_blank" class="card-footer">
           <div class="github-link"><img src="docs/icons/github-icon.png" class="github-mini-img"> GitHub</div>
           <i data-lucide="arrow-right" class="arrow"></i>
         </a>
