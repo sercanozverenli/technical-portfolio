@@ -2,13 +2,17 @@
 
 This project uses the official **Olist Brazilian E-Commerce Public Dataset**.
 
-The dataset is **not included** in this repository because it is publicly available and contains large static files.
+## Overview
 
-## Download
+The Olist dataset is a real-world Brazilian e-commerce dataset containing transactional data collected from an online marketplace.
 
-Download the dataset from the official source and extract all CSV files into the `raw/` directory.
+It is a relational dataset consisting of multiple interconnected tables, including customer information, orders, products, sellers, payments, reviews, and geolocation data.
 
-Expected structure:
+The dataset is widely used for machine learning, data mining, and data analysis research involving structured tabular data.
+
+## Dataset Contents
+
+The dataset contains the following CSV files:
 
 ```text
 raw/
@@ -23,4 +27,27 @@ raw/
 └── product_category_name_translation.csv
 ```
 
-The dataset should remain unchanged to ensure reproducibility.
+## Why This Dataset?
+
+The Olist dataset represents a real-world tabular dataset containing:
+
+- Missing values
+- Categorical features
+- Numerical features
+- Relational data
+- Transaction records
+- Customer behavior information
+
+Its diverse data structure makes it suitable for evaluating the proposed **Data Reliability Score (DRS)** under different tabular data quality conditions.
+
+## Download
+
+This dataset is **not included** in this repository because it is publicly available and consists of large static files.
+
+Download the official dataset and extract all CSV files into the `raw/` directory.
+
+## Notes
+
+The Olist dataset is a **static public dataset** whose contents do not change over time.
+
+To ensure reproducibility, the original files should remain unchanged before preprocessing.
