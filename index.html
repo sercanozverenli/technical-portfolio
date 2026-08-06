@@ -2,10 +2,12 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Workspace · Personal R&D Hub</title>
+<title>Personal R&D Hub</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+<!-- LaTeX formülleri için KaTeX CSS eklentisi -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
 <style>
 
 /* ── TEMEL AYARLAR ── */
@@ -51,7 +53,8 @@ html.dark, body.dark, body.dark main, body.dark section.content, body.dark .mark
     min-height: 100vh !important; 
 }
     
-.markdown-section { padding-top: 80px !important; line-height: 1.7; font-size: 16px; }
+.markdown-section { padding-top: 60px !important; line-height: 1.7; font-size: 16px; }
+.markdown-section > *:first-child { margin-top: 0 !important; }
 .markdown-section blockquote { border-left: 4px solid #3b82f6 !important; background: #f8fafc !important; padding: 16px !important; border-radius: 0 8px 8px 0 !important; color: #475569 !important; margin: 2em 0 !important; }
 body.dark .markdown-section table { background-color: #1e293b !important; color: #e2e8f0 !important; }
 body.dark .markdown-section table tr { background-color: #0f172a !important; border-top: 1px solid #334155 !important; }
@@ -63,10 +66,23 @@ body.dark .markdown-section blockquote { background: #1e293b !important; color: 
 /* ── MOBİL UYUM ── */
 @media screen and (max-width: 768px) {
     #topbar { padding: 0 16px !important; }
-    .markdown-section { padding-top: 80px !important; }
+    .markdown-section { padding-top: 60px !important; }
     section.content { transform: none !important; margin-left: 0 !important; transition: none !important; width: 100% !important; }
     .sidebar { left: -300px !important; }
     body.mobile-sidebar-open .sidebar { left: 0 !important; }
+}
+
+/* ── MOBİL HAMBURGER DÖNÜŞÜMÜ (ÇARPIYA DÖNME) ── */
+@media screen and (max-width: 768px) {
+    body.mobile-sidebar-open #custom-sidebar-toggle span:nth-child(1) { 
+        transform: translateY(6px) rotate(45deg); 
+    }
+    body.mobile-sidebar-open #custom-sidebar-toggle span:nth-child(2) { 
+        opacity: 0; 
+    }
+    body.mobile-sidebar-open #custom-sidebar-toggle span:nth-child(3) { 
+        transform: translateY(-6px) rotate(-45deg); 
+    }
 }
 
 /* ── GLOBAL ARAMA MODALI ── */
@@ -195,7 +211,7 @@ body.dark .sidebar-nav a.active:not(.home-link) { color: #f1f5f9 !important; bor
 
 /* ── 4. İÇERİK ALANI ── */
 html.dark, body.dark, body.dark main, body.dark section.content, body.dark .markdown-section { background-color: #0f172a !important; color: #e2e8f0 !important; min-height: 100vh !important; }
-.markdown-section { padding-top: 80px !important; line-height: 1.7; font-size: 16px; }
+.markdown-section { padding-top: 40px !important; line-height: 1.7; font-size: 16px; }
 
 /* ── 5. DASHBOARD (ANA YAPI & GRID) ── */
 #dashboard-root { margin: 40px auto; width: 100%; max-width: 1000px; }
@@ -282,7 +298,7 @@ body.dark #search-modal-container { background: #1e293b; border: 1px solid #3341
     #topbar { padding: 0 16px !important; }
     .sidebar { left: -300px !important; }
     body.mobile-sidebar-open .sidebar { left: 0 !important; }
-    .markdown-section { padding-top: 80px !important; }
+    .markdown-section { padding-top: 40px !important; }
     
     /* Dashboard Mobil Düzen */
     .stats-grid { grid-template-columns: 1fr; }
@@ -298,8 +314,50 @@ body.dark #search-modal-container { background: #1e293b; border: 1px solid #3341
     body:not(.close) #custom-sidebar-toggle span:nth-child(2) { opacity: 0; }
     body:not(.close) #custom-sidebar-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 }
-    
+
+
+/* ── BREADCRUMB (EKMEK KIRINTILARI) TASARIMI ── */
+#breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    padding: 0 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #94a3b8;
+    flex-wrap: wrap;
+    margin-top: 0 !important;
+    padding-top: 0 !important; 
+}
+
+.breadcrumb-item {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.breadcrumb-item:hover {
+    color: #3b82f6; /* Hoverda marka mavisi */
+}
+
+.breadcrumb-item.current {
+    color: #64748b;
+    cursor: default;
+    pointer-events: none;
+}
+
+.breadcrumb-separator {
+    color: #cbd5e1;
+    font-size: 11px;
+    user-select: none;
+}
+
+body.dark .breadcrumb-item:hover { color: #60a5fa; }
+body.dark .breadcrumb-separator { color: #334155; }
+
 </style>
+    
 <script src="https://unpkg.com/lucide@latest"></script>    
 </head>
 <body>
@@ -365,8 +423,10 @@ function updateLang() {
     langToggle.textContent = isEn ? 'TR' : 'EN';
     langToggle.href = isEn ? currentHash.replace('#/en/', '#/tr/') : (currentHash.includes('#/tr/') ? currentHash.replace('#/tr/', '#/en/') : '#/en/');
 }
-window.addEventListener('hashchange', updateLang);
-updateLang();
+window.addEventListener('hashchange', () => { 
+    updateLang(); 
+    syncSidebar(); 
+});
 
 // 3. SIDEBAR SENKRONİZASYONU VE İKON ENJEKSİYONU
 function injectStatusIcons() {
@@ -405,7 +465,9 @@ function injectSidebarHeader() {
 function syncSidebar() {
     const currentHash = decodeURIComponent(window.location.hash);
     if (!currentHash || currentHash === '#/') return;
-    const activeLink = document.querySelector(`.sidebar-nav a[href="${currentHash}"]`);
+    const baseHash = currentHash.split('?')[0];
+    const activeLink = document.querySelector(`.sidebar-nav a[href="${baseHash}"]`) || document.querySelector(`.sidebar-nav a[href="${currentHash}"]`);
+    
     if (activeLink) {
         document.querySelectorAll('.sidebar-nav a').forEach(el => el.classList.remove('active'));
         activeLink.classList.add('active');
@@ -444,6 +506,7 @@ function initSmartSearch() {
     }
     trigger.addEventListener('click', openSearch);
     overlay.addEventListener('click', (e) => { if (e.target === overlay) closeSearch(); });
+    container.addEventListener('click', (e) => { if (e.target.closest('a')) closeSearch(); });
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && overlay.style.display === 'flex') closeSearch();
         if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); overlay.style.display === 'flex' ? closeSearch() : openSearch(); }
@@ -524,6 +587,83 @@ function runDashboardEngine() {
     if (totalDocsEl) totalDocsEl.textContent = globalD;
 }
 
+// ── BREADCRUMB OLUŞTURUCU VE SİDEBAR TETİKLEYİCİ ──
+function renderBreadcrumbs() {
+    const contentArea = document.querySelector('.markdown-section');
+    if (!contentArea) return;
+
+    // Varsa eski breadcrumb'ı temizle
+    const oldBc = document.getElementById('breadcrumb-container');
+    if (oldBc) oldBc.remove();
+
+    const activeLink = document.querySelector('.sidebar-nav a.active');
+    if (!activeLink) return;
+
+    const bcContainer = document.createElement('div');
+    bcContainer.id = 'breadcrumb-container';
+
+    let crumbs = [];
+    let current = activeLink.parentElement;
+
+    // Sidebar hiyerarşisini yukarı doğru tara
+    while (current && !current.classList.contains('sidebar-nav')) {
+        if (current.tagName === 'DETAILS') {
+            const summary = current.querySelector('summary');
+            if (summary) {
+                crumbs.unshift({
+                    text: summary.textContent.trim(),
+                    target: summary
+                });
+            }
+        }
+        current = current.parentElement;
+    }
+
+    // Ana Sayfa / Home ekle
+    const isEn = window.location.hash.startsWith('#/en/');
+    crumbs.unshift({
+        text: isEn ? 'Home' : 'Ana Sayfa',
+        url: isEn ? '#/en/' : '#/tr/'
+    });
+
+    // HTML oluştur
+    crumbs.forEach((crumb, index) => {
+        const span = document.createElement('span');
+        span.className = 'breadcrumb-item';
+        span.textContent = crumb.text;
+
+        if (index === crumbs.length - 1 && !crumb.url) {
+            span.classList.add('current');
+        }
+
+        span.onclick = () => {
+            if (crumb.url) {
+                window.location.hash = crumb.url;
+            } else if (crumb.target) {
+                // Klasörü aç
+                crumb.target.parentElement.setAttribute('open', '');
+                // Sidebar'da o öğeye odaklan
+                crumb.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Mobildeyse sidebar'ı aç
+                if (window.innerWidth <= 768) {
+                    document.body.classList.add('mobile-sidebar-open');
+                }
+            }
+        };
+
+        bcContainer.appendChild(span);
+
+        if (index < crumbs.length - 1) {
+            const sep = document.createElement('span');
+            sep.className = 'breadcrumb-separator';
+            sep.innerHTML = '<i data-lucide="chevron-right" style="width:12px;height:12px;"></i>';
+            bcContainer.appendChild(sep);
+        }
+    });
+
+    contentArea.prepend(bcContainer);
+    if (window.lucide) lucide.createIcons();
+}    
 // 7. DOCSIFY CONFIG
 window.$docsify = {
     auto2top: true,
@@ -553,14 +693,22 @@ window.$docsify = {
                 injectStatusIcons();
                 injectCategoryIcons();
                 runDashboardEngine();
+                renderBreadcrumbs();
             });
         }
     ]
 }
+
+    
 </script>
 
 <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
 
+<!-- LaTeX formülleri için KaTeX ve Marked script eklentileri -->
+<script src="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/marked@4"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>    
+    
 </body>
 </html>
