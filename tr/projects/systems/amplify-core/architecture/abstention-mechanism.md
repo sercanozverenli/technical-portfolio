@@ -50,8 +50,6 @@ PoC kapsamında uygulanan Kayıt Bazlı Kaçınma modunda akışın durdurulmama
 
 ## Sonraki katman
 
-## Sonraki katman
-
 Karar Kaçınması, Çıkarım Öncesi (DRS < 0.25) veya Çıkarım Sonrası (Güven Kapısı $\tau$ reddi) durumlarında devreye girerek güvenli duruş sağlar. Kaçınmaya düşmeyip Güven Kapısı'nı başarıyla geçen tüm tahminler için ise nihai otonomi seviyesini belirleyen bir güven etiketi hesaplanır:
 
 → [Karar Güven Skoru (SCS)](tr/projects/systems/amplify-core/architecture/self-confidence-score.md)
