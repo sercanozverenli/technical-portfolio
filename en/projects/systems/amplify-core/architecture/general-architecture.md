@@ -28,7 +28,7 @@ The critical point: the last row is not a failure — it's a design decision. Th
 - **Domain-adaptive:** The techniques inside the Stabilization Layer change depending on data type (numerical time series, tabular data, financial data, text) — but the decision logic (DRS thresholds, the four regimes) always stays the same.
 - **Transparent:** Every decision is reported along with which indicator (missingness, noise ratio, etc.) crossed its threshold — not a black box.
 
-## For engineers: the technical role of each component
+## The technical role of each component
 
 1. **DRS Layer** — produces a single score through seven statistical indicators (missingness, signal-to-noise ratio, autocorrelation, outlier density, variance stability, Shannon entropy, drift), combined via weighted summation and a multiplicative veto mechanism. It is model-agnostic; it only looks at the statistical properties of the raw data. *(Full formulation: [DRS Layer](en/projects/systems/amplify-core/architecture/drs-layer.md))*
 2. **Routing Engine** — compares the DRS score against thresholds and makes a deterministic (no training required) routing decision. Implemented via the Strategy pattern.
