@@ -80,6 +80,10 @@ Bir tahminin arkasındaki verinin ne kadarının gerçek, ne kadarının stabili
 - **Nihai Recovered skoru**
 - **Verinin nereye yönlendirildiği** (ana model, yedek model veya karar kaçınması)
 
+- **Verinin nereye yönlendirildiği** (ana model, yedek model veya karar kaçınması)
+
+Veri İhtiyatlı Yedek Modele yönlendirilirse, bu kayda ayrıca SCS hesaplamasında kullanılan Güven Sinyali kaynağı (`confidence_signal_source`: "validation_accuracy" veya "bootstrap_ci") ve bu değerin Gcap=0.90 tavanıyla kırpılıp kırpılmadığı (`confidence_signal_capped`: true/false) eklenir.
+
 Bu kayıtlar, bir tahminde kullanılan verinin ne ölçüde sentetik olduğunun geriye dönük olarak izlenebilmesini sağlar — sistem sadece bir karar üretmekle kalmaz, o kararın hangi veri temelinde üretildiğini de raporlar.
 
 → [Karar Kaçınması Mekanizması](tr/projects/systems/amplify-core/architecture/abstention-mechanism.md)
