@@ -30,15 +30,16 @@ Aşağıdaki diyagram, verinin sisteme ilk girdiği andan nihai DRS skoruna kada
 
 Üç aşama sırayla işler:
 
-1. **Z-Skoru Normalizasyonu** — Yedi gösterge farklı birimlerde gelir (SNR desibel, eksiklik yüzde, entropi bit vb.). Her biri önce standartlaştırılır, sonra [0,1] aralığına çekilir. Bu adım olmadan birim farkları skoru yanıltır.
-2. **Ağırlıklı Toplam** — Normalize edilmiş yedi gösterge, ağırlıklarıyla çarpılıp toplanır. Başlangıçta her göstergeye eşit ağırlık verilir (1/7 ≈ %14.3). Arka planda periyodik olarak çalışan bir mekanizma (Entropi Ağırlıklandırma Yöntemi — EWM), ağırlıkları göstergelerin güncel varyans dağılımına göre otomatik günceller — yani hangi göstergenin o an daha "konuşkan" olduğuna göre önem kazanır.
+1. **Z-Skoru Normalizasyonu** — Yedi gösterge farklı birimlerde gelir (SNR desibel, eksiklik yüzde, entropi bit vb.). Her biri önce Z-skoru ile standartlaştırılır, sonra min-max ölçeklendirmesiyle [0,1] aralığına çekilir; sonuç Nᵢ olarak adlandırılır. Bu adım olmadan birim farkları skoru yanıltır. Nᵢ yalnızca büyüklüğü ifade eder, göstergenin veri kalitesiyle aynı yönde mi zıt yönde mi hareket ettiğini içermez. Bu nedenle Nᵢ, ağırlıklı toplama girmeden önce bir **Yön Dönüşümü**'nden geçirilir: yedi göstergeden üçü (SNR, Otokorelasyon, Varyans İstikrarı) pozitif yönlüdür ve Sᵢ = Nᵢ olur; kalan dördü (Missingness, Aykırı Değer Yoğunluğu, Shannon Entropy, Drift) negatif yönlüdür ve Sᵢ = 1 − Nᵢ olur.
+2. **Ağırlıklı Toplam** — Yön düzeltilmiş yedi gösterge (Sᵢ), ağırlıklarıyla çarpılıp toplanır. Başlangıçta her göstergeye eşit ağırlık verilir (1/7 ≈ %14.3). Arka planda periyodik olarak çalışan bir mekanizma (Entropi Ağırlıklandırma Yöntemi — EWM), bu ağırlıkları göstergelerin taşıdığı bilgi miktarına (information entropy) göre otomatik günceller — yöntem göstergelerin varyansını değil, bilgi içeriğini ölçüp ağırlıklandırır.
 3. **Çarpımsal Veto Filtresi** — Bu, sistemin güvenlik bariyeridir. Eğer kritik bir gösterge (örneğin eksiklik oranı %50'yi aşarsa) kabul edilemez bir seviyeye gelirse, diğer tüm göstergeler mükemmel olsa bile nihai skor anında sıfırlanır. Böylece "iyi giden" bir gösterge, kritik bir arızayı maskeleyemez.
 
 **Nihai formül:**
 
-$$DRS = \left( \sum_{i=1}^{7} w'_i \cdot Z_i \right) \times \prod_{j=1}^{7} V_j$$
+$$DRS = \left( \sum_{i=1}^{7} w'_i \cdot S_i \right) \times \prod_{j=1}^{7} V_j$$
 
-- $Z_i$: Z-skoru ile normalize edilmiş gösterge değeri
+- $N_i$: Z-skoru ve ardından min-max ölçeklendirmesiyle [0,1] aralığına normalize edilmiş ara gösterge değeri (Yön Dönüşümü'nden önceki hali)
+- $S_i$: $N_i$'nin Yön Dönüşümü'nden geçirilmiş hali; nihai formüle giren gerçek bileşen skorudur. Pozitif yönlü göstergeler için $S_i = N_i$, negatif yönlü göstergeler için $S_i = 1 - N_i$.
 - $w'_i$: Domain konfigürasyonuna göre normalize edilmiş ağırlık
 - $V_j$: Veto değeri — eşik aşılırsa 0, aksi halde 1
 
