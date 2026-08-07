@@ -39,7 +39,7 @@ Aşağıdaki diyagram, DRS skorunun üretilmesinden itibaren Yönlendirme Motoru
 
 **Neden Strategy Pattern?** Dört rejim, yazılım tarafında dört ayrı strateji (Temiz/Gürültülü/Bozuk/Çöküş) olarak modellenir. Böylece her rejimin davranışı bağımsız olarak geliştirilebilir, test edilebilir ve gerektiğinde değiştirilebilir — birini değiştirmek diğerlerini bozmaz.
 
-**Neden Gürültülü rejimde veri tekrar DRS'ye gönderiliyor?** Stabilizasyon bir kerelik bir işlem değil, bir döngüdür. Veri iyileştirildikten sonra tekrar ölçülmeden "iyileşti" varsaymak riskli olurdu. Yeniden skorlama, iyileştirmenin gerçekten işe yarayıp yaramadığını nesnel biçimde doğrular.
+**Neden Gürültülü rejimde veri tekrar DRS'ye gönderiliyor?** Veri iyileştirildikten sonra tekrar ölçülmeden "iyileşti" varsaymak riskli olurdu; yeniden skorlama (Recovered hesaplaması), iyileştirmenin gerçekten işe yarayıp yaramadığını nesnel biçimde doğrular. Ancak bu tek seferlik bir doğrulamadır, tekrarlanan bir döngü değildir: Recovered skoru gri bölgede (0.25–0.79) kalsa bile veri ikinci kez Stabilizasyon Katmanına gönderilmez — doğrudan İhtiyatlı Yedek Modele yönlendirilir. Bu sınır bilinçlidir; kısmen yapay hale gelmiş bir veriyi tekrar stabilizasyona sokmak sentetik yozlaşmaya yol açar.
 
 **Neden Bozuk rejimde ana model tamamen devre dışı?** Ciddi bozulma durumunda karmaşık bir modelin ürettiği "kesin görünen" bir tahmin, aslında rastgele bir sonuç olabilir ve yanlış bir güven duygusu yaratır. Basit ve temkinli bir Yedek Model, bilinçli olarak daha az iddialı bir çıktı vererek bu riski azaltır.
 
