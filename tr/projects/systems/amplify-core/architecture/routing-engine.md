@@ -21,7 +21,7 @@ Bu dört eşik rastgele seçilmemiştir; literatürdeki veri kalitesi sınıflan
 
 **Temiz rejimde** veri hiçbir müdahaleye ihtiyaç duymaz. Ana tahmin modeli (regresyon, XGBoost veya benzeri) veriyi doğrudan işler ve sonucu üretir. Sistem burada en hızlı ve en az maliyetli yolu izler.
 
-**Gürültülü rejimde** veri bozulmuş ama kurtarılabilir durumdadır. Sistem veriyi doğrudan modele göndermek yerine önce Stabilizasyon Katmanı'na yönlendirir. Bu katman veri tipine özgü tekniklerle (rolling median, interpolation, EWMA vb.) veriyi iyileştirmeye çalışır, ardından veri DRS Katmanı'na geri gönderilip yeniden skorlanır. İyileşme başarılıysa veri Temiz rejime yaklaşır (ama asla tam olarak Temiz sayılmaz — stabilizasyon sonrası DRS skoru 0.75 ile sınırlıdır); başarısızsa sistem veriyi Bozuk veya Bilgi Çöküşü rejimine düşürür.
+**Gürültülü rejimde** veri bozulmuş ama kurtarılabilir durumdadır. Sistem veriyi doğrudan modele göndermek yerine önce Stabilizasyon Katmanı'na yönlendirir. Bu katman veri tipine özgü tekniklerle (rolling median, interpolation, EWMA vb.) veriyi iyileştirmeye çalışır, ardından veri DRS Katmanı'na geri gönderilip yeniden skorlanır. İyileşme başarılıysa nihai güven skoru (Recovered) hesaplanır: $Recovered = Stabilized \times e^{-(1-Stabilized) \times IS}$. Recovered skoru 0.80 eşiğini aşarsa veri Temiz rejime geçer; 0.25-0.79 aralığında kalırsa doğrudan İhtiyatlı Yedek Modele yönlendirilir (tekrar Stabilizasyon Katmanına gönderilmez); 0.25'in altına düşerse Bilgi Çöküşü rejimine geçilir.
 
 **Bozuk rejimde** artık ana modele güvenilmez. Onun yerine düşük karmaşıklıklı, geniş güven aralıklı, temkinli bir Yedek Model (Fallback Model) devreye girer. Bu model kesin ve iddialı tahminler yapmaz; amacı sadece makul ve güvenli bir çıktı vermektir. Eğer Yedek Modelin ürettiği tahminin hata oranı (RMSE/MAE) önceden belirlenmiş bir eşiği aşarsa, sistem otomatik olarak bir alt rejime — Bilgi Çöküşü'ne — geçer.
 
@@ -39,7 +39,7 @@ Aşağıdaki diyagram, DRS skorunun üretilmesinden itibaren Yönlendirme Motoru
 
 **Neden Strategy Pattern?** Dört rejim, yazılım tarafında dört ayrı strateji (Temiz/Gürültülü/Bozuk/Çöküş) olarak modellenir. Böylece her rejimin davranışı bağımsız olarak geliştirilebilir, test edilebilir ve gerektiğinde değiştirilebilir — birini değiştirmek diğerlerini bozmaz.
 
-**Neden Gürültülü rejimde veri tekrar DRS'ye gönderiliyor?** Stabilizasyon bir kerelik bir işlem değil, bir döngüdür. Veri iyileştirildikten sonra tekrar ölçülmeden "iyileşti" varsaymak riskli olurdu. Yeniden skorlama, iyileştirmenin gerçekten işe yarayıp yaramadığını nesnel biçimde doğrular.
+**Neden Gürültülü rejimde veri tekrar DRS'ye gönderiliyor?** Veri iyileştirildikten sonra tekrar ölçülmeden "iyileşti" varsaymak riskli olurdu; yeniden skorlama (Recovered hesaplaması), iyileştirmenin gerçekten işe yarayıp yaramadığını nesnel biçimde doğrular. Ancak bu tek seferlik bir doğrulamadır, tekrarlanan bir döngü değildir: Recovered skoru gri bölgede (0.25–0.79) kalsa bile veri ikinci kez Stabilizasyon Katmanına gönderilmez — doğrudan İhtiyatlı Yedek Modele yönlendirilir. Bu sınır bilinçlidir; kısmen yapay hale gelmiş bir veriyi tekrar stabilizasyona sokmak sentetik yozlaşmaya yol açar.
 
 **Neden Bozuk rejimde ana model tamamen devre dışı?** Ciddi bozulma durumunda karmaşık bir modelin ürettiği "kesin görünen" bir tahmin, aslında rastgele bir sonuç olabilir ve yanlış bir güven duygusu yaratır. Basit ve temkinli bir Yedek Model, bilinçli olarak daha az iddialı bir çıktı vererek bu riski azaltır.
 

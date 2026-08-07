@@ -22,17 +22,17 @@ The diagram above shows the system's end-to-end flow. Raw data first passes thro
 
 The critical point: the last row is not a failure — it's a design decision. The system is capable of saying "I don't know," because in some cases producing a wrong prediction is more costly than producing no prediction at all (example: a wrong diagnosis, a wrong financial transaction, a wrong production decision).
 
-## Why this architecture matters — in short
+## Why this architecture matters
 
 - **Model-agnostic:** The DRS Layer and Routing Engine work with the same logic regardless of which prediction model runs behind them (regression, XGBoost, a simple rule engine). Swapping the model doesn't affect these two layers.
 - **Domain-adaptive:** The techniques inside the Stabilization Layer change depending on data type (numerical time series, tabular data, financial data, text) — but the decision logic (DRS thresholds, the four regimes) always stays the same.
 - **Transparent:** Every decision is reported along with which indicator (missingness, noise ratio, etc.) crossed its threshold — not a black box.
 
-## For engineers: the technical role of each component
+## The technical role of each component
 
 1. **DRS Layer** — produces a single score through seven statistical indicators (missingness, signal-to-noise ratio, autocorrelation, outlier density, variance stability, Shannon entropy, drift), combined via weighted summation and a multiplicative veto mechanism. It is model-agnostic; it only looks at the statistical properties of the raw data. *(Full formulation: [DRS Layer](en/projects/systems/amplify-core/architecture/drs-layer.md))*
 2. **Routing Engine** — compares the DRS score against thresholds and makes a deterministic (no training required) routing decision. Implemented via the Strategy pattern.
-3. **Stabilization Layer** — active only in the Noisy regime. Uses data-type-specific techniques (rolling median + CUSUM, interpolation + winsorizing, EWMA + bootstrap, edit-distance denoising). After stabilization, the DRS score is capped at 0.75 (imputation penalty) — meaning stabilized data can never re-enter the Clean regime.
+3. **Stabilization Layer** — active only in the Noisy regime. Uses data-type-specific techniques (rolling median + CUSUM, interpolation + winsorizing, EWMA + bootstrap, edit-distance denoising). After stabilization, the final confidence score (Recovered) is not bounded by a fixed cap; it is calculated using an exponential discount function that accounts for both the data's starting quality and the intensity of the intervention applied: $Recovered = Stabilized \times e^{-(1-Stabilized) \times IS}$. If the Recovered score exceeds the 0.80 threshold, the data can move into the Clean regime; if not, it is routed directly to the Fallback Model.
 4. **Fallback Model** — a low-complexity, wide-confidence-interval, conservative predictor that runs in the Corrupted regime.
 5. **Abstention / Safe Standby** — activates in the Information Collapse regime; logs the data, moves on to the next record without stopping the system, and triggers a human-intervention alert if collapse occurs repeatedly in succession.
 

@@ -80,6 +80,8 @@ To allow retroactive auditing of how much of the data behind a prediction is rea
 - **Final Recovered score**
 - **Where the data was routed** (main model, fallback model, or abstention)
 
+If the data is routed to the Fallback Model, two additional fields are appended: the source of the Confidence Signal used in the SCS calculation (`confidence_signal_source`: "validation_accuracy" or "bootstrap_ci") and whether that value was clipped by the Gcap=0.90 ceiling (`confidence_signal_capped`: true/false).
+
 These records make it possible to trace, after the fact, how much of the data behind any given prediction was synthetic — the system doesn't just produce a decision, it also reports the data foundation that decision was built on.
 
 → [Abstention Mechanism](en/projects/systems/amplify-core/architecture/abstention-mechanism.md)

@@ -4,7 +4,12 @@
 
 ## Bu mekanizma ne işe yarar?
 
-Yönlendirme Motoru veriyi Bilgi Çöküşü rejimine (DRS < 0.25) yönlendirdiğinde, sistem artık bir tahmin üretmeye çalışmaz. Bunun yerine bilinçli olarak durur ve **Güvenli Bekleme (Safe Standby)** moduna geçer.
+Karar Kaçınması (Abstention) mekanizması, sistemin belirsizlik altında yanlış karar vermesini önleyen iki aşamalı bir güvenlik ağıdır. İki farklı noktada tetiklenebilir:
+
+1. **Çıkarım Öncesi (Pre-inference Veto):** Yönlendirme Motoru veriyi Bilgi Çöküşü rejimine (DRS < 0.25) yönlendirdiğinde, hiç bir model çalıştırılmadan doğrudan Güvenli Bekleme moduna geçilir.
+2. **Çıkarım Sonrası (Post-inference Veto):** İhtiyatlı Yedek Model tahmin üretse dahi, Post-inference Güven Kapısı ($\tau_{Fallback}$) kontrolünde güven sinyali eşiğin altında kalırsa, sistem tahmini reddeder ve SCS hesaplamasını çalıştırmadan doğrudan Güvenli Bekleme moduna geçer.
+
+Bu bir arıza değil, tasarım gereği bir güvenlik davranışıdır. Verinin istatistiksel temeli veya tahmin güveni zayıfladığında sistem bilinçli olarak "bu veriyle güvenli bir karar veremem" der.
 
 Bu bir arıza değil, tasarım gereği bir güvenlik davranışıdır. Verinin istatistiksel temeli o kadar zayıflamıştır ki, bu noktada üretilecek herhangi bir tahmin gerçek bilgiden çok rastgele bir sonuçtan farksız olur. Sistem bunu bilir ve "bu veriyle güvenli bir karar veremem" der.
 
@@ -28,9 +33,16 @@ Eşik aşılamazsa, sistem sayaç değerini kontrol eder. Sayaç belirli bir eş
 
 Sayaç eşiği (yukarıdaki diyagramda N=10 olarak gösterilmiştir) şu an için gösterge niteliğinde bir başlangıç değeridir — hangi veri ortamında kaç ardışık çöküşün gerçek bir anomaliye işaret ettiği, proje ilerledikçe veri tipine göre kalibre edilecektir.
 
-## Neden akış hiç durdurulmuyor?
+## Kaçınma modları: Kayıt bazlı kaçınma ve Sistem bazlı kaçınma (Circuit Breaker)
 
-Alternatif bir tasarım, sistemin Bilgi Çöküşü anında tüm akışı durdurup insan onayı beklemesi olabilirdi. Bu tercih edilmedi, çünkü:
+Amplify Core mimarisinde Karar Kaçınması iki farklı modda kurgulanmıştır:
+
+- **Kayıt Bazlı Kaçınma (Record-Level Abstention — PoC Varsayılanı):** Bozuk veri kaydı loglanarak reddedilir ve sistem durdurulmadan bir sonraki veri kaydına geçilir. Birbirinden bağımsız kayıt akışları için (e-ticaret siparişleri, fatura işleme, finansal veri) en uygun yaklaşımdır.
+- **Sistem Bazlı Kaçınma (Circuit Breaker Mode — Gelecek Çalışma Kapsamı):** Ciddi veri bozulmasını tüm sistemin "körleşmesi" olarak yorumlar. Sistem "Halted" (Kilitli) moduna geçer ve insan müdahalesiyle sıfırlanana kadar tüm yeni istekleri blocking yapmadan anında reddeder. Üretim bandı sensörleri ve tıp/dozajlama gibi kritik güvenlik gerektiren endüstriyel ortamlar için tasarlanmıştır.
+
+## Neden Kayıt Bazlı Kaçınmada akış hiç durdurulmuyor?
+
+PoC kapsamında uygulanan Kayıt Bazlı Kaçınma modunda akışın durdurulmama gerekçeleri şunlardır:
 
 - **Tek bir bozuk kayıt, tüm sistemi bloke etmemeli.** Bilgi Çöküşü çoğu zaman geçici bir durumdur (örneğin bir sensörün anlık kesintisi); akışı durdurmak, sonraki sağlıklı verinin de işlenmesini geciktirir.
 - **İnsan müdahalesi, ancak gerçekten gerektiğinde tetiklenmeli.** Sayaç mekanizması, tek seferlik bir çöküşü değil, ısrarlı bir örüntüyü (ardışık N kez) yakalamayı hedefler. Bu, gereksiz uyarı yorgunluğunu (alert fatigue) önler.
@@ -38,6 +50,6 @@ Alternatif bir tasarım, sistemin Bilgi Çöküşü anında tüm akışı durdur
 
 ## Sonraki katman
 
-Karar Kaçınması, sadece Bilgi Çöküşü rejiminde devreye giren bir mekanizmadır. Ama sistemin **her** çıktısına eklenen, rejimden bağımsız ayrı bir güven etiketi de vardır — bu etiket, bir çıktının ne kadar otonom kabul edilebileceğini belirler:
+Karar Kaçınması, Çıkarım Öncesi (DRS < 0.25) veya Çıkarım Sonrası (Güven Kapısı $\tau$ reddi) durumlarında devreye girerek güvenli duruş sağlar. Kaçınmaya düşmeyip Güven Kapısı'nı başarıyla geçen tüm tahminler için ise nihai otonomi seviyesini belirleyen bir güven etiketi hesaplanır:
 
 → [Karar Güven Skoru (SCS)](tr/projects/systems/amplify-core/architecture/self-confidence-score.md)

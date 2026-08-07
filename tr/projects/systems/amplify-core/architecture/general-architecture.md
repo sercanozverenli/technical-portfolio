@@ -21,17 +21,17 @@ Yukarıdaki diyagram sistemin uçtan uca akışını gösteriyor. Ham veri önce
 
 Kritik nokta: son satır bir hata değil, tasarım kararı. Sistem "bilmiyorum" diyebilme yetisine sahip — çünkü bazı durumlarda yanlış bir tahmin üretmek, hiç tahmin üretmemekten daha maliyetlidir (örnek: yanlış teşhis, yanlış finansal işlem, yanlış üretim kararı).
 
-## Neden bu mimari önemli — kısaca
+## Neden bu mimari önemli
 
 - **Model bağımsız (model-agnostic):** DRS Katmanı ve Yönlendirme Motoru, arkada hangi tahmin modeli çalışırsa çalışsın (regresyon, XGBoost, basit kural motoru) aynı mantıkla işler. Modeli değiştirmek bu iki katmanı etkilemez.
 - **Veri tipine uyumlu (domain-adaptive):** Stabilizasyon Katmanı içindeki teknikler veri tipine göre değişir (sayısal zaman serisi, tablolu veri, finansal veri, metin) — ama karar mantığı (DRS eşikleri, dört rejim) her zaman aynı kalır.
 - **Şeffaf:** Her karar, hangi göstergenin (missingness, gürültü oranı, vb.) eşiği aştığı bilgisiyle birlikte raporlanır — kara kutu değil.
 
-## Mühendisler için: bileşenlerin teknik rolü
+## Bileşenlerin teknik rolü
 
 1. **DRS Katmanı** — yedi istatistiksel gösterge (eksiklik oranı, sinyal-gürültü oranı, otokorelasyon, aykırı değer yoğunluğu, varyans istikrarı, Shannon entropisi, drift) üzerinden ağırlıklı ve çarpımsal-veto mekanizmalı tek bir skor üretir. Modelden bağımsızdır; sadece ham verinin istatistiksel özelliklerine bakar. *(Detaylı formülasyon: [DRS Katmanı](tr/projects/systems/amplify-core/architecture/drs-layer.md))*
 2. **Yönlendirme Motoru** — DRS skorunu eşiklerle karşılaştırıp deterministik (eğitim gerektirmeyen) bir yönlendirme kararı verir. Strategy pattern ile implemente edilir.
-3. **Stabilizasyon Katmanı** — sadece Gürültülü rejimde aktif olur. Veri tipine özgü teknikler kullanır (rolling median + CUSUM, interpolation + winsorizing, EWMA + bootstrap, edit-distance denoising). Stabilizasyon sonrası DRS skoru en fazla 0.75'e çıkabilir (imputation penalty) — yani stabilize edilmiş veri hiçbir zaman "Temiz" rejimine giremez.
+3. **Stabilizasyon Katmanı** — sadece Gürültülü rejimde aktif olur. Veri tipine özgü teknikler kullanır (rolling median + CUSUM, interpolation + winsorizing, EWMA + bootstrap, edit-distance denoising). Stabilizasyon sonrası nihai güven skoru (Recovered), sabit bir tavanla değil, verinin başlangıç kalitesini ve müdahale yoğunluğunu (Intervention Strength) birlikte dikkate alan üstel bir indirim fonksiyonuyla hesaplanır: $Recovered = Stabilized \times e^{-(1-Stabilized) \times IS}$. Recovered skoru 0.80 eşiğini aşarsa veri Temiz rejime geçebilir; aşamazsa doğrudan İhtiyatlı Yedek Modele yönlendirilir.
 4. **Yedek Model (Fallback)** — Bozuk rejimde çalışan, düşük karmaşıklıklı, geniş güven aralıklı, temkinli bir tahminci.
 5. **Karar Kaçınması / Güvenli Bekleme (Abstention)** — Bilgi Çöküşü rejiminde devreye girer; veriyi loglar, sistemi durdurmadan bir sonraki veriye geçer, art arda çok sayıda çöküş yaşanırsa insan müdahalesi uyarısı tetikler.
 

@@ -30,15 +30,16 @@ The diagram below shows the path from the moment data enters the system to the f
 
 Three stages run in sequence:
 
-1. **Z-Score Normalization** — The seven indicators arrive in different units (SNR in decibels, missingness as a percentage, entropy in bits, etc.). Each is first standardized, then scaled to a [0,1] range. Without this step, unit differences would distort the score.
-2. **Weighted Sum** — The seven normalized indicators are multiplied by their weights and summed. Initially, each indicator receives equal weight (1/7 ≈ 14.3%). A mechanism running periodically in the background (the Entropy Weighting Method — EWM) automatically updates the weights based on the indicators' current variance distribution — meaning whichever indicator is "speaking loudest" at that moment gains more influence.
+1. **Z-Score Normalization** — The seven indicators arrive in different units (SNR in decibels, missingness as a percentage, entropy in bits, etc.). Each is first standardized via Z-score, then scaled to a [0,1] range via min-max scaling; the result is denoted Nᵢ. Without this step, unit differences would distort the score. Nᵢ expresses magnitude only — it does not capture whether the indicator moves in the same direction as data quality or the opposite. For this reason, Nᵢ passes through a **Direction Transformation** before entering the weighted sum: three of the seven indicators (SNR, Autocorrelation, Variance Stability) are positive-direction, so Sᵢ = Nᵢ; the remaining four (Missingness, Outlier Density, Shannon Entropy, Drift) are negative-direction, so Sᵢ = 1 − Nᵢ.
+2. **Weighted Sum** — The direction-corrected seven indicators (Sᵢ) are multiplied by their weights and summed. Initially, each indicator receives equal weight (1/7 ≈ 14.3%). A mechanism running periodically in the background (the Entropy Weighting Method — EWM) automatically updates these weights based on the amount of information (information entropy) each indicator carries — the method measures and weights the indicators' information content, not their variance.
 3. **Multiplicative Veto Filter** — This is the system's safety barrier. If any critical indicator (for example, missingness exceeding 50%) crosses into an unacceptable level, the final score is instantly zeroed out — even if every other indicator is perfect. This way, one "well-behaved" indicator can never mask a critical failure.
 
 **Final formula:**
 
-$$DRS = \left( \sum_{i=1}^{7} w'_i \cdot Z_i \right) \times \prod_{j=1}^{7} V_j$$
+$$DRS = \left( \sum_{i=1}^{7} w'_i \cdot S_i \right) \times \prod_{j=1}^{7} V_j$$
 
-- $Z_i$: the indicator value normalized via Z-score
+- $N_i$: the indicator value normalized to [0,1] via Z-score followed by min-max scaling (its state before Direction Transformation)
+- $S_i$: $N_i$ after Direction Transformation; the actual component score entering the final formula. For positive-direction indicators, $S_i = N_i$; for negative-direction indicators, $S_i = 1 - N_i$.
 - $w'_i$: the weight normalized according to the domain configuration
 - $V_j$: the veto value — 0 if the threshold is crossed, 1 otherwise
 
@@ -52,7 +53,7 @@ Once the warm-up phase ends, the learned parameters ($\mu$, $\sigma$, $w_i$) are
 
 - **Why a multiplicative veto instead of a simple average?** In additive scoring systems, one indicator being very high can mask a critical collapse in another (a Simpson's Paradox risk). For example, data with perfect SNR but 90% missingness could still score high under an additive formula. The multiplicative veto prevents this: no indicator can ever cover up another's failure.
 - **Why dynamic weighting (EWM) instead of fixed, human-assigned weights?** Rather than setting weights manually or through subjective methods like AHP, a data-driven approach is used — this lets indicators such as Drift in financial data or SNR in IoT data rise to prominence without human intervention.
-- **Why is the score capped at 0.75 after stabilization?** Imputation/correction processes can artificially reduce the data's true variance. This cap (`final_drs_score = min(calculated_score, 0.75)`) guarantees that stabilized data can never re-enter the "Clean" regime — meaning the system never over-trusts data it has corrected itself.
+- **How is the post-stabilization score bounded?** Instead of a fixed cap, an exponential discount function is used that accounts for both the data's starting quality and the intensity of the intervention applied (Intervention Strength — IS): $Recovered = Stabilized \times e^{-(1-Stabilized) \times IS}$. This approach penalizes data that started at high raw quality less, and data that started weaker more; if the Recovered score exceeds 0.80, the data can re-enter the Clean regime.
 
 ---
 
