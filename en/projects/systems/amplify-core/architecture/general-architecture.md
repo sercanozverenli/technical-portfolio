@@ -22,7 +22,7 @@ The diagram above shows the system's end-to-end flow. Raw data first passes thro
 
 The critical point: the last row is not a failure — it's a design decision. The system is capable of saying "I don't know," because in some cases producing a wrong prediction is more costly than producing no prediction at all (example: a wrong diagnosis, a wrong financial transaction, a wrong production decision).
 
-## Why this architecture matters — in short
+## Why this architecture matters
 
 - **Model-agnostic:** The DRS Layer and Routing Engine work with the same logic regardless of which prediction model runs behind them (regression, XGBoost, a simple rule engine). Swapping the model doesn't affect these two layers.
 - **Domain-adaptive:** The techniques inside the Stabilization Layer change depending on data type (numerical time series, tabular data, financial data, text) — but the decision logic (DRS thresholds, the four regimes) always stays the same.
