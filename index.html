@@ -632,22 +632,35 @@ function renderBreadcrumbs() {
         span.className = 'breadcrumb-item';
         span.textContent = crumb.text;
 
-        if (index === crumbs.length - 1 && !crumb.url) {
-            span.classList.add('current');
-        }
-
+        // Klasör veya link tıklama mantığı
         span.onclick = () => {
             if (crumb.url) {
+                // Ana Sayfa gibi direkt URL yönlendirmesi
                 window.location.hash = crumb.url;
             } else if (crumb.target) {
-                // Klasörü aç
-                crumb.target.parentElement.setAttribute('open', '');
-                // Sidebar'da o öğeye odaklan
-                crumb.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                // Mobildeyse sidebar'ı aç
-                if (window.innerWidth <= 768) {
-                    document.body.classList.add('mobile-sidebar-open');
+                // 1. Klasörü sidebar'da aç (expand)
+                const detailsParent = crumb.target.parentElement;
+                if (detailsParent && detailsParent.tagName === 'DETAILS') {
+                    detailsParent.setAttribute('open', '');
                 }
+
+                // 2. Akıllı Sidebar Açma (Masaüstü ve Mobil Uyumlu)
+                if (window.innerWidth <= 768) {
+                    // Mobil ekran ise ve sidebar kapalıysa aç
+                    if (!document.body.classList.contains('mobile-sidebar-open')) {
+                        document.body.classList.add('mobile-sidebar-open');
+                    }
+                } else {
+                    // Masaüstü ise ve sidebar kapalıysa (close sınıfı varsa) aç
+                    if (document.body.classList.contains('close')) {
+                        document.body.classList.remove('close');
+                    }
+                }
+
+                // 3. Sidebar'da ilgili klasöre pürüzsüz odaklan/kaydır
+                setTimeout(() => {
+                    crumb.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
             }
         };
 
@@ -663,7 +676,7 @@ function renderBreadcrumbs() {
 
     contentArea.prepend(bcContainer);
     if (window.lucide) lucide.createIcons();
-}    
+}
 // 7. DOCSIFY CONFIG
 window.$docsify = {
     auto2top: true,
