@@ -53,7 +53,7 @@ Uyum evresi bitince öğrenilen parametreler ($\mu$, $\sigma$, $w_i$) **kilitlen
 
 - **Neden basit ortalama değil de çarpımsal veto?** Toplamsal (additive) sistemlerde bir gösterge çok yüksek çıkarsa, başka bir göstergedeki kritik çöküşü maskeleyebilir (Simpson Paradoksu riski). Örneğin SNR mükemmel ama eksiklik %90 olan veri, toplamsal formülde yüksek skor alabilir. Çarpımsal veto bunu önler: hiçbir gösterge diğerinin arızasını örtemez.
 - **Neden dinamik ağırlıklandırma (EWM) ve insan tarafından belirlenen sabit ağırlıklar değil?** Ağırlıkları elle/AHP gibi öznel yöntemlerle belirlemek yerine, veri-güdümlü bir yaklaşım kullanılıyor — bu sayede finansal veride Drift, IoT verisinde SNR gibi göstergeler insan müdahalesi olmadan öne çıkabiliyor.
-- **Neden stabilizasyon sonrası skor 0.75 ile sınırlı?** Doldurma/düzeltme (imputation) işlemleri verinin gerçek varyansını yapay olarak düşürebilir. Bu sınır (`final_drs_score = min(calculated_score, 0.75)`), iyileştirilmiş verinin asla "Temiz" rejimine giremeyeceğini garanti eder — yani sistem kendi düzelttiği veriye gereğinden fazla güvenmez.
+- **Stabilizasyon sonrası skor nasıl sınırlandırılır?** Sabit bir tavan yerine, verinin başlangıç kalitesini ve uygulanan müdahalenin yoğunluğunu (Intervention Strength — IS) birlikte dikkate alan üstel bir indirim fonksiyonu kullanılır: $Recovered = Stabilized \times e^{-(1-Stabilized) \times IS}$. Bu yaklaşım, ham kalitesi yüksek verinin daha az, düşük verinin daha fazla cezalandırılmasını sağlar; Recovered skoru 0.80'i aşarsa veri Temiz rejime geçebilir.
 
 ---
 
