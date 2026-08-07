@@ -1,4 +1,4 @@
-# Abstention Mechanism
+# Abstention Mechanism 
 
 ![Abstention Mechanism Flow](../../../../../docs/diagrams/amplify-core/abstention.png)
 
