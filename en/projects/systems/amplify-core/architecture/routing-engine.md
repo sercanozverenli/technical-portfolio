@@ -39,7 +39,7 @@ The diagram below shows the end-to-end flow starting from the generation of the 
 
 **Why the Strategy Pattern?** The four regimes are modeled in software as four separate strategies (Clean/Noisy/Corrupted/Collapse). This allows each regime's behavior to be developed, tested, and modified independently — changing one does not break the others.
 
-**Why is data sent back to the DRS Layer in the Noisy regime?** Stabilization is not a one-time operation — it is a loop. Assuming data has "improved" without re-measuring it after the fact would be risky. Re-scoring objectively verifies whether the improvement actually worked.
+**Why is data sent back to the DRS Layer in the Noisy regime?** Assuming data has "improved" without re-measuring it after the fact would be risky; re-scoring (calculating the Recovered score) objectively verifies whether the improvement actually worked. This is a one-time verification, however, not a repeatable loop: even if the Recovered score still falls within the gray zone (0.25–0.79), the data is not sent back through the Stabilization Layer a second time — it is routed directly to the Fallback Model. This limit is deliberate; re-stabilizing data that has already been partially synthesized would lead to further synthetic degradation.
 
 **Why is the main model completely disabled in the Corrupted regime?** In cases of severe degradation, a "confident-looking" prediction produced by a complex model can actually be a near-random result and create a false sense of trust. A simple, conservative Fallback Model deliberately reduces this risk by providing a less assertive output.
 
