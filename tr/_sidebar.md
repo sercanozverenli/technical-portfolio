@@ -13,9 +13,9 @@
             <details>
               <summary><i class="status-done"></i>Araştırma</summary>
               <ul>
-                <li><a href="#/tr/projects/systems/amplify-core/research/conceptual-framework"><i class="status-done"></i>Kavramsal Çerçeve</a></li>
-                <li><a href="#/tr/projects/systems/amplify-core/research/literature-and-gap-analysis"><i class="status-done"></i>Literatür ve Gap Analizi</a></li>
-                <li><a href="#/tr/projects/systems/amplify-core/research/comparative-analysis"><i class="status-done"></i>Karşılaştırmalı Analiz</a></li>
+                <li><a href="#/tr/projects/systems/amplify-core/research/conceptual-framework.md"><i class="status-done"></i>Kavramsal Çerçeve</a></li>
+                <li><a href="#/tr/projects/systems/amplify-core/research/literature-and-gap-analysis.md"><i class="status-done"></i>Literatür ve Gap Analizi</a></li>
+                <li><a href="#/tr/projects/systems/amplify-core/research/comparative-analysis.md"><i class="status-done"></i>Karşılaştırmalı Analiz</a></li>
               </ul>
             </details>
           </li>          
@@ -54,8 +54,8 @@
  <details>
   <summary><i data-lucide="layout-grid" class="cat-icon"></i> Uygulamalar</summary>
   <ul>
-    <li><a href="#/tr/projects/apps/gamified-multiplication-tool"><i class="status-done"></i>Oyunlaştırılmış Çarpım Tablosu</a></li>
-    <li><a href="#/tr/projects/apps/interactive-quiz-app"><i class="status-done"></i>İnteraktif Test Uygulaması</a></li>
+    <li><a href="#/tr/projects/apps/gamified-multiplication-tool.md"><i class="status-done"></i>Oyunlaştırılmış Çarpım Tablosu</a></li>
+    <li><a href="#/tr/projects/apps/interactive-quiz-app.md"><i class="status-done"></i>İnteraktif Test Uygulaması</a></li>
   </ul>
  </details>
 
@@ -68,8 +68,8 @@
         <summary><i class="status-idea"></i>Keşifsel Veri Analizi</summary> 
         <ul>
           <li><a href="#/tr/projects/analytics-modules/exploratory-data-analysis/yahoo-finance-eda.md"><i class="status-idea"></i>Finansal Zaman Serisi</a></li>
-          <li><a href="#/tr/projects/analytics-modules/exploratory-data-analysis/ujiindoorloc-eda"><i class="status-idea"></i>Yüksek Boyutlu Sensör Verisi</a></li>
-          <li><a href="#/tr/projects/analytics-modules/exploratory-data-analysis/olist-ecommerce-eda"><i class="status-idea"></i>İlişkisel E-Ticaret Verisi</a></li>
+          <li><a href="#/tr/projects/analytics-modules/exploratory-data-analysis/ujiindoorloc-eda.md"><i class="status-idea"></i>Yüksek Boyutlu Sensör Verisi</a></li>
+          <li><a href="#/tr/projects/analytics-modules/exploratory-data-analysis/olist-ecommerce-eda.md"><i class="status-idea"></i>İlişkisel E-Ticaret Verisi</a></li>
         </ul>
        </details>
      </li>
@@ -84,22 +84,22 @@
       <details>
         <summary><i class="status-wip"></i>Git ve GitHub</summary>
          <ul>
-            <li><a href="#/tr/projects/guides/git-and-github/github-basics"><i class="status-done"></i>GitHub Temelleri</a></li>
-            <li><a href="#/tr/projects/guides/git-and-github/git-basics"><i class="status-done"></i>Git Temelleri ve Terminal</a></li>
-            <li><a href="#/tr/projects/guides/git-and-github/branching"><i class="status-done"></i>Branch ve History</a></li>
-            <li><a href="#/tr/projects/guides/git-and-github/merge-conflicts"><i class="status-done"></i>Kriz Yönetimi</a></li>
-            <li><a href="#/tr/projects/guides/git-and-github/undoing-changes"><i class="status-done"></i>Hata Geri Alma</a></li>
-            <li><a href="#/tr/projects/guides/git-and-github/stash"><i class="status-done"></i>Geçici Hafıza Yönetimi</a></li>
-            <li><a href="#/tr/projects/guides/git-and-github/git-clone-and-remotes"><i class="status-done"></i>Uzak Depo Bağlantıları</a></li>
-            <li><a href="#/tr/projects/guides/git-and-github/git-push"><i class="status-done"></i>Push Stratejileri</a></li>
-            <li><a href="#/tr/projects/guides/git-and-github/git-fetch-and-pull"><i class="status-done"></i>Senkronizasyon (Fetch/Pull)</a></li>
-            <li><a href="#/tr/projects/guides/git-and-github/fork-and-pull-requests"><i class="status-done"></i>Fork ve Pull Requests</a></li>
-            <li><a href="#/tr/projects/guides/git-and-github/github-issues-and-projects"><i class="status-done"></i>Proje Yönetimi</a></li>
-            <li><a href="#/tr/projects/guides/git-and-github/rebase"><i class="status-done"></i>Rebase Mimarisi</a></li>
-            <li><a href="#/tr/projects/guides/git-and-github/git-hooks"><i class="status-done"></i>Otomasyon (Hooks)</a></li>
-            <li><a href="#/tr/projects/guides/git-and-github/git-lfs-and-submodules"><i class="status-done"></i>Büyük Veri Yönetimi</a></li>
-            <li><a href="#/tr/projects/guides/git-and-github/tags-and-releases"><i class="status-done"></i>Sürümlendirme</a></li>
-            <li><a href="#/tr/projects/guides/git-and-github/github-actions"><i class="status-done"></i>CI/CD (Actions)</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/github-basics.md"><i class="status-done"></i>GitHub Temelleri</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/git-basics.md"><i class="status-done"></i>Git Temelleri ve Terminal</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/branching.md"><i class="status-done"></i>Branch ve History</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/merge-conflicts.md"><i class="status-done"></i>Kriz Yönetimi</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/undoing-changes.md"><i class="status-done"></i>Hata Geri Alma</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/stash.md"><i class="status-done"></i>Geçici Hafıza Yönetimi</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/git-clone-and-remotes.md"><i class="status-done"></i>Uzak Depo Bağlantıları</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/git-push.md"><i class="status-done"></i>Push Stratejileri</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/git-fetch-and-pull.md"><i class="status-done"></i>Senkronizasyon (Fetch/Pull)</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/fork-and-pull-requests.md"><i class="status-done"></i>Fork ve Pull Requests</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/github-issues-and-projects.md"><i class="status-done"></i>Proje Yönetimi</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/rebase"><i class="status-done.md"></i>Rebase Mimarisi</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/git-hooks"><i class="status-done.md"></i>Otomasyon (Hooks)</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/git-lfs-and-submodules.md"><i class="status-done"></i>Büyük Veri Yönetimi</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/tags-and-releases.md"><i class="status-done"></i>Sürümlendirme</a></li>
+            <li><a href="#/tr/projects/guides/git-and-github/github-actions.md"><i class="status-done"></i>CI/CD (Actions)</a></li>
          </ul>      
       </details>
     </li>
