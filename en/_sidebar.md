@@ -13,9 +13,9 @@
               <details>
                 <summary><i class="status-done"></i>Research</summary>
                 <ul>
-                  <li><a href="#/en/projects/systems/amplify-core/research/conceptual-framework"><i class="status-done"></i>Conceptual Framework</a></li>
-                  <li><a href="#/en/projects/systems/amplify-core/research/literature-and-gap-analysis"><i class="status-done"></i>Literature and Gap Analysis</a></li>
-                  <li><a href="#/en/projects/systems/amplify-core/research/comparative-analysis"><i class="status-done"></i>Comparative Analysis</a></li>
+                  <li><a href="#/en/projects/systems/amplify-core/research/conceptual-framework.md"><i class="status-done"></i>Conceptual Framework</a></li>
+                  <li><a href="#/en/projects/systems/amplify-core/research/literature-and-gap-analysis.md"><i class="status-done"></i>Literature and Gap Analysis</a></li>
+                  <li><a href="#/en/projects/systems/amplify-core/research/comparative-analysis.md"><i class="status-done"></i>Comparative Analysis</a></li>
                 </ul>
               </details>
             </li>
@@ -54,8 +54,8 @@
   <details>
     <summary><i data-lucide="layout-grid" class="cat-icon"></i>Apps</summary>
     <ul>
-      <li><a href="#/en/projects/apps/gamified-multiplication-tool"><i class="status-done"></i>Gamified Multiplication Tool</a></li>
-      <li><a href="#/en/projects/apps/interactive-quiz-app"><i class="status-done"></i>Interactive Quiz App</a></li>
+      <li><a href="#/en/projects/apps/gamified-multiplication-tool.md"><i class="status-done"></i>Gamified Multiplication Tool</a></li>
+      <li><a href="#/en/projects/apps/interactive-quiz-app.md"><i class="status-done"></i>Interactive Quiz App</a></li>
     </ul>
   </details>
 
@@ -67,9 +67,9 @@
         <details>
           <summary><i class="status-idea"></i>Exploratory Data Analysis</summary>
           <ul>
-            <li><a href="#/en/projects/analytics-modules/exploratory-data-analysis/yahoo-finance-eda"><i class="status-idea"></i>Financial Time Series</a></li>
-            <li><a href="#/en/projects/analytics-modules/exploratory-data-analysis/ujiindoorloc-eda"><i class="status-idea"></i>High-Dimensional Sensor Data</a></li>
-            <li><a href="#/en/projects/analytics-modules/exploratory-data-analysis/olist-ecommerce-eda"><i class="status-idea"></i>Relational E-Commerce Data</a></li>
+            <li><a href="#/en/projects/analytics-modules/exploratory-data-analysis/yahoo-finance-eda.md"><i class="status-idea"></i>Financial Time Series</a></li>
+            <li><a href="#/en/projects/analytics-modules/exploratory-data-analysis/ujiindoorloc-eda.md"><i class="status-idea"></i>High-Dimensional Sensor Data</a></li>
+            <li><a href="#/en/projects/analytics-modules/exploratory-data-analysis/olist-ecommerce-eda.md"><i class="status-idea"></i>Relational E-Commerce Data</a></li>
           </ul>
         </details>
       </li>
@@ -84,22 +84,22 @@
         <details>
           <summary><i class="status-wip"></i>Git and GitHub</summary>
           <ul>
-           <li><a href="#/en/projects/guides/git-and-github/github-basics"><i class="status-done"></i>GitHub Basics</a></li>
-           <li><a href="#/en/projects/guides/git-and-github/git-basics"><i class="status-done"></i>Git Basics and Terminal</a></li>
-           <li><a href="#/en/projects/guides/git-and-github/branching"><i class="status-done"></i>Branching and History</a></li>
-           <li><a href="#/en/projects/guides/git-and-github/merge-conflicts"><i class="status-done"></i>Conflict Management</a></li>
-           <li><a href="#/en/projects/guides/git-and-github/undoing-changes"><i class="status-done"></i>Undoing Changes</a></li>
-           <li><a href="#/en/projects/guides/git-and-github/stash"><i class="status-done"></i>Stash Management</a></li>
-           <li><a href="#/en/projects/guides/git-and-github/git-clone-and-remotes"><i class="status-done"></i>Remote Repository Connections</a></li>
-           <li><a href="#/en/projects/guides/git-and-github/git-push"><i class="status-done"></i>Push Strategies</a></li>
-           <li><a href="#/en/projects/guides/git-and-github/git-fetch-and-pull"><i class="status-done"></i>Synchronization (Fetch/Pull)</a></li>
-           <li><a href="#/en/projects/guides/git-and-github/fork-and-pull-requests"><i class="status-done"></i>Fork and Pull Requests</a></li>
-           <li><a href="#/en/projects/guides/git-and-github/github-issues-and-projects"><i class="status-done"></i>Project Management</a></li>
-           <li><a href="#/en/projects/guides/git-and-github/rebase"><i class="status-done"></i>Rebase Architecture</a></li>
-           <li><a href="#/en/projects/guides/git-and-github/git-hooks"><i class="status-done"></i>Automation (Hooks)</a></li>
-           <li><a href="#/en/projects/guides/git-and-github/git-lfs-and-submodules"><i class="status-done"></i>Large Data Management</a></li>
-           <li><a href="#/en/projects/guides/git-and-github/tags-and-releases"><i class="status-done"></i>Versioning</a></li>
-           <li><a href="#/en/projects/guides/git-and-github/github-actions"><i class="status-done"></i>CI/CD (Actions)</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/github-basics.md"><i class="status-done"></i>GitHub Basics</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/git-basics.md"><i class="status-done"></i>Git Basics and Terminal</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/branching.md"><i class="status-done"></i>Branching and History</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/merge-conflicts.md"><i class="status-done"></i>Conflict Management</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/undoing-changes.md"><i class="status-done"></i>Undoing Changes</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/stash.md"><i class="status-done"></i>Stash Management</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/git-clone-and-remotes.md"><i class="status-done"></i>Remote Repository Connections</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/git-push.md"><i class="status-done"></i>Push Strategies</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/git-fetch-and-pull.md"><i class="status-done"></i>Synchronization (Fetch/Pull)</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/fork-and-pull-requests.md"><i class="status-done"></i>Fork and Pull Requests</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/github-issues-and-projects.md"><i class="status-done"></i>Project Management</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/rebase.md"><i class="status-done"></i>Rebase Architecture</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/git-hooks.md"><i class="status-done"></i>Automation (Hooks)</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/git-lfs-and-submodules.md"><i class="status-done"></i>Large Data Management</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/tags-and-releases.md"><i class="status-done"></i>Versioning</a></li>
+           <li><a href="#/en/projects/guides/git-and-github/github-actions.md"><i class="status-done"></i>CI/CD (Actions)</a></li>
           </ul>
         </details>
       </li>
