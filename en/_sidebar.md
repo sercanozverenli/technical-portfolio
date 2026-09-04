@@ -54,6 +54,8 @@
   <details>
     <summary><i data-lucide="layout-grid" class="cat-icon"></i>Apps</summary>
     <ul>
+      <li><a href="#/tr/projects/apps/thisone.md"><i class="status-done"></i>Smoke & Habit Tracker</a></li>
+      <li><a href="#/tr/projects/apps/urban-transformation.md"><i class="status-wip"></i>Urban Transformation Assistant</a></li>        
       <li><a href="#/en/projects/apps/gamified-multiplication-tool.md"><i class="status-done"></i>Gamified Multiplication Tool</a></li>
       <li><a href="#/en/projects/apps/interactive-quiz-app.md"><i class="status-done"></i>Interactive Quiz App</a></li>
     </ul>
