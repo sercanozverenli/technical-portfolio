@@ -54,7 +54,7 @@
  <details>
   <summary><i data-lucide="layout-grid" class="cat-icon"></i> Uygulamalar</summary>
   <ul>
-    <li><a href="#/tr/projects/apps/thisone.md"><i class="status-done"></i>Sigara & Alışkanlık Sayacı</a></li>
+    <li><a href="#/tr/projects/apps/thisone.md"><i class="status-done"></i>Sigara & Alışkanlık Takibi</a></li>
     <li><a href="#/tr/projects/apps/urban-transformation.md"><i class="status-wip"></i>Kentsel Dönüşüm Asistanı</a></li>   
     <li><a href="#/tr/projects/apps/gamified-multiplication-tool.md"><i class="status-done"></i>Oyunlaştırılmış Çarpım Tablosu</a></li>
     <li><a href="#/tr/projects/apps/interactive-quiz-app.md"><i class="status-done"></i>İnteraktif Test Uygulaması</a></li>

@@ -1,4 +1,4 @@
-# ThisOne - Sigara & Alışkanlık Sayacı
+# ThisOne - Sigara & Alışkanlık Takibi
 
 Kişisel gelişim, alışkanlık takibi ve motivasyon odaklı olarak geliştirilen **ThisOne**, kullanıcıların sigara, alkol veya bırakmak istedikleri olumsuz alışkanlıkları gün gün takip etmelerini sağlayan, finansal/zamansal tasarruf oranlarını hesaplayan ve ana ekran widget'ları ile sürekli motivasyon sunan kapsamlı bir mobil uygulamadır.
 
