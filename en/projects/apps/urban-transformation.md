@@ -7,8 +7,6 @@ Developed in alignment with current legislation from the Ministry of Environment
 The application streamlines complex legal regulations through interactive calculation algorithms and structured guidance:
 
 * **Dynamic Loan Simulation:** Users select loan amounts up to 3,000,000 TRY via flexible sliders and choose loan maturities up to 180 months (15 years). The algorithm calculates monthly installments, total repayment, and overall interest load in real time.
-  
-  ![Simulator Interface & Loan Calculation](../../../docs/assets/kentsel-donusum/telefon1.png ':size=35%')
 
 * **Automated Subsidy Category Calculations:** Automatically calculates legal interest discount tiers up to the annual 1.25% maximum cap:
   1. *Category 1 (Single Home Owner):* 0.25% annual discount.
@@ -17,12 +15,15 @@ The application streamlines complex legal regulations through interactive calcul
   4. *Category 4 (Energy Performance Certificate):* Additional 0.50% discount for Class A energy rating or 0.25% for Class B.
 
 * **Minimum Household Income Threshold (70% Rule):** Calculates the required minimum monthly household income based on bank creditworthiness criteria specifying that monthly loan installments must not exceed 70% of total household income.
-  
-  ![Guide & Information Screen](../../../docs/assets/kentsel-donusum/telefon2.png ':size=35%')
 
 * **5-Step Application Guide & Pilot Cities:** Features step-by-step application guidelines and coverage details for World Bank-supported *Climate and Disaster Resilient Cities Project* pilot provinces (Istanbul, Izmir, Manisa, Kahramanmaras, Tekirdag).
 
 * **100% Local Storage & Modern UI:** Inputs are stored locally on the device (SharedPreferences) without external server transmission. Includes a sleek Dark and Light theme toggle.
+
+
+### 📱 Application Screenshots
+
+![Loan Simulator Screen](../../../docs/assets/kentsel-donusum/telefon1.png ':size=22%')  ![Guide & Info Screen](../../../docs/assets/kentsel-donusum/telefon2.png ':size=22%')
 
 
 ### 🛠️ Tech Stack

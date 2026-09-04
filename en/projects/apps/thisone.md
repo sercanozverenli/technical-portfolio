@@ -7,22 +7,19 @@ Designed with a focus on personal growth, daily discipline, and motivation, **Th
 The app is built on a serverless, privacy-first architecture combined with engaging, dynamic UI components:
 
 * **Live Habit Counter & Savings Calculator:** Users set their start date, daily cost, and consumption units for the habit they want to break. The system continuously tracks real-time progress (Days, Hours, Minutes, Seconds), unbroken streak counters, and accrued money/time savings.
-  
-  ![Home Screen & Counter](../../../docs/assets/thisone/mobile1_en.png ':size=30%')  ![Habit Selection](../../../docs/assets/thisone/mobile2_en.png ':size=30%')
 
 * **Annual Activity Heatmap & Analytics:** Features a GitHub-style annual Heatmap that visualizes user consistency over 365 days. Successful days are rewarded with glowing green tiles. If a streak breaks, users receive supportive notifications to reset and try again.
-  
-  ![Analytics & Heatmap](../../../docs/assets/thisone/mobile3_en.png ':size=30%')  ![Settings & Reminders](../../../docs/assets/thisone/mobile4_en.png ':size=30%')
 
-* **Native Home Screen Widgets (Minimal & Interactive):** To enable frictionless tracking without opening the app, two Android home screen widgets were built natively:
-  - **Minimal Widget:** Clean display of active streak days and counter.
-  - **Interactive Widget:** Features interactive increment and reset buttons directly on the home screen layout.
-  
-  ![Home Screen Widget Integration](../../../docs/assets/thisone/widget_en.png ':size=45%')
+* **Native Home Screen Widgets (Minimal & Interactive):** To enable frictionless tracking without opening the app, two Android home screen widgets were built natively (Minimal and Interactive widget options).
 
 * **100% Local Data Privacy (Serverless Architecture):** All habit entries, timestamps, and savings calculations are saved strictly on the user's device (SharedPreferences) and never transmitted to external cloud servers.
 
 * **Flexible Monetization Stack:** Integrated non-intrusive Google Mobile Ads (AdMob) with optional one-time Google Play Billing (IAP) Pro upgrade to disable ads permanently.
+
+
+### 📱 Application Screenshots
+
+![Home Screen & Counter](../../../docs/assets/thisone/mobile1_en.png ':size=20%')  ![Habit Selection](../../../docs/assets/thisone/mobile2_en.png ':size=20%')  ![Analytics & Heatmap](../../../docs/assets/thisone/mobile3_en.png ':size=20%')  ![Settings & Reminders](../../../docs/assets/thisone/mobile4_en.png ':size=20%')  ![Home Screen Widget](../../../docs/assets/thisone/widget_en.png ':size=25%')
 
 
 ### 🛠️ Tech Stack

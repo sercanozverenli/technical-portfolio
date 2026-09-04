@@ -7,8 +7,6 @@
 Uygulama, mevzuat karmaşıklığını ortadan kaldıran dinamik hesaplama algoritmaları ve rehber içeriklerden oluşmaktadır:
 
 * **Dinamik Kredi Hesaplama Simülasyonu:** Kullanıcılar 3.000.000 TL'ye kadar esnek kaydırıcı (slider) ile kredi tutarını ve 180 aya (15 yıla) kadar vade seçeneklerini belirler. Sistem; aylık taksit tutarını, toplam geri ödemeyi ve faiz yükünü anında ekrana yansıtır.
-  
-  ![Simülatör Arayüzü ve Kredi Hesaplama](../../../docs/assets/kentsel-donusum/telefon1.png ':size=35%')
 
 * **Mevzuat Uyumlu Otomatik Faiz İndirimi Kategorileri:** Yıllık azami %1,25 faiz indirimi sınırı dahilinde mevzuatta tanımlı tüm kategorileri otomatik hesaplar:
   1. *Kategori 1 (Tek Konut Sahibi):* Yıllık 0,25 puan indirim.
@@ -17,12 +15,15 @@ Uygulama, mevzuat karmaşıklığını ortadan kaldıran dinamik hesaplama algor
   4. *Kategori 4 (Enerji Kimlik Belgesi):* Yeni binanın Enerji Sınıfına göre A Sınıfı için 0,50 puan, B Sınıfı için 0,25 puan ek indirim.
 
 * **Asgari Hane Geliri Hesaplayıcı (%70 Kuralı):** Kredi çekebilmek için bankalarca aranan aylık taksit tutarının toplam hane gelirinin maksimum %70'ini geçmemesi kuralına dayalı asgari gelir eşiğini otomatik hesaplar.
-  
-  ![Rehber ve Bilgilendirme Ekranı](../../../docs/assets/kentsel-donusum/telefon2.png ':size=35%')
 
 * **5 Adımda Başvuru Rehberi ve Pilot İller:** Dünya Bankası destekli *İklim ve Afetlere Dayanıklı Şehirler Projesi* kapsama alanındaki pilot iller (İstanbul, İzmir, Manisa, Kahramanmaraş, Tekirdağ) ve başvuru süreçlerine dair detaylı rehber sunar.
 
 * **%100 Yerel Veri Saklama ve Kullanıcı Dostu Tasarım:** Girdiler hiçbir bulut sunucusuna aktarılmadan cihazda (SharedPreferences) tutulur. Göz yormayan Karanlık (Dark) ve Aydınlık (Light) tema seçeneği sunar.
+
+
+### 📱 Uygulama Görselleri
+
+![Kredi Simülatör Ekranı](../../../docs/assets/kentsel-donusum/telefon1.png ':size=22%')  ![Rehber ve Bilgilendirme Ekranı](../../../docs/assets/kentsel-donusum/telefon2.png ':size=22%')
 
 
 ### 🛠️ Kullanılan Teknolojiler (Tech Stack)

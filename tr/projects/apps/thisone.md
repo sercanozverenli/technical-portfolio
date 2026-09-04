@@ -7,22 +7,19 @@ Kişisel gelişim, alışkanlık takibi ve motivasyon odaklı olarak geliştiril
 Uygulama, kullanıcı verilerinin %100 gizliliğini koruyan sunucusuz (serverless) bir mimari ve motivasyonu artıran dinamik arayüz öğeleri üzerine kurulmuştur:
 
 * **Canlı Alışkanlık Takibi ve Tasarruf Hesaplama:** Kullanıcılar bırakmak istedikleri alışkanlığın başlangıç tarihini, günlük harcama tutarını ve tüketim miktarını belirler. Sistem; geçen süreyi (Gün, Saat, Dakika, Saniye), kırılmayan zincir gün sayısını ve sağlanan maddi/zamansal tasarrufu anlık olarak hesaplar.
-  
-  ![Ana Ekran ve Sayaç](../../../docs/assets/thisone/mobile1_tr.png ':size=30%')  ![Alışkanlık Listesi](../../../docs/assets/thisone/mobile2_tr.png ':size=30%')
 
 * **Yıllık Aktivite Isı Haritası (Heatmap) ve İstatistikler:** Kullanıcının alışkanlıklarına sadakatini görselleştiren GitHub katkı grafiği tarzında yıllık bir Isı Haritası (Heatmap) sunulur. Başarılı günler yeşil tonlarıyla ödüllendirilir. Kırılan zincir durumunda kullanıcı motivasyonel bildirimlerle yeniden başlama imkanı bulur.
-  
-  ![İstatistikler ve Isı Haritası](../../../docs/assets/thisone/mobile3_tr.png ':size=30%')  ![Ayarlar ve Hatırlatıcılar](../../../docs/assets/thisone/mobile4_tr.png ':size=30%')
 
-* **Yerel Ana Ekran Widget Entegrasyonu (Sade & İnteraktif):** Uygulamayı açmaya gerek kalmadan takibi kolaylaştırmak amacıyla Android platformuna özel iki farklı Widget geliştirilmiştir:
-  - **Sade Widget:** Sayacın ve geçen gün sayısının şık görünümü.
-  - **İnteraktif Widget:** Doğrudan ana ekrandan sayacı artırma veya sıfırlama butonları içeren etkileşimli yapı.
-  
-  ![Ana Ekran Widget Entegrasyonu](../../../docs/assets/thisone/widget_tr.png ':size=45%')
+* **Yerel Ana Ekran Widget Entegrasyonu (Sade & İnteraktif):** Uygulamayı açmaya gerek kalmadan takibi kolaylaştırmak amacıyla Android platformuna özel iki farklı Widget geliştirilmiştir (Sade ve İnteraktif Widget seçenekleri).
 
 * **%100 Yerel Veri Gizliliği (Sunucusuz Mimari):** Girilen tüm alışkanlık verileri, tasarruf tutarları ve tarihler harici bir bulut sunucusuna aktarılmaz; yalnızca kullanıcının cihazında güvenle (SharedPreferences) saklanır.
 
-* **Esnek Monetizasyon Altyapısı:** İsteğe bağlı Google Mobile Ads (AdMob) reklamları ve tek seferlik ödeme ile reklamları tamamen kaldıran Google Play Billing (IAP) Pro sürüm entegrasyonu mevculttur.
+* **Esnek Monetizasyon Altyapısı:** İsteğe bağlı Google Mobile Ads (AdMob) reklamları ve tek seferlik ödeme ile reklamları tamamen kaldıran Google Play Billing (IAP) Pro sürüm entegrasyonu mevcuttur.
+
+
+### 📱 Uygulama Görselleri
+
+![Ana Ekran ve Sayaç](../../../docs/assets/thisone/mobile1_tr.png ':size=20%')  ![Alışkanlık Listesi](../../../docs/assets/thisone/mobile2_tr.png ':size=20%')  ![İstatistikler ve Isı Haritası](../../../docs/assets/thisone/mobile3_tr.png ':size=20%')  ![Ayarlar ve Hatırlatıcılar](../../../docs/assets/thisone/mobile4_tr.png ':size=20%')  ![Ana Ekran Widget](../../../docs/assets/thisone/widget_tr.png ':size=25%')
 
 
 ### 🛠️ Kullanılan Teknolojiler (Tech Stack)
