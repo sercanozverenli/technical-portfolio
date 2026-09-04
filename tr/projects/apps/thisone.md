@@ -31,7 +31,7 @@ Uygulama, kullanıcı verilerinin %100 gizliliğini koruyan sunucusuz (serverles
 * **Görsel & Arayüz:** Google Fonts, Material Design 3 (Dark/Light Tema), Flutter Local Notifications
 * **Monetizasyon & Servisler:** Google Mobile Ads (AdMob), Google Play Billing (In-App Purchase), Google In-App Review
 
-*(Arayüz tasarımı, state management kurgusu, Android native widget entegrasyonları, R8/ProGuard optimizasyonları ve Play Store yayınlama süreçleri **Google Antigravity / Gemini AI** yapay zeka asistanı pair-programming desteğiyle geliştirilmiştir.)*
+*(Yapay zeka destekli otonom yazılım ajanları ile iş birliği içinde üretilmiştir.)*
 
 ---
 

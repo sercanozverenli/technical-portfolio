@@ -34,7 +34,7 @@ Uygulama, mevzuat karmaşıklığını ortadan kaldıran dinamik hesaplama algor
 * **Derleme ve Performans Optimizasyonu:** R8 Full Mode optimizasyonu, ProGuard Sınıf Yeniden Paketleme (`-repackageclasses ''`), AndroidX Room & WorkManager kalkanları
 * **Görsel & Arayüz:** Google Fonts, Material Design 3 (Dark/Light Tema), Google Mobile Ads (AdMob)
 
-*(Arayüz tasarımı, hesaplama algoritmaları, R8/ProGuard optimizasyonları ve Play Store yayınlama süreçleri **Google Antigravity / Gemini AI** yapay zeka asistanı pair-programming desteğiyle geliştirilmiştir.)*
+*(Yapay zeka destekli otonom yazılım ajanları ile iş birliği içinde üretilmiştir.)*
 
 ---
 

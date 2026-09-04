@@ -34,7 +34,7 @@ The application streamlines complex legal regulations through interactive calcul
 * **Build & Performance Optimization:** R8 Full Mode optimization, ProGuard Class Repackaging (`-repackageclasses ''`), AndroidX Room & WorkManager crash shields
 * **UI & Styling:** Google Fonts, Material Design 3 (Dark/Light Theme), Google Mobile Ads (AdMob)
 
-*(UI design, simulation algorithms, R8/ProGuard optimizations, and Play Store publishing workflows were developed with pair-programming assistance from **Google Antigravity / Gemini AI**.)*
+*(Developed in collaboration with AI-powered autonomous software agents.)*
 
 ---
 

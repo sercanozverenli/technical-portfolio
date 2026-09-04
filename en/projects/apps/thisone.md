@@ -31,7 +31,7 @@ The app is built on a serverless, privacy-first architecture combined with engag
 * **UI & Styling:** Google Fonts, Material Design 3 (Dark/Light Theme), Flutter Local Notifications
 * **Monetization & Services:** Google Mobile Ads (AdMob), Google Play Billing (In-App Purchase), Google In-App Review
 
-*(UI design, state management, Android native widget channels, R8/ProGuard optimizations, and Play Store publishing workflows were developed with pair-programming assistance from **Google Antigravity / Gemini AI**.)*
+*(Developed in collaboration with AI-powered autonomous software agents.)*
 
 ---
 
