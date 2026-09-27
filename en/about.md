@@ -18,13 +18,18 @@ I am a student focusing on developing skills in data analytics tools such as Pyt
 
 ## Projects
 
-**Amplify Core (DRDRS)** — <span class="badge planned">Ongoing</span>
-A model-agnostic reliability assessment and decision routing system for noisy and incomplete data environments. 
+**Amplify Core (DRDRS)** — <span class="badge planned">In Progress</span> 
+A model-agnostic reliability evaluation and decision-guidance system operating in noisy and incomplete data environments. Application is planned within the scope of TÜBİTAK 2209-A.
 
-**Mobile Applications** — 2023
-Two cross-platform applications converted into functional Android apps via APK Builder:
-- **Interactive Quiz App:** Features dynamic hint systems, automated scoring, and responsive UI with dark/light mode support.
-- **Gamified Multiplication Tool:** An educational game with difficulty-scaled logic and randomized animated reward triggers.
+### Mobile Applications
+
+#### Android Mobile Applications (Flutter / Dart)
+- **ThisOne - Quit Smoking & Habit Tracker**: A mobile habit tracking application featuring personalized countdown timers, financial savings & health analytics, built with local SQLite data privacy architecture. (R8/ProGuard optimized)
+- **Urban Transformation Loan Calculator**: A financial assistant application calculating state-supported loan limits, interest subsidies, and repayment schedules for property owners and contractors under Law No. 6306.
+
+#### Web-Based Hybrid Mobile Applications (HTML / JavaScript / WebView)
+- **Interactive Quiz App**: A mobile quiz application featuring a dynamic hint system, automated scoring, real-time feedback, and dark/light theme support.
+- **Gamified Multiplication Tool**: An educational game for students featuring progressive difficulty levels and an animated reward/scoring system.
 
 ---
 
