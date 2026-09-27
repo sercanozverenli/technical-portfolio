@@ -19,7 +19,7 @@
 ## Projeler
 
 **Amplify Core (DRDRS)** — <span class="badge planned">Devam Eden</span> 
-Gürültülü ve eksik veri ortamlarında modelden bağımsız bir güvenilirlik değerlendirme ve karar yönlendirme sistemi. TÜBİTAK 2209-A kapsamında yürütülmektedir.
+Gürültülü ve eksik veri ortamlarında modelden bağımsız bir güvenilirlik değerlendirme ve karar yönlendirme sistemi. TÜBİTAK 2209-A kapsamında başvuru planlanmaktadır.
 
 ### Mobil Uygulamalar
 
