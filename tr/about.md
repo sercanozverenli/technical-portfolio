@@ -21,10 +21,15 @@
 **Amplify Core (DRDRS)** — <span class="badge planned">Devam Eden</span> 
 Gürültülü ve eksik veri ortamlarında modelden bağımsız bir güvenilirlik değerlendirme ve karar yönlendirme sistemi. TÜBİTAK 2209-A kapsamında yürütülmektedir.
 
-**Mobil Uygulamalar** — 2023
-APK Builder ile Android'e dönüştürülmüş iki çapraz platform uygulama:
-- **İnteraktif Test Uygulaması:** Dinamik ipucu sistemi, otomatik puanlama, karanlık/açık tema desteği.
-- **Oyunlaştırılmış Çarpım Tablosu:** Zorluk kademeli eğitim oyunu, animasyonlu ödül sistemi.
+### Mobil Uygulamalar
+
+#### Android Mobil Uygulamaları (Flutter / Dart)
+- **ThisOne - Sigara & Alışkanlık Takibi**: Kişiselleştirilmiş geri sayım sayaçları, tasarruf ve sağlık analizi ile SQLite yerel veri gizliliği mimarisiyle geliştirilmiş mobil alışkanlık takip uygulaması. (R8/ProGuard optimizasyonlu)
+- **Kentsel Dönüşüm Kredi Hesaplama Aracı**: Hak sahipleri ve müteahhitler için 6306 sayılı kanun kapsamında devlet destekli kredi limitlerini, faiz hibelerini ve ödeme planlarını hesaplayan finansal asistan uygulaması.
+
+#### Web Tabanlı Hibrit Mobil Uygulamalar (HTML / JavaScript / WebView)
+- **İnteraktif Test Uygulaması**: Dinamik ipucu sistemi, otomatik puanlama, anlık dönüt ve karanlık/açık tema desteği sunan mobil test uygulaması.
+- **Oyunlaştırılmış Çarpım Tablosu**: Öğrenciler için zorluk kademeli eğitim oyunu ve animasyonlu ödül/puanlama sistemi.
 
 ---
 
