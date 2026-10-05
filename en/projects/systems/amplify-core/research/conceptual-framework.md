@@ -20,7 +20,7 @@ The fundamental approach of the system is to abandon the notion that assumes alg
 
 ---
 
-## Operational Analogy: Decision Making Regimes
+## Decision Making Regimes
 
 The decision regimes adopted by Amplify Core based on the state of the data can be summarized with a four-stage autonomous driving scenario:
 
