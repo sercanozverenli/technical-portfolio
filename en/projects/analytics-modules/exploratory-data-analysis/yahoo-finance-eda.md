@@ -1,1 +1,1 @@
-# Exploratory Data Analysis
+# Financial Time Series Exploratory Data Analysis

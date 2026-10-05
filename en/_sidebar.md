@@ -34,8 +34,19 @@
             </li>
             <li>
               <details>
-                <summary><i class="status-idea"></i>Analysis and Interim Outputs</summary>
-                <ul></ul>
+                <summary><i class="status-wip"></i>Analysis and Interim Outputs</summary>
+                <ul>
+                  <li>
+                    <details>
+                      <summary><i class="status-wip"></i>Exploratory Data Analysis</summary>
+                      <ul>
+                        <li><a href="#/en/projects/systems/amplify-core/analysis-and-interim-outputs/yahoo-finance-eda.md"><i class="status-done"></i>Yahoo Finance EDA</a></li>
+                        <li><a href="#/en/projects/systems/amplify-core/analysis-and-interim-outputs/ujiindoorloc-eda.md"><i class="status-idea"></i>UJIIndoorLoc EDA</a></li>
+                        <li><a href="#/en/projects/systems/amplify-core/analysis-and-interim-outputs/olist-ecommerce-eda.md"><i class="status-idea"></i>Olist E-Commerce EDA</a></li>
+                      </ul>
+                    </details>
+                  </li>
+                </ul>
               </details>
             </li>
             <li>
@@ -67,9 +78,9 @@
     <ul>
       <li>
         <details>
-          <summary><i class="status-idea"></i>Exploratory Data Analysis</summary>
+          <summary><i class="status-wip"></i>Exploratory Data Analysis</summary>
           <ul>
-            <li><a href="#/en/projects/analytics-modules/exploratory-data-analysis/yahoo-finance-eda.md"><i class="status-idea"></i>Financial Time Series</a></li>
+            <li><a href="#/en/projects/analytics-modules/exploratory-data-analysis/yahoo-finance-eda.md"><i class="status-done"></i>Financial Time Series</a></li>
             <li><a href="#/en/projects/analytics-modules/exploratory-data-analysis/ujiindoorloc-eda.md"><i class="status-idea"></i>High-Dimensional Sensor Data</a></li>
             <li><a href="#/en/projects/analytics-modules/exploratory-data-analysis/olist-ecommerce-eda.md"><i class="status-idea"></i>Relational E-Commerce Data</a></li>
           </ul>

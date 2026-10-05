@@ -34,8 +34,19 @@
           </li>          
           <li>
             <details>
-              <summary><i class="status-idea"></i>Analiz ve Ara Çıktılar</summary>
-              <ul></ul>
+              <summary><i class="status-wip"></i>Analiz ve Ara Çıktılar</summary>
+              <ul>
+                <li>
+                  <details>
+                    <summary><i class="status-wip"></i>Keşifsel Veri Analizi</summary>
+                    <ul>
+                      <li><a href="#/tr/projects/systems/amplify-core/analysis-and-interim-outputs/yahoo-finance-eda.md"><i class="status-done"></i>Yahoo Finance EDA</a></li>
+                      <li><a href="#/tr/projects/systems/amplify-core/analysis-and-interim-outputs/ujiindoorloc-eda.md"><i class="status-idea"></i>UJIIndoorLoc EDA</a></li>
+                      <li><a href="#/tr/projects/systems/amplify-core/analysis-and-interim-outputs/olist-ecommerce-eda.md"><i class="status-idea"></i>Olist E-Ticaret EDA</a></li>
+                    </ul>
+                  </details>
+                </li>
+              </ul>
             </details>
           </li>          
           <li>
@@ -67,9 +78,9 @@
    <ul>
     <li>
        <details>
-        <summary><i class="status-idea"></i>Keşifsel Veri Analizi</summary> 
+        <summary><i class="status-wip"></i>Keşifsel Veri Analizi</summary> 
         <ul>
-          <li><a href="#/tr/projects/analytics-modules/exploratory-data-analysis/yahoo-finance-eda.md"><i class="status-idea"></i>Finansal Zaman Serisi</a></li>
+          <li><a href="#/tr/projects/analytics-modules/exploratory-data-analysis/yahoo-finance-eda.md"><i class="status-done"></i>Finansal Zaman Serisi</a></li>
           <li><a href="#/tr/projects/analytics-modules/exploratory-data-analysis/ujiindoorloc-eda.md"><i class="status-idea"></i>Yüksek Boyutlu Sensör Verisi</a></li>
           <li><a href="#/tr/projects/analytics-modules/exploratory-data-analysis/olist-ecommerce-eda.md"><i class="status-idea"></i>İlişkisel E-Ticaret Verisi</a></li>
         </ul>
