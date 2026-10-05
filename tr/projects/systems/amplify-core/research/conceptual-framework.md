@@ -22,7 +22,7 @@ Sistemin temel yaklaşımı, algoritmaların her koşulda bir tahmin üretmesini
 
 ---
 
-## Operasyonel Analoji: Karar Verme Rejimleri
+## Karar Verme Rejimleri
 
 Amplify Core'un verinin durumuna göre benimsediği karar rejimleri, dört aşamalı bir otonom sürüş senaryosu ile özetlenebilir:
 
