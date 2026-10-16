@@ -19,7 +19,7 @@ Platform, yüksek performanslı hibrit mimari, bulut tabanlı gerçek zamanlı v
 
 ### 📱 Uygulama Görselleri
 
-![Ana Ekran ve Menü](<../../../docs/assets/mantimood/tel1.png ':size=20%'>)  ![Ürün Detayı ve Sos Seçimi](<../../../docs/assets/mantimood/tel2.png ':size=20%'>)  ![Sepet ve Hızlı Sipariş](<../../../docs/assets/mantimood/tel3.png ':size=20%'>)  ![Yönetici Paneli](<../../../docs/assets/mantimood/tel4.png ':size=20%'>) 
+![Ana Ekran ve Menü](../../../docs/assets/mantimood/tel1.png ':size=20%')  ![Ürün Detayı ve Sos Seçimi](../../../docs/assets/mantimood/tel2.png ':size=20%')  ![Sepet ve Hızlı Sipariş](../../../docs/assets/mantimood/tel3.png ':size=20%')  ![Yönetici Paneli](../../../docs/assets/mantimood/tel4.png ':size=20%') 
 
 
 ### 🛠️ Kullanılan Teknolojiler (Tech Stack)
