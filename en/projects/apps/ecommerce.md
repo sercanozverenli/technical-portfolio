@@ -19,7 +19,7 @@ The platform is built on a high-performance hybrid architecture, a cloud-native 
 
 ### 📱 Application Screenshots
 
-![Home Screen & Menu](<../../../docs/assets/mantimood/tel1.png ':size=20%'>)  ![Product Details & Sauce Selection](<../../../docs/assets/mantimood/tel2.png ':size=20%'>)  ![Cart & Quick Checkout](<../../../docs/assets/mantimood/tel3.png ':size=20%'>)  ![Admin Dashboard](<../../../docs/assets/mantimood/tel4.png ':size=20%'>)
+![Home Screen & Menu](../../../docs/assets/mantimood/tel1.png ':size=20%')  ![Product Details & Sauce Selection](../../../docs/assets/mantimood/tel2.png ':size=20%')  ![Cart & Quick Checkout](../../../docs/assets/mantimood/tel3.png ':size=20%')  ![Admin Dashboard](../../../docs/assets/mantimood/tel4.png ':size=20%')
 
 
 ### 🛠️ Tech Stack
