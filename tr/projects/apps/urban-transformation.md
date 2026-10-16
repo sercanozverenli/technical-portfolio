@@ -28,7 +28,7 @@ Platform; karmaşık mevzuat adımlarını basitleştiren merkezi bir karşılam
   * Gözü yormayan modern Slate & Emerald renk paletine sahip Aydınlık (Light) ve Karanlık (Dark) tema desteği.
 
 
-### 📱 Uygulama Görselleri
+### 📱 Web-Uygulama Görselleri
 
 ![Ana Ekranı](../../../docs/assets/kentsel-donusum/telefon3.png ':size=22%')  ![Yarısı Bizden Ekranı](../../../docs/assets/kentsel-donusum/telefon4.png ':size=22%')  ![Kredi Simülatör Ekranı](../../../docs/assets/kentsel-donusum/telefon1.png ':size=22%')  ![Rehber ve Bilgilendirme Ekranı](../../../docs/assets/kentsel-donusum/telefon2.png ':size=22%')
 
