@@ -1,49 +1,60 @@
-# Urban Transformation Assistant (Loan Calculator & Simulation Tool)
+---
+# Urban Transformation Assistant (Mobile & Web Information and Simulation Platform)
 
-Developed in alignment with current legislation from the Ministry of Environment, Urbanisation and Climate Change and the Urban Transformation Directorate in Turkey, **Urban Transformation Assistant** is an independent mobile simulation tool that allows property owners to calculate government-subsidized urban regeneration loans, interest rate discount tiers, monthly installments, and minimum household income eligibility instantly.
+Developed in alignment with the official public regulatory frameworks and guidelines of the Ministry of Environment, Urbanisation and Climate Change and the Urban Transformation Directorate, **Urban Transformation Assistant (Kentsel Dönüşüm Asistanı)** is an independent, multi-platform (Android & Web) simulation and guidance tool designed to empower property owners, tenants, and contractors with accessible, transparent insights into urban transformation processes, financial grants, state-backed loans, and legal rights.
 
-### ⚙️ Key Features & Simulation Engine
+### ⚙️ Key Features & Modular Architecture
 
-The application streamlines complex legal regulations through interactive calculation algorithms and structured guidance:
+The platform is architected around a centralized entry Hub that streamlines complex regulatory procedures into intuitive, standalone modules:
 
-* **Dynamic Loan Simulation:** Users select loan amounts up to 3,000,000 TRY via flexible sliders and choose loan maturities up to 180 months (15 years). The algorithm calculates monthly installments, total repayment, and overall interest load in real time.
+* **1. Financial Support Programs & Simulation Engines:**
+  * **World Bank-Supported Low-Interest Loan Simulator:** Calculates monthly installments, total repayment obligations, a 12-month grace period benefit, and the 70% maximum debt-to-income (minimum household income) threshold for loan amounts up to 3,000,000 TRY and repayment terms up to 180 months (15 years).
+  * **4-Tier Regulatory Interest Subsidy Engine:** Dynamically calculates state interest reductions within the maximum statutory cap of 1.25% per annum based on: *Single Property Ownership* (0.25 pts), *Low/Medium Income Households* (0.25 pts), *Special Inclusivity Groups (Retirees, disabled citizens, martyrs' and veterans' families)* (0.25 pts), and *Energy Performance Certificate (Class A: 0.50 pts / Class B: 0.25 pts)*.
+  * **"Half on Us" (Yarısı Bizden) Campaign Guide:** A comprehensive financial overview of the 1,875,000 TRY total urban transformation support package (700,000 TRY non-refundable grant, 700,000 TRY subsidized loan with grace period, and 100,000 TRY relocation allowance), outlining payment milestones, eligibility conditions, and application procedures.
+  * **Rental Subsidies & Municipal Support (Interactive Accordion):** An interactive summary detailing statutory rental assistance under Law No. 6306 (up to 18 months for titleholders and a one-off 2-month relocation payment for tenants), the 1-year e-Government (e-Devlet) application window, and supplemental logistic/financial contributions provided by metropolitan and district municipalities.
 
-* **Automated Subsidy Category Calculations:** Automatically calculates legal interest discount tiers up to the annual 1.25% maximum cap:
-  1. *Category 1 (Single Home Owner):* 0.25% annual discount.
-  2. *Category 2 (Low/Middle Income Households):* 0.25% annual discount based on provincial income caps across 81 cities.
-  3. *Category 3 (Special Discount Group):* 0.25% annual discount for retirees, seniors (65+), disabled individuals, and building custodians.
-  4. *Category 4 (Energy Performance Certificate):* Additional 0.50% discount for Class A energy rating or 0.25% for Class B.
+* **2. Demand & Proposal Coordination Module:**
+  * A neutral digital coordination framework enabling property owners to register building renewal requests (parcel/island data) and contractors to submit structured project proposals based on clear urban renewal criteria.
 
-* **Minimum Household Income Threshold (70% Rule):** Calculates the required minimum monthly household income based on bank creditworthiness criteria specifying that monthly loan installments must not exceed 70% of total household income.
+* **3. Free Live Information & Inquiry Bridge:**
+  * Direct deep-link integration with the WhatsApp Business API for instant, one-click access to live guidance and neutral informational support.
 
-* **5-Step Application Guide & Pilot Cities:** Features step-by-step application guidelines and coverage details for World Bank-supported *Climate and Disaster Resilient Cities Project* pilot provinces (Istanbul, Izmir, Manisa, Kahramanmaras, Tekirdag).
+* **4. Cross-Platform & Adaptive Responsive Design:**
+  * Unified Flutter codebase delivering native performance on Android devices and a responsive Single Page Application (SPA/PWA) experience across desktop and mobile web browsers.
+  * Adaptive grid system that dynamically reflows layout constraints based on viewport width, validated with Google Search Console indexing.
 
-* **100% Local Storage & Modern UI:** Inputs are stored locally on the device (SharedPreferences) without external server transmission. Includes a sleek Dark and Light theme toggle.
+* **5. 100% Client-Side Privacy & Modern User Experience:**
+  * Absolute user privacy: zero cloud tracking of financial inputs, with all preferences and calculations stored strictly locally on-device via SharedPreferences.
+  * Accessible, ergonomic Light and Dark themes engineered using a modern Slate & Emerald design system.
 
 
-### 📱 Application Screenshots
+### 📱 Web & App Showcase
 
+![Home Screen](../../../docs/assets/kentsel-donusum/telefon3.png ':size=22%')  ![Half on Us Screen](../../../docs/assets/kentsel-donusum/telefon4.png ':size=22%')  
 ![Loan Simulator Screen](../../../docs/assets/kentsel-donusum/telefon1.png ':size=22%')  ![Guide & Info Screen](../../../docs/assets/kentsel-donusum/telefon2.png ':size=22%')
 
 
-### 🛠️ Tech Stack
+### 🛠️ Technology Stack
 
-* **Mobile Framework:** Flutter (Dart)
+* **Core Framework:** Flutter 3.x (Dart 3) — *Cross-Platform Android (AAB/APK) & Web (SPA/PWA)*
 * **State Management:** Provider
-* **Local Storage & Architecture:** SharedPreferences *(Serverless / Local Data Storage)*
-* **Build & Performance Optimization:** R8 Full Mode optimization, ProGuard Class Repackaging (`-repackageclasses ''`), AndroidX Room & WorkManager crash shields
-* **UI & Styling:** Google Fonts, Material Design 3 (Dark/Light Theme), Google Mobile Ads (AdMob)
+* **Local Storage & Architecture:** SharedPreferences *(Serverless / Client-Side Persistence)*
+* **UI & Typography:** Material Design 3, Google Fonts (Plus Jakarta Sans), Responsive Adaptive Layouts (`LayoutBuilder`, `MediaQuery`)
+* **External Integrations:** URL Launcher (WhatsApp API, e-Devlet, and official regulatory portals)
+* **Build & Performance Optimization:** R8 Full Mode optimization, ProGuard Class Repackaging (`-repackageclasses ''`), Icon Tree-Shaking, Web WASM / CanvasKit rendering compatibility
 
-*(Developed in collaboration with AI-powered autonomous software agents.)*
-
----
-
-### 📦 Store Links
-
-Explore the live production build on Google Play:
-
-**[View on Google Play Store](https://play.google.com/store/apps/details?id=com.kentsel.donusum)**
+*(Architected and developed in collaboration with autonomous AI coding agents following modern pair-programming methodologies.)*
 
 ---
 
-> <small>*⚠️ **Legal Disclaimer**<br> This application is an independent simulation tool and is not affiliated with, endorsed by, or representing any government ministry, official urban transformation authority, or financial institution. Calculations, rate simulations, and guidelines provided within the app are strictly for informational purposes. Final loan approvals, interest subsidy rates, and eligibility criteria are subject to official government regulations and partner bank procedures.*</small>
+### 📦 Store & Web Links
+
+Explore the live releases of the platform via the links below:
+
+* **[Google Play Store (Android)](https://play.google.com/store/apps/details?id=com.kentsel.donusum)**
+* **[Visit Web Platform](https://kentseldonusumasistani.com)** *(or deployed web endpoint)*
+
+---
+
+> <small>*⚠️ **Legal Disclaimer**<br> 
+> Urban Transformation Assistant (Kentsel Dönüşüm Asistanı) is an independent informational and simulation platform with no official affiliation with the Ministry of Environment, Urbanisation and Climate Change, the Urban Transformation Directorate, or any government agency/commercial bank. In compliance with Law No. 6306 and its Implementing Regulations, the platform solely offers guidance, simulations, and informative content derived from publicly available government data; it does not engage in formal consultancy or broker services. Definitive loan approvals, interest subsidies, grant disbursements, and formal eligibility decisions remain entirely subject to the final discretion of official public bodies and authorized financial institutions.*</small>
