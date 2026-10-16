@@ -65,6 +65,7 @@
  <details>
   <summary><i data-lucide="layout-grid" class="cat-icon"></i> Uygulamalar</summary>
   <ul>
+    <li><a href="#/tr/projects/apps/ecommerse.md"><i class="status-wip"></i>E-Ticaret</a></li>
     <li><a href="#/tr/projects/apps/thisone.md"><i class="status-done"></i>Sigara & Alışkanlık Takibi</a></li>
     <li><a href="#/tr/projects/apps/urban-transformation.md"><i class="status-wip"></i>Kentsel Dönüşüm Asistanı</a></li>   
     <li><a href="#/tr/projects/apps/gamified-multiplication-tool.md"><i class="status-done"></i>Oyunlaştırılmış Çarpım Tablosu</a></li>
