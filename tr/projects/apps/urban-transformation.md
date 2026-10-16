@@ -1,49 +1,59 @@
-# Kentsel Dönüşüm Asistanı (Kredi Hesaplama & Simülasyon Aracı)
+---
+# Kentsel Dönüşüm Asistanı (Mobil & Web Bilgilendirme ve Simülasyon Platformu)
 
-Çevre, Şehircilik ve İklim Değişikliği Bakanlığı ile Kentsel Dönüşüm Başkanlığı güncel mevzuat verileri doğrultusunda geliştirilen **Kentsel Dönüşüm Asistanı**, evini kentsel dönüşüm kapsamında yenilemek isteyen hak sahiplerinin devlet destekli kredi tutarlarını, faiz indirim oranlarını, aylık taksitlerini ve asgari hane geliri kriterlerini anında hesaplamalarını sağlayan bağımsız bir mobil simülasyon ve rehber uygulamasıdır.
+Çevre, Şehircilik ve İklim Değişikliği Bakanlığı ile Kentsel Dönüşüm Başkanlığı’nın güncel mevzuatları ve kamuya açık resmi verileri doğrultusunda geliştirilen **Kentsel Dönüşüm Asistanı**; mülk sahipleri, kiracılar ve müteahhitlerin kentsel dönüşüm süreçleri, finansal destekler, hibe modelleri ve yasal haklar hakkında kolayca bilgi sahibi olmalarını sağlayan bağımsız ve çok platformlu (Android & Web) bir simülasyon ve rehber platformudur.
 
-### ⚙️ Öne Çıkan Özellikler ve Simülasyon Mekaniği
+### ⚙️ Öne Çıkan Özellikler ve Modüler Mimari
 
-Uygulama, mevzuat karmaşıklığını ortadan kaldıran dinamik hesaplama algoritmaları ve rehber içeriklerden oluşmaktadır:
+Platform; karmaşık mevzuat adımlarını basitleştiren merkezi bir karşılama ekranı (Hub) ve kullanıcı odaklı bağımsız modüllerden oluşmaktadır:
 
-* **Dinamik Kredi Hesaplama Simülasyonu:** Kullanıcılar 3.000.000 TL'ye kadar esnek kaydırıcı (slider) ile kredi tutarını ve 180 aya (15 yıla) kadar vade seçeneklerini belirler. Sistem; aylık taksit tutarını, toplam geri ödemeyi ve faiz yükünü anında ekrana yansıtır.
+* **1. Destek Programları ve Finansal Hesaplama Araçları:**
+  * **Dünya Bankası Destekli Düşük Faizli Kredi Simülatörü:** 3.000.000 TL'ye kadar esnek kredi tutarı ve 180 aya (15 yıla) kadar vade seçenekleriyle; aylık taksitleri, toplam geri ödemeyi, 12 ay ödemesiz dönem avantajını ve %70 asgari hane geliri kuralını anında hesaplar.
+  * **Mevzuat Uyumlu 4 Kademeli Faiz İndirimi:** Yıllık azami %1,25 indirim tavanı dahilinde; *Tek Konut Sahibi* (0,25 puan), *Düşük/Orta Gelir Grubu* (0,25 puan), *Özel İndirim Grubu (Emekli, engelli, şehit/gazi yakını)* (0,25 puan) ve *A/B Sınıfı Enerji Kimlik Belgesi* (0,25 - 0,50 puan) kriterlerini otomatik olarak simülasyona dahil eder.
+  * **Yarısı Bizden Kampanya Rehberi:** 1.875.000 TL'lik toplam dönüşüm desteğini (700.000 TL hibe, 700.000 TL kredi, 100.000 TL tahliye desteği) detaylandıran; ödeme planlarını, hak ediş aşamalarını ve başvuru koşullarını sunan kapsamlı rehber modül.
+  * **Kira Yardımı ve Belediye Ek Destekleri (İnteraktif Akordiyon):** 6306 sayılı kanun kapsamında maliklere 18 ay boyunca, kiracılara ise taşınma masrafları için tek seferlik (iki aylık) ödeme koşullarını, 1 yıllık e-Devlet başvuru süresini ve büyükşehir/ilçe belediyelerinin sağladığı ek lojistik ve kira katkılarını özetleyen dinamik bilgi kartı.
 
-* **Mevzuat Uyumlu Otomatik Faiz İndirimi Kategorileri:** Yıllık azami %1,25 faiz indirimi sınırı dahilinde mevzuatta tanımlı tüm kategorileri otomatik hesaplar:
-  1. *Kategori 1 (Tek Konut Sahibi):* Yıllık 0,25 puan indirim.
-  2. *Kategori 2 (Düşük/Orta Gelir Haneleri):* 81 il için belirlenen aylık azami hane gelir sınırlarına göre yıllık 0,25 puan indirim.
-  3. *Kategori 3 (Özel İndirim Grubu):* Emekliler, 65 yaş üstü, şehit/gazi yakınları, engelliler ve kapıcılar için yıllık 0,25 puan indirim.
-  4. *Kategori 4 (Enerji Kimlik Belgesi):* Yeni binanın Enerji Sınıfına göre A Sınıfı için 0,50 puan, B Sınıfı için 0,25 puan ek indirim.
+* **2. Talep / Teklif Koordinasyon Modülü:**
+  * Mülk sahiplerinin ada/parsel ve bina dönüşüm taleplerini, müteahhit firmaların ise proje teklif kriterlerini yapılandırılmış adımlarla iletebilmelerini sağlayan tarafsız dijital koordinasyon altyapısı.
 
-* **Asgari Hane Geliri Hesaplayıcı (%70 Kuralı):** Kredi çekebilmek için bankalarca aranan aylık taksit tutarının toplam hane gelirinin maksimum %70'ini geçmemesi kuralına dayalı asgari gelir eşiğini otomatik hesaplar.
+* **3. Ücretsiz Canlı Bilgilendirme Hattı:**
+  * Kullanıcıların süreçler hakkında doğrudan ve hızlı bilgi alabilmesi için doğrudan derin bağlantı (Deep Link) ile entegre edilmiş WhatsApp iletişim ve bilgilendirme köprüsü.
 
-* **5 Adımda Başvuru Rehberi ve Pilot İller:** Dünya Bankası destekli *İklim ve Afetlere Dayanıklı Şehirler Projesi* kapsama alanındaki pilot iller (İstanbul, İzmir, Manisa, Kahramanmaraş, Tekirdağ) ve başvuru süreçlerine dair detaylı rehber sunar.
+* **4. Çoklu Platform (Cross-Platform) & Duyarlı (Responsive) Tasarım:**
+  * Hem Android cihazlarda yerel (native) performans hem de masaüstü ve mobil web tarayıcılarında çalışan esnek arayüz mimarisi.
+  * Ekran genişliğine göre otomatik uyum sağlayan akıllı ızgara (Responsive Grid) sistemi ve Google Search Console onaylı Web altyapısı.
 
-* **%100 Yerel Veri Saklama ve Kullanıcı Dostu Tasarım:** Girdiler hiçbir bulut sunucusuna aktarılmadan cihazda (SharedPreferences) tutulur. Göz yormayan Karanlık (Dark) ve Aydınlık (Light) tema seçeneği sunar.
+* **5. %100 Yerel Veri Gizliliği ve Modern Deneyim:**
+  * Kullanıcı girdileri üçüncü taraf sunucularda depolanmaz; SharedPreferences altyapısıyla tamamen cihaz üzerinde güvenle tutulur.
+  * Gözü yormayan modern Slate & Emerald renk paletine sahip Aydınlık (Light) ve Karanlık (Dark) tema desteği.
 
 
 ### 📱 Uygulama Görselleri
 
-![Kredi Simülatör Ekranı](../../../docs/assets/kentsel-donusum/telefon1.png ':size=22%')  ![Rehber ve Bilgilendirme Ekranı](../../../docs/assets/kentsel-donusum/telefon2.png ':size=22%')
+![Ana Ekranı](<../../../docs/assets/kentsel-donusum/telefon3.png ':size=22%'>) ![Yarısı Bizden Ekranı](<../../../docs/assets/kentsel-donusum/telefon4.png ':size=22%'>)![Kredi Simülatör Ekranı](<../../../docs/assets/kentsel-donusum/telefon1.png ':size=22%'>) ![Rehber ve Bilgilendirme Ekranı](<../../../docs/assets/kentsel-donusum/telefon2.png ':size=22%'>)
 
 
 ### 🛠️ Kullanılan Teknolojiler (Tech Stack)
 
-* **Mobil Uygulama Çerçevesi:** Flutter (Dart)
+* **Çekirdek Çerçeve (Core Framework):** Flutter 3.x (Dart 3) — *Android (AAB/APK) & Web (PWA/SPA)*
 * **Durum Yönetimi (State Management):** Provider
-* **Yerel Saklama ve Mimari:** SharedPreferences *(Serverless / Local Data Storage)*
-* **Derleme ve Performans Optimizasyonu:** R8 Full Mode optimizasyonu, ProGuard Sınıf Yeniden Paketleme (`-repackageclasses ''`), AndroidX Room & WorkManager kalkanları
-* **Görsel & Arayüz:** Google Fonts, Material Design 3 (Dark/Light Tema), Google Mobile Ads (AdMob)
+* **Yerel Saklama (Local Storage):** SharedPreferences *(Serverless / Client-Side Privacy)*
+* **Arayüz & Tipografi:** Material Design 3, Google Fonts (Plus Jakarta Sans), Responsive Adaptive Layout (`LayoutBuilder`, `MediaQuery`)
+* **Harici Entegrasyonlar:** URL Launcher (WhatsApp API, e-Devlet ve harici mevzuat yönlendirmeleri)
+* **Derleme & Optimizasyon:** R8 Full Mode optimizasyonu, ProGuard Sınıf Yeniden Paketleme (`-repackageclasses ''`), Icon Tree-Shaking, Web WASM/CanvasKit uyumluluğu
 
-*(Yapay zeka destekli otonom yazılım ajanları ile iş birliği içinde üretilmiştir.)*
-
----
-
-### 📦 Mağaza Bağlantıları
-
-Uygulamanın derlenmiş canlı sürümüne aşağıdaki bağlantıdan ulaşabilirsiniz:
-
-**[Google Play Store'da İnceleyin](https://play.google.com/store/apps/details?id=com.kentsel.donusum)**
+*(Yapay zeka destekli otonom yazılım ajanları ile modern eşli programlama prensipleri doğrultusunda geliştirilmiştir.)*
 
 ---
 
-> <small>*⚠️ **Yasal Bilgilendirme ve Sorumluluk Reddi (Legal Disclaimer)**<br> Bu uygulama Çevre, Şehircilik ve İklim Değişikliği Bakanlığı, Kentsel Dönüşüm Başkanlığı, herhangi bir resmi kurum veya bankaya bağlı değildir. Uygulama içerisinde sunulan hesaplamalar, faiz indirimi simülasyonları ve rehber içerikleri yalnızca genel bilgilendirme amaçlıdır. Kesin kredi tutarları, faiz indirim oranları, tahsis şartları ve asgari gelir kriterleri ilgili resmi kurumların ve anlaşmalı bankaların nihai onay süreçlerine tabidir.*</small>
+### 📦 Mağaza ve Web Bağlantıları
+
+Platformun canlı sürümlerine aşağıdaki bağlantılardan erişebilirsiniz:
+
+* **[Google Play Store'da İnceleyin (Android)](https://play.google.com/store/apps/details?id=com.kentsel.donusum)**
+* **[Web Platformunu Ziyaret Edin](https://kentseldonusumasistani.com)** *(veya barındırılan web adresi)*
+
+---
+
+> <small>*⚠️ **Yasal Bilgilendirme ve Sorumluluk Reddi (Legal Disclaimer)**<br> 
+> Kentsel Dönüşüm Asistanı; Çevre, Şehircilik ve İklim Değişikliği Bakanlığı, Kentsel Dönüşüm Başkanlığı veya herhangi bir resmi kamu kurumu/banka ile doğrudan bağı bulunmayan bağımsız bir bilgilendirme platformudur. Platform, 6306 sayılı Kanun ve ilgili Uygulama Yönetmeliği hükümleri doğrultusunda yalnızca kamuya açık veriler üzerinden rehberlik, genel bilgilendirme ve finansal simülasyon araçları sunar; resmi bir danışmanlık veya aracılık faaliyeti taahhüt etmez. Kesin kredi onayları, faiz indirimleri, hibe hak edişleri ve başvuru sonuçları ilgili kamu otoritelerinin ve yetkili bankaların nihai değerlendirmelerine tabidir.*</small>
