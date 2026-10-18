@@ -85,7 +85,7 @@ $$P_{\text{norm}, t} = \left( \frac{P_t}{P_{t_0}} \right) \times 100$$
 df_clean['norm_close'] = df_clean.groupby('symbol')['close'].transform(lambda x: (x / x.iloc[0]) * 100)
 ```
 
-![Normalize Fiyat Karşılaştırması (100 Bazlı)](../../../../../docs/assets/diagrams/amplify-core/01_yahoo_normalized_prices.png)
+![Normalize Fiyat Karşılaştırması (100 Bazlı)](../../../../../docs/diagrams/amplify-core/01_yahoo_normalized_prices.png)
 
 > **🔍 Grafik Okuma & Analiz Notu (Üst Grafik):**  
 > - **S&P 500 (Mavi Hat)**: 10 yıllık süreçte 100 bazından ~300 bazına yükselerek, geleneksel piyasaların istikrarlı, düşük riskli ve dengeli büyümesini sergilemiştir.
@@ -135,7 +135,7 @@ vol_btc = calc_annualized_vol(btc_returns, days_in_year=365, window=30)
 > **⚠️ Kritik Veri Mühendisliği Problemi ve Çözümü:**  
 > S&P 500 borsa tatillerinde kapalı olduğundan takviminde doğal boşluklar vardır. Veri seti tek bir DataFrame içindeyken doğrudan `.rolling(30)` uygulandığında, S&P 500'deki hafta sonu boşlukları pencereye girerek sonraki 5 gün boyunca tüm hesaplamaların `NaN` olmasına yol açar. Bu hatayı engellemek adına her varlık kendi işlem takviminde bağımsız olarak `.dropna()` yapıldıktan sonra kayan pencereye tabi tutulmuştur.
 
-![30 Günlük Yıllıklandırılmış Volatilite](../../../../../docs/assets/diagrams/amplify-core/01_yahoo_rolling_volatility.png)
+![30 Günlük Yıllıklandırılmış Volatilite](../../../../../docs/diagrams/amplify-core/01_yahoo_rolling_volatility.png)
 
 ### 3.3. Volatilite Bulguları ve Sayısal Kanıtlar
 - **Bitcoin Oynaklığı**: Normal dönemlerde %40 – %80 bandında seyrederken, kriz dönemlerinde **%200 seviyelerine** tırmanmaktadır.
@@ -167,7 +167,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-![Log Getiri Dağılımları (Histogram ve KDE)](../../../../../docs/assets/diagrams/amplify-core/01_yahoo_returns_distribution.png)
+![Log Getiri Dağılımları (Histogram ve KDE)](../../../../../docs/diagrams/amplify-core/01_yahoo_returns_distribution.png)
 
 ### Dağılım Metrikleri Özeti:
 | Varlık | Çarpıklık (Skewness) | Aşırı Basıklık (Excess Kurtosis) | İstatistiksel Anlamı |
