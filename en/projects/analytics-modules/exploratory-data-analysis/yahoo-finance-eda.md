@@ -1,6 +1,6 @@
 # Financial Time Series Exploratory Data Analysis (Yahoo Finance EDA)
 
-> **NOTE:** This project presents a **Standalone Financial Time Series Exploratory Data Analysis (EDA)**, return dynamics, and volatility modeling methodology utilizing 10 years (2014–2024) of historical market data across traditional equity benchmarks (S&P 500) and premier digital assets (Bitcoin).
+> This project presents a **Standalone Financial Time Series Exploratory Data Analysis (EDA)**, return dynamics, and volatility modeling methodology utilizing 10 years (2014–2024) of historical market data across traditional equity benchmarks (S&P 500) and premier digital assets (Bitcoin).
 
 ---
 
@@ -48,14 +48,14 @@ plt.show()
 
 ![Normalized Price Trajectory Plot](../../../../docs/diagrams/amplify-core/01_yahoo_normalized_prices.png)
 
-> **🔍 Analytical Finding:**  
-> The S&P 500 grew steadily from base 100 to ~300 over the decade, reflecting disciplined, low-volatility capital expansion. In contrast, Bitcoin surged logarithmically to 25,000+, undergoing massive macro liquidity cycles (2017 bull run, March 2020 liquidity shock, 2021 double top, and 2024 all-time highs).
+### Price Trajectory and Regime Observations
+The S&P 500 grew steadily from base 100 to ~300 over the decade, reflecting disciplined, low-volatility capital expansion. In contrast, Bitcoin surged logarithmically to 25,000+, undergoing massive macro liquidity cycles (2017 bull run, March 2020 liquidity shock, 2021 double top, and 2024 all-time highs).
 
 ---
 
 ## 3. Logarithmic Returns ($r_t$) and Volatility Modeling
 
-### 3.1. Why Log Returns Instead of Raw Prices?
+### 3.1. Return Metric Selection: Linear vs. Logarithmic Returns
 
 Raw price series are strictly **non-stationary**; their mean and variance change over time. For econometric models and statistical inference to remain valid, price series must be transformed into stationary **Logarithmic Returns ($r_t$)**:
 
@@ -66,8 +66,7 @@ $$r_t = \ln\left(\frac{P_t}{P_{t-1}}\right) = \ln(P_t) - \ln(P_{t-1})$$
 df['log_return'] = df.groupby('symbol')['close'].transform(lambda x: np.log(x / x.shift(1)))
 ```
 
-> **💡 Methodological Insight (Simple vs. Logarithmic Returns):**  
-> Arithmetic percentage returns are not time-additive (e.g., a +10% gain followed by a -10% drop results in a net capital loss of 1%, leaving you at 99%). In contrast, logarithmic returns are symmetric and time-additive ($\sum r_t$). This property prevents distortion when calculating multi-period statistical moments and compound risk metrics.
+Arithmetic percentage returns are not time-additive (e.g., a +10% gain followed by a -10% drop results in a net capital loss of 1%, leaving net capital at 99%). In contrast, logarithmic returns are symmetric and time-additive ($\sum r_t$). This property prevents distortion when calculating multi-period statistical moments and compound risk metrics.
 
 ### 3.2. Annualized 30-Day Rolling Volatility
 
@@ -92,8 +91,8 @@ sp500_vol = calculate_annualized_volatility(df[df['symbol']=='^GSPC']['log_retur
 btc_vol = calculate_annualized_volatility(df[df['symbol']=='BTC-USD']['log_return'], 365)
 ```
 
-> **⚠️ Critical Data Engineering Insight:**  
-> Because equity markets close on weekends, joining equity and cryptocurrency into a single tabular schema creates calendar alignment gaps. Applying `.rolling()` directly across merged rows introduces weekend `NaN` entries, which propagate and cause rolling computations to collapse into `NaN`. Sanitizing each asset's series with `.dropna()` independently prior to rolling calculations completely resolves this pipeline issue.
+### Trading Calendar Inconsistencies and Rolling Window Alignment
+Because equity markets close on weekends, joining equity and cryptocurrency into a single tabular schema creates calendar alignment gaps. Applying `.rolling()` directly across merged rows introduces weekend `NaN` entries, which propagate and cause rolling computations to collapse into `NaN`. Sanitizing each asset's series with `.dropna()` independently prior to rolling calculations completely resolves this pipeline issue.
 
 ![30-Day Annualized Rolling Volatility Plot](../../../../docs/diagrams/amplify-core/01_yahoo_rolling_volatility.png)
 

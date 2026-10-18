@@ -2,9 +2,9 @@
 
 ## 1. Analizin Amacı ve Veri Mimarisi
 
-**Amplify Core** sisteminin temel vizyonu, heterojen veri akışlarını modele girmeden önce denetleyen modelden bağımsız (*model-agnostic*) bir veri güvenilirliği ve dinamik karar yönlendirme katmanı oluşturmaktır. 
+**Amplify Core** sisteminin temel vizyonu, heterojen veri akışlarını makine öğrenmesi modellerine girmeden önce denetleyen modelden bağımsız (*model-agnostic*) bir veri güvenilirliği ve dinamik karar yönlendirme katmanı oluşturmaktır. 
 
-Bu mimaride **Finansal Zaman Serisi (Yahoo Finance)** veri seti; yüksek frekanslı piyasa dalgalanmalarını, ani oynaklık patlamalarını (*volatility clustering*) ve rejim değişikliklerini temsil etmek üzere seçilmiştir.
+Bu mimaride **Finansal Zaman Serisi (Yahoo Finance)** veri seti; yüksek frekanslı piyasa dalgalanmalarını, ani oynaklık patlamalarını (*volatility clustering*), rejim değişikliklerini ve kuyruk risklerini temsil etmek üzere seçilmiştir.
 
 ### Veri Seti Metadataları
 - **Hedef Varlıklar**: 
@@ -13,8 +13,8 @@ Bu mimaride **Finansal Zaman Serisi (Yahoo Finance)** veri seti; yüksek frekans
 - **Tarih Aralığı**: 17 Eylül 2014 – 17 Eylül 2024 (10 Yıllık Kesintisiz Zaman Serisi).
 - **Ham Kayıt Hacmi**: 6.822 Satır piyasa kaydı (Açılış, Yüksek, Düşük, Kapanış, Hacim).
 
-> **💡 HR & Yönetici Özeti (Neden Bu İki Varlık?):**  
-> Biri haftanın sadece 5 günü işlem gören son derece oturmuş geleneksel bir borsa endeksi (S&P 500), diğeri ise hafta sonu ve tatil tanımayan, 7/24 aşırı dalgalanan dijital bir varlıktır (Bitcoin). Bu iki zıt karakterdeki veriyi seçmemizin sebebi; yapay zeka sistemimizin hem sakin piyasalarda hem de kriz anlarında doğru çalışabildiğini test etmektir.
+### Varlık Seçim Rasyoneli
+Portföyde S&P 500 ve Bitcoin'in birlikte konumlandırılması, iki uç piyasa rejiminin (geleneksel sermaye piyasalarının düşük oynaklıklı ve regüle yapısı ile 7/24 kesintisiz çalışan dijital varlıkların likidite şokları) eşzamanlı olarak modellenmesini sağlar. Bu zıt karakterdeki veriler, Amplify Core veri güvenilirlik katmanının hem sakin piyasalarda hem de kriz anlarında doğru çalışabilirliğini doğrulamak üzere sisteme dahil edilmiştir.
 
 ---
 
@@ -22,7 +22,7 @@ Bu mimaride **Finansal Zaman Serisi (Yahoo Finance)** veri seti; yüksek frekans
 
 ### 2.1. Veri Tabanı Bağlantısı ve Veri Çekme Scripti
 
-PostgreSQL veritabanımızda saklanan `yahoo_market_data` tablosundan ham piyasa verileri aşağıdaki script ile bellege aktarılmıştır:
+PostgreSQL veritabanında saklanan `yahoo_market_data` tablosundan ham piyasa verileri aşağıdaki sorgu ile bellege aktarılmıştır:
 
 ```python
 import psycopg2
@@ -56,7 +56,7 @@ print("Ham Veri Boyutu:", df_raw.shape)
 print("Eksik Değer Sayıları:\n", df_raw.isnull().sum())
 ```
 
-### 2.2. Eksiklik (Missingness) Tespiti ve Temizliği
+### 2.2. Eksik Veri Analizi ve Sütun Tasfiyesi
 
 Veritabanından çekilen ham veride yapılan eksiklik taramasında, `adj_close` (düzeltilmiş kapanış fiyatı) sütununun **%100 oranında boş (null)** olduğu tespit edilmiştir.
 
@@ -69,12 +69,12 @@ print("Eksiklik Oranları (%):\n", null_rates)
 df_clean = df_raw.drop(columns=['adj_close'])
 ```
 
-> **🛡️ Amplify Core Mimari Bağlantısı (Çarpımsal Veto Kuralı):**  
-> Amplify Core DRS (Data Reliability Score) katmanında geliştirdiğimiz **Çarpımsal Veto Filtresi ($V_j$)**, sisteme giren kritik bir veri alanında %100 eksiklik tespit ettiğinde o özelliğe ait skoru derhal sıfıra çeker ve sistemi yanıltıcı tahmin üretmemesi için durdurur. Bu nedenle `adj_close` sütunu modele gitmeden önce veri setinden tamamen ayıklanmıştır.
+> **Veri Güvenilirliği (DRS) Tasarım Kararı:**  
+> Amplify Core DRS katmanında kurgulanan **Çarpımsal Veto Filtresi ($V_j$)**, kritik bir veri sütununda tam eksiklik (%100 null) saptandığında ilgili özelliğe ait güvenilirlik skorunu derhal sıfıra indirir. Bu mekanizma, hatalı veya bilgi taşımayan girdilerin karar motoruna beslenmesini engellemek amacıyla `adj_close` alanının ham aşamada veri setinden tamamen tasfiye edilmesini sağlamıştır.
 
 ### 2.3. Fiyat Normalizasyonu (100 Bazlı Endeksleme)
 
-S&P 500 endeksi 2.000 – 6.000 USD bandında hareket ederken, Bitcoin aynı 10 yıllık dönemde 300 USD seviyelerinden 70.000+ USD seviyelerine tırmanmıştır. Bu iki farklı ölçekteki varlığı tek bir grafikte karşılaştırabilmek için **100 Bazlı Normalizasyon** formülü uygulanmıştır:
+S&P 500 endeksi 2.000 – 6.000 USD bandında hareket ederken, Bitcoin aynı 10 yıllık dönemde 300 USD seviyelerinden 70.000+ USD seviyelerine tırmanmıştır. Bu iki farklı ölçekteki varlığı tek bir eksende karşılaştırabilmek amacıyla **100 Bazlı Normalizasyon** uygulanmıştır:
 
 $$P_{\text{norm}, t} = \left( \frac{P_t}{P_{t_0}} \right) \times 100$$
 
@@ -87,27 +87,26 @@ df_clean['norm_close'] = df_clean.groupby('symbol')['close'].transform(lambda x:
 
 ![Normalize Fiyat Karşılaştırması (100 Bazlı)](../../../../../docs/diagrams/amplify-core/01_yahoo_normalized_prices.png)
 
-> **🔍 Grafik Okuma & Analiz Notu (Üst Grafik):**  
-> - **S&P 500 (Mavi Hat)**: 10 yıllık süreçte 100 bazından ~300 bazına yükselerek, geleneksel piyasaların istikrarlı, düşük riskli ve dengeli büyümesini sergilemiştir.
-> - **Bitcoin (Turuncu Hat)**: Logaritmik eksende 100 bazından 25.000+ seviyesine çıkarak devasa piyasa döngüleri (2017 boğası, Mart 2020 çöküşü, 2021 ve 2024 zirveleri) ve agresif fiyat şokları üretmiştir.
+### Fiyat Gelişimi ve Tarihsel Rejim Gözlemleri
+- **S&P 500 (Mavi Hat)**: 10 yıllık süreçte 100 bazından ~300 bazına yükselerek, geleneksel sermaye piyasalarının düşük riskli ve dengeli büyümesini yansıtmıştır.
+- **Bitcoin (Turuncu Hat)**: Logaritmik eksende 100 bazından 25.000+ seviyesine çıkarak devasa makro piyasa döngüleri (2017 boğası, Mart 2020 likidite çöküşü, 2021 çift zirvesi ve 2024 rekorları) üretmiştir.
 
 ---
 
-## 3. Logaritmik Getiri ve Oynaklık (Volatilite) Analizi
+## 3. Logaritmik Getiri ve Oynaklık (Volatilite) Modellemesi
 
-### 3.1. Neden Ham Fiyat Değil de "Logaritmik Getiri" ($r_t$)?
+### 3.1. Getiri Metriği Rasyoneli: Logaritmik Dönüşümün Matematiksel Temeli
 
-Finansal piyasalarda ham fiyat serileri **durağan değildir (non-stationary)**; yani zamanla ortalaması ve varyansı değişir. Makine öğrenmesi modellerinin sağlıklı çalışabilmesi için serinin durağanlaştırılması şarttır. Bu amaçla ardışık günler arasındaki **Logaritmik Getiri ($r_t$)** hesaplanmıştır:
+Finansal piyasalarda ham fiyat serileri **durağan değildir (non-stationary)**; yani zamanla ortalaması ve varyansı değişir. Makine öğrenmesi modellerinin sağlıklı çalışabilmesi için serinin durağanlaştırılması gerekir. Bu amaçla ardışık günler arasındaki **Logaritmik Getiri ($r_t$)** hesaplanmıştır:
 
-$$r_t = \ln\left(\frac{P_t}{P_{t-1}}\right)$$
+$$r_t = \ln\left(\frac{P_t}{P_{t-1}}\right) = \ln(P_t) - \ln(P_{t-1})$$
 
 ```python
 # Zaman serisinde ardışık günler arasındaki logaritmik getiri hesabı
 df_clean['log_return'] = df_clean.groupby('symbol')['close'].transform(lambda x: np.log(x / x.shift(1)))
 ```
 
-> **💡 Eğitici Bilgi (Neden Yüzde Değil de Doğal Logaritma?):**  
-> Yüzdesel getiriler geriye dönük toplanamaz (örneğin %10 artışın ardından %10 düşüş sizi eski paranıza getirmez, %99'a düşürür). Ancak logaritmik getiriler simetriktir ve zamansal olarak doğrudan toplanabilir ($\sum r_t$). Bu sayede istatistiksel modellerde sapma oluşturmaz.
+Doğrusal yüzdesel getiriler geriye dönük zamansal olarak toplanamazken (örneğin %10 artışın ardından gelen %10 düşüş net sermayeyi %99'a düşürür), logaritmik getiriler simetriktir ve zamansal olarak doğrudan toplanabilir niteliktedir ($\sum r_t$). Bu sayede zaman serisi modellemelerinde yapay istatistiksel sapmaları engeller.
 
 ### 3.2. Yıllıklandırılmış 30 Günlük Hareketli Oynaklık (Annualized Rolling Volatility)
 
@@ -132,8 +131,8 @@ vol_sp500 = calc_annualized_vol(sp500_returns, days_in_year=252, window=30)
 vol_btc = calc_annualized_vol(btc_returns, days_in_year=365, window=30)
 ```
 
-> **⚠️ Kritik Veri Mühendisliği Problemi ve Çözümü:**  
-> S&P 500 borsa tatillerinde kapalı olduğundan takviminde doğal boşluklar vardır. Veri seti tek bir DataFrame içindeyken doğrudan `.rolling(30)` uygulandığında, S&P 500'deki hafta sonu boşlukları pencereye girerek sonraki 5 gün boyunca tüm hesaplamaların `NaN` olmasına yol açar. Bu hatayı engellemek adına her varlık kendi işlem takviminde bağımsız olarak `.dropna()` yapıldıktan sonra kayan pencereye tabi tutulmuştur.
+### İşlem Takvimi Uyumsuzluğu ve Kayan Pencere (Rolling Window) Hizalaması
+S&P 500 borsa tatillerinde kapalı olduğundan takviminde doğal boşluklar vardır. Veri seti tek bir DataFrame içindeyken doğrudan `.rolling(30)` uygulandığında, S&P 500'deki hafta sonu boşlukları pencereye dahil olarak sonraki hesaplamalarda yapay `NaN` yayılmasına yol açar. Bu hatayı engellemek adına her varlık kendi işlem takviminde bağımsız olarak `.dropna()` yapıldıktan sonra kayan pencereye tabi tutulmuştur.
 
 ![30 Günlük Yıllıklandırılmış Volatilite](../../../../../docs/diagrams/amplify-core/01_yahoo_rolling_volatility.png)
 
@@ -146,7 +145,7 @@ vol_btc = calc_annualized_vol(btc_returns, days_in_year=365, window=30)
 
 ## 4. İstatistiksel Dağılım ve Varyans Rejimleri
 
-Finansal getirilerin normal (Gauss) dağılıma uyup uymadığını, aşırı uç değer (*fat-tail*) risklerini saptamak için dağılımın 3. ve 4. momentleri hesaplanmış ve yoğunluk grafikleri (KDE) çizdirilmiştir:
+Finansal getirilerin normal (Gauss) dağılıma uyup uymadığını ve aşırı uç değer (*fat-tail*) risklerini saptamak için dağılımın 3. ve 4. momentleri hesaplanmış ve yoğunluk grafikleri (KDE) çizdirilmiştir:
 
 ```python
 # Dağılım Momentlerinin Hesaplanması (Çarpıklık ve Basıklık)
@@ -175,8 +174,8 @@ plt.show()
 | **S&P 500** | -0.065 | **11.896** | Nötr simetri, aşırı kalın kuyruk (ani çöküş şokları) |
 | **Bitcoin** | **-0.714** | **11.483** | Belirgin sol çarpıklık (sert düşüş eğilimi) ve aşırı kalın kuyruk |
 
-> **🔬 Bilimsel Çıkarım (Neden Levene Testi ve Dinamik Temel Kalibrasyon?):**  
-> Normal bir Gauss dağılımında basıklık 0 civarında olmalıdır. Burada her iki varlığın da basıklığı **11'in üzerindedir (Leptokurtik / Fat-tailed)**. Bu durum, piyasada "sabit varyans" varsayımının kesinlikle geçersiz olduğunu kanıtlar. Amplify Core'un **İş Paketi 2 (İP 2)** kapsamında geliştireceği **Varyans İstikrarı ($V_i$) - Levene Testi** ve **Dinamik Temel Kalibrasyon (Dynamic Baseline Calibration)** mekanizmalarının varoluş sebebi işte bu ampirik bulgudur.
+### İstatistiksel Dağılımın Sistem Mimarisine Etkileri
+Standart bir Gauss dağılımında basıklık 0 civarındadır. Burada her iki varlığın da basıklığı **11'in üzerindedir (Leptokurtik / Fat-tailed)**. Bu ampirik bulgu, finansal piyasalarda "sabit varyans" varsayımının kesinlikle geçersiz olduğunu kanıtlar. Amplify Core'un **İş Paketi 2 (İP 2)** kapsamında geliştireceği **Varyans İstikrarı ($V_i$) - Levene Testi** ve **Dinamik Temel Kalibrasyon (Dynamic Baseline Calibration)** mekanizmalarının rasyoneli bu istatistiksel ispata dayanmaktadır.
 
 ---
 

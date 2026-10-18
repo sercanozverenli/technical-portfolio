@@ -13,8 +13,8 @@ In this architecture, the **Financial Time Series (Yahoo Finance)** dataset was 
 - **Date Range**: September 17, 2014 – September 17, 2024 (10-Year Continuous Time Series).
 - **Raw Record Volume**: 6,822 rows of historical market quotes (Open, High, Low, Close, Adj Close, Volume).
 
-> **💡 HR & Executive Summary (Why These Two Assets?):**  
-> One is a highly established traditional equity benchmark operating strictly 5 days a week during fixed trading hours (S&P 500), while the other is an ultra-volatile digital asset trading around the clock without weekends or market holidays (Bitcoin). Pairing these contrasting data regimes allows us to stress-test our AI reliability architecture across both tranquil market conditions and sudden systemic crisis shocks.
+### Asset Selection Rationale
+Positioning the S&P 500 alongside Bitcoin within the portfolio allows simultaneous stress-testing across two extreme market regimes: the regulated, lower-volatility structure of traditional capital markets versus the 24/7 liquidity shocks of digital assets. These contrasting data profiles validate the capability of the Amplify Core reliability layer under both tranquil conditions and acute systemic crises.
 
 ---
 
@@ -56,7 +56,7 @@ print("Raw Shape:", df_raw.shape)
 print("Missing Value Counts:\n", df_raw.isnull().sum())
 ```
 
-### 2.2. Missingness Screening and Sanitation
+### 2.2. Missing Data Screening and Column Pruning
 
 During initial schema inspection, the `adj_close` (adjusted closing price) column was identified as **100% null (completely missing)**.
 
@@ -69,8 +69,8 @@ print("Missingness Rates (%):\n", null_rates)
 df_clean = df_raw.drop(columns=['adj_close'])
 ```
 
-> **🛡️ Amplify Core Architectural Link (Multiplicative Veto Rule):**  
-> In the Amplify Core DRS (Data Reliability Score) engine, our **Multiplicative Veto Filter ($V_j$)** immediately forces the reliability score of a feature to zero if 100% missingness is detected, preventing corrupt inputs from deceiving predictive models. Therefore, `adj_close` was purged before reaching downstream feature pipelines.
+> **Data Reliability (DRS) Architectural Decision:**  
+> In the Amplify Core DRS engine, the **Multiplicative Veto Filter ($V_j$)** immediately forces the reliability score of a feature to zero if 100% missingness is detected. This design prevents uninformative or corrupt inputs from compromising the routing engine, mandating the complete removal of `adj_close` at the raw ingestion stage.
 
 ### 2.3. Base-100 Price Normalization
 
@@ -87,15 +87,15 @@ df_clean['norm_close'] = df_clean.groupby('symbol')['close'].transform(lambda x:
 
 ![Base-100 Normalized Price Trajectory](../../../../../docs/diagrams/amplify-core/01_yahoo_normalized_prices.png)
 
-> **🔍 Chart Analysis Note (Top Plot):**  
-> - **S&P 500 (Blue Curve)**: Grew steadily from base 100 to ~300 over 10 years, reflecting disciplined, low-risk capital expansion.
-> - **Bitcoin (Orange Curve)**: Climbed logarithmically from base 100 to 25,000+, undergoing massive macro market cycles (2017 bull run, March 2020 liquidity shock, 2021 double peak, and 2024 all-time highs).
+### Price Trajectory and Historical Regime Observations
+- **S&P 500 (Blue Curve)**: Grew steadily from base 100 to ~300 over 10 years, reflecting disciplined, low-risk capital expansion.
+- **Bitcoin (Orange Curve)**: Climbed logarithmically from base 100 to 25,000+, undergoing massive macro market cycles (2017 bull run, March 2020 liquidity shock, 2021 double peak, and 2024 all-time highs).
 
 ---
 
 ## 3. Logarithmic Returns and Volatility Modeling
 
-### 3.1. Why Log Returns ($r_t$) Instead of Raw Prices?
+### 3.1. Return Metric Selection: Mathematical Foundation of Logarithmic Returns
 
 Raw price series exhibit strong **non-stationarity** (time-dependent mean and variance). For statistical modeling and machine learning stability, price series must be differenced into stationary **Logarithmic Returns ($r_t$)**:
 
@@ -106,8 +106,7 @@ $$r_t = \ln\left(\frac{P_t}{P_{t-1}}\right) = \ln(P_t) - \ln(P_{t-1})$$
 df_clean['log_return'] = df_clean.groupby('symbol')['close'].transform(lambda x: np.log(x / x.shift(1)))
 ```
 
-> **💡 Educational Insight (Why Log Returns Over Simple Percentage?):**  
-> Simple arithmetic returns are non-additive over time (a +10% gain followed by a -10% drop leaves you at 99%, not break-even). Conversely, logarithmic returns are symmetric and time-additive ($\sum r_t$), preventing bias in compound mathematical calculations and risk models.
+Simple arithmetic percentage returns are non-additive over time (a +10% gain followed by a -10% drop leaves net capital at 99%, not break-even). In contrast, logarithmic returns are symmetric and time-additive ($\sum r_t$). This mathematical property prevents systemic bias across multi-period volatility and compound risk metrics.
 
 ### 3.2. Annualized 30-Day Rolling Volatility
 
@@ -132,12 +131,12 @@ vol_sp500 = calc_annualized_vol(sp500_returns, days_in_year=252, window=30)
 vol_btc = calc_annualized_vol(btc_returns, days_in_year=365, window=30)
 ```
 
-> **⚠️ Critical Data Engineering Pitfall & Solution:**  
-> Because equity markets close on weekends and holidays, merging S&P 500 and Bitcoin into a single DataFrame introduces calendar alignment gaps. Running `.rolling(30)` directly across merged rows introduces weekend `NaN` values, causing rolling windows to collapse into `NaN` for subsequent calculations. Sanitizing each asset's series with `.dropna()` independently prior to rolling calculations completely mitigates this artifact.
+### Trading Calendar Inconsistencies and Rolling Window Alignment
+Because equity markets close on weekends and holidays, merging S&P 500 and Bitcoin into a single DataFrame introduces calendar alignment gaps. Running `.rolling(30)` directly across merged rows introduces weekend `NaN` values, causing rolling windows to collapse into `NaN` across subsequent steps. Sanitizing each asset's series with `.dropna()` independently prior to rolling calculations completely resolves this pipeline issue.
 
 ![30-Day Annualized Rolling Volatility](../../../../../docs/diagrams/amplify-core/01_yahoo_rolling_volatility.png)
 
-### 3.3. Quantitative Volatility Findings
+### 3.3. Empirical Volatility Findings
 - **Bitcoin Volatility**: Typically fluctuates in the 40% – 80% corridor, surging to **~200% annualized** during liquidity crunches.
 - **S&P 500 Volatility**: Averages between 10% and 20% (spiking to 85% during the March 2020 COVID-19 panic).
 - **Result**: Bitcoin exhibits an average of **3.29x higher annualized volatility** compared to the S&P 500.
@@ -175,8 +174,8 @@ plt.show()
 | **S&P 500** | -0.065 | **11.896** | Symmetric center with extreme leptokurtic tail risk (sharp market drops) |
 | **Bitcoin** | **-0.714** | **11.483** | Pronounced negative skewness (asymmetric sell-offs) and heavy fat tails |
 
-> **🔬 Scientific Implication (Why Levene's Test and Dynamic Baselines?):**  
-> Under a standard Gaussian distribution, excess kurtosis is approximately 0. Both financial series show excess kurtosis **above 11 (Leptokurtic / Fat-tailed)**, decisively disproving the classical "constant variance" assumption. This empirical evidence validates the necessity of Amplify Core's **Work Package 2 (WP 2)** components: **Variance Stability ($V_i$) via Levene's Test** and **Dynamic Baseline Calibration**.
+### Architectural Implications of Empirical Distributions
+Under a standard Gaussian distribution, excess kurtosis is approximately 0. Both financial series show excess kurtosis **above 11 (Leptokurtic / Fat-tailed)**, decisively disproving the classical "constant variance" assumption. This empirical evidence validates the necessity of Amplify Core's **Work Package 2 (WP 2)** components: **Variance Stability ($V_i$) via Levene's Test** and **Dynamic Baseline Calibration**.
 
 ---
 

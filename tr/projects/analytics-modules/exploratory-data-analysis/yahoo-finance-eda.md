@@ -1,6 +1,6 @@
 # Finansal Zaman Serisi Keşifsel Veri Analizi (Yahoo Finance EDA)
 
-> **NOT:** Bu çalışma; geleneksel sermaye piyasası endeksleri (S&P 500) ile 7/24 işlem gören lider kripto varlığın (Bitcoin) 10 yıllık (2014–2024) tarihsel piyasa verileri üzerinden gerçekleştirilen **Bağımsız Finansal Zaman Serisi Keşifsel Veri Analizi (EDA)**, getiri dinamikleri ve oynaklık modellemesi pratiklerini sunmaktadır.
+> Bu çalışma; geleneksel sermaye piyasası endeksleri (S&P 500) ile 7/24 işlem gören lider kripto varlığın (Bitcoin) 10 yıllık (2014–2024) tarihsel piyasa verileri üzerinden gerçekleştirilen **Bağımsız Finansal Zaman Serisi Keşifsel Veri Analizi (EDA)**, getiri dinamikleri ve oynaklık modellemesi pratiklerini sunmaktadır.
 
 ---
 
@@ -48,14 +48,14 @@ plt.show()
 
 ![Normalize Fiyat Gelişimi Grafiği](../../../../docs/diagrams/amplify-core/01_yahoo_normalized_prices.png)
 
-> **🔍 Analiz Bulgusu:**  
-> S&P 500 10 yılda istikrarlı biçimde 100 bazından ~300 bazına yükselirken, Bitcoin logaritmik eksende 25.000+ seviyesine tırmanarak devasa makro piyasa döngüleri (2017 boğası, Mart 2020 likidite şoku, 2021 ve 2024 zirveleri) üretmiştir.
+### Fiyat Gelişimi ve Tarihsel Rejimler
+S&P 500 10 yılda istikrarlı biçimde 100 bazından ~300 bazına yükselerek geleneksel sermaye piyasalarının düşük riskli ve dengeli büyümesini yansıtmıştır. Bitcoin ise logaritmik eksende 25.000+ seviyesine tırmanarak devasa makro piyasa döngüleri (2017 boğası, Mart 2020 likidite şoku, 2021 ve 2024 zirveleri) üretmiştir.
 
 ---
 
 ## 3. Logaritmik Getiri ($r_t$) ve Oynaklık (Volatilite) Modellemesi
 
-### 3.1. Neden Ham Fiyat Değil de "Logaritmik Getiri"?
+### 3.1. Getiri Metriği Seçimi: Doğrusal vs. Logaritmik Getiri
 
 Ham fiyat serileri **durağan değildir (non-stationary)**; zamanla ortalaması ve varyansı değişir. Zaman serisi modellerinin ve istatistiksel testlerin geçerli olabilmesi için serinin durağanlaştırılması şarttır. Bu amaçla ardışık günler arasındaki **Logaritmik Getiri ($r_t$)** hesaplanmıştır:
 
@@ -66,8 +66,7 @@ $$r_t = \ln\left(\frac{P_t}{P_{t-1}}\right) = \ln(P_t) - \ln(P_{t-1})$$
 df['log_return'] = df.groupby('symbol')['close'].transform(lambda x: np.log(x / x.shift(1)))
 ```
 
-> **💡 Metodolojik Not (Doğrusal Getiri vs. Logaritmik Getiri):**  
-> Basit yüzdesel getiriler geriye dönük zamansal olarak toplanamaz (örneğin %10 artışın ardından gelen %10 düşüş sizi başa döndürmez, sermayenizi %99'a düşürür). Ancak logaritmik getiriler simetriktir ve zamansal olarak doğrudan toplanabilir niteliktedir ($\sum r_t$). Bu sayede istatistiksel ve ekonometrik analizlerde sapma oluşturmaz.
+Basit yüzdesel getiriler geriye dönük zamansal olarak toplanamaz (örneğin %10 artışın ardından gelen %10 düşüş net sermayeyi %99'a düşürür). Ancak logaritmik getiriler simetriktir ve zamansal olarak doğrudan toplanabilir niteliktedir ($\sum r_t$). Bu sayede istatistiksel ve ekonometrik analizlerde sapma oluşturmaz.
 
 ### 3.2. Yıllıklandırılmış 30 Günlük Hareketli Oynaklık
 
@@ -94,8 +93,8 @@ sp500_vol = calculate_annualized_volatility(df[df['symbol']=='^GSPC']['log_retur
 btc_vol = calculate_annualized_volatility(df[df['symbol']=='BTC-USD']['log_return'], 365)
 ```
 
-> **⚠️ Kritik Veri Mühendisliği Notu:**  
-> S&P 500 takviminde hafta sonu ve tatil boşlukları olduğu için, veriler tek bir tabloda birleştirildiğinde doğrudan `.rolling()` uygulanırsa hafta sonu boşlukları pencereye girerek sonraki tüm hesaplamaların `NaN` olmasına yol açar. Bu hatayı engellemek adına her varlık kendi işlem günlerinde bağımsız olarak `.dropna()` yapıldıktan sonra kayan pencereye tabi tutulmalıdır.
+### İşlem Takvimi Uyumsuzluklarının Yönetimi
+S&P 500 takviminde hafta sonu ve tatil boşlukları olduğu için, veriler tek bir tabloda birleştirildiğinde doğrudan `.rolling()` uygulanırsa hafta sonu boşlukları pencereye dahil olarak sonraki hesaplamalarda yapay `NaN` yayılmasına yol açar. Bu hatayı engellemek adına her varlık kendi işlem günlerinde bağımsız olarak `.dropna()` yapıldıktan sonra kayan pencereye tabi tutulmalıdır.
 
 ![30 Günlük Hareketli Volatilite Grafiği](../../../../docs/diagrams/amplify-core/01_yahoo_rolling_volatility.png)
 
@@ -132,12 +131,12 @@ print(f"Bitcoin Skewness: {skew(btc_returns):.4f}, Excess Kurtosis: {kurtosis(bt
 | **Bitcoin** | **-0.714** | **11.483** | Belirgin sol çarpıklık (sert düşüş eğilimi) ve aşırı kalın kuyruk |
 
 1. **Sol Çarpıklık (Negative Skewness)**: Özellikle Bitcoin getirilerinde belirgin negatif çarpıklık gözlenmiştir. Bu durum piyasa yükselişlerinin zamana yayılarak yavaş gerçekleştiğini, ancak düşüşlerin ani, panik kaynaklı ve sert olduğunu ampirik olarak kanıtlar.
-2. **Aşırı Basıklık (Leptokurtic / Fat-Tails)**: Her iki varlıkta da Excess Kurtosis değeri **11'in üzerindedir** (Normal dağılımda bu değer 0'dır). Bu durum, finansal piyasalarda "sabit varyans" ve "normal dağılım" varsayımlarının kesinlikle geçersiz olduğunu; ekstrem piyasa olaylarının (Black Swan) Gauss eğrisinin öngördüğünden yüzlerce kat daha sık gerçekleştiğini gösterir.
+2. **Aşırı Basıklık (Leptokurtic / Fat-Tails)**: Her iki varlıkta da Excess Kurtosis değeri **11'in üzerindedir** (Normal dağılımda bu değer 0'dır). Bu durum, finansal piyasalarda "sabit varyans" ve "normal dağılım" varsayımlarının kesinlikle geçersiz olduğunu; ekstrem piyasa olaylarının (Black Swan) Gauss eğrisinin öngördüğünden çok daha sık gerçekleştiğini gösterir.
 
 ---
 
 ## 5. Çıkarılan Metodolojik Kazanımlar ve EDA Sonuçları
 
-1. **İşlem Takvimi Uyumlaştırması**: Farklı piyasalara ait zaman serileri kıyaslanırken takvim farklılıkları yapay eksik değerler (`NaN`) üretir. Kayan pencere hesaplamaları her varlığın kendi aktif işlem günlerinde yürütülmelidir.
+1. **İşlem Takvimi Uyumlaştırması**: Farklı piyasalara ait zaman serileri kıyaslanırken takvim farklılıkları yapay eksik değerler (`NaN`) üretir. Kayan pencere hesaplamaları her varlığın kendi aktif işlem günlerinde bağımsız olarak yürütülmelidir.
 2. **Risk Ölçeklendirme**: Yıllıklandırılmış volatilite hesaplamalarında her piyasanın kendi işlem frekansı ($\sqrt{252}$ vs $\sqrt{365}$) kullanılmalıdır.
 3. **Dinamik Eşik İhtiyacı**: Sabit varyans ve normal dağılım varsayımı finansal piyasalarda geçerli değildir; risk izleme sistemleri Levene testi gibi varyans homojenliği kontrolleri ve dinamik rejim eşikleri ile desteklenmelidir.
